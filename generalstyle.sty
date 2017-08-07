@@ -22,3 +22,46 @@
 % no indentation for enumerate and itemize environments
 \setlist[enumerate, 1]{leftmargin=*}
 \setlist[itemize, 1]{leftmargin=*}
+
+% defining theorem enviroments and the corresponding counter
+\newcounter{everything}
+\newtheorem{lemma}[everything]{Lemma}
+\newtheorem{proposition}[everything]{Proposition}
+\newtheorem{theorem}[everything]{Satz}
+\theoremstyle{definition}
+\newtheorem{definition}[everything]{Definition}
+\newtheorem{example}[everything]{Beispiel}
+\newtheorem{remark}[everything]{Remark}
+
+% defining the output of various counters
+\renewcommand{\theeverything}{\arabic{section}.\arabic{everything}}
+
+\newcommand{\suchthat}{\,|\,}
+\newcommand{\divides}{\mid}
+
+% different collections of scalars
+\newcommand{\Natural}{\mathbb{N}}
+\newcommand{\Integer}{\mathbb{Z}}
+\newcommand{\Rational}{\mathbb{Q}}
+\newcommand{\Real}{\mathbb{R}}
+\newcommand{\Complex}{\mathbb{C}}
+\newcommand{\Field}{\mathbb{F}}
+
+% spaces
+\newcommand{\eigenspace}[3]{#1_{#3}(#2)}
+\newcommand{\End}{\operatorname{End}}
+\newcommand{\matrices}[2]{\operatorname{M}_{#1}(#2)}
+\newcommand{\vanishing}[1]{\operatorname{Pol}(#1)}
+
+% functions
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\repmatrixendo}[2]{M_{#1, #2, #2}}
+\newcommand{\transpose}[1]{#1^T}
+
+% constants and special elements
+\newcommand{\charpol}[1]{p_{#1}}
+\newcommand{\Id}{I}
+\newcommand{\minpol}[1]{m_{#1}}
+
+% decorations
+\newcommand{\basis}[1]{\mathcal{#1}}

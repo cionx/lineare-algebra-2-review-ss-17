@@ -1,0 +1,181 @@
+\section{Diagonalisierbarkeit und Jordan-Normalform}
+
+Im Folgenden sei $K$ ein Körper.
+
+
+
+
+
+\subsection{Eigenwerte und Eigenvektoren}
+
+
+\begin{definition}
+  Es sei $V$ ein $K$-Vektorraum und $f \colon V \to V$ ein Endomorphismus.
+  Sind $\lambda \in K$ und $v \in V$ mit $v \neq 0$ und $f(v) = \lambda v$, so ist $v$ ein \emph{Eigenvektor} von $f$ zum \emph{Eigenwert} $\lambda$.
+  Für alle $\lambda \in K$ ist der Untervektorraum
+  \[
+              \eigenspace{V}{f}{\lambda}
+    \coloneqq \{ v \in V \suchthat f(v) = \lambda f \}
+    =         \ker (f - \lambda \id_V)
+  \]
+  der \emph{Eigenraum} von $f$ zu $\lambda$.
+
+  Es sei $n \in \Natural$ und $A \in \matrices{n}{K}$.
+  Sind $\lambda \in K$ und $x \in K^n$ mit $x \neq 0$ und $Ax = \lambda x$, so ist $x$ ein \emph{Eigenvektor} von $A$ zum \emph{Eigenwert} $\lambda$.
+  Für alle $\lambda \in K$ ist der Untervektorraum
+  \[
+              \eigenspace{(K^n)}{A}{\lambda}
+    \coloneqq \{ x \in K^n \suchthat Ax = \lambda x \}
+    =         \ker (A - \lambda \Id)
+  \]
+  der \emph{Eigenraum} von $A$ zu $\lambda$.
+\end{definition}
+
+
+\begin{remark}
+  \begin{enumerate}
+    \item
+      Ist $A \in \matrices{n}{K}$ und $f \colon K^n \to K^n$, $x \mapsto Ax$ der zu $A$ (bezüglich der Standardbasis) gehörige Endomorphismus, so stimmen die Eigenvektoren, Eigenwerte und Eigenräume von $A$ mit denen von $f$ überein.
+      
+      Es genügt daher im Folgenden, Definitionen und Aussagen für Endomorphismen zu anzugeben -- für Matrizen gelten diese dann ebenfalls.
+    \item
+      Es sei $f \colon V \to V$ ein Endomorphismus eines $K$-Vektorraums $V$, $\basis{B} = (v_1, \dotsc, v_n)$ eine Basis von $V$ und $A \coloneqq \repmatrixendo{f}{\basis{B}}$ die entsprechende darstellende Matrix.
+      Bezüglich des zu $\basis{B}$ zugehörigen Isomorphismus
+      \begin{gather*}
+                  \Phi_{\basis{B}}
+        \colon    V
+        \to       K^n,
+        \quad       v
+                  = \sum_{i=1}^n x_i v_i
+        \mapsto   \transpose{(x_1, \dotsc, x_n)}
+        \eqqcolon [v]_{\basis{B}}
+      \shortintertext{gilt}
+          \Phi_{\basis{B}}\left( \eigenspace{V}{f}{\lambda} \right)
+        = \eigenspace{(K^n)}{A}{\lambda}.
+      \end{gather*}
+      Es ist also $v \in V$ genau dann ein Eigenvektor von $f$ zum Eigenwert $\lambda \in K$, wenn $[v]_{\basis{B}}$ ein Eigenvektor von $A$ zum Eigenwert $\lambda$ ist.
+      
+      Berechnungen lassen sich deshalb in Matrizenform durchführen.
+  \end{enumerate}
+\end{remark}
+
+
+Für theoretische Aussagen nutzen wir also Endomorphismen, und für konkrete Rechnungen nutzen wir Matrizen.
+
+
+\begin{lemma}
+  Es seien $v_1, \dotsc, v_n \in V$ Eigenvektoren von $f \colon V \to V$ zu paarweise verschiedenen Eigenwerten, d.h.\ es gelte $f(v_i) = \lambda_i v_i$ mit $\lambda_i \neq \lambda_j$ für $i \neq j$.
+  Dann sind $v_1, \dotsc, v_n$ linear unabhängig.
+  Inbesondere ist die Summe $\sum_{\lambda \in K} \eigenspace{V}{f}{\lambda}$ direkt.
+\end{lemma}
+
+
+\begin{definition}
+  Ein Endomorphismus $f \colon V \to V$ heiß \emph{diagonalisierbar} falls er die folgenden, äquivalenten Bedingungen erfüllt:
+  \begin{enumerate}[label = \arabic*.]
+    \item
+      Es gilt $V = \bigoplus_{\lambda \in K} \eigenspace{V}{f}{\lambda}$.
+    \item
+      Es gilt $V = \sum_{\lambda \in K} \eigenspace{V}{f}{\lambda}$.
+    \item
+      Es gibt eine Basis von $V$ bestehend aus Eigenvektoren von $f$.
+    \item
+      Es gibt ein Erzeugendensystem von $V$ bestehend aus Eigenvektoren von $f$.
+  \end{enumerate}
+\end{definition}
+
+
+
+
+
+\subsection{Das charakterische Polynom}
+
+Im Rest des Abschnittes sei $V$ ein endlichdimensionaler $K$-Vektorraum, $f \colon V \to V$ ein Endomorphismus, $\basis{B}$ eine Basis von $V$ und $A \coloneqq \repmatrixendo{f}{\basis{B}}$ die entsprechende darstellende Matrix.
+Dann gilt
+\begin{align*}
+      &\, \text{$\lambda$ ist ein Eigenwert von $f$}      \\
+  \iff&\, \text{$\lambda$ ist ein Eigenwert von $A$}      \\
+  \iff&\, \eigenspace{(K^n)}{A}{\lambda} \neq 0           \\
+  \iff&\, \ker (A - \lambda \Id) \neq 0                   \\
+  \iff&\, \text{$A - \lambda \Id$ ist nicht invertierbar} \\
+  \iff&\, \det (A - \lambda \Id) = 0.
+\end{align*}
+
+\begin{definition}
+  Das \emph{charakterische Polynom} von $A \in \matrices{n}{K}$ ist definiert als
+  \[
+              \charpol{A}(t)
+    \coloneqq \det ( A - t \Id )
+    \in       K[t],
+  \]
+  das charakteristische Polynom von $f$ ist definiert als $\charpol{f}(t) = \charpol{A}(t)$.
+\end{definition}
+
+Dass das charakteristische Polynom $\charpol{f}(t)$ wohldefiniert ist, also nicht von der Wahl der Basis $\basis{B}$ abhängt, folgt aus dem folgenden Lemma:
+
+\begin{lemma}
+  Ähnliche Matrizen haben das gleiche charakterische Polynom.
+\end{lemma}
+
+Aus unserer anfänglichen Beobachtung erhalten wir den folgenden Zusammenhang zwischen den Eigenwerten und dem charakteristischen Polynom:
+
+\begin{proposition}
+  Die Eigenwerte von $f$ genau die Nullstellen des charakteristischen Polynoms $\charpol{f}(t)$.
+\end{proposition}
+
+
+
+
+
+\subsection{Das Minimalpolynom}
+
+\begin{lemma}
+  \label{lemma: polynomial equations give restriction for the eigenvalues}
+  Es sei $p \in K[t]$ ein Polynom mit $p(f) = 0$.
+  Dann ist jeder Eigenwert von $f$ eine Nullstelle von $p$.
+\end{lemma}
+
+\begin{definition}
+  Es sei
+  \[
+              \vanishing{f}
+    \coloneqq \{ p \in K[t] \suchthat p(f) = 0 \}.
+  \]
+  Das eindeutige normierte, von $0$ verschiedene Polynom minimalen Grades aus $\vanishing{f}$ ist das \emph{Minimalpolynom} von $f$, und wird mit $\minpol{f}(t) \in K[t]$ notiert.
+\end{definition}
+
+\begin{remark}
+  Die Wohldefiniertheit von $\vanishing{f}$ nutzt die Endlichdimensionalität von $V$.
+  Hierdurch wird sichergestellt, dass $\vanishing{f} \neq 0$ gilt.
+\end{remark}
+
+Die Definition des Minimalpolynoms lässt sich bis auf Normiertheit wie folgt umschreiben:
+
+\begin{lemma}
+  \label{lemma: properties of the minimal polynomial}
+  Es gilt
+  \[
+      \vanishing{f}
+    = \{ p \cdot \minpol{f} \suchthat p \in K[t] \}.
+  \]
+  Für $p \in K[t]$ gilt also genau dann $p(f) = 0$, wenn $\minpol{f} \divides p$.
+  Inbesondere gilt $\minpol{f}(f) = 0$.
+\end{lemma}
+
+\begin{theorem}[Cayley--Hamilton]
+  Es gilt $\charpol{f}(f) = 0$, also $\minpol{f} \divides \charpol{f}$.
+\end{theorem}
+
+Nach dem Satz von Cayley--Hamilton ist jede Nullstelle von $\minpol{f}(t)$ auch eine Nullstelle von $\charpol{f}(t)$, also ein Eigenwert von $f$.
+Andererseits ist jeder Eigenwert von $f$ nach Lemma~\ref{lemma: properties of the minimal polynomial} und Lemma~\ref{lemma: polynomial equations give restriction for the eigenvalues} auch eine Nullstelle von $\minpol{f}(t)$.
+Somit sind die Nullstelle non $\minpol{f}(t)$ genau die Eigenwerte von $f$.
+Also haben $\charpol{f}(t)$ und $\minpol{f}(t)$ die gleichen Nullstellen.
+Ist $K$ algebraisch abgeschlossen, so zerfallen $\charpol{f}(t)$ und $\minpol{f}(t)$ somit in die gleichen Linearfaktoren, wobei die Vielfachheit im Minimalpolynom nach dem Satz von Cayley--Hamilton jeweils kleiner ist als die Vielfachheit im charakteristischen Polynom.
+
+\begin{proposition}
+  Der Endomorphismus $f$ ist genau dann diagonalisierbar, falls $\minpol{f}$ in paarweise verschiedene Linearfaktoren zerfällt.
+\end{proposition}
+
+
+
+
