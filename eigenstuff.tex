@@ -1,6 +1,7 @@
-\section{Diagonalisierbarkeit und Jordan-Normalform}
+\section{Diagonalisierbarkeit}
 
 Im Folgenden sei $K$ ein Körper.
+Im Rest des Abschnittes sei, sofern nicht anders angegeben, $V$ ein endlichdimensionaler $K$-Vektorraum.
 
 
 
@@ -8,9 +9,8 @@ Im Folgenden sei $K$ ein Körper.
 
 \subsection{Eigenwerte und Eigenvektoren}
 
-
 \begin{definition}
-  Es sei $V$ ein $K$-Vektorraum und $f \colon V \to V$ ein Endomorphismus.
+  Es sei $f \colon V \to V$ ein Endomorphismus.
   Sind $\lambda \in K$ und $v \in V$ mit $v \neq 0$ und $f(v) = \lambda v$, so ist $v$ ein \emph{Eigenvektor} von $f$ zum \emph{Eigenwert} $\lambda$.
   Für alle $\lambda \in K$ ist der Untervektorraum
   \[
@@ -30,7 +30,6 @@ Im Folgenden sei $K$ ein Körper.
   \]
   der \emph{Eigenraum} von $A$ zu $\lambda$.
 \end{definition}
-
 
 \begin{remark}
   \begin{enumerate}
@@ -59,30 +58,7 @@ Im Folgenden sei $K$ ein Körper.
   \end{enumerate}
 \end{remark}
 
-
 Für theoretische Aussagen nutzen wir also Endomorphismen, und für konkrete Rechnungen nutzen wir Matrizen.
-
-
-\begin{lemma}
-  Es seien $v_1, \dotsc, v_n \in V$ Eigenvektoren von $f \colon V \to V$ zu paarweise verschiedenen Eigenwerten, d.h.\ es gelte $f(v_i) = \lambda_i v_i$ mit $\lambda_i \neq \lambda_j$ für $i \neq j$.
-  Dann sind $v_1, \dotsc, v_n$ linear unabhängig.
-  Inbesondere ist die Summe $\sum_{\lambda \in K} \eigenspace{V}{f}{\lambda}$ direkt.
-\end{lemma}
-
-
-\begin{definition}
-  Ein Endomorphismus $f \colon V \to V$ heiß \emph{diagonalisierbar} falls er die folgenden, äquivalenten Bedingungen erfüllt:
-  \begin{enumerate}[label = \arabic*.]
-    \item
-      Es gilt $V = \bigoplus_{\lambda \in K} \eigenspace{V}{f}{\lambda}$.
-    \item
-      Es gilt $V = \sum_{\lambda \in K} \eigenspace{V}{f}{\lambda}$.
-    \item
-      Es gibt eine Basis von $V$ bestehend aus Eigenvektoren von $f$.
-    \item
-      Es gibt ein Erzeugendensystem von $V$ bestehend aus Eigenvektoren von $f$.
-  \end{enumerate}
-\end{definition}
 
 
 
@@ -90,7 +66,7 @@ Für theoretische Aussagen nutzen wir also Endomorphismen, und für konkrete Rec
 
 \subsection{Das charakterische Polynom}
 
-Im Rest des Abschnittes sei $V$ ein endlichdimensionaler $K$-Vektorraum, $f \colon V \to V$ ein Endomorphismus, $\basis{B}$ eine Basis von $V$ und $A \coloneqq \repmatrixendo{f}{\basis{B}}$ die entsprechende darstellende Matrix.
+Es sei $f \colon V \to V$ ein Endomorphismus, $\basis{B}$ eine Basis von $V$ und $A \coloneqq \repmatrixendo{f}{\basis{B}}$ die entsprechende darstellende Matrix.
 Dann gilt
 \begin{align*}
       &\, \text{$\lambda$ ist ein Eigenwert von $f$}      \\
@@ -106,9 +82,9 @@ Dann gilt
   \[
               \charpol{A}(t)
     \coloneqq \det ( A - t \Id )
-    \in       K[t],
+    \in       K[t].
   \]
-  das charakteristische Polynom von $f$ ist definiert als $\charpol{f}(t) = \charpol{A}(t)$.
+  Das charakteristische Polynom eines Endomorphismus $f \colon V \to V$ ist definiert als $\charpol{f}(t) = \charpol{A}(t)$, wobei $A \coloneqq \repmatrixendo{f}{\basis{B}}$ die darstellende Matrix von $f$ bezüglich einer Basis $\basis{B}$ von $V$ ist.
 \end{definition}
 
 Dass das charakteristische Polynom $\charpol{f}(t)$ wohldefiniert ist, also nicht von der Wahl der Basis $\basis{B}$ abhängt, folgt aus dem folgenden Lemma:
@@ -172,9 +148,122 @@ Somit sind die Nullstelle non $\minpol{f}(t)$ genau die Eigenwerte von $f$.
 Also haben $\charpol{f}(t)$ und $\minpol{f}(t)$ die gleichen Nullstellen.
 Ist $K$ algebraisch abgeschlossen, so zerfallen $\charpol{f}(t)$ und $\minpol{f}(t)$ somit in die gleichen Linearfaktoren, wobei die Vielfachheit im Minimalpolynom nach dem Satz von Cayley--Hamilton jeweils kleiner ist als die Vielfachheit im charakteristischen Polynom.
 
+
+
+
+
+\subsection{Diagonalisierbarkeit}
+
+\begin{lemma}
+  Es seien $v_1, \dotsc, v_n \in V$ Eigenvektoren von $f \colon V \to V$ zu paarweise verschiedenen Eigenwerten, d.h.\ es gelte $f(v_i) = \lambda_i v_i$ mit $\lambda_i \neq \lambda_j$ für $i \neq j$.
+  Dann sind $v_1, \dotsc, v_n$ linear unabhängig.
+  Inbesondere ist die Summe $\sum_{\lambda \in K} \eigenspace{V}{f}{\lambda}$ direkt.
+\end{lemma}
+
+\begin{definition}
+  Ein Endomorphismus $f \colon V \to V$ heiß \emph{diagonalisierbar} falls er die folgenden, äquivalenten Bedingungen erfüllt:
+  \begin{enumerate}[label = \arabic*.]
+    \item
+      Es gilt $V = \bigoplus_{\lambda \in K} \eigenspace{V}{f}{\lambda}$.
+    \item
+      Es gilt $V = \sum_{\lambda \in K} \eigenspace{V}{f}{\lambda}$.
+    \item
+      Es gibt eine Basis von $V$ bestehend aus Eigenvektoren von $f$.
+    \item
+      Es gibt ein Erzeugendensystem von $V$ bestehend aus Eigenvektoren von $f$.
+    \item
+      Es gibt eine Basis $\basis{B}$ von $V$, so dass die darstellende Matrix $\repmatrixendo{f}{\basis{B}}$ eine Diagonalmatrix ist.
+  \end{enumerate}
+  Eine Matrix $A \in \matrices{n}{K}$ heißt \emph{diagonalisierbar}, falls sie eine der folgenden, äquivalenten Bedingungen erfüllt:
+  \begin{enumerate}[label = \arabic*.]
+    \item
+      Es gilt $K^n = \bigoplus_{\lambda \in K} \eigenspace{(K^n)}{A}{\lambda}$.
+    \item
+      Es gilt $K^n = \sum_{\lambda \in K} \eigenspace{(K^n)}{A}{\lambda}$.
+    \item
+      Es gibt eine Basis von $K^n$ bestehend aus Eigenvektoren von $A$.
+    \item
+      Es gibt ein Erzeugendensystem von $K^n$ bestehend aus Eigenvektoren von $A$.
+    \item
+      Die Matrix $A$ ist ähnlich zu einer Diagonalmatrix ist, d.h.\ es gibt $S \in \GL{n}{K}$, so dass $S A S^{-1}$ eine Diagonalmatrix ist.
+  \end{enumerate}
+\end{definition}
+
+\begin{lemma}
+  Für einen Endomorphismus $f \colon V \to V$ sind die folgenden Bedingungen äquivalent:
+  \begin{enumerate}
+    \item
+      Der Endomorphismus $f$ ist diagonlisierbar.
+    \item
+      Es gibt eine Basis $\basis{B}$ von $V$ gibt, so dass $\repmatrixendo{f}{\basis{B}}$ diagonalisierbar ist.
+    \item
+      Für jede Basis $\basis{B}$ von $V$ ist $\repmatrixendo{f}{\basis{B}}$ diagonalisierbar.
+  \end{enumerate}
+\end{lemma}
+
+Ob ein Endomorphismus $f \colon V \to V$ diagonalisierbar ist, hängt nur vom Minimalpolynom $\minpol{f}(t)$ ab:
+
 \begin{proposition}
   Der Endomorphismus $f$ ist genau dann diagonalisierbar, falls $\minpol{f}$ in paarweise verschiedene Linearfaktoren zerfällt.
 \end{proposition}
+
+
+
+
+
+\subsection{Simultane Diagonalisierbarkeit}
+
+\begin{definition}
+  Eine Familie $(f_i)_{i \in I}$ von Endomorphismen $f_i \colon V \to V$ heißt \emph{simultan diagonalisierbar}, falls es eine Basis $\basis{B}$ von $V$ gibt, so dass $\repmatrixendo{f}{\basis{B}}$ für jedes $i \in I$ eine Diagonalmatrix ist.
+  
+  Eine Familie $(A_i)_{i \in I}$ von Matrizen $A_i \in \matrices{n}{K}$ heißt \emph{simultan diagonalisierbar}, falls es $S \in \GL{n}{K}$ gibt, so dass $S A_i S^{-1}$ für jedes $i \in I$ eine Diagonalmatrix ist.
+\end{definition}
+
+\begin{lemma}
+  Für eine Familie $(f_i)_{i \in I}$ von Endomorphismen $f_i \colon V \to V$ sind die folgenden Bedingungen äquivalent:
+  \begin{enumerate}
+    \item
+      Die Familie von Endomorphismen $(f_i)_{i \in I}$ ist simultan diagonalisierbar.
+    \item
+      Es gibt eine Basis $\basis{B}$ von $V$, so dass die Familie von Matrizen $(\repmatrixendo{f_i}{\basis{B}})_{i \in I}$ simultan diagonalisierbar ist.
+    \item
+      Für jede Basis $\basis{B}$ von $V$ ist die Familie von Matrizen $(\repmatrixendo{f_i}{\basis{B}})_{i \in I}$ simultan diagonalisierbar.
+  \end{enumerate}
+\end{lemma}
+
+
+
+
+
+
+
+\subsection{Trigonalisierbarkeit}
+
+\begin{definition}
+  Ein Endomorphismus $f \colon V \to V$ heißt trigonalisierbar, falls es eine Basis $\basis{B}$ von $V$ gibt, so dass $\repmatrixendo{f}{\basis{B}}$ eine obere Dreiecksmatrix ist.
+  
+  Eine Matrix $A \in \matrices{n}{K}$ heißt trigonalisierbar, falls $A$ ähnlich zu einer oberen Dreiecksmatrix ist, d.h.\ falls es $S \in \GL{n}{K}$ gibt, so dass $S A S^{-1}$ eine obere Dreiecksmatrix ist.
+\end{definition}
+
+\begin{lemma}
+  Für einen Endomorphismus $f \colon V \to V$ sind die folgenden Bedingungen äquivalent:
+  \begin{enumerate}
+    \item
+      Der Endomorphismus $f$ ist trigonalisierbar.
+    \item
+      Es gibt eine Basis $\basis{B}$ von $V$, so dass die darstellende Matrix $\repmatrixendo{f}{\basis{B}}$ trigonalisierbar ist.
+    \item
+      Für jede Basis $\basis{B}$ von $V$ ist die darstellende Matrix $\repmatrixendo{f}{\basis{B}}$ trigonalisierbar.
+  \end{enumerate}
+\end{lemma}
+
+Die Trigonalisierbarkeit eines Endomorphismus $f \colon V \to V$ hängt nur von dem charakterischen Polynom $\charpol{f}(t)$ ab:
+
+\begin{proposition}
+  Ein Endomorphismus $f \colon V \to V$ ist genau dann trigonalisierbar, wenn das charakteristische Polynom $\charpol{f}(t)$ in Linearfaktoren zerfällt.
+\end{proposition}
+
+Insbesondere ist jeder Endomorphismus $f \colon V \to V$ trigonalisierbar, falls $K$ algebraisch abgeschlossen ist.
 
 
 

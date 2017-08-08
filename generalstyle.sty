@@ -24,7 +24,7 @@
 \setlist[itemize, 1]{leftmargin=*}
 
 % defining theorem enviroments and the corresponding counter
-\newcounter{everything}
+\newcounter{everything}[section]
 \newtheorem{lemma}[everything]{Lemma}
 \newtheorem{proposition}[everything]{Proposition}
 \newtheorem{theorem}[everything]{Satz}
@@ -49,7 +49,11 @@
 
 % spaces
 \newcommand{\eigenspace}[3]{#1_{#3}(#2)}
-\newcommand{\End}{\operatorname{End}}
+\newcommand{\End}[1]{\operatorname{End}(#1)}
+\newcommand{\GL}[2]{\operatorname{GL}_{#1}(#2)}
+\newcommand{\geigenspace}[3]{\heigenspace{#1}{#2}{#3}{\infty}}
+\newcommand{\generated}[1]{\left\langle #1 \right\rangle}
+\newcommand{\heigenspace}[4]{#1_{#3}^{#4}(#2)}
 \newcommand{\matrices}[2]{\operatorname{M}_{#1}(#2)}
 \newcommand{\vanishing}[1]{\operatorname{Pol}(#1)}
 
