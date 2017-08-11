@@ -1,4 +1,4 @@
-\section{Diagonalisierbarkeit}
+\chapter{Diagonalisierbarkeit \& Verwandte}
 
 Im Folgenden sei $K$ ein Körper.
 Im Rest des Abschnittes sei, sofern nicht anders angegeben, $V$ ein endlichdimensionaler $K$-Vektorraum.
@@ -7,7 +7,7 @@ Im Rest des Abschnittes sei, sofern nicht anders angegeben, $V$ ein endlichdimen
 
 
 
-\subsection{Eigenwerte und Eigenvektoren}
+\section{Eigenwerte und Eigenvektoren}
 
 \begin{definition}
   Es sei $f \colon V \to V$ ein Endomorphismus.
@@ -64,7 +64,7 @@ Für theoretische Aussagen nutzen wir also Endomorphismen, und für konkrete Rec
 
 
 
-\subsection{Das charakterische Polynom}
+\section{Das charakterische Polynom}
 
 Es sei $f \colon V \to V$ ein Endomorphismus, $\basis{B}$ eine Basis von $V$ und $A \coloneqq \repmatrixendo{f}{\basis{B}}$ die entsprechende darstellende Matrix.
 Dann gilt
@@ -103,7 +103,7 @@ Aus unserer anfänglichen Beobachtung erhalten wir den folgenden Zusammenhang zw
 
 
 
-\subsection{Das Minimalpolynom}
+\section{Das Minimalpolynom}
 
 \begin{lemma}
   \label{lemma: polynomial equations give restriction for the eigenvalues}
@@ -152,7 +152,7 @@ Ist $K$ algebraisch abgeschlossen, so zerfallen $\charpol{f}(t)$ und $\minpol{f}
 
 
 
-\subsection{Diagonalisierbarkeit}
+\section{Diagonalisierbarkeit}
 
 \begin{lemma}
   Es seien $v_1, \dotsc, v_n \in V$ Eigenvektoren von $f \colon V \to V$ zu paarweise verschiedenen Eigenwerten, d.h.\ es gelte $f(v_i) = \lambda_i v_i$ mit $\lambda_i \neq \lambda_j$ für $i \neq j$.
@@ -206,14 +206,14 @@ Ist $K$ algebraisch abgeschlossen, so zerfallen $\charpol{f}(t)$ und $\minpol{f}
 Ob ein Endomorphismus $f \colon V \to V$ diagonalisierbar ist, hängt nur vom Minimalpolynom $\minpol{f}(t)$ ab:
 
 \begin{proposition}
-  Der Endomorphismus $f$ ist genau dann diagonalisierbar, falls $\minpol{f}$ in paarweise verschiedene Linearfaktoren zerfällt.
+  Der Endomorphismus $f$ ist genau dann diagonalisierbar, falls das Minimalpolynom $\minpol{f}$ in paarweise verschiedene Linearfaktoren zerfällt.
 \end{proposition}
 
 
 
 
 
-\subsection{Simultane Diagonalisierbarkeit}
+\section{Simultane Diagonalisierbarkeit}
 
 \begin{definition}
   Eine Familie $(f_i)_{i \in I}$ von Endomorphismen $f_i \colon V \to V$ heißt \emph{simultan diagonalisierbar}, falls es eine Basis $\basis{B}$ von $V$ gibt, so dass $\repmatrixendo{f}{\basis{B}}$ für jedes $i \in I$ eine Diagonalmatrix ist.
@@ -250,16 +250,24 @@ Ob ein Endomorphismus $f \colon V \to V$ diagonalisierbar ist, hängt nur vom Mi
 
 
 
-\subsection{Trigonalisierbarkeit}
+\section{Trigonalisierbarkeit}
+
+Es sei $f \colon V \to V$ ein Endomorphismus.
+
+
+
+\subsection{Definition von Trigonalisierbarkeit}
+
+
 
 \begin{definition}
-  Ein Endomorphismus $f \colon V \to V$ heißt trigonalisierbar, falls es eine Basis $\basis{B}$ von $V$ gibt, so dass $\repmatrixendo{f}{\basis{B}}$ eine obere Dreiecksmatrix ist.
+  Der Endomorphismus $f \colon V \to V$ heißt trigonalisierbar, falls es eine Basis $\basis{B}$ von $V$ gibt, so dass $\repmatrixendo{f}{\basis{B}}$ eine obere Dreiecksmatrix ist.
   
   Eine Matrix $A \in \matrices{n}{K}$ heißt trigonalisierbar, falls $A$ ähnlich zu einer oberen Dreiecksmatrix ist, d.h.\ falls es $S \in \GL{n}{K}$ gibt, so dass $S A S^{-1}$ eine obere Dreiecksmatrix ist.
 \end{definition}
 
 \begin{lemma}
-  Für einen Endomorphismus $f \colon V \to V$ sind die folgenden Bedingungen äquivalent:
+  Die folgenden Bedingungen äquivalent:
   \begin{enumerate}
     \item
       Der Endomorphismus $f$ ist trigonalisierbar.
@@ -270,16 +278,84 @@ Ob ein Endomorphismus $f \colon V \to V$ diagonalisierbar ist, hängt nur vom Mi
   \end{enumerate}
 \end{lemma}
 
-Die Trigonalisierbarkeit eines Endomorphismus $f \colon V \to V$ hängt nur von dem charakterischen Polynom $\charpol{f}(t)$ ab:
-
-\begin{proposition}
-  Ein Endomorphismus $f \colon V \to V$ ist genau dann trigonalisierbar, wenn das charakteristische Polynom $\charpol{f}(t)$ in Linearfaktoren zerfällt.
-\end{proposition}
-
-Insbesondere ist jeder Endomorphismus $f \colon V \to V$ trigonalisierbar, falls $K$ algebraisch abgeschlossen ist.
-
-% Adding characterisation via invariant flags.
 
 
+\subsection{Äquivalente Charakterisierungen}
+
+\begin{definition}
+  Eine \emph{Flagge} von $V$ ist eine aufsteigende Kette von Untervektorräumen
+  \[
+                0
+    =           V_0
+    \subsetneq  V_1
+    \subsetneq  V_2
+    \subsetneq  \dotsb
+    \subsetneq  V_n
+    =           V
+  \]
+  mit $\dim V_k = k$ für alle $k$.
+  \textup(Inbesondere ist $n = \dim V$\textup).
+  Die Flagge heißt \emph{$f$-stabil} wenn $f(V_k) \subseteq V_k$ für alle $k$ gilt.
+\end{definition}
+
+Ist $\basis{B} = (v_1, \dotsc, v_n)$ eine Basis von $V$, so dass $\repmatrixendo{f}{\basis{B}}$ in oberer Dreiecksform ist, so ist
+\[
+              0
+  \subsetneq  \generated{v_1}
+  \subsetneq  \generated{v_1, v_2}
+  \subsetneq  \dotsb
+  \subsetneq  \generated{v_1, \dotsc, v_n}
+  =           V
+\]
+eine $f$-invariante Flagge von $V$.
+Ist andererseits
+\begin{equation}
+  \label{equation: invariant flag}
+              0
+  =           V_0
+  \subsetneq  V_1
+  \subsetneq  V_2
+  \subsetneq  \dotsb
+  \subsetneq  V_n
+  =           V
+\end{equation}
+eine Flagge von $V$, so ergibt sich durch Basisergänzung eine Basis $\basis{B} = (v_1, \dotsc, v_n)$ von $V$, so dass $V_k = \generated{v_1, \dotsc, v_k}$ für alle $k$ gilt.
+Ist die Flagge \eqref{equation: invariant flag} $f$-invariant, so ist die darstellende Matrix $\repmatrixendo{f}{\basis{B}}$ eine obere Dreiecksmatrix.
+
+Hierdurch ergibt sich die folgende Charakterisierung triagonalisierbarer Endomorphismen:
+
+\begin{theorem}
+  \label{theorem: characterization of triagonalizable endomorphisms}
+  Die folgenden Bedingungen sind äquivalent:
+  \begin{enumerate}
+    \item
+      Der Endomorphismus $f$ ist trigonalisierbar.
+    \item
+      Es gibt eine $f$-invariante Flagge von $V$.
+    \item
+      Das charakteristische Polynom $\charpol{f}(t)$ zerfällt in Linearfaktoren.
+  \end{enumerate}
+\end{theorem}
+
+Inbesondere hängt die Trigonalisierbarkeit von $f$ nur vom charakteristischen Polynom $\charpol{f}(t)$ ab.
+Außerdem ist jeder Endomorphismus von $V$ trigonalisierbar, falls $K$ algebraisch abgeschlossen ist.
 
 
+
+\section{Spur und Determinante durch Eigenwerte}
+\label{section: trace and determinant via eigenvalues}
+
+Es sei $f \colon V \to V$ ein Endomorphismus, so dass das charakteristische Polynom $\charpol{f}(t)$ in Linearfaktoren $\charpol{f}(t) = (t - \lambda_1) \dotsm (t - \lambda_n)$ zerfällt.
+Dann ist $f$ nach Satz~\ref{theorem: characterization of triagonalizable endomorphisms} trigonalisierbar, und somit gilt
+\[
+    \tr f
+  = \lambda_1 + \dotsb + \lambda_n
+\quad\text{und}\quad
+    \det f
+  = \lambda_1 \dotsm \lambda_n.
+\]
+Außerdem ist für jedes Polynom $q \in K[t]$ auch der Endomorphismus $q(f)$ trigonalisierbar, und es gilt
+\[
+    \charpol{q(f)}(t)
+  = (t - q(\lambda_1)) \dotsm (t - q(\lambda_n)).
+\]

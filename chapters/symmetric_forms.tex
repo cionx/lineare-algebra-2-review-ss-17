@@ -1,4 +1,4 @@
-\section{Symmetrische Bilinearformen}
+\chapter{Symmetrische Bilinearformen}
 
 Im Folgenden sei $K$ ein Körper und $V$ ein endlichdimensionaler $K$-Vektorraum.
 
@@ -6,7 +6,7 @@ Im Folgenden sei $K$ ein Körper und $V$ ein endlichdimensionaler $K$-Vektorraum
 
 
 
-\subsection{Darstellende Matrizen \& Kongruenz}
+\section{Darstellende Matrizen \& Kongruenz}
 
 \begin{definition}
   \label{definition: representing matrix for a bilinear form}
@@ -90,7 +90,7 @@ Da der Rang einer Matrix invariant unter Kongruenz ist, ergibt die folgende Defi
 
 
 
-\subsection{Quadratische Formen und Polarisation}
+\section{Quadratische Formen und Polarisation}
 
 \begin{proposition}
   \label{proposition: characterizations of quadratic forms}
@@ -178,7 +178,7 @@ Neben \eqref{equation: polarisation formula} gilt auch noch die Polarisationsfor
 
 
 
-\subsection{Existenz von Orthogonalbasen}
+\section{Existenz von Orthogonalbasen}
 
 Es sei $\ringchar{K} \neq 2$ und $\beta \in \SymForm(V)$ eine symmetrische Bilinearform.
 
@@ -189,7 +189,7 @@ Es sei $\ringchar{K} \neq 2$ und $\beta \in \SymForm(V)$ eine symmetrische Bilin
 
 \begin{corollary}
   \label{corollary: every symmetric matrix is congruent to a diagonal matrix}
-  Für jede symmetrische Matrix $A \in \matrices{n}{K}$ gibt es eine Matrix $S \in \GL{n}{K}$, so dass $\transpose{S} A S$ eine Diagonalmatrix ist.
+  Für jede symmetrische Matrix $A \in \matrices{n}{K}$ gibt es eine Basiswechselmatrix $S \in \GL{n}{K}$, so dass $\transpose{S} A S$ eine Diagonalmatrix ist.
 \end{corollary}
 
 Ist $A \in \matrices{n}{K}$ eine symmetrische Matrix, so lässt sich eine Diagonalform wie in Korollar~\ref{corollary: every symmetric matrix is congruent to a diagonal matrix} sowie eine zugehörige Basiswechselmatrix $S \in \GL{n}{K}$ mithilfe von \emph{simultanen Zeilen- und Spaltenumformungen} berechnen:
@@ -211,13 +211,13 @@ Eine Matrix $S \in \GL{n}{K}$ mit $\transpose{C} A C = B$ erhält man, indem man
 
 
 
-\subsection{Sylvesterscher Trägheitssatz \& Hauptachsentransformation}
+\section{Reelle symmetrische Bilinearformen}
 
 Für diesen Unterabschnitt sei $K = \Real$
 
 
 
-\subsubsection{Sylvesterscher Trägheitssatz}
+\subsection{Sylvesterscher Trägheitssatz}
 
 Es sei $\beta \in \SymForm(V)$ eine symmetrischen Bilinearform.
 
@@ -286,7 +286,7 @@ Die Zahl $p$ ist die Anzahl der positiven Diagonaleinträge, die Zahl $q$ ist di
 
 
 
-\subsubsection{Hauptachsentransformation}
+\subsection{Hauptachsentransformation}
 
 Ist $\beta \in \SymForm(\Real^n)$ eine symmetrische Bilinearform, so gilt für die symmetrische Matrix $A \in \matrices{n}{\Real}$ mit $A_{ij} = \beta(e_i, e_j)$, dass
 \[
@@ -330,13 +330,13 @@ Somit ist $\basis{B}$ eine Orthogonalbasis von $\Real^n$ bezüglich $\beta$ und
 
 
 
-\subsection{Dualität}
+\section{Dualität}
 
 Es sei $W$ ein weiterer endlichdimensionaler $K$-Vektorraum
 
 
 
-\subsubsection{Nicht-ausgeartetet Bilinearformen}
+\subsection{Nicht-ausgeartetet Bilinearformen}
 
 Es sei $\beta \in \BilForm(V, W)$ eine Bilinearform.
 Die Bilinearform $\beta$ entspricht einer linearen Abbildung
@@ -425,7 +425,7 @@ Es gilt $\rad{\beta} = \ker \beta_1 = \ker \beta_2$, weshalb $\beta$ genau dann 
 
 
 
-\subsubsection{Die Adjungierte Abbildung}
+\subsection{Die Adjungierte Abbildung}
 
 Es seien $\beta \in \BilForm(V,V')$ und $\gamma \in \BilForm(W,W')$ zwei nicht-ausgeartete Bilinearformen.
 Dann gibt es für jede lineare Abbildung $f \colon V \to W$ eine eindeutige lineare Abbildung $\adj{f} \colon W' \to V'$ mit
@@ -437,7 +437,7 @@ Dann gibt es für jede lineare Abbildung $f \colon V \to W$ eine eindeutige line
   \text{für alle $v \in V$, $w' \in W'$}
 \end{equation}
 gilt.
-Dies ergibt sich wie bereits in \ref{subsection: adjoint map for scalar products} dadurch, dass \eqref{equation: definition of the adjoint map by elements for non degenarete bilinear forms} äquivalent zur Kommutativität des Diagramms
+Dies ergibt sich wie bereits in \ref{section: adjoint map for scalar products} dadurch, dass \eqref{equation: definition of the adjoint map by elements for non degenarete bilinear forms} äquivalent zur Kommutativität des Diagramms
 \[
   \begin{tikzcd}
       \dual{V}

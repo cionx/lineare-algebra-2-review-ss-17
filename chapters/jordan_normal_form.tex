@@ -1,4 +1,4 @@
-\section{Jordan-Normalform}
+\chapter{Die Jordan-Normalform}
 
 Im Folgenden sei $f \colon V \to V$ ein Endomorphismus eines endlichdimensionalen $K$-Vek\-tor\-raums $V$.
 
@@ -6,7 +6,7 @@ Im Folgenden sei $f \colon V \to V$ ein Endomorphismus eines endlichdimensionale
 
 
 
-\subsection{Definition}
+\section{Definition}
 
 \begin{definition}
   Für alle $n \in \Natural$ und $\lambda \in K$ ist
@@ -52,7 +52,7 @@ Dies ist äquivalent dazu, dass für die Matrix $C = (v_1 | \cdots | v_n) \in \G
 
 
 
-\subsection{Eindeutigkeit}
+\section{Eindeutigkeit}
 
 Es sei $J$ eine Matrix in Jordan-Normalform, also
 \[
@@ -102,7 +102,7 @@ Es ergibt daher Sinn, von \emph{der} Jordannormalform einer Matrix, bzw.\ eines 
 
 
 
-\subsection{Existenz}
+\section{Existenz \& Kochrezept}
 
 \begin{definition}
   Für alle $\lambda \in K$ und $k \geq 0$ sei
@@ -267,21 +267,49 @@ Zur Berechnung einer Jordanbasis von $A$ geht man weiter wie folgt vor:
 
 
 
-\subsection{Implizite Bestimmen der Jordan-Normaform}
+
+
+\section{Lösung des Ähnlichkeitsproblems}
+
+\begin{theorem}
+  Zwei Endomorphismen $f, g \colon V \to V$ sind genau dann ähnlich, wenn sie (bis auf Permutation der Blöcke) die gleiche Jordan-Normalform besitzen.
+\end{theorem}
+
+Inbesondere gilt für zwei Endomorphismen $f, g \colon V \to V$, deren charakteristische Polynome in Linearfaktoren zerfallen, dass $f$ und $g$ genau dann ähnlich sind, wenn
+\[
+    \dim \ker (f - \lambda \id_V)^k
+  = \dim \ker (g - \lambda \id_V)^k
+  \qquad
+  \text{für alle $\lambda \in K$, $k \geq 0$}
+\]
+gilt.
+
+% TODO: Adding example of nilpotent endomorphisms.
+
+
+
+
+
+
+\section{Die Jordan--Chevalley-Zerlegung}
+
+Es sei $f \colon V \to V$ ein Endomorphismus, der die Bedingungen aus Satz~\ref{theorem: existence of generalized eigespace decomposition and jordan normal form} erfüllt.
+
+\begin{proposition}[Jordan--Chevalley-Zerlegung]
+  Es gibt eine eindeutige Zerlegung $f = d + n$ in einen diagonalisierbaren Endomorphismus $d$ und einen nilpotenten Endomorphismus $n$ nilpotent ist, dass $d$ und $n$ kommutieren.
+\end{proposition}
+
+Die Jordan--Chevalley-Zerlegung ist eine „koordinatenfreie“ Version der Jordan-Normalform;
+die Existenz dieser Zerlegung ist äquivalent zur Existenz der Jordan-Normalform.
+
+
+
+
+
+\section{Implizite Bestimmen der Jordan-Normaform}
 
 Es sei $J \in \matrices{n}{K}$ eine Jordan-Normalform von $f$.
 \begin{itemize}
-  \item
-    Für das charakteristische Polynom $\charpol{f}(t) = \charpol{J}(t) = (t - \lambda_1) \dotsm (t - \lambda_n)$ gelten
-    \[
-        \tr f
-      = \tr J
-      = \lambda_1 + \dotsb + \lambda_n
-    \quad\text{und}\quad
-        \det f
-      = \det J
-      = \lambda_1 \dotsm \lambda_n.
-    \]
   \item
     Für das charakteristische Polynom $\charpol{f}(t) = \charpol{J}(t) = (t - \lambda_1)^{n_1} \dotsm (t - \lambda_s)^{n_s}$ mit $\lambda_i \neq \lambda_j$ für $i \neq j$ gilt
     \[
@@ -314,253 +342,9 @@ Es sei $J \in \matrices{n}{K}$ eine Jordan-Normalform von $f$.
     \end{enumerate}
 \end{itemize}
 
-Für kleine Matrizen kann man hierdurch bereits Aussagen über die Jordan-Nor\-mal\-form treffen, ohne die Matrix selbst zu kennen.
+Zusammen mit den Beobachtungen aus Abschnitt~\ref{section: trace and determinant via eigenvalues} kann man hierdurch für kleine Matrizen bereits Aussagen über die Jordan-Nor\-mal\-form treffen, ohne die Matrix selbst zu kennen.
 
 % TODO: Beispiele hinzufügen.
-
-% \subsubsection{Nilpotente Endomorphismen}
-% \label{subsection: jordan normal form for nilpotent endomorphisms}
-% 
-% \begin{definition}
-%   Eine Matrix $A \in \matrices{n}{K}$ ist nilpotent falls es $k \geq 0$ mit $A^k = 0$ gibt.
-%   Der Endomorphismus $f$ ist nilpotent, falls es $k \geq 0$ mit $f^k = 0$ gibt.
-% \end{definition}
-% 
-% \begin{lemma}
-%   Die folgenden Bedingungen sind äquivalent:
-%   \begin{enumerate}
-%     \item
-%       Der Endomorphismus $f$ ist nilpotent.
-%     \item
-%       Es gibt eine Basis $\basis{B}$ von $V$, so dass die darstellende Matrix $\repmatrixendo{f}{\basis{B}}$ nilpotent ist.
-%     \item
-%       Für jede Basis $\basis{B}$ von $V$ ist die darstellende Matrix $\repmatrixendo{f}{\basis{B}}$ nilpotent.
-%   \end{enumerate}
-% \end{lemma}
-% 
-% Eine Besonderheit nilpotente Endomorphismen und Matrizen besteht darin, dass diese immer eine Jordan-Normalform besitzen.
-% Dies ergibt sich durch Angabe eines konkreten Algorithmus zur Berechnung einer Jordan-Basis einer nilpotenten Matrix $A$:
-% 
-% \begin{itemize}
-%   \item
-%     Man berechne die iterierten Kerne $\ker A, \ker A^2, \dotsc, \ker A^m$ bis zu dem Punkt, an dem $\ker A^m = K^n$ gilt.
-%   \item
-%     Man bestimme Anhand der Zahlen $d_k \coloneqq \dim \ker A^k$ die Anzahl der auftretenden Jordanblöcke von Größe $k$ als $b_k \coloneqq 2 d_k - d_{k-1} - d_{k+1}$.
-% \end{itemize}
-% 
-% Aus den Zahlen $b_1, b_2, \dotsc$ erkennen wir bereits, wieviele Blöcke es zx welcher Größe gibt, d.h.\ wie die Jordannormalform von $A$ (bis auf Permutation der Blöcke) aussehen wird.
-% Inbesondere ist $d_1$ die Gesamtzahl der Jordanblöcke und $m$ die maximal auftretende Blöckgröße.
-% 
-% Zur Berechnung einer Jordanbasis von $A$ geht man weiter wie folgt vor:
-% 
-% \begin{itemize}[resume]
-%   \item
-%     Man wähle linear unabhängige Vektoren $v_1, \dotsc, v_{b_m} \in \ker A^m$ mit
-%     \[
-%                 \ker A^m
-%       =         \ker A^{m-1}
-%         \oplus  \generated{v_1, \dotsc, v_{b_m}}.
-%     \]
-%     (Ergänzt man eine Basis von $\ker A^{m-1}$ zu einer Basis von $\ker A^m$, so sind $v_1, \dotsc, v_{b_m}$ die neu hinzugekommenen Basisvektoren.)
-%   \item
-%     Hierdurch ergeben sich für $\basis{B}$ die ersten paar Basisvektoren
-%     \begin{align*}
-%       v_1,     A v_1,     &\dotsc, A^{m-1} v_1,     \\
-%       v_2,     A v_2,     &\dotsc, A^{m-1} v_2,     \\
-%                           &\dotsc,                  \\
-%       v_{b_m}, A v_{b_m}, &\dotsc, A^{m-1} v_{b_m}.
-%     \end{align*}
-%   \item
-%     Man wählt nun linear unabhängige Vektoren $v'_1, \dotsc, v'_{b_{m-1}} \in \ker A^{m-1}$, so dass
-%     \[
-%                 \ker A^{m-1}
-%       =         \ker A^{m-2}
-%         \oplus  \generated{ A v_1, \dotsc, A v_{b_m} }
-%         \oplus  \generated{ v'_1, \dotsc, v'_{b_{m-1}} }
-%     \]
-%     gilt.
-%   \item
-%     Hierdurch erhält man für $\basis{B}$ die weiteren Basisvektoren
-%     \begin{align*}
-%       v'_1,         A v'_1,         &\dotsc, A^{m-2} v'_1,          \\
-%       v'_2,         A v'_2,         &\dotsc, A^{m-2} v'_2,          \\
-%                                     &\dotsc,                        \\
-%       v'_{b_{m-1}}, A v'_{b_{m-1}}, &\dotsc, A^{m-2} v'_{b_{m-1}}.
-%     \end{align*}
-%   \item
-%     Man wähle nun $v''_1, \dotsc, v''_{b_{m-2}} \in \ker A^{m-2}$, so dass
-%     \begin{align*}
-%        &\,      \ker A^{m-1}  \\
-%       =&\,      \ker A^{m-2}
-%         \oplus  \generated{ A^2 v_1, \dotsc, A^2 v_{b_m} }
-%         \oplus  \generated{ A v'_1, \dotsc, A v'_{b_{m-1}} }
-%         \oplus  \generated{ v''_1, \dotsc, v''_{b_{m-2}} }
-%     \end{align*}
-%     gilt.
-%   \item
-%     Hiermit ergeben sich für $\basis{B}$ die Basisvektoren
-%     \begin{align*}
-%       v''_1,         A v''_1,         &\dotsc, A^{m-2} v''_1,         \\
-%       v''_2,         A v''_2,         &\dotsc, A^{m-2} v''_2,         \\
-%                                       &\dotsc,                        \\
-%       v''_{b_{m-2}}, A v''_{b_{m-2}}, &\dotsc, A^{m-2} v''_{b_{m-2}}.
-%     \end{align*}
-% \end{itemize}
-% 
-% Indem man die obigen Schritte iteriert, erhält man schließlich die gewünschte Basis $\basis{B}$ von $K^n$.
-% Indem man die (in der obigen Reihenfolge entstandenen) Basisvektoren als Spalten in eine Matrix $C$ einträgt, erhält man schließlich $C \in \GL{n}{K}$, so dass $C^{-1} A C$ in Jordan-Normalform ist;
-% dabei sind die Jordanblöcke in absteigender Größe sortiert.
-% 
-% 
-% 
-% \subsubsection{Allgemeine Endomorphismen}
-% 
-% \begin{definition}
-%   Für alle $\lambda \in K$ und $k \geq 0$ sei
-%   \[
-%       \heigenspace{V}{f}{\lambda}{k}
-%     = \{ v \in V \suchthat (f - \lambda \id_V)^k(v) = 0 \}
-%     = \ker (f - \id_V)^k.
-%   \]
-%   Der Untervektorraum
-%   \[
-%               \geigenspace{V}{f}{\lambda}
-%     \coloneqq \bigcup_{k=0}^\infty \heigenspace{V}{f}{\lambda}{k}
-%     =         \left\{
-%                 v \in V
-%               \suchthat
-%                 \text{es gibt $k \geq 0$ mit $(f - \lambda \id_V)^k(v) = 0$}
-%               \right\}
-%   \]
-%   ist der \emph{verallgemeinerte Eigenraum} von $f$ zu $\lambda$.
-%   Für alle $A \in \matrices{n}{K}$ und $k \geq 0$ sei
-%   \[
-%       \heigenspace{(K^n)}{A}{\lambda}{k}
-%     = \{ x \in K^n \suchthat (A - \lambda \Id)^k x = 0 \}
-%     = \ker (A - \Id)^k.
-%   \]
-%   Der Untervektorraum
-%   \[
-%               \geigenspace{(K^n)}{A}{\lambda}
-%     \coloneqq \bigcup_{k=0}^\infty \heigenspace{(K^n)}{A}{\lambda}{k}
-%     =         \left\{
-%                 x \in K^n
-%               \suchthat
-%                 \text{es gibt $k \geq 0$ mit $(A - \lambda \Id)^k x = 0$}
-%               \right\}
-%   \]
-%   ist der \emph{verallgemeinerte Eigenraum} von $A$ zu $\lambda$.
-% \end{definition}
-% 
-% \begin{lemma}
-%   \begin{enumerate}
-%     \item
-%       Für alle $\lambda \in K$ ist $\geigenspace{V}{f}{\lambda}$ ein $f$-invarianter Untervektorraum von $V$.
-%     \item
-%       Es gilt genau dann $\geigenspace{V}{f}{\lambda} \neq 0$, wenn $\lambda$ ein Eigenwert von $f$ ist.
-%     \item
-%       Für alle $\lambda \in K$ gibt es ein $m \in \Natural$ mit $\geigenspace{V}{f}{\lambda} = \heigenspace{V}{f}{\lambda}{m}$.
-%       Insbesondere ist die Einschränkung $(f - \lambda \id_V)|_{\geigenspace{V}{f}{\lambda}}$ nilpotent.
-%     \item
-%       Die Summe $\sum_{\lambda \in K} \geigenspace{V}{f}{\lambda}$ ist direkt.
-%   \end{enumerate}
-% \end{lemma}
-% 
-% Mithilfe der verallgemeinerten Eigenräume ergibt sich eine Charakterisierung der Existenz der Jordan-Normalform:
-% 
-% \begin{theorem}
-%   \label{theorem: existence of generalized eigespace decomposition and jordan normal form}
-%   Die folgenden Bedingungen äquivalent:
-%   \begin{enumerate}
-%     \item
-%       Das charakteristische Polynom $\charpol{f}(t)$ zerfällt in Linearfaktoren.
-%     \item
-%       Es gilt $V = \bigoplus_{\lambda \in K} \geigenspace{V}{f}{\lambda}$.
-%     \item
-%       Die Jordan-Normalform von $f$ existiert.
-%   \end{enumerate}
-% \end{theorem}
-% 
-% Die Zerlegung $V = \bigoplus_{\lambda \in K} \geigenspace{V}{f}{\lambda}$ aus Satz~\ref{theorem: existence of generalized eigespace decomposition and jordan normal form} ist die \emph{verallgemeinerte Eigenraumzerlegung}.
-% Die Existenz der Jordan-Normalform ergibt sich aus der verallgemeinerten Eigenraumzerlegung wie folgt:
-% 
-% \begin{itemize}
-%   \item
-%     Ist $f$ nilpotent, so gibt es nach dem Verfahren aus Abschnitt~\ref{subsection: jordan normal form for nilpotent endomorphisms} eine Jordan-Normalform von $f$.
-%   \item
-%     Gibt es ein $\lambda \in K$, so dass $f - \id_V$ nilpotent ist, so gibt es nach dem vorherigen Fall eine Jordanbasis $\basis{B}$ von $V$, so dass
-%     \[
-%         \repmatrixendo{f - \lambda \id_V}{\basis{B}}
-%       = \begin{pmatrix}
-%           J_{n_1}(0)  &         &             \\
-%                       & \ddots  &             \\
-%                       &         & J_{n_t}(0)
-%         \end{pmatrix}.
-%     \]
-%     gilt.
-%     Dann gilt auch
-%     \begin{align*}
-%           \repmatrixendo{f}{\basis{B}}
-%       &=  \repmatrixendo{f - \lambda \id_V}{\basis{B}}
-%           +
-%           \repmatrixendo{\lambda \id_V}{\basis{B}}
-%       \\
-%       &= \begin{pmatrix}
-%           J_{n_1}(0)  &         &             \\
-%                       & \ddots  &             \\
-%                       &         & J_{n_t}(0)
-%         \end{pmatrix}
-%         +
-%         \begin{pmatrix}
-%           \lambda &         &         \\
-%                   & \ddots  &         \\
-%                   &         & \lambda
-%         \end{pmatrix}
-%       = \begin{pmatrix}
-%           J_{n_1}(\lambda)  &         &                 \\
-%                             & \ddots  &                 \\
-%                             &         & J_{n_t}(\lambda)
-%         \end{pmatrix}
-%     \end{align*}
-%   \item
-%     Existiert die verallgemeinerte Eigenraumzerlegung $V = \bigoplus_{\lambda \in K} \geigenspace{V}{f}{\lambda}$, so gilt
-%     \[
-%       V = \geigenspace{V}{f}{\lambda_1} \oplus \dotsb \oplus \geigenspace{V}{f}{\lambda_t}
-%     \]
-%     wobei $\lambda_1, \dotsc, \lambda_t \in K$ die paarweise verschiedenen Eigenwerte von $f$ bezeichnet.
-%     Ist $\basis{B}_i = (v_{i,1}, \dotsc, v_{i,n_i})$ eine Basis von $\geigenspace{V}{f}{\lambda_i}$, so ist
-%     \[
-%                 \basis{B}
-%       \coloneqq ( v_{1, 1}, \dotsc, v_{1, n_1}, \dotsc, v_{t, 1}, \dotsc, v_{t, n_t} )
-%     \]
-%     eine Basis von $V$, und es gilt
-%     \[
-%         \repmatrixendo{f}{\basis{B}}
-%       = \begin{pmatrix}
-%             \repmatrixendo{ f|_{\geigenspace{V}{f}{\lambda_1}} }{\basis{B}_1}
-%           & {}
-%           & {}
-%           \\
-%             {}
-%           & \ddots
-%           & {}
-%           \\
-%             {}
-%           & {}
-%           & \repmatrixendo{ f|_{\geigenspace{V}{f}{\lambda_t}} }{\basis{B}_t}
-%         \end{pmatrix}.
-%     \]
-%     Da die Endomorphismen $f|_{\geigenspace{V}{f}{\lambda_i}} - \lambda \id_{\geigenspace{V}{f}{\lambda_i}} = (f - \lambda \id_V)|_{\geigenspace{V}{f}{\lambda_i}}$ nilpotent ist, lassen sich die Basen $\basis{B}_i$ nach dem vorherigen Fall so wählen, dass die darstellenden Matrizen $\repmatrixendo{ f|_{\geigenspace{V}{f}{\lambda_i}} }{\basis{B}_i}$ in Jordan-Normalform sind.
-%     Dann ist auch $\repmatrixendo{f}{\basis{B}}$ in Jordan-Normalform.
-% \end{itemize}
-
-
-
-\subsection{Lösung des Ähnlichkeitsproblems}
-
-\begin{theorem}
-  Zwei Endomorphismen $f, g \colon V \to V$ sind genau dann ähnlich, wenn sie (bis auf Permutation der Blöcke) die gleiche Jordan-Normalform besitzen.
-\end{theorem}
 
 
 

@@ -1,4 +1,4 @@
-\section{Skalarprodukte \& Co.}
+\chapter{Skalarprodukte}
 
 Im Folgenden sei $K$ ein Körper.
 Im Folgenden sei $\Korper \in \{ \Real, \Complex \}$.
@@ -7,7 +7,7 @@ Im Folgenden sei $\Korper \in \{ \Real, \Complex \}$.
 
 
 
-\subsection{Allgemeine Definitionen}
+\section{Allgemeine Definitionen}
 
 \begin{definition}
   Es seien $U$, $V$ und $W$ $K$-Vektorräume.
@@ -135,7 +135,7 @@ Eine Abbildung $\beta \colon V \times W \to U$ ist genau dann sesquilinear, wenn
 
 
 
-\subsection{Orthogonalität}
+\section{Orthogonalität}
 
 Es sei $V$ ein $K$-Vektorraum und $\beta \in \SymForm(V)$ eine symmetrische Bilinearform, bzw.\ $K = \Complex$ und $\beta \in \HerForm(V)$ eine hermitsche Sesquilinearform.
 
@@ -161,7 +161,7 @@ Es sei $V$ ein $K$-Vektorraum und $\beta \in \SymForm(V)$ eine symmetrische Bili
 
 
 
-\subsection{Skalarprodukte}
+\section{Definitheit \& Skalarprodukte}
 
 Für eine hermitsche Sesquilinearform $\beta \in \HerForm(V)$ gilt $\beta(v,v) \in \Real$ für alle $v \in V$.
 Daher ergibt die folgende Definition Sinn:
@@ -203,12 +203,17 @@ Daher ergibt die folgende Definition Sinn:
   Die \emph{Norm} eines Vektors $v \in V$ ist definiert als $\norm{v} \coloneqq \sqrt{ \bil{v}{v} }$.
 \end{definition}
 
+\begin{remark}
+  Es handelt sich hierbei um eine Norm im Sinne der Analysis.
+\end{remark}
+
+
 % TODO: The norm for the previous examples.
 
 
 
 
-\subsection{Gram-Schmidt}
+\section{Das Gram-Schmidt-Verfahren}
 
 Es sei $V$ ein Skalarproduktraum.
 Es seien $v_1, \dotsc, v_n \in V$ linear unabhängig.
@@ -243,7 +248,7 @@ Hieraus folgen die Existenzaussagen über Orthonormalbasen:
 \end{theorem}
 
 \begin{corollary}
-  Für jeden Untervektorraum $U \subseteq V$ gelten $V = U \oplus U^\perp$ und $(U^\perp)^\perp = U$.
+  Für jeden Untervektorraum $U \subseteq V$ gilt $V = U \oplus U^\perp$ und $(U^\perp)^\perp = U$.
 \end{corollary}
 
 \begin{remark}
@@ -255,8 +260,8 @@ Hieraus folgen die Existenzaussagen über Orthonormalbasen:
 
 
 
-\subsection{Adjungierte Abbildung}
-\label{subsection: adjoint map for scalar products}
+\section{Die Adjungierte Abbildung}
+\label{section: adjoint map for scalar products}
 
 Es sei $f \colon V \to W$ eine lineare Abbildung zwischen Skalarprodukträumen $V$ und $W$.
 
