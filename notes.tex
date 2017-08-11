@@ -1,6 +1,6 @@
-\documentclass[a4paper, 10pt]{scrreprt}
+\documentclass[a4paper, 10pt, oneside]{scrbook}
 
-\usepackage{generalstyle}
+\usepackage{styles/generalstyle}
 
 \subject{Notizen zum}
 \title{Repetitorium \\ Lineare Algebra II}
@@ -9,9 +9,11 @@
 
 \begin{document}
 
+\frontmatter
 \maketitle
 \tableofcontents
 
+\mainmatter
 \include{chapters/eigenstuff}
 \include{chapters/jordan_normal_form}
 \include{chapters/scalar_products}
