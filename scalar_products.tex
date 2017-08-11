@@ -1,0 +1,355 @@
+\section{Skalarprodukte \& Co.}
+
+Im Folgenden sei $K$ ein Körper.
+Im Folgenden sei $\Korper \in \{ \Real, \Complex \}$.
+
+
+
+
+
+\subsection{Allgemeine Definitionen}
+
+\begin{definition}
+  Es seien $U$, $V$ und $W$ $K$-Vektorräume.
+  \begin{itemize}
+    \item
+      Eine Abbildung $\beta \colon V \times W \to U$ heißt \emph{$K$-bilinear}, falls
+      \begin{gather*}
+          \beta(v_1 + v_2, w)
+        = \beta(v_1, w) + \beta(v_2, w),
+        \\
+          \beta(v, w_1 + w_2)
+        = \beta(v, w_1) + \beta(v, w_2),
+        \\
+          \beta(\lambda v, w)
+        = \lambda \beta(v, w)
+        \quad\text{und}\quad
+          \beta(v, \lambda w)
+        = \lambda \beta(v, w)
+      \end{gather*}
+      für alle $v, v_1, v_2 \in V$, $w, w_1, w_2 \in W$ und $\lambda \in K$ gilt.
+      Gilt zusätzlich $U = K$, so ist $\beta$ eine \emph{Bilinearform}.
+      Es ist
+      \[
+                  \BilForm(V, W)
+        \coloneqq \{ \beta \colon V \times W \to K \suchthat \text{$\beta$ ist eine Bilinearform} \}.
+      \]
+    
+    \item
+      Gilt zusätzlich $V = W$ und
+      \[
+          \beta(v_1, v_2)
+        = \beta(v_2, v_1)
+      \]
+      für alle $v_1, v_2 \in V$, so heißt $\beta$ \emph{symmetrisch}.
+      Es sind
+      \begin{gather*}
+        \BilForm(V) \coloneqq \BilForm(V, V)
+      \shortintertext{sowie}
+                  \SymForm(V)
+        \coloneqq \{
+                    \beta \in \BilForm(V)
+                  \suchthat
+                    \text{$\beta$ ist symmetrisch}
+                  \}.
+      \end{gather*}
+  \end{itemize}
+\end{definition}
+
+\begin{definition}
+  Es seien $U$, $V$ und $W$ $\Complex$-Vektorräume.
+  \begin{itemize}
+    \item
+      Eine Abbildung $\beta \colon V \times W \to U$ heißt \emph{sesquilinear}, falls
+      \begin{gather*}
+          \beta(v_1 + v_2, w)
+        = \beta(v_1, w) + \beta(v_2, w),
+        \\
+          \beta(v, w_1 + w_2)
+        = \beta(v, w_1) + \beta(v, w_2),
+        \\
+          \beta(\lambda v, w)
+        = \lambda \beta(v, w)
+        \quad\text{und}\quad
+          \beta(v, \lambda w)
+        = \conjugate{\lambda} \beta(v,w)
+      \end{gather*}
+      für alle $v, v_1, v_2 \in V$, $w, w_1, w_2 \in W$ und $\lambda \in \Complex$ gilt.
+      Gilt zusätzlich $U = \Complex$, so ist $\beta$ eine \emph{Sesquilinearform}.
+      Es ist
+      \[
+                  \SesForm(V, W)
+        \coloneqq \{
+                    \beta \colon V \times W \to \Complex
+                   \suchthat
+                    \text{$\beta$ ist eine Sesquilinearform}
+                  \}.
+      \]
+    
+    \item
+      Gilt zusätzlich $V = W$ und
+      \[
+          \beta(v_1, v_2)
+        = \conjugate{\beta(v_2, v_1)}
+      \]
+      für alle $v_1, v_2 \in V$, so heißt $\beta$ \emph{hermitesch}.
+      (Für alle $v \in V$ gilt dann $\beta(v,v) \in \Real$.)
+      Es sind
+      \begin{gather*}
+        \SesForm(V) \coloneqq \SesForm(V, V)
+      \shortintertext{sowie}
+                  \HerForm(V)
+        \coloneqq \{ \beta \in \BilForm(V) \suchthat \text{$\beta$ ist hermitesch} \}.
+      \end{gather*}
+  \end{itemize}
+\end{definition}
+
+\begin{definition}
+  Eine Abbildung $f \colon V \to W$ zwischen $\Korper$-Vektorräumen $V$ und $W$ ist \emph{halblinear} falls
+  \[
+    f(v_1 + v_2) = f(v_1) + f(v_2)
+    \quad\text{und}\quad
+    f(\lambda v) = \conjugate{\lambda} f(v)
+  \]
+  für alle $v, v_1, v_2 \in V$ und $\lambda \in \Korper$ gilt.
+\end{definition}
+
+Eine Abbildung $\beta \colon V \times W \to U$ ist genau dann $K$-bilinear, wenn die Abbildungen
+\[
+          \beta(v,-)
+  \colon  W
+  \to     U,
+  \quad   w
+  \mapsto \beta(v,w)
+  \quad\text{und}\quad
+  \beta(-,w)
+  \colon  V
+  \to     U,
+  \quad   v
+  \mapsto \beta(v,w)
+\]
+für alle $v \in V$ und $w \in W$ linear sind.
+Eine Abbildung $\beta \colon V \times W \to U$ ist genau dann sesquilinear, wenn die Abbildung $\beta(v,-) \colon W \to U$ für jedes $v \in V$ halblinear ist, und die Abbildung $\beta(-,w) \colon V \to U$ für jedes $w \in W$ linear ist.
+
+
+
+
+
+\subsection{Orthogonalität}
+
+Es sei $V$ ein $K$-Vektorraum und $\beta \in \SymForm(V)$ eine symmetrische Bilinearform, bzw.\ $K = \Complex$ und $\beta \in \HerForm(V)$ eine hermitsche Sesquilinearform.
+
+\begin{definition}
+  \begin{itemize}
+    \item
+      Zwei Vektoren $v_1, v_2 \in V$ sind \emph{orthogonal zueinander}, im Zeichen $v_1 \orth v_2$, falls $\beta(v_1, v_2) = 0$ gilt.
+    \item
+      Für jeden Untervektorraum $U \subseteq V$ ist $U^\perp = \{v \in V \suchthat \text{$\beta(v,u) = 0$ für alle $u \in U$}\}$ das \emph{orthogonale Komplement} von $U$ bezüglich $\beta$.
+    \item
+      Eine Familie $(v_i)_{i \in I}$ von Vektoren $v_i \in V$ heißt \emph{orthogonal}, falls $v_i \orth v_j$ für alle $i \neq j$ gilt.
+    \item
+      Eine \emph{Orthogonalbasis} ist eine orthogonale Basis.
+    \item
+      Ein Vektor $v \in V$ heißt \emph{normiert} falls $\beta(v,v) = 1$.
+    \item
+      Eine Familie $(v_i)_{i \in I}$ von Vektoren $v_i \in V$ heißt \emph{normiert}, falls $v_i$ für jedes $i \in I$ normiert ist.
+    \item
+      Eine \emph{Orthonormalbasis} ist eine orthogonale, normierte Basis.
+  \end{itemize}
+\end{definition}
+
+
+
+
+\subsection{Skalarprodukte}
+
+Für eine hermitsche Sesquilinearform $\beta \in \HerForm(V)$ gilt $\beta(v,v) \in \Real$ für alle $v \in V$.
+Daher ergibt die folgende Definition Sinn:
+
+\begin{definition}
+  Es sei $V$ ein $\Real$-Vektorraum und $\beta \in \SymForm(V)$, oder $V$ ein $\Complex$-Vektorraum und $\beta \in \HerForm(V)$.
+  Dann ist $\beta$
+  \begin{itemize}
+    \item
+      \emph{positiv definit}, falls $\beta(v,v) > 0$ für alle $v \neq 0$ gilt,
+    \item
+      \emph{positiv semidefinit}, falls $\beta(v,v) \geq 0$ für alle $v \neq 0$ gilt,
+    \item
+      \emph{negativ definit}, falls $\beta(v,v) < 0$ für alle $v \neq 0$ gilt,
+    \item
+      \emph{negativ semidefinit}, falls $\beta(v,v) \leq 0$ für alle $v \neq 0$ gilt,
+    \item
+      \emph{indefinit}, falls keiner der obigen Fälle eintritt.
+  \end{itemize}
+\end{definition}
+
+\begin{definition}
+  \begin{itemize}
+    \item
+      Ein \emph{Skalarprodukt} ist eine positiv definite symmetrische Bilinearform, bzw.\ hermitsche Sesquilinearform.
+    \item
+      Ein \emph{euklidischer Vektorraum} ein ein reeller Vektorraum $V$ zusammen mit einem Skalarprodukt auf $V$.
+    \item
+      Ein \emph{unitärer Vektorraum} ist ein komplexer Vektorraum $V$ zusammen mit einem Skalarprodukt auf $V$.
+  \end{itemize}
+  Wir bezeichnen euklidische Vektorräume und unitäre Vektorräume auch als \emph{Skalarprodukträume}.
+  Das Skalarprodukt schreiben wir häufig nur als $\bil{-}{-}$.
+\end{definition}
+
+% TODO: Adding examples, in particular the standard inner product.
+
+\begin{definition}
+  Es sei $V$ ein Skalarproduktraum.
+  Die \emph{Norm} eines Vektors $v \in V$ ist definiert als $\norm{v} \coloneqq \sqrt{ \bil{v}{v} }$.
+\end{definition}
+
+% TODO: The norm for the previous examples.
+
+
+
+
+\subsection{Gram-Schmidt}
+
+Es sei $V$ ein Skalarproduktraum.
+Es seien $v_1, \dotsc, v_n \in V$ linear unabhängig.
+Induktiv konstruiere man Vektoren $w_1, \dotsc, w_n \in V$ wie folgt:
+\begin{itemize}
+  \item
+    Man beginnt mit $w_1 \coloneqq w_1 / \norm{w_1}$.
+  \item
+    Falls $w_1, \dotsc, w_i$ definiert sind, so konstruiert man $w_{i+1}$ in zwei Schritten:
+    \begin{itemize}
+      \item
+        Man berechne den Vektor $\tilde{w}_{i+1} \coloneqq v_{i+1} - \sum_{j=1}^i \bil{v_{i+1}}{w_j} w_j$.
+        Der Vektor $\tilde{w}_{i+1}$ ist orthogonal zu $w_1, \dotsc, w_i$.
+      \item
+        Aus der linearen Unabhängigkeit von $v_1, \dotsc, v_n$ folgt, dass $\tilde{w}_{i+1} \neq 0$ gilt.
+        Somit lässt sich $\tilde{w}_{i+1}$ normieren, und man erhält $w_{i+1} \coloneqq \tilde{w}_{i+1} / \norm{\tilde{w}_{i+1}}$.
+    \end{itemize}
+\end{itemize}
+Die entstehende Familie $(w_1, \dotsc, w_n)$ ist orthonormal mit
+\[
+    \generated{v_1, \dotsc, v_i}
+  = \generated{w_1, \dotsc, w_i}
+  \qquad
+  \text{für alle $i = 1, \dotsc, n$}.
+\]
+
+Hieraus folgen die Existenzaussagen über Orthonormalbasen:
+
+\begin{theorem}
+  Ist $U \subseteq V$ ein Untervektorraum, so lässt sich jede Orthonormalbasis von $U$ zu einer Orthonormalbasis von $V$ ergänzen.
+  Inbesondere existiert eine Orthonormalbasis für $V$.
+\end{theorem}
+
+\begin{corollary}
+  Für jeden Untervektorraum $U \subseteq V$ gelten $V = U \oplus U^\perp$ und $(U^\perp)^\perp = U$.
+\end{corollary}
+
+\begin{remark}
+  Wendet man das Gram-Schmidt Verfahren auf linear abhängige Vektoren $v_1, \dotsc, v_n \in V$ an, so ergeben sich für das minimale $i$ mit $v_i \in \generated{v_1, \dotsc, v_{i-1}}$ zwar noch orthonormale Vektoren $w_1, \dotsc, w_{i-1}$, aber dann $\tilde{w}_i = 0$.
+\end{remark}
+
+
+
+
+
+
+\subsection{Adjungierte Abbildung}
+\label{subsection: adjoint map for scalar products}
+
+Es sei $f \colon V \to W$ eine lineare Abbildung zwischen Skalarprodukträumen $V$ und $W$.
+
+\begin{proposition}
+  Es gibt eine eindeutige Abbildung $\adj{f} \colon W \to V$ mit
+  \begin{equation}
+    \label{equation: definition of the adjoint map by elements for scalar products}
+      \bil{f(v)}{w}
+    = \bil{v}{\adj{f}(w)}
+    \qquad
+    \text{für alle $v \in V$, $w \in W$},
+  \end{equation}
+  und $\adj{f}$ ist linear.
+\end{proposition}
+
+\begin{lemma}
+  \begin{itemize}
+    \item
+      Es gilt $\adj{(\adj{f})} = f$.
+    \item
+      Es gilt $\adj{\id_V} = \id_V$.
+    \item
+      Es gilt $\adj{(f \circ g)} = \adj{g} \circ \adj{f}$.
+    \item
+      Die Abbildung $\Hom{V}{W} \to \Hom{W}{V}$, $f \mapsto \adj{f}$ ist antilinear.
+  \end{itemize}
+\end{lemma}
+
+In orthonormalen Koordinaten entspricht das Adjungieren einer linearen Abbildung dem Transponieren-Konjugieren.
+
+\begin{notation}
+  Für alle $\matrices{n}{\Korper}$ schreiben wir $\madj{A} \coloneqq \transpose{\conjugate{A}}$.
+\end{notation}
+
+\begin{lemma}
+  Ist $\basis{B}$ eine Orthonormalbasis von $V$ und $\basis{C}$ eine Orthonormalbasis von $W$, so gilt
+  \[
+      \repmatrixhom{\adj{f}}{\basis{C}}{\basis{B}}
+    = \madj{ \repmatrixhom{f}{\basis{B}}{\basis{C}} }.
+  \]
+\end{lemma}
+
+Die adjungierte Abbildung $\adj{f} \colon W \to V$ hängt eng mit der dualen Abbildung $\dual{f} \colon \dual{W} \to \dual{V}$, $\varphi \mapsto \varphi \circ f$ zusammen:
+
+Das Skalarprodukt $\bil{-}{-}$ auf $V$ liefert eine Abbildung
+\[
+          \Phi_{\basis{B}}
+  \colon  V
+  \to     V^*,
+  \quad   v
+  \mapsto \bil{-}{v}.
+\]
+Diese Abbildung ist wohldefiniert, da $\bil{-}{-}$ im ersten Argument linear ist, und halblinear, da $\Phi_{\basis{B}}$ linear im zweiten Argument ist.
+Die Abbildung $\Phi_{\basis{B}}$ ist bereits ein Isomorphismus, denn es gilt $\dim \dual{V} = \dim V$ und $\Phi_{\basis{B}}$ ist injektiv\footnote{Hier nutzen wir, dass die aus der Linearen~Algebra~I bekannten Aussagen über linearen Abbildungen auch für halblineare Abbildungen gelten.}, denn für $v \in \ker \Phi_{\basis{B}}$ gilt $\bil{-}{v} = \Phi_{\basis{B}}(v) = 0$, also $\|v\|^2 = \bil{v}{v} = 0$ und somit $v = 0$.
+Gleiches gilt für $\Phi_{\basis{C}} \colon W \to W^*$, $w \mapsto \bil{-}{w}$.
+
+Die Bedingung \eqref{equation: definition of the adjoint map by elements for scalar products} ist äquivalent dazu, dass das folgende Diagramm kommutiert:
+\[
+  \begin{tikzcd}
+      V^*
+    & W^*
+      \arrow[swap]{l}{\dual{f}}
+    \\
+      V
+      \arrow{u}{\Phi_{\basis{B}}}
+    & W
+      \arrow[swap]{u}{\Phi_{\basis{C}}}
+      \arrow{l}{\adj{f}}
+  \end{tikzcd}
+\]
+Somit ist $\adj{f}$ eindeutig bestimmt als $\adj{f} = \Phi_{\basis{B}}^{-1} \circ \dual{f} \circ \Phi_{\basis{C}}$.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

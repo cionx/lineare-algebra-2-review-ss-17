@@ -1,6 +1,7 @@
 \usepackage{fontspec}
 \usepackage{mathtools, amssymb}
 \usepackage{amsthm}
+\usepackage{stmaryrd}
 \usepackage{enumitem}
 \usepackage{tikz-cd}
 \usepackage[ngerman]{babel}
@@ -21,17 +22,25 @@
 
 % no indentation for enumerate and itemize environments
 \setlist[enumerate, 1]{leftmargin=*}
+\setlist[enumerate, 2]{leftmargin=*}
 \setlist[itemize, 1]{leftmargin=*}
+\setlist[itemize, 2]{leftmargin=*, label={\textopenbullet}}
+\setlist[itemize, 3]{leftmargin=*, label={\textperiodcentered}}
 
 % defining theorem enviroments and the corresponding counter
 \newcounter{everything}[section]
+
+\newtheorem{definition}[everything]{Definition}
+\newtheorem{corollary}[everything]{Korollar}
 \newtheorem{lemma}[everything]{Lemma}
+\newtheorem{notation}[everything]{Notation}
 \newtheorem{proposition}[everything]{Proposition}
 \newtheorem{theorem}[everything]{Satz}
+
 \theoremstyle{definition}
-\newtheorem{definition}[everything]{Definition}
 \newtheorem{example}[everything]{Beispiel}
 \newtheorem{remark}[everything]{Remark}
+\newtheorem{warning}[everything]{Warnung}
 
 % defining the output of various counters
 \renewcommand{\theeverything}{\arabic{section}.\arabic{everything}}
@@ -45,27 +54,57 @@
 \newcommand{\Rational}{\mathbb{Q}}
 \newcommand{\Real}{\mathbb{R}}
 \newcommand{\Complex}{\mathbb{C}}
+\newcommand{\Korper}{\mathbb{K}}
 \newcommand{\Field}{\mathbb{F}}
 
 % spaces
+\newcommand{\BilForm}{\operatorname{BF}}
+\newcommand{\SymForm}{\operatorname{BF}^{\operatorname{sym}}}
+\newcommand{\SesForm}{\operatorname{SF}}
+\newcommand{\HerForm}{\operatorname{SF}^{\operatorname{her}}}
+\newcommand{\Quad}[1]{\operatorname{Quad}(#1)}
 \newcommand{\eigenspace}[3]{#1_{#3}(#2)}
-\newcommand{\End}[1]{\operatorname{End}(#1)}
-\newcommand{\GL}[2]{\operatorname{GL}_{#1}(#2)}
-\newcommand{\geigenspace}[3]{\heigenspace{#1}{#2}{#3}{\infty}}
-\newcommand{\generated}[1]{\left\langle #1 \right\rangle}
 \newcommand{\heigenspace}[4]{#1_{#3}^{#4}(#2)}
+\newcommand{\geigenspace}[3]{\heigenspace{#1}{#2}{#3}{\infty}}
+\newcommand{\Hom}[2]{\operatorname{Hom}(#1, #2)}
+\newcommand{\End}[1]{\operatorname{End}(#1)}
 \newcommand{\matrices}[2]{\operatorname{M}_{#1}(#2)}
+\newcommand{\GL}[2]{\operatorname{GL}_{#1}(#2)}
+\newcommand{\Unitary}[1]{\operatorname{U}(#1)}
+\newcommand{\Orthogonal}[1]{\operatorname{O}(#1)}
+\newcommand{\generated}[1]{\left\langle #1 \right\rangle}
+\newcommand{\rad}[1]{\operatorname{rad} #1}
 \newcommand{\vanishing}[1]{\operatorname{Pol}(#1)}
 
 % functions
+\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\bil}[2]{\left\langle #1, #2 \right\rangle}
+\newcommand{\ringchar}[1]{\operatorname{char} #1}
+\newcommand{\norm}[1]{\left\| #1 \right\|}
 \newcommand{\id}{\operatorname{id}}
-\newcommand{\repmatrixendo}[2]{M_{#1, #2, #2}}
-\newcommand{\transpose}[1]{#1^T}
+\DeclareMathOperator{\rank}{rg}
+\newcommand{\repmatrixbilone}[2]{\operatorname{M}(#1, #2)}
+\newcommand{\repmatrixbiltwo}[3]{\operatorname{M}(#1, #2, #3)}
+\newcommand{\repmatrixendo}[2]{\repmatrixhom{#1}{#2}{#2}}
+\newcommand{\repmatrixhom}[3]{\operatorname{M}_{#1, #2, #3}}
+\DeclareMathOperator{\tr}{Spur}
 
 % constants and special elements
 \newcommand{\charpol}[1]{p_{#1}}
 \newcommand{\Id}{I}
 \newcommand{\minpol}[1]{m_{#1}}
 
+% relations
+\newcommand{\orth}{\mathrel{\perp}}
+
 % decorations
+\newcommand{\adj}[1]{#1^{\operatorname{ad}}}
 \newcommand{\basis}[1]{\mathcal{#1}}
+\newcommand{\conjugate}[1]{\overline{#1}}
+\newcommand{\dual}[1]{#1^*}
+\newcommand{\halfdual}[1]{\overline{#1}^*}
+\newcommand{\madj}[1]{#1^*}
+\newcommand{\transpose}[1]{#1^T}
+
+% hacks
+\newcommand{\vect}[1]{\begin{pmatrix} #1 \end{pmatrix}}

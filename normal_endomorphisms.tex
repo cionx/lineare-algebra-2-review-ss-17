@@ -1,0 +1,529 @@
+\section{Normalenformen für normale Endomorphismen}
+
+Es seien $V$ und $W$ endlichdimensionale Skalarprodaukträume.
+
+
+
+
+
+\subsection{Anfängliche Definitionen}
+
+\begin{definition}
+  \begin{itemize}
+    \item
+      Eine Matrix $A \in \matrices{n}{\Korper}$ heißt \emph{unitär} im Fall $\Korper = \Complex$, bzw.\ \emph{orthogonal} im Fall $\Korper = \Real$, falls sie die folgenden äquivalenten Bedingungen erfüllt:
+      \begin{enumerate}
+        \item
+          Die Matrix $A$ ist invertierbar mit $A^{-1} = \madj{A}$.
+        \item
+          Es gilt $A \madj{A} = \Id$.
+        \item
+          Es gilt $\madj{A} A = \Id$.
+        \item
+          Die Spalten von $A$ bilden eine Orthonormalbasis von $\Korper^n$.
+        \item
+          Die Zeilen von $A$ bilden eine Orthonormalbasis von $\Korper^n$ (betrachtet als Zeilenvektoren).
+      \end{enumerate}
+    \item
+      Es seien
+      \begin{align*}
+                    \Unitary{n}
+        &\coloneqq  \{ U \in \matrices{n}{\Complex} \suchthat \text{$U$ ist unitär} \}
+      \shortintertext{und}
+                    \Orthogonal{n}
+        &\coloneqq  \{ U \in \matrices{n}{\Real} \suchthat \text{$U$ ist orthogonal} \}.
+      \end{align*}
+  \end{itemize}
+\end{definition}
+
+Für alle $\varphi \in \real$ sei
+\[
+            D(\varphi)
+  \coloneqq \begin{pmatrix*}[r]
+              \cos \varphi  & -\sin \varphi \\
+              \sin \varphi  &  \cos \varphi
+            \end{pmatrix*}
+  \in       \matrices{2}{\Real}
+\]
+die Drehmatrix um den Winkel $\varphi$.
+
+
+
+
+
+\subsection{Normale Endomorphismen}
+
+Es sei $f \colon V \to V$ ein Endomorphismus eines endlichdimensionalen Skalarproduktraums $V$.
+
+\begin{definition}
+  Der Endomorphismus $f$ heißt \emph{normal} falls $f$ und $\adj{f}$ kommutieren, d.h.\ falls $f \circ \adj{f} = \adj{f} \circ f$ gilt.
+  Eine Matrix $A$ heißt normal, falls $A$ und $\madj{A}$ kommutieren, d.h.\ falls $A \madj{A} = \madj{A} A$ gilt.
+\end{definition}
+
+\begin{lemma}
+  Die folgenden Bedingungen sind äquivalent:
+  \begin{enumerate}
+    \item
+      Der Endomorphismus $f$ ist normal.
+    \item
+      Es gibt eine Orthonormalbasis $\basis{B}$ von $V$, so dass die darstellende Matrix $\repmatrixendo{f}{\basis{B}}$ normal ist.
+    \item
+      Für jede Orthonormalbasis $\basis{B}$ von $V$ ist die darstellende Matrix $\repmatrixendo{f}{\basis{B}}$ normal.
+  \end{enumerate}
+\end{lemma}
+
+
+
+\subsubsection{Der komplexe Fall}
+
+\begin{theorem}
+  Für $\Korper = \Complex$ sind die folgenden Bedingungen sind äquivalent:
+  \begin{enumerate}
+    \item
+      Der Endomorphismus $f$ ist unitär.
+    \item
+      Es gibt eine Orthonormalbasis von $V$ aus Eigenvektoren von $f$.
+    \item
+      Der Endomorphismus von $f$ ist diagonalisierbar und die Eigenräume sind orthogonal zueinander.
+  \end{enumerate}
+\end{theorem}
+
+\begin{corollary}
+  Für eine Matrix $A \in \matrices{n}{\Complex}$ sind die folgenden Bedingungen äquivalent:
+  \begin{enumerate}
+    \item
+      Die Matrix $A$ ist normal.
+    \item
+      Es gibt eine Orthonormalbasis von $V$ aus Eigenvektoren von $A$.
+    \item
+      Die Matrix $A$ ist diagonalisierbar und die Eigenräume sind orthogonal zueinander.
+    \item
+      Es gibt eine unitäre Matrix $U \in \Unitary{n}$, so dass $U^{-1} A U$ eine Diagonalmatrix ist.
+  \end{enumerate}
+\end{corollary}
+
+
+
+\subsubsection{Der reelle Fall}
+
+\begin{theorem}
+  Für $\Korper = \Real$ sind die folgenden Bedingungen sind äquivalent:
+  \begin{enumerate}
+    \item
+      Der Endomorphismus $f$ ist normal.
+    \item
+      Es gibt eine Orthonormalbasis $\basis{B}$ von $V$, so dass $\repmatrixendo{f}{\basis{B}}$ von der Form
+      \begin{equation}
+      \label{equation: normal form for real normal endomorphisms}
+          \repmatrixendo{f}{\basis{B}}
+        = \begin{pmatrix}
+            \lambda_1 &         &           &                   &         &                   \\
+                      & \ddots  &           &                   &         &                   \\
+                      &         & \lambda_t &                   &         &                   \\
+                      &         &           & r_1 D(\varphi_1)  &         &                   \\
+                      &         &           &                   & \ddots  &                   \\
+                      &         &           &                   &         & r_s D(\varphi_s)
+          \end{pmatrix}
+      \end{equation}
+      mit $\lambda_1, \dotsc, \lambda_t \in \Real$, $r_1, \dotsc, r_s > 0$ und $\varphi_1, \dotsc, \varphi_s \in (0, \pi)$ ist.
+      Diese Form ist bis auf Permutation der Diagonalblöcke eindeutig.
+  \end{enumerate}
+\end{theorem}
+
+\begin{corollary}
+  Für $A \in \matrices{n}{\Real}$ sind die folgenden Bedingungen äquivalent:
+  \begin{enumerate}
+    \item
+      Die Matrix $A$ ist normal.
+    \item
+      Es gibt eine orthonormale Matrix $U \in \Orthogonal{n}$, so dass $U^{-1} A U$ in der Form \eqref{equation: normal form for real normal endomorphisms} ist.
+      Diese Form ist eindeutig bis auf Permutation der Diagonalblöcke.
+  \end{enumerate}
+\end{corollary}
+
+
+
+
+
+\subsection{Unitäre \& Orthogonale Endomorphismen}
+
+\begin{definition}
+  Eine lineare Abbildung $f \colon V \to W$ heißt \emph{unitär} im Fall $\Korper = \Complex$, bzw.\ \emph{orthogonal} im Fall $\Korper = \Real$, falls
+  \[
+      \bil{f(v_1)}{f(v_2)}
+    = \bil{v_1}{v_2}
+    \qquad
+    \text {für alle $v_1, v_2 \in V$}.
+  \]
+  gilt.
+  Im Fall $\Korper = \Complex$ sei
+  \begin{align*}
+                \Unitary{V}
+    &\coloneqq  \{ f \in \End{V} \suchthat \text{$f$ ist unitär} \}
+  \intertext{und im Fall $\Korper = \Real$ sei}
+                \Orthogonal{V}
+    &\coloneqq  \{ f \in \End{V} \suchthat \text{$f$ ist orthogonal} \}
+  \end{align*}
+\end{definition}
+
+\begin{lemma}
+  \label{lemma: properties of unitary and orthogonal transformations}
+  \begin{itemize}
+    \item
+      Unitäre und orthogonale Abbildungen sind injektiv.
+    \item
+      Eine lineare Abbildung $f \colon V \to W$ ist genau dann unitär, bzw.\ orthogonal, falls $f$ eine Isometrie ist, d.h.\ falls
+      \[
+        \norm{ f(v) } = \norm{v}
+        \qquad
+        \text{für alle $v \in V$ gilt.}
+      \]
+    \item
+      Es ist $\Unitary{V} \subseteq \GL{}{V}$, bzw.\ $\Orthogonal{V} \subseteq \GL{}{V}$ eine Untergruppe.
+  \end{itemize}
+\end{lemma}
+
+Für den zweiten Punkt aus Lemma~\ref{lemma: properties of unitary and orthogonal transformations} nutzt man die \emph{Polarisierungsformeln}:
+Im Fall $\Korper = \Real$ gilt
+\[
+    \bil{v_1}{v_2}
+  = \frac{ \norm{v_1 + v_2}^2 - \norm{v_1}^2 - \norm{v_2}^2 }{2}
+  = \frac{ \norm{v_1 + v_2}^2 - \norm{v_1 - v_2}^2 }{4},
+\]
+und im Fall $\Korper = \Complex$ gilt
+\[
+    \bil{v_1}{v_2}
+  = \frac{ \norm{v_1 + v_2}^2 - \norm{v_1 - v_2}^2 + i \norm{v_1 + i v_2}^2 - i \norm{v_1 - i v_2}^2 }{4}.
+\]
+
+Es sei nun $f \colon V \to V$ ein Endomorphismus.
+
+\begin{lemma}
+  Die folgenden Bedingungen sind äquivalent:
+  \begin{enumerate}
+    \item
+      Der Endomorphismus $f$ ist unitär, bzw.\ orthogonal.
+    \item
+      Der Endomorphismus $f$ ist ein Isomorphismus mit $f^{-1} = \adj{f}$.
+    \item
+      Es gilt $f \circ \adj{f} = \id_V$.
+    \item
+      Es gilt $\adj{f} \circ f = \id_V$.
+  \end{enumerate}
+\end{lemma}
+
+\begin{lemma}
+  Die folgenden Bedingungen äquivalent:
+  \begin{enumerate}
+    \item
+      Der Endomorphismus $f$ ist unitär, bzw.\ orthogonal.
+    \item
+      Es gibt eine Orthonormalbasis $\basis{B}$ von $V$, so dass die darstellende Matrix $\repmatrixendo{f}{\basis{B}}$ unitär ist.
+    \item
+      Für jede Orthonormalbasis $\basis{B}$ von $V$ ist die darstellende Matrix $\repmatrixendo{f}{\basis{B}}$ unitär.
+  \end{enumerate}
+  Im Fall $\Korper = \Real$ sind diese unitären Matrizen dabei bereits orthogonal.
+\end{lemma}
+
+
+
+\subsubsection{Der komplexe Fall}
+
+\begin{theorem}
+  Für $\Korper = \Complex$ sind die folgenden Bedingungen sind äquivalent:
+  \begin{enumerate}
+    \item
+      Der Endomorphismus $f$ ist unitär.
+    \item
+      Der Endomorphismus $f$ ist normal,und für jeden Eigenwert $\lambda \in \Complex$ von $f$ gilt $\abs{\lambda} = 1$.
+  \end{enumerate}
+\end{theorem}
+
+\begin{corollary}
+  Für eine Matrix $A \in \matrices{n}{\Complex}$ sind die folgenden Bedingungen äquivalent:
+  \begin{enumerate}
+    \item
+      Die Matrix $A$ ist unitär.
+    \item
+      Die Matrix $A$ ist normal, und für jeden Eigenwert $\lambda \in \Complex$ von $A$ gilt $\abs{\lambda} = 1$.
+  \end{enumerate}
+\end{corollary}
+
+
+
+\subsubsection{Der reelle Fall}
+
+\begin{theorem}
+  Für $\Korper = \Real$ sind die folgenden Bedingungen sind äquivalent:
+  \begin{enumerate}
+    \item
+      Der Endomorphismus $f$ ist orthogonal.
+    \item
+      Es gibt eine Orthonormalbasis $\basis{B}$ von $V$, so dass $\repmatrixendo{f}{\basis{B}}$ von der Form
+      \begin{equation}
+      \label{equation: normal form for orthogonal endomorphisms}
+          \repmatrixendo{f}{\basis{B}}
+        = \begin{pmatrix}
+            \pm 1 &         &       &               &         &               \\
+                  & \ddots  &       &               &         &               \\
+                  &         & \pm 1 &               &         &               \\
+                  &         &       & D(\varphi_1)  &         &               \\
+                  &         &       &               & \ddots  &               \\
+                  &         &       &               &         & D(\varphi_s)
+          \end{pmatrix}
+      \end{equation}
+      mit $\varphi_1, \dotsc, \varphi_s \in (0, \pi)$ ist.
+      Diese Form ist bis auf Permutation der Diagonalblöcke eindeutig.
+      (Inbesondere ist die Anzahl der Einsen und Minus-Einsen jeweils eindeutig.)
+  \end{enumerate}
+\end{theorem}
+
+\begin{corollary}
+  Für $A \in \matrices{n}{\Real}$ sind die folgenden Bedingungen äquivalent:
+  \begin{enumerate}
+    \item
+      Die Matrix $A$ ist normal.
+    \item
+      Es gibt eine orthonormale Matrix $U \in \Orthogonal{n}$, so dass $U^{-1} A U$ in der Form \eqref{equation: normal form for orthogonal endomorphisms} ist.
+      Diese Form ist eindeutig bis auf Permutation der Diagonalblöcke.
+  \end{enumerate}
+\end{corollary}
+
+
+
+
+
+\subsection{Selbstadjungierte Endomorphismen}
+
+Es sei nun $f \colon V \to V$ ein Endomorphismus.
+
+\begin{definition}
+  Der Endomorphismus $f$ heißt \emph{selbstadjungiert}, falls $\adj{f} = f$ gilt.
+  Eine Matrix $A \in \matrices{n}{\Complex}$ heißt \emph{hermitesch}, falls $\madj{A} = A$ gilt.
+\end{definition}
+
+Inbesondere ist eine reelle Matrix genau dann hermitesch, wenn sie symmetrisch ist.
+
+\begin{lemma}
+  Die folgenden Bedingungen sind äquivalent:
+  \begin{enumerate}
+    \item
+      Der Endomorphismus $f$ ist selbstadjungiert.
+    \item
+      Es gibt eine Orthonormalbasis $\basis{B}$ von $V$, so dass $\repmatrixendo{f}{\basis{B}}$ hermitesch ist.
+    \item
+      Für jede Orthonormalbasis $\basis{B}$ von $V$ ist $\repmatrixendo{f}{\basis{B}}$ hermitesch.
+  \end{enumerate}
+\end{lemma}
+
+\begin{theorem}
+  Die folgenden Bedingungen sind äquivalent:
+  \begin{enumerate}
+    \item
+      Der Endomorphismus $f$ ist selbstadjungiert.
+    \item
+      Es gibt eine Orthonormalbasis von $V$ aus Eigenvektoren von $f$, und alle Eigenwerte von $f$ sind reell.
+    \item
+      Der Endomorphismus $f$ ist diagonalisierbar, und die Eigenräume sind orthogonal zueinander.
+  \end{enumerate}
+\end{theorem}
+
+\begin{corollary}
+  \label{corollary: hermitian matrices are diagonalizable}
+  Für eine Matrix $A \in \matrices{n}{\Korper}$ sind die folgenden Bedingungen äquivalent:
+  \begin{enumerate}
+    \item
+      Die Matrix $A$ ist hermitesch.
+    \item
+      Es gibt eine Orthonormalbasis von $\Korper^n$ aus Eigenvektoren von $A$, und alle Eigenwerte von $A$ sind reell.
+    \item
+      Es gibt eine unitäre Matrix $U \in \Unitary{n}$, so dass $U^{-1} A U$ eine Diagonalmatrix mit reellen Diagonaleinträgen ist.
+    \item
+      Die Matrix $A$ ist diagonalisierbar, und die Eigenräume sind orthogonal zueinander.
+  \end{enumerate}
+  Im Fall $\Korper = \Real$ lässt sich die Matrix $U$ reell wählen, und somit als $U \in \Orthogonal{n}$.
+\end{corollary}
+
+\begin{definition}
+  Ein selbstadjungierter Endomorphismus $f \colon V \to V$ \textup(bzw.\ eine hermitesche Matrix $A \in \matrices{n}{\Korper}$\textup) heißt \emph{positiv definit} falls die symmetrische Bilinearform $\beta \in \SymForm(V)$ \textup(bzw.\ $\beta \in \SymForm(\Real^n)$\textup) mit $\beta(v_1, v_2) \coloneqq \bil{f(v_1)}{v_2}$ positiv definit ist.
+  
+  Analog sind für $f$ \textup(bzw.\ $A$\textup) die Eigenschaften \emph{positiv semidefinit}, \emph{negativ definit}, \emph{negativ semidefinit} und \emph{indefinit} definiert.
+\end{definition}
+
+\begin{corollary}
+  Ein selbstadjungierter Endomorphismus $f \colon V \to V$, \textup(bzw.\ eine hermitesche Matrix $A \in \matrices{n}{\Korper}$\textup) ist genau dann positiv definit, wenn alle Eigenwerte von $f$ \textup(bzw.\ $A$\textup) positiv sind.
+  
+  Für positiv semidefinit, negativ definit, negativ semidefinit und indefinit definiert gelten die analogen Aussagen.
+\end{corollary}
+
+
+
+
+
+\subsection{Übersicht}
+
+Die verschiedenen Normalenformen lassen sich wie folgt zusammenfassen:
+
+\begin{center}
+  \tabcolsep=0pt
+  \begin{tabular}[4]{lccc}
+      {}
+    & \begin{tabular}[1]{c}
+        Charakterisierung \\
+        durch $\adj{f}$
+      \end{tabular}
+    & $\Korper = \Complex$
+    & $\Korper = \Real$
+    \\
+    \hline
+    \hline
+    \\
+      normal
+    & $f \adj{f} = \adj{f} f$
+    & \begingroup
+        \renewcommand*{\arraystretch}{1.5}
+        \begin{tabular}[1]{@{}c}
+        
+        $ \begin{psmallmatrix}
+            \lambda_1 &         &           \\
+                      & \ddots  &           \\
+                      &         & \lambda_n
+          \end{psmallmatrix}$
+        \\
+        $\lambda_i \in \Complex$
+        \end{tabular}
+      \endgroup
+    & \begingroup
+        \renewcommand*{\arraystretch}{1.5}
+        \begin{tabular}[1]{@{}c}
+          $ \begin{psmallmatrix}
+              \lambda_1 &         &           &                   &         &                   \\
+                        & \ddots  &           &                   &         &                   \\
+                        &         & \lambda_t &                   &         &                   \\
+                        &         &           & r_1 D(\varphi_1)  &         &                   \\
+                        &         &           &                   & \ddots  &                   \\
+                        &         &           &                   &         & r_s D(\varphi_s)
+            \end{psmallmatrix} $
+        \\
+        $\lambda_i \in \Real$, $r_i > 0$,  $\varphi_i \in (0, \pi)$
+        \end{tabular}
+      \endgroup
+    \\
+    \hline
+    \\
+      unitär,
+      orthogonal
+    & $\adj{f} = f^{-1}$
+    & \begingroup
+        \renewcommand*{\arraystretch}{1.5}
+        \begin{tabular}[1]{@{}c}
+        
+        $ \begin{psmallmatrix}
+            \lambda_1 &         &           \\
+                      & \ddots  &           \\
+                      &         & \lambda_n
+          \end{psmallmatrix}$
+        \\
+        $\abs{\lambda_i} = 1$
+        \end{tabular}
+      \endgroup
+    & \begingroup
+        \renewcommand*{\arraystretch}{1.5}
+        \begin{tabular}[1]{@{}c}
+          $ \begin{psmallmatrix}
+              \pm 1 &         &       &               &         &               \\
+                    & \ddots  &       &               &         &               \\
+                    &         & \pm 1 &               &         &               \\
+                    &         &       & D(\varphi_1)  &         &               \\
+                    &         &       &               & \ddots  &               \\
+                    &         &       &               &         & D(\varphi_s)
+            \end{psmallmatrix} $
+        \\
+        $\varphi_i \in (0, \pi)$
+        \end{tabular}
+      \endgroup
+    \\
+    \hline
+    \\
+      selbstadjungiert
+    & $\adj{f} = f$
+    & \multicolumn{2}{@{}c}
+      {
+       \begingroup
+        \renewcommand*{\arraystretch}{1.5}
+        \begin{tabular}[1]{@{}c}
+        
+        $ \begin{pmatrix}
+            \lambda_1 &         &           \\
+                      & \ddots  &           \\
+                      &         & \lambda_n
+          \end{pmatrix}$
+        \\
+        $\lambda_i \in \Real$
+        \end{tabular}
+        \endgroup
+      }
+  \end{tabular}
+\end{center}
+
+
+
+\subsection{Polar- und Iwasawa-Zerlegung}
+
+\begin{lemma}
+  \label{lemma: existence of square roots}
+  \begin{itemize}
+    \item
+      Für jeden positiv semidefiniten selbstadjungierten Endomorphismus $f \colon V \to V$ gibt es eine eindeutigen positiv semidefinitinen selbstadjungierten Endomorphismus $g \colon V \to V$ mit $f = g^2$.
+    \item
+      Für jede positiv semidefinite hermitesche Matrix $A \in \matrices{n}{\Korper}$ gibt es eine eindeutige positiv semidefinite hermitesche Matrix $B \in \matrices{n}{\Korper}$ mit $A = B^2$.
+  \end{itemize}
+\end{lemma}
+
+In der Situation von Lemma~\ref{lemma: existence of square roots} schreiben wir $g = \sqrt{f}$ (bzw.\ $B = \sqrt{A}$).
+
+\begin{theorem}[Polarzerlegung]
+  \begin{itemize}
+    \item
+      Für jeden Endomorphismus $f \colon V \to V$ gibt es einen selbstadjungierten Endomorphismus $s \colon V \to V$ und einen unitären, bzw.\ orthogonalen Endomorphismus $u \colon V \to V$ mit $f = s \circ u$.
+      Der Endomorphismus $s$ ist eindeutig bestimmt durch $s = \sqrt{f \circ \adj{f}}$.
+      Ist $f$ invertierbar, so ist auch $u$ eindeutig.
+    
+    \item
+      Für jede Matrix $A \in \matrices{n}{\Korper}$ gibt eine hermitesche Matrix $S \in \matrices{n}{\Korper}$ und eine unitäre, bzw.\ orthogonale Matrix $U \in \matrices{n}{\Korper}$ mit $A = SU$.
+      Die Matrix $S$ ist eindeutig bestimmt durch $S = \sqrt{A \madj{A}}$.
+      Ist $A$ invertierbar, so ist auch $U$ eindeutig.
+  \end{itemize}
+\end{theorem}
+
+\begin{theorem}[Iwasawa-Zerlegung]
+  Es seien $K, A, N \subseteq \GL{n}{\Korper}$ die folgenden Untergruppen:
+  \begin{itemize}
+    \item
+      Es ist $K = \Unitary{n}$, bzw.\ $K = \Orthogonal{n}$.
+    \item
+      $A$ besteht aus den Diagonalmatrizen mit reellen, positiven Diagonaleinträgen.
+    \item
+      $N$ besteht aus den obenen Dreiecksmatrizen mit Einsen auf der Diagonalen.
+  \end{itemize}
+  Dann gibt es für jede Matrix $s \in \GL{n}{\Korper}$ eindeutige Matrizen $k \in K$, $a \in A$ und $n \in N$ mit $s = kan$, d.h.\ die Abbildung
+  \[
+            K \times A \times N
+    \to     \GL{n}{\Korper},
+    \quad   (k, a, n)
+    \mapsto kan
+  \]
+  ist eine Bijektion.
+\end{theorem}
+
+\begin{warning}
+  Diese Bijektion ist i.A.\ kein Gruppenhomomorphismus.
+  Sie ist aber ein Homöomorphismus (und sogar ein Diffeomorphismus).
+\end{warning}
+
+
+
+
+
+
+

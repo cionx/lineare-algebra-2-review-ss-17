@@ -99,6 +99,9 @@ Damit ergibt sich inbesondere die folgende Eindeutigkeit der Jordannormalform:
 Es ergibt daher Sinn, von \emph{der} Jordannormalform einer Matrix, bzw.\ eines Endomorphismus zu sprechen.
 
 
+
+
+
 \subsection{Existenz}
 
 \begin{definition}
@@ -162,7 +165,6 @@ Mithilfe der verallgemeinerten Eigenräume ergibt sich eine Charakterisierung de
   \end{enumerate}
 \end{theorem}
 
-
 Ist $A \in \matrices{n}{K}$, so dass das charakteristische Polynom $\charpol{A}(t)$ in Linearfaktoren zerfällt, so lässt sich die Jordan-Normalform von $A$ sowie eine zugehörige Jordanbasis wie folgt berechnen:
 
 \begin{itemize}
@@ -204,7 +206,7 @@ Zur Berechnung einer Jordanbasis von $A$ geht man weiter wie folgt vor:
           =         \ker A^{m-1}
             \oplus  \generated{v_1, \dotsc, v_{b_m}}.
         \]
-        (Ergänzt man eine Basis von $\ker A^{m-1}$ zu einer Basis von $\ker A^m$, so sind $v_1, \dotsc, v_{b_m}$ die neu hinzugekommenen Basisvektoren.)
+        (Zur konkreten Berechnung ergänze man eine Basis $\ker A^{m-1}$ zu einer Basis von $\ker A^m$; dann kann man $v_1, \dotsc, v_{b_m}$ als die neu hinzugekommenen Basisvektoren wählen.)
       \item
         Hierdurch ergeben sich für $\basis{B}$ die ersten paar Basisvektoren
         \begin{align*}
@@ -261,7 +263,60 @@ Zur Berechnung einer Jordanbasis von $A$ geht man weiter wie folgt vor:
     die Blöcke zum gleichen Eigenwert sind nach absteigender Größe sortiert.
 \end{itemize}
 
+% TODO: Adding examples.
 
+
+
+\subsection{Implizite Bestimmen der Jordan-Normaform}
+
+Es sei $J \in \matrices{n}{K}$ eine Jordan-Normalform von $f$.
+\begin{itemize}
+  \item
+    Für das charakteristische Polynom $\charpol{f}(t) = \charpol{J}(t) = (t - \lambda_1) \dotsm (t - \lambda_n)$ gelten
+    \[
+        \tr f
+      = \tr J
+      = \lambda_1 + \dotsb + \lambda_n
+    \quad\text{und}\quad
+        \det f
+      = \det J
+      = \lambda_1 \dotsm \lambda_n.
+    \]
+  \item
+    Für das charakteristische Polynom $\charpol{f}(t) = \charpol{J}(t) = (t - \lambda_1)^{n_1} \dotsm (t - \lambda_s)^{n_s}$ mit $\lambda_i \neq \lambda_j$ für $i \neq j$ gilt
+    \[
+        n_i
+      = \dim \geigenspace{V}{f}{\lambda}
+      = \text{wie oft $\lambda_i$ auf der Diagonalen von $J$ steht}
+    \]
+  \item
+    Es gilt
+    \[
+        \text{Anzahl der Jordanblöcke zu $0$ in $J$}
+      = \dim \ker f
+      = n - \rank f.
+    \]
+  \item
+    Für das Minimalpolynom $\minpol{f}(t) = \minpol{J}(t) = (t - \lambda_1)^{m_1} \dotsm (t - \lambda_s)^{n_s}$ mit $\lambda_i \neq \lambda_j$ für $i \neq j$ gilt
+    \[
+        m_i
+      = \text{maximale auftrettende Größe eines Jordanblockes zu $\lambda_i$ in $J$}
+    \]
+  \item
+    Ist allgemeiner $q(t) \in K[t]$ ein Polymom mit $q(t) = (t - \lambda_1)^{m'_1} \dotsm (t - \lambda_s)^{m'_s}$, wobei $\lambda_i \neq \lambda_j$ für $i \neq j$, und $q(f) = 0$, so ergeben sich die folgenden beiden Restriktionen an $J$:
+    \begin{enumerate}
+      \item
+        Jeder Eigenwert von $f$ kommt in $\lambda_1, \dotsc, \lambda_s$ vor (siehe Lemma~\ref{lemma: polynomial equations give restriction for the eigenvalues}),
+      \item
+        Es gilt $\minpol{f} \divides q$.
+        Deshalb ist $\minpol{f} = (t - \lambda_1)^{m_1} \dotsm (t - \lambda_s)^{m_s}$ mit $m_i \leq m'_i$ für alle $i$.
+        Also sind die Jordanblöcke zu $\lambda_i$ in $J$ jeweils höchstens $m'_i$ groß.
+    \end{enumerate}
+\end{itemize}
+
+Für kleine Matrizen kann man hierdurch bereits Aussagen über die Jordan-Nor\-mal\-form treffen, ohne die Matrix selbst zu kennen.
+
+% TODO: Beispiele hinzufügen.
 
 % \subsubsection{Nilpotente Endomorphismen}
 % \label{subsection: jordan normal form for nilpotent endomorphisms}
@@ -498,6 +553,14 @@ Zur Berechnung einer Jordanbasis von $A$ geht man weiter wie folgt vor:
 %     Da die Endomorphismen $f|_{\geigenspace{V}{f}{\lambda_i}} - \lambda \id_{\geigenspace{V}{f}{\lambda_i}} = (f - \lambda \id_V)|_{\geigenspace{V}{f}{\lambda_i}}$ nilpotent ist, lassen sich die Basen $\basis{B}_i$ nach dem vorherigen Fall so wählen, dass die darstellenden Matrizen $\repmatrixendo{ f|_{\geigenspace{V}{f}{\lambda_i}} }{\basis{B}_i}$ in Jordan-Normalform sind.
 %     Dann ist auch $\repmatrixendo{f}{\basis{B}}$ in Jordan-Normalform.
 % \end{itemize}
+
+
+
+\subsection{Lösung des Ähnlichkeitsproblems}
+
+\begin{theorem}
+  Zwei Endomorphismen $f, g \colon V \to V$ sind genau dann ähnlich, wenn sie (bis auf Permutation der Blöcke) die gleiche Jordan-Normalform besitzen.
+\end{theorem}
 
 
 

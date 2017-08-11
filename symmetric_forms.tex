@@ -1,0 +1,468 @@
+\section{Symmetrische Bilinearformen}
+
+Im Folgenden sei $K$ ein Körper und $V$ ein endlichdimensionaler $K$-Vektorraum.
+
+
+
+
+
+\subsection{Darstellende Matrizen \& Kongruenz}
+
+\begin{definition}
+  \label{definition: representing matrix for a bilinear form}
+  Die \emph{darstellende Matrix} einer Bilinearform $\beta \in \BilForm(V)$ bezüglich einer Basis $\basis{B} = (v_1, \dotsc, v_n)$ von $V$ ist die Matrix
+  \[
+              \repmatrixbilone{\beta}{\basis{B}}
+    \coloneqq \begin{pmatrix}
+                \beta(v_1, v_1) & \beta(v_1, v_2) & \cdots  & \beta(v_1, v_n) \\
+                \beta(v_2, v_1) & \beta(v_2, v_2) & \cdots  & \beta(v_2, v_n) \\
+                \vdots          & \vdots          & \ddots  & \vdots          \\
+                \beta(v_n, v_1) & \beta(v_n, v_2) & \cdots  & \beta(v_n, v_n)
+              \end{pmatrix}.
+  \]
+\end{definition}
+
+\begin{proposition}
+  Es sei $\basis{B} = (v_1, \dotsc, v_n)$ eine Basis von $V$ und
+  \[
+              V
+    \to       K^n,
+    \quad     v
+    =         \sum_{i=1}^n x_i v_i
+    \mapsto   \vect{x_1 \\ \vdots \\ x_n}
+    \eqqcolon [v]
+  \]
+  der zugehörige Isomorphismus $V \to K^n$.
+  \begin{enumerate}
+    \item
+      Für alle $w_1, w_2 \in V$ gilt $\beta(w_1, w_2) = \transpose{[w_1]} A [w_2]$.
+    \item
+      Die Abbildung
+      \[
+                \BilForm(V)
+        \to     \matrices{n}{K},
+        \quad   \beta
+        \mapsto \repmatrixbilone{\beta}{\basis{B}}     
+      \]
+      ist ein Isomorphismus von $K$-Vektorräumen.
+  \end{enumerate}
+\end{proposition}
+
+\begin{lemma}
+  Für $\beta \in \BilForm(V)$ sind die folgenden Bedingungen äquivalent:
+  \begin{enumerate}
+    \item
+      Die Bilinearform $\beta$ ist symmetrisch.
+    \item
+      Es gibt eine Basis $\basis{B}$ von $V$, so dass $\repmatrixbilone{\beta}{\basis{B}}$ symmetrisch ist.
+    \item
+      Für jede Basis $\basis{B}$ von $V$ ist $\repmatrixbilone{\beta}{\basis{B}}$ symmetrisch.
+  \end{enumerate}
+\end{lemma}
+
+\begin{lemma}
+  Sind $\basis{B}$ und $\basis{C}$ zwei Basen von $V$, und ist $\beta \in \BilForm(V)$ eine Bilinearform, so gilt
+  \[
+      \repmatrixbilone{\beta}{\basis{B}}
+    = \repmatrixhom{\id_V}{\basis{B}}{\basis{C}}^T
+      \repmatrixbilone{\beta}{\basis{C}}
+      \repmatrixhom{\id_V}{\basis{B}}{\basis{C}}.
+  \]
+\end{lemma}
+
+\begin{definition}
+  Zwei Matrizen $A, B \in \matrices{n}{K}$ heißen \emph{kongruent} zueinander, falls es $C \in \GL{n}{K}$ mit $A = \transpose{C} B C$ gibt.
+\end{definition}
+
+Kongruente Matrizen stellen also die gleiche Bilinearform bezüglich verschiedener Basen dar, d.h.\ für $n = \dim V$ sind zwei Matrizen $A, B \in \matrices{n}{K}$ genau dann kongruent, falls es eine Bilinearform $\beta \in \BilForm(V)$ sowie Basen $\basis{A}$ und $\basis{B}$ von $V$ gibt, so dass $A = \repmatrixbilone{\beta}{\basis{A}}$ und $B = \repmatrixbilone{\beta}{\basis{B}}$ gelten.
+
+\begin{corollary}
+  Konkruenz ist eine Äquivalenzrelation auf $\matrices{n}{K}$.
+\end{corollary}
+
+Da der Rang einer Matrix invariant unter Kongruenz ist, ergibt die folgende Definition Sinn:
+
+\begin{definition}
+  Der \emph{Rang} einer Bilinearform $\beta \in \BilForm(V)$ ist $\rank \beta \coloneqq \rank \repmatrixbilone{\beta}{\basis{B}}$, wobei $\basis{B}$ eine Basis von $V$ ist.
+\end{definition}
+
+
+
+
+
+\subsection{Quadratische Formen und Polarisation}
+
+\begin{proposition}
+  \label{proposition: characterizations of quadratic forms}
+  Für eine Abbildung $Q \colon V \to K$ sind die folgenden Bedingungen äquivalent:
+  \begin{enumerate}
+    \item
+      Es gibt eine Bilinearform $\beta \in \BilForm(V)$ mit $Q(v) = \beta(v, v)$ für all $v \in V$.
+    \item
+      Es gibt eine Basis $\basis{B} = (v_1, \dotsc, v_n)$ von $V$ und Koeffizienten $c_{ij} \in K$, so dass
+      \begin{equation}
+        \label{equation: quadratic form in coordinates}
+          Q\left( \sum_{i=1}^n x_i v_i \right)
+        = \sum_{i,j=1}^n c_{ij} x_i x_j
+        \qquad
+        \text{für alle $x_1, \dotsc, x_n \in K$}
+      \end{equation}
+      gilt.
+    \item
+      Für jede Basis $\basis{B} = (v_1, \dotsc, v_n)$ von $V$ gibt Koeffizienten $c_{ij} \in K$, so dass \eqref{equation: quadratic form in coordinates} gilt.
+    \item
+      Es gilt $Q(av) = a^2 Q(v)$ für alle $v \in V$ und $a \in K$, und die Abbildung
+      \[
+                \beta
+        \colon  V \times V
+        \to     K,
+        \quad\text{mit}\quad
+          \beta(v,w)
+        = Q(v + w) - Q(v) - Q(w)
+      \]
+      ist bilinear.
+  \end{enumerate}
+\end{proposition}
+
+\begin{definition}
+  Eine Abbildung $Q \colon V \to K$, die eine, und damit alle Eigenschaften aus Proposition~\ref{proposition: characterizations of quadratic forms} erfüllt, heißt \emph{quadratische Form} auf $V$.
+  Es ist
+  \[
+              \Quad{V}
+    \coloneqq \{ Q \colon V \to K \suchthat \text{$Q$ ist eine quadratische Form} \}
+  \]
+  der $K$-Vektorraum der quadratischen Formen auf $K$ (mit punktweiser Addition und punktweiser Skalarmultiplikation).
+\end{definition}
+
+Es sei nun $\ringchar{K} \neq 2$.
+Dann gibt es auf $V$ eine 1:1-Korrespondenz zwischen den symmetrischen Bilinearformen und den quadratischen Formen:
+Jede symmetrische Bilinearform $\beta$ liefert eine quadratische Form
+\[
+          Q_\beta
+  \colon  V
+  \to     K,
+  \quad   v
+  \mapsto \beta(v,v).
+\]
+Andererseits liefert jede quadratische Form $Q \colon V \to K$ eine symmetrische Bilinearform $\beta_Q \in \BilForm(V)$ durch
+\begin{equation}
+  \label{equation: polarisation formula}
+            \beta_Q(v,w)
+  \coloneqq \frac{Q(v+w) - Q(v) - Q(w)}{2}
+  \qquad
+  \text{für alle $v, w \in V$}.
+\end{equation}
+Diese beiden Konstruktionen sind invers zueinander, und liefern einen Isomorphismus
+\begin{align*}
+                      \SymForm(V)
+  \longleftrightarrow \Quad{V},
+  \quad
+                      \beta
+  \longmapsto         Q_\beta,
+  \quad
+                      Q
+  \longmapsfrom       \beta_Q.
+\end{align*}
+
+Wir bezeichnen \eqref{equation: polarisation formula} als eine \emph{Polarisationsformel};
+sie erlaubt es uns, aus der quadratischen Form $Q$ die ursprüngliche symmetrische Form $\beta$ zurückzugewinnen.
+Neben \eqref{equation: polarisation formula} gilt auch noch die Polarisationsformel
+\[
+    \beta(v_1, v_2)
+  = \frac{Q(v_1 + v _2) - Q(v_1 - v_2)}{4}
+  \qquad
+  \text{für alle $v_1, v_2 \in V$}.
+\]
+
+
+
+
+
+\subsection{Existenz von Orthogonalbasen}
+
+Es sei $\ringchar{K} \neq 2$ und $\beta \in \SymForm(V)$ eine symmetrische Bilinearform.
+
+\begin{theorem}
+  \label{theorem: exstience of an orthogonal basis}
+  Es gibt eine Orthogonalbasis von $V$ bezüglich $\beta$.
+\end{theorem}
+
+\begin{corollary}
+  \label{corollary: every symmetric matrix is congruent to a diagonal matrix}
+  Für jede symmetrische Matrix $A \in \matrices{n}{K}$ gibt es eine Matrix $S \in \GL{n}{K}$, so dass $\transpose{S} A S$ eine Diagonalmatrix ist.
+\end{corollary}
+
+Ist $A \in \matrices{n}{K}$ eine symmetrische Matrix, so lässt sich eine Diagonalform wie in Korollar~\ref{corollary: every symmetric matrix is congruent to a diagonal matrix} sowie eine zugehörige Basiswechselmatrix $S \in \GL{n}{K}$ mithilfe von \emph{simultanen Zeilen- und Spaltenumformungen} berechnen:
+\begin{itemize}
+  \item
+    Man bringe die Matrix durch elementare Zeilenumformungen in Zeilenstufenform, und somit insbesondere in obere Dreiecksform.
+  \item
+    Nach jeder elementaren Zeilenumformung führt die man die analoge elementare Spaltenumformung durch.
+    Hierdurch bleibt die Matrix symmetrisch.
+\end{itemize}
+Als Ergebnis erhält man somit eine Matrix symmetrische Matrix $B$, die in oberer Dreiecksform ist.
+Also ist $B$ eine Diagonalmatrix.
+Eine Matrix $S \in \GL{n}{K}$ mit $\transpose{C} A C = B$ erhält man, indem man die genutzen elementaren Spaltenumformungen in gleicher Reihenfolge auf die Einheitsmatrix $\Id$ anwendet.
+(Nutzt man anstelle der Spaltenumformungen die Zeilenumformungen, so erhält man stattdessen $\transpose{C}$.)
+
+% TODO: Adding an example
+
+
+
+
+
+\subsection{Sylvesterscher Trägheitssatz \& Hauptachsentransformation}
+
+Für diesen Unterabschnitt sei $K = \Real$
+
+
+
+\subsubsection{Sylvesterscher Trägheitssatz}
+
+Es sei $\beta \in \SymForm(V)$ eine symmetrischen Bilinearform.
+
+Ist $\basis{B} = (v_1, \dotsc, v_n)$ eine Orthogonalbasis von $V$ bezüglich $\beta$, so ist die darstellende Matrix $\repmatrixbilone{\beta}{\basis{B}}$ von der Form
+\begin{equation}
+  \label{equation: bilinear form in diagonal form}
+    \repmatrixbilone{\beta}{\basis{B}}
+  = \begin{pmatrix}
+      d_1 &         &     \\
+          & \ddots  &     \\
+          &         & d_n
+    \end{pmatrix},
+\end{equation}
+wobei $d_i = \beta(v_i, v_i)$ gilt.
+Sind $\mu_1, \dotsc, \mu_n \in K$ mit $\mu_i \neq 0$, so ist auch $\basis{B}' = (w_1, \dotsc, w_n)$ mit $w_i = \mu_i v_i$ eine Basis von $V$, und es gilt
+\[
+  \repmatrixbilone{\beta}{\basis{B'}}
+  = \begin{pmatrix}
+      \mu_1^2 d_1 &         &             \\
+                  & \ddots  &             \\
+                  &         & \mu_n^2 d_n
+    \end{pmatrix}
+\]
+Somit lassen sich in \eqref{equation: bilinear form in diagonal form} die Diagonaleinträge um Quadratzahlen aus $\Real$ abändern.
+Hiermit erhält man aus Satz~\ref{theorem: exstience of an orthogonal basis} den Sylvesterschen Trägheitssatz:
+
+\begin{corollary}[Sylvesterscher Trägheitssatz]
+  \label{corollary: Sylvester}
+  Es sei $K = \Real$.
+  Dann existiert eine Basis $\basis{B}$ von $V$, so dass
+  \[
+      \repmatrixbilone{\beta}{\basis{B}}
+    = \begin{pmatrix}
+        \Id_p &         &     \\
+              & -\Id_q  &     \\
+              &         & 0_r
+      \end{pmatrix}
+  \]
+  gilt.
+  Die Zahlen $p$, $q$ und $r$ sind eindeutig bestimmt durch
+  \begin{align*}
+        p
+    &=  \max  \{
+                \dim U
+              \suchthat
+                \text{$U \subseteq V$ ist ein UVR, so dass $\beta|_{U \times U}$ positiv definit ist}
+              \}
+  \shortintertext{und}
+        q
+    &=  \max  \{
+                \dim U
+              \suchthat
+                \text{$U \subseteq V$ ist ein UVR, so dass $\beta|_{U \times U}$ negativ definit ist}
+              \},
+  \end{align*}
+  sowie durch $p + q + r = n$.
+  Zudem gilt $\rank \beta = p + q$.
+\end{corollary}
+
+\begin{definition}
+  In der Situation von Korollar~\ref{corollary: Sylvester} heißt die Zahl $p - q$ die \emph{Signatur} von $\beta$.
+\end{definition}
+
+Man bemerke, dass sich die Zahlen $p$, $q$ und $r$ aus dem Sylvesterschen Trägheitssatz bereits aus der Form \eqref{equation: bilinear form in diagonal form} ablesen lassen:
+Die Zahl $p$ ist die Anzahl der positiven Diagonaleinträge, die Zahl $q$ ist die Anzahl der negativen Diagonaleinträge, und $r$ ist die Häufigkeit von $0$ als Diagonaleintrag.
+
+
+
+\subsubsection{Hauptachsentransformation}
+
+Ist $\beta \in \SymForm(\Real^n)$ eine symmetrische Bilinearform, so gilt für die symmetrische Matrix $A \in \matrices{n}{\Real}$ mit $A_{ij} = \beta(e_i, e_j)$, dass
+\[
+    \beta(x,y)
+  = \transpose{x} A y
+  \qquad
+  \text{für alle $x, y \in \Real^n$}.
+\]
+Nach Korollar~\ref{corollary: hermitian matrices are diagonalizable} gibt es eine Orthonormalbasis $\basis{B} = (v_1, \dotsc, v_n)$ von $\Real^n$ bestehend aus Eigenvektoren von $A$.
+Ist $\lambda_i$ der zu $v_i$ gehörige Eigenwert, so gilt
+\[
+    \beta(v_i, v_j)
+  = \transpose{v_i} A v_j
+  = \lambda_j \transpose{v_i} v_j
+  = \lambda_j \bil{v_i}{v_j}
+  = \lambda_j \delta_{ij}
+  = \lambda_i \delta_{ij}.
+\]
+Somit ist $\basis{B}$ eine Orthogonalbasis von $\Real^n$ bezüglich $\beta$ und
+\[
+    \repmatrixbilone{\beta}{\basis{B}}
+  = \begin{pmatrix}
+      \lambda_1 &         &           \\
+                & \ddots  &           \\
+                &         & \lambda_n
+    \end{pmatrix}.
+\]
+
+\begin{proposition}
+  Es seien $p$, $q$ und $r$ die Zahlen aus dem Sylvesterscher Trägheitssatz für $\beta$.
+  Dann ist $p$ die Anzahl der positiven Eigenwerte von $A$, $q$ die Anzahl der negativen Eigenwerte, und $r$ die Vielfachheit des Eigenwerts $0$.
+\end{proposition}
+
+% TODO: Adding examples.
+
+\begin{lemma}[Hauptminorenkriterium]
+  Eine symmetrische Matrix $A \in \matrices{n}{\Real}$ ist genau dann positiv, wenn alle führenden Hauptminoren positiv sind.
+\end{lemma}
+
+
+
+
+
+\subsection{Dualität}
+
+Es sei $W$ ein weiterer endlichdimensionaler $K$-Vektorraum
+
+
+
+\subsubsection{Nicht-ausgeartetet Bilinearformen}
+
+Es sei $\beta \in \BilForm(V, W)$ eine Bilinearform.
+Die Bilinearform $\beta$ entspricht einer linearen Abbildung
+\[
+          \beta_1
+  \colon  W
+  \to     \dual{V},
+  \quad
+          w
+  \mapsto \beta(-,w),
+\]
+sowie einer linearen Abbildung
+\[
+          \beta_2
+  \colon  V
+  \to     \dual{W},
+  \quad
+          v
+  \mapsto \beta(v,-).
+\]
+Ist $\basis{B} = (v_1, \dotsc, v_n)$ eine Basis von $V$ und $\basis{C} = (w_1, \dotsc, w_m)$ eine Basis von $W$, so können wir als Verallgemeinerung von Definition~\ref{definition: representing matrix for a bilinear form} die darstellende Matrix
+\[
+            \repmatrixbiltwo{\beta}{\basis{B}}{\basis{C}}
+  \coloneqq \begin{pmatrix}
+              \beta(v_1, w_1) & \beta(v_1, w_2) & \cdots  & \beta(v_1, w_m) \\
+              \beta(v_2, w_1) & \beta(v_2, w_2) & \cdots  & \beta(v_2, w_m) \\
+              \vdots          & \vdots          & \ddots  & \vdots          \\
+              \beta(v_n, w_1) & \beta(v_n, w_2) & \cdots  & \beta(v_n, w_m)
+            \end{pmatrix}.
+\]
+betrachten.
+Dann gilt bezüglich der dualen Basen $\dual{\basis{B}}$ von $\dual{V}$ und $\dual{\basis{C}}$ on $\dual{W}$, dass
+\[
+    \repmatrixhom{\beta_1}{\basis{C}}{\dual{\basis{B}}}
+  = \repmatrixbiltwo{\beta}{\basis{B}}{\basis{C}}
+  \quad\text{und}\quad
+    \repmatrixhom{\beta_2}{\basis{B}}{\dual{\basis{C}}}
+  = \transpose{ \repmatrixbiltwo{\beta}{\basis{B}}{\basis{C}} }
+\]
+Insbesondere gelten die Äquivalenzen
+\begin{align*}
+      &\, \text{$\beta_1$ ist ein Isomorphismus}                                                \\
+  \iff&\, \text{$\repmatrixhom{\beta_1}{\basis{C}}{\dual{\basis{B}}}$ ist invertierbar}         \\
+  \iff&\, \text{$\repmatrixbiltwo{\beta}{\basis{B}}{\basis{C}}$ ist invertierbar}               \\
+  \iff&\, \text{$\transpose{ \repmatrixbiltwo{\beta}{\basis{B}}{\basis{C}} }$ ist invertierbar} \\
+  \iff&\, \text{$\repmatrixhom{\beta_2}{\basis{B}}{\dual{\basis{C}}}$ ist invertierbar}         \\
+  \iff&\, \text{$\beta_2$ ist ein Isomorphismus}.
+\end{align*}
+
+\begin{definition}
+  Eine Bilinearform $\beta \in \BilForm(V,W)$ heißt \emph{nicht-ausgeartet}, falls Sie eine (und damit alle) der folgenden äquivalenten Bedingungen erfüllt:
+  \begin{enumerate}
+    \item
+      Die lineare Abbildung $\beta_1$ ist ein Isomorphismus.
+    \item
+      Die lineare Abbildung $\beta_2$ ist ein Isomorphismus.
+    \item
+      Es gibt eine Basis $\basis{B}$ von $V$ und $\basis{C}$ von $W$, so dass die darstellende Matrix $\repmatrixbiltwo{\beta}{\basis{B}}{\basis{C}}$ invertierbar ist.
+    \item
+      Für jede Basis $\basis{B}$ von $V$ und $\basis{C}$ von $W$ ist die darstellende Matrix $\repmatrixbiltwo{\beta}{\basis{B}}{\basis{C}}$ invertierbar.
+    \item
+      Es gelten (mindestes) zwei (und damit bereits alle drei) der folgenden Bedingungen:
+      \begin{enumerate}
+        \item
+          Es gilt $\dim V = \dim W$.
+        \item
+          Für jedes $v \in V$ mit $v \neq 0$ gibt es ein $w \in W$ mit $\beta(v,w) \neq 0$ (d.h.\ $\beta_2$ ist injektiv).
+        \item
+          Für jedes $w \in W$ mit $w \neq 0$ gibt es ein $v \in V$ mit $\beta(v,w) \neq 0$ (d.h.\ $\beta_1$ ist injektiv).
+      \end{enumerate}
+  \end{enumerate}
+\end{definition}
+
+Wir betrachten nun den Fall, dass $\beta \in \SymForm(V)$ eine symmetrische Bilinearform auf $V$ ist.
+Für die beiden zugehörigen linearen Abbildungen $\beta_1, \beta_2 \colon V \to V^*$ gilt dann $\beta_1 = \beta_2$.
+
+\begin{definition}
+  Das \emph{Radikal} von $\beta$ ist der Untervektorraum
+  \[
+              \rad{\beta}
+    \coloneqq \{v \in V \suchthat \text{$\beta(v,v') = 0$ für alle $v' \in V$}.
+  \]
+\end{definition}
+
+Es gilt $\rad{\beta} = \ker \beta_1 = \ker \beta_2$, weshalb $\beta$ genau dann nicht ausgeartet ist, wenn $\rad{\beta} = 0$ gilt.
+
+
+
+\subsubsection{Die Adjungierte Abbildung}
+
+Es seien $\beta \in \BilForm(V,V')$ und $\gamma \in \BilForm(W,W')$ zwei nicht-ausgeartete Bilinearformen.
+Dann gibt es für jede lineare Abbildung $f \colon V \to W$ eine eindeutige lineare Abbildung $\adj{f} \colon W' \to V'$ mit
+\begin{equation}
+  \label{equation: definition of the adjoint map by elements for non degenarete bilinear forms}
+    \gamma(f(v), w')
+  = \beta(v, \adj{f}(w'))
+  \qquad
+  \text{für alle $v \in V$, $w' \in W'$}
+\end{equation}
+gilt.
+Dies ergibt sich wie bereits in \ref{subsection: adjoint map for scalar products} dadurch, dass \eqref{equation: definition of the adjoint map by elements for non degenarete bilinear forms} äquivalent zur Kommutativität des Diagramms
+\[
+  \begin{tikzcd}
+      \dual{V}
+    & \dual{W}
+      \arrow[swap]{l}{\dual{f}}
+    \\
+      V'
+      \arrow{u}{\beta_1}
+    & W'
+      \arrow[swap]{u}{\gamma_1}
+      \arrow{l}{\adj{f}}
+  \end{tikzcd}
+\]
+ist.
+Also ist $\adj{f}$ eindeutig als $\adj{f} = \beta_1^{-1} \circ \dual{f} \circ \beta'_1$ bestimmt.
+
+
+
+
+
+
+
+
+
+
+
+
+
