@@ -1,0 +1,24 @@
+\usepackage[automark]{scrlayer-scrpage} %for headers
+
+% settings for scrlayer-scrpage
+\pagestyle{headings}
+
+\setcounter{tocdepth}{1} % do not include subsections into table of content
+
+% defining theorem enviroments and the corresponding counter
+\newcounter{everything}[chapter]
+
+\newtheorem{definition}[everything]{Definition}
+\newtheorem{corollary}[everything]{Korollar}
+\newtheorem{lemma}[everything]{Lemma}
+\newtheorem{notation}[everything]{Notation}
+\newtheorem{proposition}[everything]{Proposition}
+\newtheorem{theorem}[everything]{Satz}
+
+\theoremstyle{definition}
+\newtheorem{example}[everything]{Beispiel}
+\newtheorem{remark}[everything]{Bemerkung}
+\newtheorem{warning}[everything]{Warnung}
+
+% defining the output of various counters
+\renewcommand{\theeverything}{\arabic{chapter}.\arabic{everything}}

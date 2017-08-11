@@ -7,12 +7,6 @@
 \usepackage[ngerman]{babel}
 \usepackage{xcolor}
 \usepackage[hidelinks]{hyperref}
-\usepackage[automark]{scrlayer-scrpage} %for headers
-
-% settings for scrlayer-scrpage
-\pagestyle{headings}
-
-\setcounter{tocdepth}{1} % do not include subsections into table of content
 
 % prevents breaking inline math around binary or relationship symbols
 \binoppenalty=\maxdimen
@@ -32,24 +26,6 @@
 \setlist[itemize, 1]{leftmargin=*}
 \setlist[itemize, 2]{leftmargin=*, label={\textopenbullet}}
 \setlist[itemize, 3]{leftmargin=*, label={\textperiodcentered}}
-
-% defining theorem enviroments and the corresponding counter
-\newcounter{everything}[chapter]
-
-\newtheorem{definition}[everything]{Definition}
-\newtheorem{corollary}[everything]{Korollar}
-\newtheorem{lemma}[everything]{Lemma}
-\newtheorem{notation}[everything]{Notation}
-\newtheorem{proposition}[everything]{Proposition}
-\newtheorem{theorem}[everything]{Satz}
-
-\theoremstyle{definition}
-\newtheorem{example}[everything]{Beispiel}
-\newtheorem{remark}[everything]{Bemerkung}
-\newtheorem{warning}[everything]{Warnung}
-
-% defining the output of various counters
-\renewcommand{\theeverything}{\arabic{chapter}.\arabic{everything}}
 
 \newcommand{\suchthat}{\,|\,}
 \newcommand{\divides}{\mid}
