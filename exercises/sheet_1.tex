@@ -1,0 +1,201 @@
+\documentclass[a4paper, 10pt]{scrartcl}
+\usepackage{../styles/generalstyle}
+\usepackage{../styles/exercisestyle}
+
+\subject{Repetitorium Lineare Algebra II}
+\title{Tag 1}
+\author{}
+\date{}
+
+\begin{document}
+
+
+\begin{question}[subtitle = Diagonalisieren]
+  \begin{enumerate}
+    \item
+      Es sei
+      \[
+                  A
+        \coloneqq \begin{pmatrix}
+                    3 & 4 & 1 \\
+                    0 & 1 & 2 \\
+                    1 & 2 & 2
+                  \end{pmatrix}
+        \in       \matrices{3}{\Field_5}.
+      \]
+      Bestimmen Sie eine Matrix $S \in \GL{3}{\Field_5}$, so dass $S^{-1} A S$ in Diagonalform ist.
+    \item
+      Es sei
+      \[
+                  A
+        \coloneqq \begin{pmatrix}
+                    2 & 1       &         &   \\
+                    1 & 2       & \ddots  &   \\
+                      & \ddots  & \ddots  & 1 \\
+                      &         & 1       & 2
+                  \end{pmatrix}
+        \in       \matrices{n}{\Real}.
+      \]
+      Bestimmen Sie eine Matrix $S \in \GL{n}{\Real}$, so dass $S^{-1} A S$ in Diagonalform ist.
+    \item
+      Es sei
+      \[
+                  A
+        \coloneqq \begin{pmatrix}
+                    0     & \Id_n \\
+                    \Id_n & 0
+                  \end{pmatrix}
+        \in       \matrices{n}{\Real}.
+      \]
+      Geben Sie eine Basis von $K^{2n}$ aus Eigenvektoren von $A$ an.
+      Bestimmen Sie anschließend $\charpol{A}(t)$ sowie $\det A$.
+      
+      (\emph{Tipp}: $A$ vertauscht die Basisvektoren $e_i$ und $e_{n+i}$.)
+  \end{enumerate}
+\end{question}
+
+
+
+
+
+\begin{question}[subtitle = Eigenwerte und Diagonalisierbarkeit]
+  \begin{enumerate}
+    \item
+      Es sei $A \in \GL{2}{\Complex}$ mit $\tr A = 0$.
+      Zeigen Sie, dass $A$ diagonalisierbar ist.
+    \item
+      Zeigen Sie, dass jede Matrix $A \in \matrices{3}{\Real}$ einen reellen Eigenwert hat.
+    \item
+      Folgern Sie, dass jede nicht-triagonalisierbare Matrix $A \in \matrices{3}{\Real}$ über $\Complex$ diagonalisierbar ist.
+    \item
+      Es sei $A \in \matrices{n}{\Complex}$ und $k \geq 0$ mit $f^k = \Id$.
+      Zeigen Sie, dass $A$ diagonalisierbar ist, und bestimmen Sie alle möglichen Eigenwerte für $A$.
+    \item
+      Es sei $A \in \matrices{2}{\Complex}$ mit $\tr A = 2$ und $\tr A^2 = 4$.
+      Zeigen Sie, dass $A$ diagonalisierbar ist, und bestimmen Sie die Eigenwerte von $A$.
+    \item
+      Es sei $A \in \matrices{2}{\Complex}$ mit $\tr A = 0$ und $\tr A^2 = -2$.
+      Bestimmen Sie $\det A$.
+    \item
+      Zeigen Sie für alle $A \in \matrices{3}{\Complex}$ die Gleichheit
+      \[
+          \det A
+        =   \frac{1}{6} (\tr A)^3
+          - \frac{1}{2} (\tr A^2)(\tr A)
+          + \frac{1}{3} (\tr A^3).
+      \]
+    \item
+      Es sei $A \in \matrices{n}{\Complex}$ mit $A^2 + A = 6 \Id$ und $\det A = 144$.
+      Bestimmen Sie $n$.
+    \item
+      Es sei $A \in \matrices{n}{\Complex}$ mit $A^3 = 3A - 2$ und $A^3 + A^2 = A + \Id$.
+      Zeigen Sie, dass $A = \Id$.
+  \end{enumerate}
+\end{question}
+
+
+
+
+
+\begin{question}[subtitle = Cayley-Hamilton]
+  Es sei $K$ ein Körper.
+  \begin{enumerate}
+    \item
+      Zeigen Sie für $A \in \matrices{n}{K}$, dass die Potenzen $\Id, A, A^2, \dotsc, A^n$ linear abhängig sind.
+    \item
+      Es sei $A \in \GL{n}{K}$.
+      Zeigen Sie, dass es ein Polynom $p \in K[t]$ mit $p(A) = A^{-1}$ gibt.
+      Bestimmen Sie ein solches Polynom für die Matrix
+      \[
+                  A
+        \coloneqq \begin{pmatrix}
+                    1 & 0 & 1 \\
+                    1 & 1 & 1 \\
+                    0 & 0 & 1
+                  \end{pmatrix}
+        \in \GL{n}{\Real}.
+      \]
+  \end{enumerate}
+\end{question}
+
+
+
+
+
+\begin{question}[subtitle = Simultane Diagonalisierbarkeit]
+  \begin{enumerate}
+    \item
+      Es sei $V$ ein endlichdimensionaler $K$-Vektorraum, und es seien $f, g \colon V \to V$ zwei diagonalisierbare Endomorphismen mit $f \circ g = g \circ f$.
+      Zeigen Sie, dass auch $f \circ g$ diagonalisierbar ist.
+    \item
+      Bestimmen Sie alle $a, b \in \Real$, so dass die beiden Matrizen
+      \[
+        \begin{pmatrix}
+          a & 1 \\
+          0 & 3
+        \end{pmatrix}
+        \quad\text{und}\quad
+        \begin{pmatrix*}[r]
+          -1  & 2 \\
+          0  & b
+        \end{pmatrix*}
+      \]
+      simultan diagonalisierbar sind.
+      
+    \item
+      Es seien $A, B \in \matrices{3}{\Real}$ mit
+      \[
+                  A
+        \coloneqq \begin{pmatrix}
+                    1  & 0  & 1 \\
+                    0  & 1  & 1 \\
+                    0  & 0  & 2
+                  \end{pmatrix}
+        \quad \text{und} \quad
+                  B
+        \coloneqq \begin{pmatrix*}[r]
+                    3 &  0  & -4  \\
+                    4 & -1  & -4  \\
+                    0 &  0  & -1
+                  \end{pmatrix*}.
+      \]
+      Bestimmen Sie $S \in \GL{3}{\Real}$, so dass $C^{-1} A C$ und $C^{-1} B C$ in Diagonalgestalt sind.
+  \end{enumerate}
+\end{question}
+
+
+
+
+
+\begin{question}[subtitle = Links- und Rechtsshift]
+  Es sei $V = K^\Natural = \{(a_1, a_2, a_3, \dotsc) \suchthat a_i \in K\}$ der Vektorraum der $K$-wertigen Folgen.
+  Es sei
+  \[
+            R
+    \colon  V
+    \to     V,
+    \quad   (a_1, a_2, a_3, \dotsc)
+    \mapsto (0,   a_1, a_2, \dotsc)
+  \]
+  der Rechts-Shift-Operator, sowie
+  \[
+            L
+    \colon  V
+    \to     V,
+    \quad   (a_1, a_2, a_3, \dotsc)
+    \mapsto (a_2, a_3, a_4, \dotsc)
+  \]
+  der Links-Shift-Operator.
+  \begin{enumerate}
+    \item
+      Bestimmen Sie die Eigenwerte von $R$, sowie die zugehörigen Eigenräume.
+    \item
+      Bestimmen Sie die Eigenwerte von $L$, sowie die zugehörigen Eigenräume.
+  \end{enumerate}
+\end{question}
+
+
+
+
+
+\end{document}
