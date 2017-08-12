@@ -458,47 +458,6 @@ Ist $U \subseteq V$ ein $f$-invarianter Untervektorraum, so gilt für die den ei
 
 
 
-\section{Simultane Diagonalisierbarkeit}
-
-\begin{definition}
-  Eine Kollektion $f_i$, $i \in I$ von Endomorphismen $f_i \colon V \to V$ heißt \emph{simultan diagonalisierbar}, falls es eine Basis $\basis{B}$ von $V$ gibt, so dass $\repmatrixendo{f}{\basis{B}}$ für jedes $i \in I$ eine Diagonalmatrix ist.
-  
-  Eine Kollektion $A_i$, $i \in I$ von Matrizen $A_i \in \matrices{n}{K}$ heißt \emph{simultan diagonalisierbar}, falls es $S \in \GL{n}{K}$ gibt, so dass $S A_i S^{-1}$ für jedes $i \in I$ eine Diagonalmatrix ist.
-\end{definition}
-
-\begin{lemma}
-  Für eine Kollektion $f_i$, $i \in I$ von Endomorphismen $f_i \colon V \to V$ sind die folgenden Bedingungen äquivalent:
-  \begin{enumerate}
-    \item
-      Die Endomorphismen $f_i$, $i \in I$ sind simultan diagonalisierbar.
-    \item
-      Es gibt eine Basis $\basis{B}$ von $V$, so dass die Matrizen $\repmatrixendo{f_i}{\basis{B}}$, $i \in I$ simultan diagonalisierbar sind.
-    \item
-      Für jede Basis $\basis{B}$ von $V$ sind die Matrizen $\repmatrixendo{f_i}{\basis{B}}$, $i \in I$ simultan diagonalisierbar.
-  \end{enumerate}
-\end{lemma}
-
-\begin{example}
-  \begin{enumerate}
-    \item
-      Sind $f, g \colon V \to V$ simultan diagonalisierbar, so sind auch $f + g$ und $f \circ g$ diagonalisierbar.
-  \end{enumerate}
-\end{example}
-
-\begin{proposition}
-  Für Endomorphismen $f_1, \dotsc, f_n \colon V \to V$ sind die folgenden Bedingungen äquivalent:
-  \begin{enumerate}
-    \item
-      Die Endomorphismen $f_1, \dotsc, f_n$ sind simultan diagonalisierbar.
-    \item
-      Die Endomorphismen $f_1, \dotsc, f_n$ sind diagonalisierbar und paarweise kommutierend, d.h.\ es gilt $f_i \circ  f_j = f_j \circ f_i$ für alle $i, j$.
-  \end{enumerate}
-\end{proposition}
-
-
-
-
-
 \section{Trigonalisierbarkeit}
 
 
@@ -604,3 +563,44 @@ Außerdem ist für jedes Polynom $q \in K[t]$ auch der Endomorphismus $q(f)$ tri
     \charpol{q(f)}(t)
   = (t - q(\lambda_1)) \dotsm (t - q(\lambda_n)).
 \]
+
+
+
+
+
+\section{Simultane Diagonalisierbarkeit}
+
+\begin{definition}
+  Eine Kollektion $f_i$, $i \in I$ von Endomorphismen $f_i \colon V \to V$ heißt \emph{simultan diagonalisierbar}, falls es eine Basis $\basis{B}$ von $V$ gibt, so dass $\repmatrixendo{f}{\basis{B}}$ für jedes $i \in I$ eine Diagonalmatrix ist.
+  
+  Eine Kollektion $A_i$, $i \in I$ von Matrizen $A_i \in \matrices{n}{K}$ heißt \emph{simultan diagonalisierbar}, falls es $S \in \GL{n}{K}$ gibt, so dass $S A_i S^{-1}$ für jedes $i \in I$ eine Diagonalmatrix ist.
+\end{definition}
+
+\begin{lemma}
+  Für eine Kollektion $f_i$, $i \in I$ von Endomorphismen $f_i \colon V \to V$ sind die folgenden Bedingungen äquivalent:
+  \begin{enumerate}
+    \item
+      Die Endomorphismen $f_i$, $i \in I$ sind simultan diagonalisierbar.
+    \item
+      Es gibt eine Basis $\basis{B}$ von $V$, so dass die Matrizen $\repmatrixendo{f_i}{\basis{B}}$, $i \in I$ simultan diagonalisierbar sind.
+    \item
+      Für jede Basis $\basis{B}$ von $V$ sind die Matrizen $\repmatrixendo{f_i}{\basis{B}}$, $i \in I$ simultan diagonalisierbar.
+  \end{enumerate}
+\end{lemma}
+
+\begin{example}
+  \begin{enumerate}
+    \item
+      Sind $f, g \colon V \to V$ simultan diagonalisierbar, so sind auch $f + g$ und $f \circ g$ diagonalisierbar.
+  \end{enumerate}
+\end{example}
+
+\begin{proposition}
+  Für Endomorphismen $f_1, \dotsc, f_n \colon V \to V$ sind die folgenden Bedingungen äquivalent:
+  \begin{enumerate}
+    \item
+      Die Endomorphismen $f_1, \dotsc, f_n$ sind simultan diagonalisierbar.
+    \item
+      Die Endomorphismen $f_1, \dotsc, f_n$ sind diagonalisierbar und paarweise kommutierend, d.h.\ es gilt $f_i \circ  f_j = f_j \circ f_i$ für alle $i, j$.
+  \end{enumerate}
+\end{proposition}

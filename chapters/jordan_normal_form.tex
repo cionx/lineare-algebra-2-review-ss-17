@@ -1,6 +1,6 @@
 \chapter{Die Jordan-Normalform}
 
-Im Folgenden sei $f \colon V \to V$ ein Endomorphismus eines endlichdimensionalen $K$-Vek\-tor\-raums $V$.
+Es sei $K$ ein Körper, $V$ ein endlichdimensionaler $K$-Vektorraum und $f \colon V \to V$ ein Endomorphismus.
 
 
 
@@ -46,7 +46,7 @@ Der Endomorphismus $f$ besitzt genau dann eine Jordan-Normalform $J \in \matrice
 Wir bezeichnen eine solche Basis als \emph{Jordanbasis} von $f$.
 
 Eine \emph{Jordanbasis} $\basis{B} = (v_1, \dotsc, v_n)$ einer Matrix $A \in \matrices{n}{K}$ ist eine Jordanbasis der zu $A$ (bezüglich der Standardbasis) gehörigen linearen Abbildung $f_A \colon K^n \to K^n$, $x \mapsto Ax$.
-Dies ist äquivalent dazu, dass für die Matrix $C = (v_1 | \cdots | v_n) \in \GL{n}{K}$ die Matrix $S^{-1} A S = \repmatrixendo{f_A}{\basis{B}}$ in Jordan-Normalform ist.
+Dies ist äquivalent dazu, dass für die Matrix $C = (v_1 \cdots v_n) \in \GL{n}{K}$ die Matrix $S^{-1} A S = \repmatrixendo{f_A}{\basis{B}}$ in Jordan-Normalform ist.
 
 
 
@@ -90,13 +90,13 @@ Aus der obigen Berechnung ergibt sich deshalb für die Zahlen $d_k(\lambda) \col
     \text{Anzahl der Jordanblöcke zu $\lambda$ von Größe $k$ in $J$}
   = 2 d_k(\lambda) - d_{k-1}(\lambda) - d_{k+1}(\lambda).
 \]
-Damit ergibt sich inbesondere die folgende Eindeutigkeit der Jordannormalform:
+Damit ergibt sich inbesondere die folgende Eindeutigkeit der Jordan-Normalform:
 
 \begin{proposition}
-  Je zwei Jordannormalformen einer Matrix, bzw.\ eines Endomorphismus stimmen bis auf Permutation der Jordanblöcke überein.
+  Je zwei Jordan-Normalformen einer Matrix, bzw.\ eines Endomorphismus stimmen bis auf Permutation der Jordanblöcke überein.
 \end{proposition}
 
-Es ergibt daher Sinn, von \emph{der} Jordannormalform einer Matrix, bzw.\ eines Endomorphismus zu sprechen.
+Es ergibt daher Sinn, von \emph{der} Jordan-Normalform einer Matrix, bzw.\ eines Endomorphismus zu sprechen.
 
 
 
@@ -105,41 +105,49 @@ Es ergibt daher Sinn, von \emph{der} Jordannormalform einer Matrix, bzw.\ eines 
 \section{Existenz \& Kochrezept}
 
 \begin{definition}
-  Für alle $\lambda \in K$ und $k \geq 0$ sei
-  \[
-      \heigenspace{V}{f}{\lambda}{k}
-    = \{ v \in V \suchthat (f - \lambda \id_V)^k(v) = 0 \}
-    = \ker (f - \id_V)^k.
-  \]
-  Der Untervektorraum
-  \[
-              \geigenspace{V}{f}{\lambda}
-    \coloneqq \bigcup_{k=0}^\infty \heigenspace{V}{f}{\lambda}{k}
-    =         \left\{
-                v \in V
-              \suchthat
-                \text{es gibt $k \geq 0$ mit $(f - \lambda \id_V)^k(v) = 0$}
-              \right\}
-  \]
-  ist der \emph{verallgemeinerte Eigenraum} von $f$ zu $\lambda$.
-  Für $A \in \matrices{n}{K}$ und alle $\lambda \in K$ und $k \geq 0$ sei
-  \[
-      \heigenspace{(K^n)}{A}{\lambda}{k}
-    = \{ x \in K^n \suchthat (A - \lambda \Id)^k x = 0 \}
-    = \ker (A - \Id)^k.
-  \]
-  Der Untervektorraum
-  \[
-              \geigenspace{(K^n)}{A}{\lambda}
-    \coloneqq \bigcup_{k=0}^\infty \heigenspace{(K^n)}{A}{\lambda}{k}
-    =         \left\{
-                x \in K^n
-              \suchthat
-                \text{es gibt $k \geq 0$ mit $(A - \lambda \Id)^k x = 0$}
-              \right\}
-  \]
-  ist der \emph{verallgemeinerte Eigenraum} von $A$ zu $\lambda$.
+  \begin{itemize}
+    \item
+      Für alle $\lambda \in K$ und $k \geq 0$ sei
+      \[
+          \heigenspace{V}{f}{\lambda}{k}
+        = \{ v \in V \suchthat (f - \lambda \id_V)^k(v) = 0 \}
+        = \ker (f - \id_V)^k.
+      \]
+      Der Untervektorraum
+      \[
+                  \geigenspace{V}{f}{\lambda}
+        \coloneqq \bigcup_{k=0}^\infty \heigenspace{V}{f}{\lambda}{k}
+        =         \left\{
+                    v \in V
+                  \suchthat
+                    \text{es gibt $k \geq 0$ mit $(f - \lambda \id_V)^k(v) = 0$}
+                  \right\}
+      \]
+      ist der \emph{verallgemeinerte Eigenraum} von $f$ zu $\lambda$.
+    \item
+      Für $A \in \matrices{n}{K}$ und alle $\lambda \in K$ und $k \geq 0$ sei
+      \[
+          \heigenspace{(K^n)}{A}{\lambda}{k}
+        = \{ x \in K^n \suchthat (A - \lambda \Id)^k x = 0 \}
+        = \ker (A - \Id)^k.
+      \]
+      Der Untervektorraum
+      \[
+                  \geigenspace{(K^n)}{A}{\lambda}
+        \coloneqq \bigcup_{k=0}^\infty \heigenspace{(K^n)}{A}{\lambda}{k}
+        =         \left\{
+                    x \in K^n
+                  \suchthat
+                    \text{es gibt $k \geq 0$ mit $(A - \lambda \Id)^k x = 0$}
+                  \right\}
+      \]
+      ist der \emph{verallgemeinerte Eigenraum} von $A$ zu $\lambda$.
+  \end{itemize}
 \end{definition}
+
+\begin{example}
+  Der Endomorphismus $f$ ist genau dann nilpotent, wenn $\geigenspace{V}{f}{0} = V$.
+\end{example}
 
 \begin{lemma}
   \begin{enumerate}
@@ -165,7 +173,7 @@ Mithilfe der verallgemeinerten Eigenräume ergibt sich eine Charakterisierung de
   \end{enumerate}
 \end{theorem}
 
-Ist $A \in \matrices{n}{K}$, so dass das charakteristische Polynom $\charpol{A}(t)$ in Linearfaktoren zerfällt, so lässt sich die Jordan-Normalform von $A$ sowie eine zugehörige Jordanbasis wie folgt berechnen:
+Ist $A \in \matrices{n}{K}$, so dass das charakteristische Polynom $\charpol{A}(t)$ in Linearfaktoren zerfällt, so lässt sich die Jordan-Normalform von $A$ sowie eine zugehörige Jordanbasis nach dem folgenden \emph{Kochrezept} berechnen:
 
 \begin{itemize}
   \item
@@ -190,7 +198,7 @@ Ist $A \in \matrices{n}{K}$, so dass das charakteristische Polynom $\charpol{A}(
     \end{itemize}
 \end{itemize}
 
-Aus den Eigenwerten $\lambda_1, \lambda_2, \dotsc$ von $A$ und den Zahlen $b_k(\lambda_i)$ erhalten wir bereits, wieviele Blöcke es zu welchen Eigenwert von welcher Größe gibt, d.h.\ wie die Jordannormalform von $A$ (bis auf Permutation der Blöcke) aussehen wird.
+Aus den Eigenwerten $\lambda_1, \lambda_2, \dotsc$ von $A$ und den Zahlen $b_k(\lambda_i)$ erhalten wir bereits, wieviele Blöcke es zu welchen Eigenwert von welcher Größe gibt, d.h.\ wie die Jordan-Normalform von $A$ (bis auf Permutation der Blöcke) aussehen wird.
 Inbesondere ist $d_1(\lambda)$ die Gesamtzahl der Jordanblöcke zu $\lambda$ und die entsprechende Potenz $m$ die maximal auftretende Blöckgröße zu $\lambda$.
 
 Zur Berechnung einer Jordanbasis von $A$ geht man weiter wie folgt vor:
@@ -200,7 +208,7 @@ Zur Berechnung einer Jordanbasis von $A$ geht man weiter wie folgt vor:
     Für jeden Eigenwert $\lambda$ von $A$ gehe man weiterhin wie folgt vor:
     \begin{itemize}
       \item
-        Man wähle linear unabhängige Vektoren $v_1, \dotsc, v_{b_m} \in \ker A^m$ mit
+        Man wähle Vektoren $v_1, \dotsc, v_{b_m} \in \ker A^m$ mit
         \[
                     \ker A^m
           =         \ker A^{m-1}
@@ -216,7 +224,7 @@ Zur Berechnung einer Jordanbasis von $A$ geht man weiter wie folgt vor:
           v_{b_m}, A v_{b_m}, &\dotsc, A^{m-1} v_{b_m}.
         \end{align*}
       \item
-        Man wählt nun linear unabhängige Vektoren $v'_1, \dotsc, v'_{b_{m-1}} \in \ker A^{m-1}$, so dass
+        Man wählt nun Vektoren $v'_1, \dotsc, v'_{b_{m-1}} \in \ker A^{m-1}$, so dass
         \[
                     \ker A^{m-1}
           =         \ker A^{m-2}
@@ -255,15 +263,131 @@ Zur Berechnung einer Jordanbasis von $A$ geht man weiter wie folgt vor:
     
   \item
     Sind $\lambda_1, \dotsc, \lambda_n$ die paarweise verschiedenen Eigenwerte von $K^n$, so ergibt sich Zusammenfügen der Basen $\basis{B}_{\lambda_1}, \dotsc, \basis{B}_{\lambda_t}$ eine Basis $\basis{B}$ von $K^n$.
+    (Hier nutzen wir, dass $K^n = \bigoplus_{\lambda \in K} \geigenspace{(K^n)}{A}{\lambda}$ gilt.)
  
   \item
-    Die Basis $\basis{B}$ ist eine Jordanbasis von $A$:
-    Indem man die (in der obigen Reihenfolge entstandenen) Basisvektoren als Spalten in eine Matrix $C$ einträgt, erhält man schließlich $C \in \GL{n}{K}$, so dass $C^{-1} A C$ in Jordan-Normalform ist.
-    Dabei sind die Blöcke zunächst nach den Eigenwerten $\lambda_1, \dotsc, \lambda_t$ (in dieser Reihenfolge) sortiert;
+    Die Basis $\basis{B}$ ist eine Jordanbasis von $A$.
+    Indem man die Basisvektoren als Spalten in eine Matrix $C$ einträgt, erhält man schließlich $S \in \GL{n}{K}$, so dass $S^{-1} A S$ in Jordan-Normalform ist.
+    Dabei sind die Blöcke zunächst nach den Eigenwerten in der zuvor gewählten Reihenfolge sortiert;
     die Blöcke zum gleichen Eigenwert sind nach absteigender Größe sortiert.
 \end{itemize}
 
-% TODO: Adding examples.
+\begin{example}
+  Es sei $V$ ein $K$-Vektorraum mit Basis $\basis{B} = (v_1, \dotsc, v_7)$ und $f \colon V \to V$ der eindeutige Endomorphismus mit $f(v_1) = f(v_2) = v_5$, $f(v_3) = f(v_4) = v_6$, $f(v_5) = f(v_6) = v_7$ und $f(v_7) = 0$.
+  Es gilt $f^3 = 0$, also ist $f$ nilpotent;
+  insbesondere besitzt $f$ eine Jordan-Normalform, wobei $0$ der einzige auftretende Eigenwert ist.
+  Für die darstellende Matrix
+  \begin{gather*}
+              A
+    \coloneqq \repmatrixendo{f}{\basis{B}}
+    =         \begin{pmatrix}
+                0 &   &   &   &   &   &   \\
+                  & 0 &   &   &   &   &   \\
+                  &   & 0 &   &   &   &   \\
+                  &   &   & 0 &   &   &   \\
+                1 & 1 &   &   & 0 &   &   \\
+                0 & 0 & 1 & 1 &   & 0 &   \\
+                0 & 0 & 0 & 0 & 1 & 1 & 0
+              \end{pmatrix}
+  \shortintertext{gilt}
+      A^2
+    = \begin{pmatrix}
+        0 &   &   &   &   &   &   \\
+          & 0 &   &   &   &   &   \\
+          &   & 0 &   &   &   &   \\
+          &   &   & 0 &   &   &   \\
+          &   &   &   & 0 &   &   \\
+          &   &   &   &   & 0 &   \\
+        1 & 1 & 1 & 1 & 0 & 0 & 0
+      \end{pmatrix}
+    \quad\text{und}\quad
+      A^3
+    = 0.
+  \end{gather*}
+  Somit gelten
+  \begin{align*}
+        \ker A\phantom{^1}
+    &=  \generated{ e_1 - e_2, e_3 - e_4, e_5 - e_6, e_7 },
+    \\
+        \ker A^2
+    &=  \generated{ e_1 - e_2, e_2 - e_3, e_3 - e_4, e_5, e_6, e_7 },
+    \\
+        \ker A^3
+    &=  K^7.
+  \end{align*}
+  Mit $d_1 = \dim \ker A = 4$, $d_2 = \dim \ker A^2 = 6$ und $d_k = \ker \ker A^k = 7$ für $k \geq 3$ erhalten wir, dass $b_1 = 2 d_1 - d_2 = 2$, $b_2 = 2 d_2 - d_3 - d_1 = 1$, $b_3 = 2 d_3 - d_4 - d_2 = 1$ und $b_k = 0$ für $k \geq 4$.
+  
+  Die Jordan-Normalform von $A$ (und damit von $f$) besteht also aus zwei Blöcken der Größe $1$, einem Block der Größe $2$ und einem Block der Größe $3$ (jeweils zum Eigenwert $0$).
+  Wir Bestimmen nun eine Jordanbasis:
+  
+  \begin{itemize}
+    \item
+      Wir benötigen zunächst $w_1 \in \ker A^3 = K^7$ mit $K^7 = \ker A^2 \oplus \generated{w_1}$.
+      Hierfür muss nur $w_1 \notin \ker A^2$ gelten.
+      Wir wählen $w_1 \coloneqq e_1$.
+      Dann erhalten wir auch die weiteren Basisvektoren $A w_1 = e_5$ und $A^2 w_1 = e_7$.
+    \item
+      Als nächstes benötigen wir $w_2 \in \ker A^2$ mit
+      \[
+          \ker A^2
+        =         \ker A
+          \oplus  \generated{A w_1}
+          \oplus  \generated{w_1}
+        =         \generated{e_1 - e_2, e_3 - e_4, e_5 - e_6, e_7}
+          \oplus  \generated{e_5}
+          \oplus  \generated{w_2}.
+      \]
+      Wir müssen also die Familie $( e_1 - e_2, e_3 - e_4, e_5, e_5 - e_6, e_7 )$ zu einer Basis von $\ker A^2$ ergänzen.
+      Da
+      \[
+          \generated{ e_1 - e_2, e_3 - e_4, e_5, e_5 - e_6, e_7 } \\
+        = \generated{ e_1 - e_2, e_3 - e_4, e_5, e_6, e_7 }
+      \]
+      können wir $w_2 \coloneqq e_2 - e_3$ wählen.
+      Damit erhalten wir außerdem den Basisvektoren $A w_2 = e_5 - e_6$.
+    \item
+      Schließlich brauchen wir noch $w_3, w_4 \in \ker A$ mit
+      \[
+          \ker A
+        =         \generated{A^2 w_1}
+          \oplus  \generated{A w_2}
+          \oplus  \generated{w_3, w_4}
+        =         \generated{e_7}
+          \oplus  \generated{e5 - e_6}
+          \oplus  \generated{w_3, w_4}.
+      \]
+      Wir müssen also die Familie $(e_5 - e_6, e_7)$ zu einer Basis von $\ker A$ ergänzen.
+      Hierfür können wir $w_3 \coloneqq e_1 - e_2$ und $w_4 \coloneqq e_3 - e_4$ wählen.
+  \end{itemize}
+
+  Ingesamt haben wir somit die Basis $\basis{C} = (w_1, \dotsc, w_n)$, bzw.\ die Basiswechselmatrix
+  \[
+              S
+    \coloneqq \begin{pmatrix*}[r]
+                1 & 0 & 0 &  0  &  0  &  1  &  0  \\
+                0 & 0 & 0 &  1  &  0  & -1  &  0  \\
+                0 & 0 & 0 & -1  &  0  &  0  &  1  \\
+                0 & 0 & 0 &  0  &  0  &  0  & -1  \\
+                0 & 1 & 0 &  0  &  1  &  0  &  0  \\
+                0 & 0 & 0 &  0  & -1  &  0  &  0  \\
+                0 & 0 & 1 &  0  &  0  &  0  &  0
+              \end{pmatrix*},
+  \]
+  und es gilt
+  \[
+      \repmatrixendo{f}{\basis{C}}
+    = S^{-1} A S
+    = \begin{pmatrix}
+        0 &   &   &   &   &   &   \\
+        1 & 0 &   &   &   &   &   \\
+          & 1 & 0 &   &   &   &   \\
+          &   &   & 0 &   &   &   \\
+          &   &   & 1 & 0 &   &   \\
+          &   &   &   &   & 0 &   \\
+          &   &   &   &   &   & 0
+      \end{pmatrix}.
+  \]
+\end{example}
 
 
 
@@ -271,21 +395,93 @@ Zur Berechnung einer Jordanbasis von $A$ geht man weiter wie folgt vor:
 
 \section{Lösung des Ähnlichkeitsproblems}
 
+Es seien $f, g \colon V \to V$ zwei Endorphismen, die jeweils eine Jordan-Normalform besitzen.
+
 \begin{theorem}
-  Zwei Endomorphismen $f, g \colon V \to V$ sind genau dann ähnlich, wenn sie (bis auf Permutation der Blöcke) die gleiche Jordan-Normalform besitzen.
+  Die Endomorphismen $f$ und $g$ sind genau dann ähnlich, wenn sie (bis auf Permutation der Blöcke) die gleiche Jordan-Normalform besitzen.
 \end{theorem}
 
-Inbesondere gilt für zwei Endomorphismen $f, g \colon V \to V$, deren charakteristische Polynome in Linearfaktoren zerfallen, dass $f$ und $g$ genau dann ähnlich sind, wenn
+Also sind $f, g \colon V \to V$ genau dann ähnlich, wenn ihre charakteristischen Polynome
 \[
-    \dim \ker (f - \lambda \id_V)^k
-  = \dim \ker (g - \lambda \id_V)^k
-  \qquad
-  \text{für alle $\lambda \in K$, $k \geq 0$}
+    \charpol{f}(t)
+  = \charpol{g}(t)
+  = (t - \lambda_1)^{n_1} \dotsm (t - \lambda_s)^{n_s}
 \]
-gilt.
+übereinstimmen, und wenn für jeden Eigenwert $\lambda_i$ gilt, dass
+\[
+    \dim \ker (f - \lambda_i \id_V)^k
+  = \dim \ker (g - \lambda_i \id_V)^k
+  \qquad
+  \text{für alle $k = 1, \dotsc, n_i$}.
+\]
 
-% TODO: Adding example of nilpotent endomorphisms.
-
+\begin{example}
+  \begin{enumerate}
+    \item
+      Es seien $A_1, A_2, A_3 \in \matrices{3}{\Complex}$ mit
+      \[
+          A_1
+        = \begin{pmatrix}
+            2 &   &   \\
+              & 1 &   \\
+              & 1 & 1
+          \end{pmatrix},
+        \quad
+          A_2
+        = \begin{pmatrix}
+            2 &   &   \\
+              & 1 & 1 \\
+              &   & 1
+          \end{pmatrix},
+        \quad
+          A_3
+        = \begin{pmatrix}
+            2 & 1 &   \\
+              & 1 &   \\
+              &   & 1
+          \end{pmatrix}.
+      \]
+      Dann gilt $\charpol{A_1}(t) = \charpol{A_2}(t) = \charpol{A_3}(t) = - (t-1)^2 (t-2)$.
+      Da $2$ ein jeweils algebraische Vielfachheit $1$ hat, gilt
+      \[
+          \dim \ker (A_1 - 2 \Id)
+        = \dim \ker (A_2 - 2 \Id)
+        = \dim \ker (A_3 - 2 \Id)
+        = 1.
+      \]
+      Für den Eigenwerte $1$ ergeben sich die Dimensionen
+      \[
+          \dim \ker (A_1 - \Id)
+        = \dim \ker (A_1 - \Id)
+        = 1
+        \quad\text{und}\quad
+          \dim \ker (A_3 - \Id)
+       = 2,
+      \]
+      also ist $A_3$ zu keiner der beiden anderen Matrizen ähnlich.
+      Da ferner
+      \[
+          \dim \ker (A_1 - \Id)^2
+        = \dim \ker (A_2 - \Id)^2
+        = 2
+      \]
+      gilt, sind $A_1$ und $A_2$ ähnlich.
+      
+    \item
+      Da $A_1$ und $A_2$ in unterer, bzw.\ oberer Jordan-Normalform sind, sieht man direkt, dass Sie nicht diagonalisierbar sind.
+      
+      Die Matrix $A_3$ ist hingegen eine Blockdiagonalmatrix, deren Blöcke beide diagonalisierbar sind:
+      Der obere Block ist diagonalisierbar, da es sich um eine obere Dreicksmatrix mit paarweise verschieden Diagonaleinträgen handelt.
+      Also ist auch $A_3$ diagonalisierbar.
+      
+      Hierdurch sieht man bereits, dass $A_3$ nicht ähnlich zu $A_1$ oder $A_2$ ist.
+      Dass $A_1$ und $A_2$ ähnlich sind, erkennt man dann aus der folgenden Aussage:
+      
+    \item
+      Besitzt $A \in \matrices{n}{K}$ eine Jordan-Normalform, so sind $A$ und $\transpose{A}$ ähnlich.
+      Inbesondere sind jede Matrix in unterer Jordan-Normalform ähnlich zu der entsprechenden oberen Jordan-Normalform.
+  \end{enumerate}
+\end{example}
 
 
 
@@ -301,6 +497,65 @@ Es sei $f \colon V \to V$ ein Endomorphismus, der die Bedingungen aus Satz~\ref{
 
 Die Jordan--Chevalley-Zerlegung ist eine „koordinatenfreie“ Version der Jordan-Normalform;
 die Existenz dieser Zerlegung ist äquivalent zur Existenz der Jordan-Normalform.
+
+\begin{example}
+  Für die Matrix
+  \[
+              A
+    \coloneqq \begin{pmatrix*}[r]
+                -4  & -9  \\
+                 4  &  8
+              \end{pmatrix*}
+    \in       \matrices{2}{\Complex}
+  \]
+  und die Basiswechselmatrix
+  \[
+      S
+    = \begin{pmatrix*}[r]
+         2  & -1 \\
+        -3  &  2
+      \end{pmatrix*}
+  \]
+  gilt
+  \[
+      A
+    = S
+      \begin{pmatrix}
+        2 &   \\
+        1 & 2
+      \end{pmatrix}
+      S^{-1}
+  \]
+  Die Jordan--Chevalley-Zerlegung $A = D + N$ ist somit gegeben durch
+  \begin{gather*}
+      D
+    = S
+      \begin{pmatrix}
+        2 &   \\
+          & 2
+      \end{pmatrix}
+      S^{-1}
+    = S (2 \Id) S^{-1}
+    = 2 \Id S S^{-1}
+    = 2 \Id
+    = \begin{pmatrix}
+        2 &   \\
+          & 2
+      \end{pmatrix}
+  \shortintertext{und}
+      N
+    = S
+      \begin{pmatrix}
+        0 &   \\
+        1 & 0
+      \end{pmatrix}
+      S^{-1}
+    = \begin{pmatrix*}[r]
+        -6  & -9  \\
+         4  &  6
+      \end{pmatrix*}.
+  \end{gather*}
+\end{example}
 
 
 
@@ -320,10 +575,11 @@ Es sei $J \in \matrices{n}{K}$ eine Jordan-Normalform von $f$.
   \item
     Es gilt
     \[
-        \text{Anzahl der Jordanblöcke zu $0$ in $J$}
-      = \dim \ker f
-      = n - \rank f.
+        \text{Anzahl der Jordanblöcke zu $\lambda$ in $J$}
+      = \dim \ker (f - \id_V)
+      = n - \rank (f - \id_V).
     \]
+    Inbesondere ist $n - \rank f$ die Anzahl der Jordanblöcke zu $0$.
   \item
     Für das Minimalpolynom $\minpol{f}(t) = \minpol{J}(t) = (t - \lambda_1)^{m_1} \dotsm (t - \lambda_s)^{n_s}$ mit $\lambda_i \neq \lambda_j$ für $i \neq j$ gilt
     \[
@@ -344,7 +600,45 @@ Es sei $J \in \matrices{n}{K}$ eine Jordan-Normalform von $f$.
 
 Zusammen mit den Beobachtungen aus Abschnitt~\ref{section: trace and determinant via eigenvalues} kann man hierdurch für kleine Matrizen bereits Aussagen über die Jordan-Nor\-mal\-form treffen, ohne die Matrix selbst zu kennen.
 
-% TODO: Beispiele hinzufügen.
+\begin{example}
+  Es sei $A \in \matrices{6}{\Complex}$ mit $(A - 2\Id)^2 (A - 3\Id) = 0$ und $\tr A = 14$.
+  
+  Dann sind $2$ und $3$ die einzigen möglichen Eigenwerte von $A$.
+  Aus $\tr A = 14$ erhält man, dass $2$ mit algebraischer Vielfachheit $4$ vorkommt, und $3$ mit algebraischer Vielfachheit $2$.
+  Außerdem folgt aus $(A - 2\Id)^2 (A - 3\Id) = 0$, dass die Jordanblöcke zu $2$ höchstens $2$ groß sind, und die Jordanblöcke zu $3$ alle Größe $1$ haben.
+  
+  Damit ergeben sich bis auf Permutation der Jordanblöcke die folgenden drei möglichen Jordan-Normalformen:
+  \[
+    \begin{pmatrix}
+      2 &   &   &   &   &   \\
+      1 & 2 &   &   &   &   \\
+        &   & 2 &   &   &   \\
+        &   & 1 & 2 &   &   \\
+        &   &   &   & 3 &   \\
+        &   &   &   &   & 3
+    \end{pmatrix},
+    \quad
+    \begin{pmatrix}
+      2 &   &   &   &   &   \\
+      1 & 2 &   &   &   &   \\
+        &   & 2 &   &   &   \\
+        &   &   & 2 &   &   \\
+        &   &   &   & 3 &   \\
+        &   &   &   &   & 3
+    \end{pmatrix},
+    \quad
+    \begin{pmatrix}
+      2 &   &   &   &   &   \\
+        & 2 &   &   &   &   \\
+        &   & 2 &   &   &   \\
+        &   &   & 2 &   &   \\
+        &   &   &   & 3 &   \\
+        &   &   &   &   & 3
+    \end{pmatrix}
+  \]
+  In den ersten beiden Fällen ist $(t-2)^2 (t-1)$ das Minimalpolynom, im dritten Fall ist es $(t-2)(t-3)$.
+\end{example}
+
 
 
 
