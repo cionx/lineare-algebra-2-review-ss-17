@@ -139,7 +139,15 @@ Aus unserer anfänglichen Beobachtung erhalten wir den folgenden Zusammenhang zw
               \end{pmatrix*}
         = \generated{ \vect{1 \\ 1 \\ 1} }.
       \]
-
+    \item
+      Es gilt
+      $
+          \charpol{A}(t)
+        = \det (A - t \Id)
+        = \det \transpose{(A - t \Id)}
+        = \det (\transpose{A} - t \Id)
+        = \charpol{\transpose{A}}(t)
+      $.
     \item
       Ist $A$ eine obere Dreiecksmatrix
       \[
