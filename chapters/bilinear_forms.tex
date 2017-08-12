@@ -1,0 +1,245 @@
+\chapter{Bilinearformen}
+
+Im Folgenden sei $K$ ein Körper, und $U$, $V$ und $W$ seien $K$-Vektorräume.
+
+
+
+
+
+\section{Allgemeine Definitionen}
+
+\begin{definition}
+  \begin{itemize}
+    \item
+      Eine Abbildung $\beta \colon V \times W \to U$ heißt \emph{$K$-bilinear}, falls
+      \begin{gather*}
+          \beta(v_1 + v_2, w)
+        = \beta(v_1, w) + \beta(v_2, w),
+        \\
+          \beta(v, w_1 + w_2)
+        = \beta(v, w_1) + \beta(v, w_2),
+        \\
+          \beta(\lambda v, w)
+        = \lambda \beta(v, w)
+        \quad\text{und}\quad
+          \beta(v, \lambda w)
+        = \lambda \beta(v, w)
+      \end{gather*}
+      für alle $v, v_1, v_2 \in V$, $w, w_1, w_2 \in W$ und $\lambda \in K$ gilt.
+      Gilt zusätzlich $U = K$, so ist $\beta$ eine \emph{Bilinearform}.
+      Es ist
+      \[
+                  \BilForm(V, W)
+        \coloneqq \{ \beta \colon V \times W \to K \suchthat \text{$\beta$ ist eine Bilinearform} \}.
+      \]
+    
+    \item
+      Gilt zusätzlich $V = W$ und
+      \[
+          \beta(v_1, v_2)
+        = \beta(v_2, v_1)
+      \]
+      für alle $v_1, v_2 \in V$, so heißt $\beta$ \emph{symmetrisch}.
+      Es sind
+      \begin{gather*}
+        \BilForm(V) \coloneqq \BilForm(V, V)
+      \shortintertext{sowie}
+                  \SymForm(V)
+        \coloneqq \{
+                    \beta \in \BilForm(V)
+                  \suchthat
+                    \text{$\beta$ ist symmetrisch}
+                  \}.
+      \end{gather*}
+  \end{itemize}
+\end{definition}
+
+\begin{definition}
+  Es seien $U$, $V$ und $W$ $\Complex$-Vektorräume.
+  \begin{itemize}
+    \item
+      Eine Abbildung $\beta \colon V \times W \to U$ heißt \emph{sesquilinear}, falls
+      \begin{gather*}
+          \beta(v_1 + v_2, w)
+        = \beta(v_1, w) + \beta(v_2, w),
+        \\
+          \beta(v, w_1 + w_2)
+        = \beta(v, w_1) + \beta(v, w_2),
+        \\
+          \beta(\lambda v, w)
+        = \lambda \beta(v, w)
+        \quad\text{und}\quad
+          \beta(v, \lambda w)
+        = \conjugate{\lambda} \beta(v,w)
+      \end{gather*}
+      für alle $v, v_1, v_2 \in V$, $w, w_1, w_2 \in W$ und $\lambda \in \Complex$ gilt.
+      Gilt zusätzlich $U = \Complex$, so ist $\beta$ eine \emph{Sesquilinearform}.
+      Es ist
+      \[
+                  \SesForm(V, W)
+        \coloneqq \{
+                    \beta \colon V \times W \to \Complex
+                   \suchthat
+                    \text{$\beta$ ist eine Sesquilinearform}
+                  \}.
+      \]
+    
+    \item
+      Gilt zusätzlich $V = W$ und
+      \[
+          \beta(v_1, v_2)
+        = \conjugate{\beta(v_2, v_1)}
+      \]
+      für alle $v_1, v_2 \in V$, so heißt $\beta$ \emph{hermitesch}.
+      (Für alle $v \in V$ gilt dann $\beta(v,v) \in \Real$.)
+      Es sind
+      \begin{gather*}
+        \SesForm(V) \coloneqq \SesForm(V, V)
+      \shortintertext{sowie}
+                  \HerForm(V)
+        \coloneqq \{ \beta \in \BilForm(V) \suchthat \text{$\beta$ ist hermitesch} \}.
+      \end{gather*}
+  \end{itemize}
+\end{definition}
+
+\begin{definition}
+  Eine Abbildung $f \colon V \to W$ zwischen $\Korper$-Vektorräumen $V$ und $W$ ist \emph{halblinear} falls
+  \[
+    f(v_1 + v_2) = f(v_1) + f(v_2)
+    \quad\text{und}\quad
+    f(\lambda v) = \conjugate{\lambda} f(v)
+  \]
+  für alle $v, v_1, v_2 \in V$ und $\lambda \in \Korper$ gilt.
+\end{definition}
+
+Eine Abbildung $\beta \colon V \times W \to U$ ist genau dann $K$-bilinear, wenn die Abbildungen
+\[
+          \beta(v,-)
+  \colon  W
+  \to     U,
+  \quad   w
+  \mapsto \beta(v,w)
+  \quad\text{und}\quad
+  \beta(-,w)
+  \colon  V
+  \to     U,
+  \quad   v
+  \mapsto \beta(v,w)
+\]
+für alle $v \in V$ und $w \in W$ linear sind.
+Eine Abbildung $\beta \colon V \times W \to U$ ist genau dann sesquilinear, wenn die Abbildung $\beta(v,-) \colon W \to U$ für jedes $v \in V$ halblinear ist, und die Abbildung $\beta(-,w) \colon V \to U$ für jedes $w \in W$ linear ist.
+
+
+
+
+
+\section{Orthogonalität}
+
+Es sei $V$ ein $K$-Vektorraum und $\beta \in \SymForm(V)$ eine symmetrische Bilinearform, bzw.\ $K = \Complex$ und $\beta \in \HerForm(V)$ eine hermitsche Sesquilinearform.
+
+\begin{definition}
+  \begin{itemize}
+    \item
+      Zwei Vektoren $v_1, v_2 \in V$ sind \emph{orthogonal zueinander}, im Zeichen $v_1 \orth v_2$, falls $\beta(v_1, v_2) = 0$ gilt.
+    \item
+      Für jeden Untervektorraum $U \subseteq V$ ist $U^\perp = \{v \in V \suchthat \text{$\beta(v,u) = 0$ für alle $u \in U$}\}$ das \emph{orthogonale Komplement} von $U$ bezüglich $\beta$.
+    \item
+      Eine Familie $(v_i)_{i \in I}$ von Vektoren $v_i \in V$ heißt \emph{orthogonal}, falls $v_i \orth v_j$ für alle $i \neq j$ gilt.
+    \item
+      Eine \emph{Orthogonalbasis} ist eine orthogonale Basis.
+    \item
+      Ein Vektor $v \in V$ heißt \emph{normiert} falls $\beta(v,v) = 1$.
+    \item
+      Eine Familie $(v_i)_{i \in I}$ von Vektoren $v_i \in V$ heißt \emph{normiert}, falls $v_i$ für jedes $i \in I$ normiert ist.
+    \item
+      Eine \emph{Orthonormalbasis} ist eine orthogonale, normierte Basis.
+  \end{itemize}
+\end{definition}
+
+
+
+
+
+\section{Quadratische Formen und Polarisation}
+
+\begin{proposition}
+  \label{proposition: characterizations of quadratic forms}
+  Für eine Abbildung $Q \colon V \to K$ sind die folgenden Bedingungen äquivalent:
+  \begin{enumerate}
+    \item
+      Es gibt eine Bilinearform $\beta \in \BilForm(V)$ mit $Q(v) = \beta(v, v)$ für all $v \in V$.
+    \item
+      Es gibt eine Basis $\basis{B} = (v_1, \dotsc, v_n)$ von $V$ und Koeffizienten $c_{ij} \in K$, so dass
+      \begin{equation}
+        \label{equation: quadratic form in coordinates}
+          Q\left( \sum_{i=1}^n x_i v_i \right)
+        = \sum_{i,j=1}^n c_{ij} x_i x_j
+        \qquad
+        \text{für alle $x_1, \dotsc, x_n \in K$}
+      \end{equation}
+      gilt.
+    \item
+      Für jede Basis $\basis{B} = (v_1, \dotsc, v_n)$ von $V$ gibt Koeffizienten $c_{ij} \in K$, so dass \eqref{equation: quadratic form in coordinates} gilt.
+    \item
+      Es gilt $Q(av) = a^2 Q(v)$ für alle $v \in V$ und $a \in K$, und die Abbildung
+      \[
+                \beta
+        \colon  V \times V
+        \to     K,
+        \quad\text{mit}\quad
+          \beta(v,w)
+        = Q(v + w) - Q(v) - Q(w)
+      \]
+      ist bilinear.
+  \end{enumerate}
+\end{proposition}
+
+\begin{definition}
+  Eine Abbildung $Q \colon V \to K$, die eine, und damit alle Eigenschaften aus Proposition~\ref{proposition: characterizations of quadratic forms} erfüllt, heißt \emph{quadratische Form} auf $V$.
+  Es ist
+  \[
+              \Quad{V}
+    \coloneqq \{ Q \colon V \to K \suchthat \text{$Q$ ist eine quadratische Form} \}
+  \]
+  der $K$-Vektorraum der quadratischen Formen auf $K$ (mit punktweiser Addition und punktweiser Skalarmultiplikation).
+\end{definition}
+
+Es sei nun $\ringchar{K} \neq 2$.
+Dann gibt es auf $V$ eine 1:1-Korrespondenz zwischen den symmetrischen Bilinearformen und den quadratischen Formen:
+Jede symmetrische Bilinearform $\beta$ liefert eine quadratische Form
+\[
+          Q_\beta
+  \colon  V
+  \to     K,
+  \quad   v
+  \mapsto \beta(v,v).
+\]
+Andererseits liefert jede quadratische Form $Q \colon V \to K$ eine symmetrische Bilinearform $\beta_Q \in \BilForm(V)$ durch
+\begin{equation}
+  \label{equation: polarisation formula}
+            \beta_Q(v,w)
+  \coloneqq \frac{Q(v+w) - Q(v) - Q(w)}{2}
+  \qquad
+  \text{für alle $v, w \in V$}.
+\end{equation}
+Diese beiden Konstruktionen sind invers zueinander, und liefern einen Isomorphismus
+\begin{align*}
+                      \SymForm(V)
+  \longleftrightarrow \Quad{V},
+  \quad
+                      \beta
+  \longmapsto         Q_\beta,
+  \quad
+                      Q
+  \longmapsfrom       \beta_Q.
+\end{align*}
+
+Wir bezeichnen \eqref{equation: polarisation formula} als eine \emph{Polarisationsformel};
+sie erlaubt es uns, aus der quadratischen Form $Q$ die ursprüngliche symmetrische Form $\beta$ zurückzugewinnen.
+Neben \eqref{equation: polarisation formula} gilt auch noch die Polarisationsformel
+\[
+    \beta(v_1, v_2)
+  = \frac{Q(v_1 + v _2) - Q(v_1 - v_2)}{4}
+  \qquad
+  \text{für alle $v_1, v_2 \in V$}.
+\]
