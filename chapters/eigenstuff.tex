@@ -1,7 +1,6 @@
 \chapter{Diagonalisierbarkeit \& Verwandte}
 
-Im Folgenden sei $K$ ein Körper.
-Im Rest des Abschnittes sei, sofern nicht anders angegeben, $V$ ein endlichdimensionaler $K$-Vektorraum.
+Es sei $K$ ein Körper, $V$ ein endlichdimensionaler $K$-Vektorraum, und $f \colon V \to V$ ein Endomorphismus.
 
 
 
@@ -10,25 +9,29 @@ Im Rest des Abschnittes sei, sofern nicht anders angegeben, $V$ ein endlichdimen
 \section{Eigenwerte und Eigenvektoren}
 
 \begin{definition}
-  Es sei $f \colon V \to V$ ein Endomorphismus.
-  Sind $\lambda \in K$ und $v \in V$ mit $v \neq 0$ und $f(v) = \lambda v$, so ist $v$ ein \emph{Eigenvektor} von $f$ zum \emph{Eigenwert} $\lambda$.
-  Für alle $\lambda \in K$ ist der Untervektorraum
-  \[
-              \eigenspace{V}{f}{\lambda}
-    \coloneqq \{ v \in V \suchthat f(v) = \lambda f \}
-    =         \ker (f - \lambda \id_V)
-  \]
-  der \emph{Eigenraum} von $f$ zu $\lambda$.
-
-  Es sei $n \in \Natural$ und $A \in \matrices{n}{K}$.
-  Sind $\lambda \in K$ und $x \in K^n$ mit $x \neq 0$ und $Ax = \lambda x$, so ist $x$ ein \emph{Eigenvektor} von $A$ zum \emph{Eigenwert} $\lambda$.
-  Für alle $\lambda \in K$ ist der Untervektorraum
-  \[
-              \eigenspace{(K^n)}{A}{\lambda}
-    \coloneqq \{ x \in K^n \suchthat Ax = \lambda x \}
-    =         \ker (A - \lambda \Id)
-  \]
-  der \emph{Eigenraum} von $A$ zu $\lambda$.
+  \begin{itemize}
+    \item
+      Sind $\lambda \in K$ und $v \in V$ mit $v \neq 0$ und $f(v) = \lambda v$, so ist $v$ ein \emph{Eigenvektor} von $f$ zum \emph{Eigenwert} $\lambda$.
+      Für alle $\lambda \in K$ ist der Untervektorraum
+      \[
+                  \eigenspace{V}{f}{\lambda}
+        \coloneqq \{ v \in V \suchthat f(v) = \lambda f \}
+        =         \ker (f - \lambda \id_V)
+      \]
+      der \emph{Eigenraum} von $f$ zu $\lambda$.
+      Die Zahl $\dim \eigenspace{V}{f}{\lambda}$ ist die \emph{geometrische Vielfachheit} von $\lambda$.
+    \item
+      Es sei $n \in \Natural$ und $A \in \matrices{n}{K}$.
+      Sind $\lambda \in K$ und $x \in K^n$ mit $x \neq 0$ und $Ax = \lambda x$, so ist $x$ ein \emph{Eigenvektor} von $A$ zum \emph{Eigenwert} $\lambda$.
+      Für alle $\lambda \in K$ ist der Untervektorraum
+      \[
+                  \eigenspace{(K^n)}{A}{\lambda}
+        \coloneqq \{ x \in K^n \suchthat Ax = \lambda x \}
+        =         \ker (A - \lambda \Id)
+      \]
+      der \emph{Eigenraum} von $A$ zu $\lambda$.
+      Die Zahl $\dim \eigenspace{(K^n)}{A}{\lambda}$ ist die \emph{geometrische Vielfachheit} von $\lambda$.
+  \end{itemize}
 \end{definition}
 
 \begin{remark}
@@ -66,7 +69,7 @@ Für theoretische Aussagen nutzen wir also Endomorphismen, und für konkrete Rec
 
 \section{Das charakterische Polynom}
 
-Es sei $f \colon V \to V$ ein Endomorphismus, $\basis{B}$ eine Basis von $V$ und $A \coloneqq \repmatrixendo{f}{\basis{B}}$ die entsprechende darstellende Matrix.
+Es sei $\basis{B}$ eine Basis von $V$ und $A \coloneqq \repmatrixendo{f}{\basis{B}}$ die zugehörige darstellende Matrix von $f$.
 Dann gilt
 \begin{align*}
       &\, \text{$\lambda$ ist ein Eigenwert von $f$}      \\
@@ -78,26 +81,128 @@ Dann gilt
 \end{align*}
 
 \begin{definition}
-  Das \emph{charakterische Polynom} von $A \in \matrices{n}{K}$ ist definiert als
+  Das \emph{charakterische Polynom} von $A$ ist definiert als
   \[
               \charpol{A}(t)
     \coloneqq \det ( A - t \Id )
     \in       K[t].
   \]
-  Das charakteristische Polynom eines Endomorphismus $f \colon V \to V$ ist definiert als $\charpol{f}(t) = \charpol{A}(t)$, wobei $A \coloneqq \repmatrixendo{f}{\basis{B}}$ die darstellende Matrix von $f$ bezüglich einer Basis $\basis{B}$ von $V$ ist.
+  Das charakteristische Polynom von $f$ ist definiert als $\charpol{f}(t) \coloneqq \charpol{A}(t)$.
 \end{definition}
 
 Dass das charakteristische Polynom $\charpol{f}(t)$ wohldefiniert ist, also nicht von der Wahl der Basis $\basis{B}$ abhängt, folgt aus dem folgenden Lemma:
 
 \begin{lemma}
-  Ähnliche Matrizen haben das gleiche charakterische Polynom.
+  Ähnliche Endomorphismen, bzw.\ Matrizen haben das gleiche charakterische Polynom.
 \end{lemma}
 
-Aus unserer anfänglichen Beobachtung erhalten wir den folgenden Zusammenhang zwischen den Eigenwerten und dem charakteristischen Polynom:
+Aus unserer anfänglichen Beobachtung erhalten wir den folgenden Zusammenhang zwischen den Eigenwerten und dem charakteristischen Polynom von $f$:
 
 \begin{proposition}
   Die Eigenwerte von $f$ sind genau die Nullstellen des charakteristischen Polynoms $\charpol{f}(t)$.
+  Die Vielfachheit des Linearfaktors $t - \lambda$ in $\charpol{f}(t)$ ist die \emph{algebraische Vielfachheit} von $\lambda$.
 \end{proposition}
+
+\begin{example}
+  \begin{enumerate}
+    \item
+      Für die Matrix
+      \[
+          A
+        = \begin{pmatrix}
+            1 & 2 & 3 \\
+            3 & 1 & 2 \\
+            2 & 3 & 1
+          \end{pmatrix}
+        \in \matrices{3}{\Real}
+      \]
+      gilt
+      \[
+          \charpol{A}(t)
+        = \det
+          \begin{pmatrix}
+            1-t & 2   & 3   \\
+            3   & 1-t & 2   \\
+            2   & 3   & 1-t
+          \end{pmatrix}
+        = -t^3 + 3t^2 + 15t + 18.
+      \]
+      Die einzige reelle Nullstelle von $\charpol{A}(t)$, und somit der einzige reelle Eigenwert von $A$, ist $6$.
+      Der entsprechende Eigenraum ist
+      \[
+          \eigenspace{(\Real^3)}{A}{6}
+        = \ker (A - 6 \Id)
+        = \ker \begin{pmatrix*}[r]
+                -5  &  2  &  3 \\
+                 3  & -5  &  2 \\
+                 2  &  3  & -5
+              \end{pmatrix*}
+        = \generated{ \vect{1 \\ 1 \\ 1} }.
+      \]
+
+    \item
+      Ist $A$ eine obere Dreiecksmatrix
+      \[
+          A
+        = \begin{pmatrix}
+            \lambda_1 & \cdots  & *         \\
+                      & \ddots  & \vdots    \\
+                      &         & \lambda_n
+          \end{pmatrix},
+      \]
+      so gilt
+      \begin{align*}
+            \charpol{A}(t)
+        &=  \det
+            \begin{pmatrix}
+              \lambda_1 - t & \cdots  & *             \\
+                            & \ddots  & \vdots        \\
+                            &         & \lambda_n - t
+            \end{pmatrix}
+        \\
+        &=  (\lambda_1 - t) \dotsm (\lambda_n - t)
+         =  (-1)^n (t - \lambda_1) \dotsm (t - \lambda_n).
+      \end{align*}
+      Die Eigenwerte von $A$ sind also genau die Diagonaleinträge $\lambda_1, \dotsc, \lambda_n$.
+    \item
+      Ist allgemeiner $A$ eine obere Blockdreiecksmatrix
+      \[
+          A
+        = \begin{pmatrix}
+            A_1 & \cdots  & *       \\
+                & \ddots  & \vdots  \\
+                &         & A_r
+          \end{pmatrix}
+      \]
+      mit $A_i \in \matrices{n_i}{K}$, so gilt
+      \begin{align*}
+            \charpol{A}(t)
+        &=  \det
+            \begin{pmatrix}
+              A_1 - t \Id_{n_1} & \cdots  & *                 \\
+                                & \ddots  & \vdots            \\
+                                &         & A_r - t \Id_{n_r}
+            \end{pmatrix}
+        \\
+        &=  \det (A_1 - t \Id_{n_1}) \dotsm \det(A_r - t \Id_{n_r})
+         =  \charpol{A_1}(t) \dotsm \charpol{A_r}(t).
+      \end{align*}
+  \end{enumerate}
+\end{example}
+
+Allgemein ist das charakteristische Polynom von $A \in \matrices{n}{K}$ von der Form
+\[
+    \charpol{A}(t)
+  = (-1)^n t^n + (-1)^{n-1} (\tr A) t^{n-1} + \dotsb + \det A.
+\]
+\begin{example}
+  Das charakteristische Polynom einer ($2 \times 2$)-Matrix $A = \begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix} \in \matrices{2}{K}$ ist gegeben durch
+  \[
+      \charpol{A}(t)
+    = t^2 - (\tr A) t + \det A
+    = t^2 - (a + d) t + (ad - bc).
+  \]
+\end{example}
 
 
 
@@ -107,23 +212,55 @@ Aus unserer anfänglichen Beobachtung erhalten wir den folgenden Zusammenhang zw
 
 \begin{lemma}
   \label{lemma: polynomial equations give restriction for the eigenvalues}
-  Es sei $p \in K[t]$ ein Polynom mit $p(f) = 0$.
-  Dann ist jeder Eigenwert von $f$ eine Nullstelle von $p$.
+  Ist $v \in V$ ein Eigenvektor von $f$ zum Eigenwert $\lambda \in K$, so ist $v$ für jedes Polynom $p \in K[t]$ ein Eigenvektor von $p(f)$ zum Eigenwert $p(\lambda)$.
+  Inbesondere sind die Eigenwerte von $f$ Nullstellen von $p$, falls $p(f) = 0$ gilt.
 \end{lemma}
 
+\begin{example}
+  \begin{enumerate}
+    \item
+      Ist $f$ nilpotent mit $f^k = 0$, so gilt $q(f) = 0$ für das Polynom $q(t) \coloneqq t^k$.
+      Deshalb ist $0$ der einzige mögliche Eigenwert von $f$.
+    \item
+      Gilt $f^3 = 3f - 2 \id_V$, so gilt $q(f) = 0$ für das Polynom $q(t) \coloneqq t^3 - 3t + 2$.
+      Es gilt $q(t) = (t-1)^2 (t+2)$, also sind $1$ und $-2$ die einzigen möglichen Eigenwerte für $f$.
+    \item
+      Gilt $f^2 = -\id_V$, so hat $f$ im Fall $K = \Real$ keine Eigenwerte.
+  \end{enumerate}
+\end{example}
+
 \begin{definition}
-  Es sei
-  \[
-              \vanishing{f}
-    \coloneqq \{ p \in K[t] \suchthat p(f) = 0 \}.
-  \]
-  Das eindeutige normierte, von $0$ verschiedene Polynom minimalen Grades aus $\vanishing{f}$ ist das \emph{Minimalpolynom} von $f$, und wird mit $\minpol{f}(t) \in K[t]$ notiert.
+  \begin{itemize}
+    \item
+      Es sei
+      \[
+                  \vanishing{f}
+        \coloneqq \{ p \in K[t] \suchthat p(f) = 0 \}.
+      \]
+      Das eindeutige normierte, von $0$ verschiedene Polynom minimalen Grades aus $\vanishing{f}$ ist das \emph{Minimalpolynom} von $f$, und wird mit $\minpol{f}(t) \in K[t]$ notiert.
+    \item
+      Für $A \in \matrices{n}{K}$ sei
+      \[
+                  \vanishing{A}
+        \coloneqq \{ p \in K[t] \suchthat p(A) = 0 \}.
+      \]
+      Das eindeutige normierte, von $0$ verschiedene Polynom minimalen Grades aus $\vanishing{A}$ ist das \emph{Minimalpolynom} von $A$, und wird mit $\minpol{A}(t) \in K[t]$ notiert.
+  \end{itemize}
 \end{definition}
 
 \begin{remark}
   Die Wohldefiniertheit von $\vanishing{f}$ nutzt die Endlichdimensionalität von $V$.
   Hierdurch wird sichergestellt, dass $\vanishing{f} \neq 0$ gilt.
 \end{remark}
+
+\begin{lemma}
+  Ist $\basis{B} = (v_1, \dotsc, v_n)$ eine Basis von $V$, so gilt für $A = \repmatrixendo{f}{\basis{B}}$, dass $\vanishing{f} = \vanishing{A}$.
+  Somit gilt $\minpol{f} = \minpol{A}$.
+\end{lemma}
+
+\begin{corollary}
+  Ähnliche Endomorphismen, bzw.\ Matrizen haben das gleiche charakteristische Polynom.
+\end{corollary}
 
 Die Definition des Minimalpolynoms lässt sich bis auf Normiertheit wie folgt umschreiben:
 
@@ -146,7 +283,9 @@ Nach dem Satz von Cayley--Hamilton ist jede Nullstelle von $\minpol{f}(t)$ auch 
 Andererseits ist jeder Eigenwert von $f$ nach Lemma~\ref{lemma: properties of the minimal polynomial} und Lemma~\ref{lemma: polynomial equations give restriction for the eigenvalues} auch eine Nullstelle von $\minpol{f}(t)$.
 Somit sind die Nullstelle non $\minpol{f}(t)$ genau die Eigenwerte von $f$.
 Also haben $\charpol{f}(t)$ und $\minpol{f}(t)$ die gleichen Nullstellen.
-Ist $K$ algebraisch abgeschlossen, so zerfallen $\charpol{f}(t)$ und $\minpol{f}(t)$ somit in die gleichen Linearfaktoren, wobei die Vielfachheit im Minimalpolynom nach dem Satz von Cayley--Hamilton jeweils kleiner ist als die Vielfachheit im charakteristischen Polynom.
+
+Ist $K$ algebraisch abgeschlossen, so zerfallen $\charpol{f}(t)$ und $\minpol{f}(t)$ somit in die gleichen Linearfaktoren.
+Die Vielfachheit im Minimalpolynom ist dabei nach dem Satz von Cayley--Hamilton jeweils kleiner ist als die Vielfachheit im charakteristischen Polynom.
 
 
 
@@ -155,18 +294,21 @@ Ist $K$ algebraisch abgeschlossen, so zerfallen $\charpol{f}(t)$ und $\minpol{f}
 \section{Diagonalisierbarkeit}
 
 \begin{lemma}
-  Es seien $v_1, \dotsc, v_n \in V$ Eigenvektoren von $f \colon V \to V$ zu paarweise verschiedenen Eigenwerten, d.h.\ es gelte $f(v_i) = \lambda_i v_i$ mit $\lambda_i \neq \lambda_j$ für $i \neq j$.
+  \label{lemma: linear independence of eigenvectors}
+  Es seien $v_1, \dotsc, v_n \in V$ Eigenvektoren von $f$ zu paarweise verschiedenen Eigenwerten, d.h.\ es gelte $f(v_i) = \lambda_i v_i$ mit $\lambda_i \neq \lambda_j$ für $i \neq j$.
   Dann sind $v_1, \dotsc, v_n$ linear unabhängig.
   Inbesondere ist die Summe $\sum_{\lambda \in K} \eigenspace{V}{f}{\lambda}$ direkt.
 \end{lemma}
 
 \begin{definition}
-  Ein Endomorphismus $f \colon V \to V$ heiß \emph{diagonalisierbar} falls er die folgenden, äquivalenten Bedingungen erfüllt:
+  Der Endomorphismus $f \colon V \to V$ heiß \emph{diagonalisierbar} falls er die folgenden, äquivalenten Bedingungen erfüllt:
   \begin{enumerate}[label = \arabic*.]
     \item
       Es gilt $V = \bigoplus_{\lambda \in K} \eigenspace{V}{f}{\lambda}$.
     \item
       Es gilt $V = \sum_{\lambda \in K} \eigenspace{V}{f}{\lambda}$.
+    \item
+      Es gilt $\dim V = \sum_{\lambda \in K} \dim \eigenspace{V}{f}{\lambda}$.
     \item
       Es gibt eine Basis von $V$ bestehend aus Eigenvektoren von $f$.
     \item
@@ -181,6 +323,8 @@ Ist $K$ algebraisch abgeschlossen, so zerfallen $\charpol{f}(t)$ und $\minpol{f}
     \item
       Es gilt $K^n = \sum_{\lambda \in K} \eigenspace{(K^n)}{A}{\lambda}$.
     \item
+      Es gilt $n = \sum_{\lambda \in K} \dim \left(\eigenspace{(K^n)}{A}{\lambda} \right)$.
+    \item
       Es gibt eine Basis von $K^n$ bestehend aus Eigenvektoren von $A$.
     \item
       Es gibt ein Erzeugendensystem von $K^n$ bestehend aus Eigenvektoren von $A$.
@@ -189,8 +333,14 @@ Ist $K$ algebraisch abgeschlossen, so zerfallen $\charpol{f}(t)$ und $\minpol{f}
   \end{enumerate}
 \end{definition}
 
+\begin{example}
+  Falls das charakteristische Polynom in paarweise verschieden Linearfaktoren $\charpol{f}(t) = (t - \lambda_1) \dotsm (t - \lambda_n)$ zerfällt, so ist $f$ diagonalisierbar:
+  Dann gibt es zu jedem Eigenwert $\lambda_i$ einen Eigenvektor $v_i \in \eigenspace{V}{f}{\lambda_i}$, und die Familie $\basis{B} = (v_1, \dotsc, v_n)$ ist nach Lemma~\ref{lemma: linear independence of eigenvectors} linear unabhängig.
+  Da $n = \dim V$ gilt, ist $\basis{B}$ eine Basis von $V$.
+\end{example}
+
 \begin{lemma}
-  Für einen Endomorphismus $f \colon V \to V$ sind die folgenden Bedingungen äquivalent:
+  Die folgenden Bedingungen äquivalent:
   \begin{enumerate}
     \item
       Der Endomorphismus $f$ ist diagonlisierbar.
@@ -201,13 +351,100 @@ Ist $K$ algebraisch abgeschlossen, so zerfallen $\charpol{f}(t)$ und $\minpol{f}
   \end{enumerate}
 \end{lemma}
 
-% TODO: Adding examples.
+\begin{example}
+  Das charakteristische Polynom der Matrix
+  \[
+              A
+    \coloneqq \begin{pmatrix*}[r]
+                3 & -2  & 0 \\
+                1 &  0  & 0 \\
+                0 &  0  & 1
+              \end{pmatrix*}
+    \in       \matrices{3}{\Real}
+  \]
+  ist
+  \[
+      \charpol{A}(t)
+    = t^3 - 4 t^2 + 5t - 2
+    = - (t^2 - 3t + 2)(t-1)
+    = - (t-1)^2 (t-2).
+  \]
+  Die Eigenwerte von $A$ sind also $1$ und $2$.
+  Die zugehörigen Eigenräume sind
+  \begin{gather*}
+      \eigenspace{(\Real^3)}{A}{1}
+    = \ker (A - \Id)
+    = \ker \begin{pmatrix*}[r]
+            2 & -2  & 0 \\
+            1 & -1  & 0 \\
+            0 &  0  & 0
+          \end{pmatrix*}
+    = \generated{ \vect{1 \\ 1 \\ 0}, \vect{0 \\ 0 \\ 1} }
+  \shortintertext{und}
+      \eigenspace{(\Real^3)}{A}{2}
+    = \ker (A - \Id)
+    = \ker \begin{pmatrix*}[r]
+            1 & -2  &  0 \\
+            1 & -2  &  0 \\
+            0 &  0  & -1
+          \end{pmatrix*}
+    = \generated{ \vect{2 \\ 1 \\ 0} }.
+  \end{gather*}
+  Also ist
+  \[
+      \basis{B}
+    = \left(
+        \vect{1 \\ 1 \\ 0},
+        \vect{0 \\ 0 \\ 1},
+        \vect{2 \\ 1 \\ 0}
+      \right)
+  \]
+  eine Basis von $\Real^3$ aus Eigenvektoren von $A$.
+  Somit ist $A$ diagonalisierbar.
+  Für die entsprechende Basiswechselmatrix
+  \[
+              S
+    \coloneqq \begin{pmatrix}
+                1 & 0 & 2 \\
+                1 & 0 & 1 \\
+                0 & 1 & 0
+              \end{pmatrix}
+    \in       \GL{3}{\Real}
+    \quad\text{gilt}\quad
+    S^{-1} A S
+    = \begin{pmatrix}
+        1 &   &   \\
+          & 1 &   \\
+          &   & 2
+      \end{pmatrix}.
+  \]
+\end{example}
 
-Ob ein Endomorphismus $f \colon V \to V$ diagonalisierbar ist, hängt nur vom Minimalpolynom $\minpol{f}(t)$ ab:
+Ob der Endomorphismus $f \colon V \to V$ diagonalisierbar ist, hängt nur vom Minimalpolynom $\minpol{f}(t)$ ab:
 
 \begin{proposition}
   Der Endomorphismus $f$ ist genau dann diagonalisierbar, falls das Minimalpolynom $\minpol{f}$ in paarweise verschiedene Linearfaktoren zerfällt.
 \end{proposition}
+
+Die Nullstellen von $\minpol{f}$ sind dann, wie bereits oben gesehen, genau die Eigenwerte von $f$.
+
+\begin{example}
+  \begin{enumerate}
+    \item
+      Gilt $f^2 = f$, so gilt $q(f) = 0$ für das Polynom $q(t) \coloneqq t^2 - t = t(t-1)$.
+      Da $\minpol{f} \divides q$ gilt, zerällt somit $\minpol{f}$ in die möglichen Linearfaktoren $t$ und $t-1$.
+      Somit ist $f$ diagonalisierbar mit möglichen Eigenwerten $0$ und $1$.
+    \item
+      Gilt $f^2 = \id_V$, so gilt $q(f) = 0$ für das Polynom $q(t) = t^2 - 1 = (t+1)(t-1)$.
+      Gilt $\ringchar{K} \neq 2$, so ist $f$ somit diagonalisierbar mit möglichen Eigenwerten $1$ und $-1$.
+  \end{enumerate}
+\end{example}
+
+Ist $U \subseteq V$ ein $f$-invarianter Untervektorraum, so gilt für die den eingeschränkten Endomorphismus $f|_U \colon U \to U$, dass $\minpol{f}(f|_U) = \minpol{f}(f)|_U = 0$, und somit dass $\minpol{f|_U} \divides \minpol{f}$.
+
+\begin{corollary}
+  Ist $f$ diagonalisierbar, so ist auch $f|_U$ diagonalisierbar.
+\end{corollary}
 
 
 
@@ -216,35 +453,39 @@ Ob ein Endomorphismus $f \colon V \to V$ diagonalisierbar ist, hängt nur vom Mi
 \section{Simultane Diagonalisierbarkeit}
 
 \begin{definition}
-  Eine Familie $(f_i)_{i \in I}$ von Endomorphismen $f_i \colon V \to V$ heißt \emph{simultan diagonalisierbar}, falls es eine Basis $\basis{B}$ von $V$ gibt, so dass $\repmatrixendo{f}{\basis{B}}$ für jedes $i \in I$ eine Diagonalmatrix ist.
+  Eine Kollektion $f_i$, $i \in I$ von Endomorphismen $f_i \colon V \to V$ heißt \emph{simultan diagonalisierbar}, falls es eine Basis $\basis{B}$ von $V$ gibt, so dass $\repmatrixendo{f}{\basis{B}}$ für jedes $i \in I$ eine Diagonalmatrix ist.
   
-  Eine Familie $(A_i)_{i \in I}$ von Matrizen $A_i \in \matrices{n}{K}$ heißt \emph{simultan diagonalisierbar}, falls es $S \in \GL{n}{K}$ gibt, so dass $S A_i S^{-1}$ für jedes $i \in I$ eine Diagonalmatrix ist.
+  Eine Kollektion $A_i$, $i \in I$ von Matrizen $A_i \in \matrices{n}{K}$ heißt \emph{simultan diagonalisierbar}, falls es $S \in \GL{n}{K}$ gibt, so dass $S A_i S^{-1}$ für jedes $i \in I$ eine Diagonalmatrix ist.
 \end{definition}
 
 \begin{lemma}
-  Für eine Familie $(f_i)_{i \in I}$ von Endomorphismen $f_i \colon V \to V$ sind die folgenden Bedingungen äquivalent:
+  Für eine Kollektion $f_i$, $i \in I$ von Endomorphismen $f_i \colon V \to V$ sind die folgenden Bedingungen äquivalent:
   \begin{enumerate}
     \item
-      Die Familie von Endomorphismen $(f_i)_{i \in I}$ ist simultan diagonalisierbar.
+      Die Endomorphismen $f_i$, $i \in I$ sind simultan diagonalisierbar.
     \item
-      Es gibt eine Basis $\basis{B}$ von $V$, so dass die Familie von Matrizen $(\repmatrixendo{f_i}{\basis{B}})_{i \in I}$ simultan diagonalisierbar ist.
+      Es gibt eine Basis $\basis{B}$ von $V$, so dass die Matrizen $\repmatrixendo{f_i}{\basis{B}}$, $i \in I$ simultan diagonalisierbar sind.
     \item
-      Für jede Basis $\basis{B}$ von $V$ ist die Familie von Matrizen $(\repmatrixendo{f_i}{\basis{B}})_{i \in I}$ simultan diagonalisierbar.
+      Für jede Basis $\basis{B}$ von $V$ sind die Matrizen $\repmatrixendo{f_i}{\basis{B}}$, $i \in I$ simultan diagonalisierbar.
   \end{enumerate}
 \end{lemma}
+
+\begin{example}
+  \begin{enumerate}
+    \item
+      Sind $f, g \colon V \to V$ simultan diagonalisierbar, so sind auch $f + g$ und $f \circ g$ diagonalisierbar.
+  \end{enumerate}
+\end{example}
 
 \begin{proposition}
   Für Endomorphismen $f_1, \dotsc, f_n \colon V \to V$ sind die folgenden Bedingungen äquivalent:
   \begin{enumerate}
     \item
-      Die Familie $(f_1, \dotsc, f_n)$ sind simultan diagonalisierbar.
+      Die Endomorphismen $f_1, \dotsc, f_n$ sind simultan diagonalisierbar.
     \item
-      Die Endomorphismen $f_1, \dotsc, f_n$ sind diagonalisierbar und sind paarweise kommutierend, d.h.\ es gilt $f_i f_j = f_j f_i$ für alle $i, j$.
+      Die Endomorphismen $f_1, \dotsc, f_n$ sind diagonalisierbar und paarweise kommutierend, d.h.\ es gilt $f_i \circ  f_j = f_j \circ f_i$ für alle $i, j$.
   \end{enumerate}
 \end{proposition}
-
-% TODO: Adding examples and calculations.
-
 
 
 
@@ -252,13 +493,9 @@ Ob ein Endomorphismus $f \colon V \to V$ diagonalisierbar ist, hängt nur vom Mi
 
 \section{Trigonalisierbarkeit}
 
-Es sei $f \colon V \to V$ ein Endomorphismus.
-
 
 
 \subsection{Definition von Trigonalisierbarkeit}
-
-
 
 \begin{definition}
   Der Endomorphismus $f \colon V \to V$ heißt trigonalisierbar, falls es eine Basis $\basis{B}$ von $V$ gibt, so dass $\repmatrixendo{f}{\basis{B}}$ eine obere Dreiecksmatrix ist.
@@ -272,9 +509,9 @@ Es sei $f \colon V \to V$ ein Endomorphismus.
     \item
       Der Endomorphismus $f$ ist trigonalisierbar.
     \item
-      Es gibt eine Basis $\basis{B}$ von $V$, so dass die darstellende Matrix $\repmatrixendo{f}{\basis{B}}$ trigonalisierbar ist.
+      Es gibt eine Basis $\basis{B}$ von $V$, so dass die Matrix $\repmatrixendo{f}{\basis{B}}$ trigonalisierbar ist.
     \item
-      Für jede Basis $\basis{B}$ von $V$ ist die darstellende Matrix $\repmatrixendo{f}{\basis{B}}$ trigonalisierbar.
+      Für jede Basis $\basis{B}$ von $V$ ist die Matrix $\repmatrixendo{f}{\basis{B}}$ trigonalisierbar.
   \end{enumerate}
 \end{lemma}
 
@@ -298,7 +535,7 @@ Es sei $f \colon V \to V$ ein Endomorphismus.
   Die Flagge heißt \emph{$f$-stabil} wenn $f(V_k) \subseteq V_k$ für alle $k$ gilt.
 \end{definition}
 
-Ist $\basis{B} = (v_1, \dotsc, v_n)$ eine Basis von $V$, so dass $\repmatrixendo{f}{\basis{B}}$ in oberer Dreiecksform ist, so ist
+Ist $\basis{B} = (v_1, \dotsc, v_n)$ eine Basis von $V$ mit $\repmatrixendo{f}{\basis{B}}$ in oberer Dreiecksform, so ist
 \[
               0
   \subsetneq  \generated{v_1}
@@ -345,8 +582,8 @@ Außerdem ist jeder Endomorphismus von $V$ trigonalisierbar, falls $K$ algebrais
 \section{Spur und Determinante durch Eigenwerte}
 \label{section: trace and determinant via eigenvalues}
 
-Es sei $f \colon V \to V$ ein Endomorphismus, so dass das charakteristische Polynom $\charpol{f}(t)$ in Linearfaktoren $\charpol{f}(t) = (t - \lambda_1) \dotsm (t - \lambda_n)$ zerfällt.
-Dann ist $f$ nach Satz~\ref{theorem: characterization of triagonalizable endomorphisms} trigonalisierbar, und somit gilt
+Zerfällt $\charpol{f}(t)$ in Linearfaktoren $\charpol{f}(t) = (t - \lambda_1) \dotsm (t - \lambda_n)$, so ist $f$ nach Satz~\ref{theorem: characterization of triagonalizable endomorphisms} trigonalisierbar.
+Dann gilt
 \[
     \tr f
   = \lambda_1 + \dotsb + \lambda_n
