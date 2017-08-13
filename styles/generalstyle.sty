@@ -2,6 +2,7 @@
 \usepackage{mathtools, amssymb}
 \usepackage{amsthm}
 \usepackage{stmaryrd}
+\usepackage{extarrows}
 \usepackage{enumitem}
 \usepackage{tikz-cd}
 \usepackage[ngerman]{babel}
@@ -92,9 +93,11 @@
 \newcommand{\basis}[1]{\mathcal{#1}}
 \newcommand{\conjugate}[1]{\overline{#1}}
 \newcommand{\dual}[1]{#1^*}
+\newcommand{\ddual}[1]{#1^{**}}
 \newcommand{\halfdual}[1]{\overline{#1}^*}
 \newcommand{\madj}[1]{#1^*}
 \newcommand{\transpose}[1]{#1^T}
 
 % hacks
 \newcommand{\vect}[1]{\begin{pmatrix} #1 \end{pmatrix}}
+\newcommand{\rvect}[1]{\begin{pmatrix*}[r] #1 \end{pmatrix*}}

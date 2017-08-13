@@ -1,40 +1,6 @@
 \chapter{Normalenformen für normale Endomorphismen}
 
-Es seien $V$ und $W$ endlichdimensionale Skalarprodaukträume.
-
-
-
-
-
-\section{Anfängliche Definitionen}
-
-\begin{definition}
-  \begin{itemize}
-    \item
-      Eine Matrix $A \in \matrices{n}{\Korper}$ heißt \emph{unitär} im Fall $\Korper = \Complex$, bzw.\ \emph{orthogonal} im Fall $\Korper = \Real$, falls sie die folgenden äquivalenten Bedingungen erfüllt:
-      \begin{enumerate}
-        \item
-          Die Matrix $A$ ist invertierbar mit $A^{-1} = \madj{A}$.
-        \item
-          Es gilt $A \madj{A} = \Id$.
-        \item
-          Es gilt $\madj{A} A = \Id$.
-        \item
-          Die Spalten von $A$ bilden eine Orthonormalbasis von $\Korper^n$.
-        \item
-          Die Zeilen von $A$ bilden eine Orthonormalbasis von $\Korper^n$ (betrachtet als Zeilenvektoren).
-      \end{enumerate}
-    \item
-      Es seien
-      \begin{align*}
-                    \Unitary{n}
-        &\coloneqq  \{ U \in \matrices{n}{\Complex} \suchthat \text{$U$ ist unitär} \}
-      \shortintertext{und}
-                    \Orthogonal{n}
-        &\coloneqq  \{ U \in \matrices{n}{\Real} \suchthat \text{$U$ ist orthogonal} \}.
-      \end{align*}
-  \end{itemize}
-\end{definition}
+Es seien $V$ und $W$ endlichdimensionale Skalarprodukträume.
 
 Für alle $\varphi \in \real$ sei
 \[
@@ -53,11 +19,16 @@ die Drehmatrix um den Winkel $\varphi$.
 
 \section{Normale Endomorphismen}
 
-Es sei $f \colon V \to V$ ein Endomorphismus eines endlichdimensionalen Skalarproduktraums $V$.
+Es sei $V$ ein endlichdimensionaler Skalarproduktraum und $f \colon V \to V$ ein Endomorphismus.
 
 \begin{definition}
-  Der Endomorphismus $f$ heißt \emph{normal} falls $f$ und $\adj{f}$ kommutieren, d.h.\ falls $f \circ \adj{f} = \adj{f} \circ f$ gilt.
-  Eine Matrix $A$ heißt normal, falls $A$ und $\madj{A}$ kommutieren, d.h.\ falls $A \madj{A} = \madj{A} A$ gilt.
+  \leavevmode
+  \begin{itemize}
+    \item
+      Der Endomorphismus $f$ heißt \emph{normal} falls $f$ und $\adj{f}$ kommutieren, d.h.\ falls $f \circ \adj{f} = \adj{f} \circ f$ gilt.
+    \item
+      Eine Matrix $A \in \matrices{n}{\Korper}$ heißt normal, falls $A$ und $\madj{A}$ kommutieren, d.h.\ falls $A \madj{A} = \madj{A} A$ gilt.
+  \end{itemize}
 \end{definition}
 
 \begin{lemma}
@@ -66,9 +37,9 @@ Es sei $f \colon V \to V$ ein Endomorphismus eines endlichdimensionalen Skalarpr
     \item
       Der Endomorphismus $f$ ist normal.
     \item
-      Es gibt eine Orthonormalbasis $\basis{B}$ von $V$, so dass die darstellende Matrix $\repmatrixendo{f}{\basis{B}}$ normal ist.
+      Es gibt eine Orthonormalbasis $\basis{B}$ von $V$, so dass die Matrix $\repmatrixendo{f}{\basis{B}}$ normal ist.
     \item
-      Für jede Orthonormalbasis $\basis{B}$ von $V$ ist die darstellende Matrix $\repmatrixendo{f}{\basis{B}}$ normal.
+      Für jede Orthonormalbasis $\basis{B}$ von $V$ ist die Matrix $\repmatrixendo{f}{\basis{B}}$ normal.
   \end{enumerate}
 \end{lemma}
 
@@ -80,7 +51,7 @@ Es sei $f \colon V \to V$ ein Endomorphismus eines endlichdimensionalen Skalarpr
   Für $\Korper = \Complex$ sind die folgenden Bedingungen sind äquivalent:
   \begin{enumerate}
     \item
-      Der Endomorphismus $f$ ist unitär.
+      Der Endomorphismus $f$ ist normal.
     \item
       Es gibt eine Orthonormalbasis von $V$ aus Eigenvektoren von $f$.
     \item
@@ -94,13 +65,22 @@ Es sei $f \colon V \to V$ ein Endomorphismus eines endlichdimensionalen Skalarpr
     \item
       Die Matrix $A$ ist normal.
     \item
-      Es gibt eine Orthonormalbasis von $V$ aus Eigenvektoren von $A$.
+      Es gibt eine Orthonormalbasis von $\Korper^n$ aus Eigenvektoren von $A$.
     \item
       Die Matrix $A$ ist diagonalisierbar und die Eigenräume sind orthogonal zueinander.
     \item
       Es gibt eine unitäre Matrix $U \in \Unitary{n}$, so dass $U^{-1} A U$ eine Diagonalmatrix ist.
   \end{enumerate}
 \end{corollary}
+
+
+Ist $A \in \matrices{n}{\Complex}$ eine normale Matrix, so lässt sich zum Berechnen einer Orthonormalbasis von $\Complex^n$ aus Eigenvektoren von $A$ wie folgt vorgehen:
+\begin{itemize}
+  \item
+    Man berechne eine Basis $\basis{B}$ von $\Complex^n$ aus Eigenvektoren von $A$.
+  \item
+    Man wende für jeden Eigenwert von $A$ das Gram--Schidtsch-Verfahren auf die zugehörigen Basisvektoren aus $\basis{B}$ an.
+\end{itemize}
 
 
 
@@ -126,7 +106,7 @@ Es sei $f \colon V \to V$ ein Endomorphismus eines endlichdimensionalen Skalarpr
           \end{pmatrix}
       \end{equation}
       mit $\lambda_1, \dotsc, \lambda_t \in \Real$, $r_1, \dotsc, r_s > 0$ und $\varphi_1, \dotsc, \varphi_s \in (0, \pi)$ ist.
-      Diese Form ist bis auf Permutation der Diagonalblöcke eindeutig.
+      Diese Form ist eindeutig bis auf Permutation der Diagonalblöcke.
   \end{enumerate}
 \end{theorem}
 
@@ -136,8 +116,7 @@ Es sei $f \colon V \to V$ ein Endomorphismus eines endlichdimensionalen Skalarpr
     \item
       Die Matrix $A$ ist normal.
     \item
-      Es gibt eine orthonormale Matrix $U \in \Orthogonal{n}$, so dass $U^{-1} A U$ in der Form \eqref{equation: normal form for real normal endomorphisms} ist.
-      Diese Form ist eindeutig bis auf Permutation der Diagonalblöcke.
+      Es gibt eine orthonormale Matrix $U \in \Orthogonal{n}$, so dass $U^{-1} A U$ in der Form \eqref{equation: normal form for real normal endomorphisms} ist, und es gilt die gleiche Eindeutigkeit.
   \end{enumerate}
 \end{corollary}
 
@@ -172,29 +151,16 @@ Es sei $f \colon V \to V$ ein Endomorphismus eines endlichdimensionalen Skalarpr
     \item
       Unitäre und orthogonale Abbildungen sind injektiv.
     \item
-      Eine lineare Abbildung $f \colon V \to W$ ist genau dann unitär, bzw.\ orthogonal, falls $f$ eine Isometrie ist, d.h.\ falls
-      \[
-        \norm{ f(v) } = \norm{v}
-        \qquad
-        \text{für alle $v \in V$ gilt.}
-      \]
-    \item
       Es ist $\Unitary{V} \subseteq \GL{}{V}$, bzw.\ $\Orthogonal{V} \subseteq \GL{}{V}$ eine Untergruppe.
   \end{itemize}
 \end{lemma}
 
-Für den zweiten Punkt aus Lemma~\ref{lemma: properties of unitary and orthogonal transformations} nutzt man die \emph{Polarisierungsformeln}:
-Im Fall $\Korper = \Real$ gilt
-\[
-    \bil{v_1}{v_2}
-  = \frac{ \norm{v_1 + v_2}^2 - \norm{v_1}^2 - \norm{v_2}^2 }{2}
-  = \frac{ \norm{v_1 + v_2}^2 - \norm{v_1 - v_2}^2 }{4},
-\]
-und im Fall $\Korper = \Complex$ gilt
-\[
-    \bil{v_1}{v_2}
-  = \frac{ \norm{v_1 + v_2}^2 - \norm{v_1 - v_2}^2 + i \norm{v_1 + i v_2}^2 - i \norm{v_1 - i v_2}^2 }{4}.
-\]
+Aus den Polarisationsformeln aus Abschnitt~\ref{section: quadratic forms and polarisation} für symmetrische Bilinearformen, bzw.\ Sesquilinearformen, erhält man die folgende Charakterisierung unitärer, bzw.\ orthogonaler Transformationen:
+
+\begin{lemma}
+  Eine lineare Abbildung $f \colon V \to W$ ist genau dann unitär, bzw.\ orthogonal, falls $f$ eine Isometrie ist, d.h.\ falls $\norm{ f(v) } = \norm{v}$ für alle $v \in V$ gilt.
+\end{lemma}
+
 
 Es sei nun $f \colon V \to V$ ein Endomorphismus.
 
@@ -218,11 +184,10 @@ Es sei nun $f \colon V \to V$ ein Endomorphismus.
     \item
       Der Endomorphismus $f$ ist unitär, bzw.\ orthogonal.
     \item
-      Es gibt eine Orthonormalbasis $\basis{B}$ von $V$, so dass die darstellende Matrix $\repmatrixendo{f}{\basis{B}}$ unitär ist.
+      Es gibt eine Orthonormalbasis $\basis{B}$ von $V$, so dass $\repmatrixendo{f}{\basis{B}}$ unitär, bzw.\ orthogonal ist.
     \item
-      Für jede Orthonormalbasis $\basis{B}$ von $V$ ist die darstellende Matrix $\repmatrixendo{f}{\basis{B}}$ unitär.
+      Für jede Orthonormalbasis $\basis{B}$ von $V$ ist $\repmatrixendo{f}{\basis{B}}$ unitär, bzw.\ orthogonal.
   \end{enumerate}
-  Im Fall $\Korper = \Real$ sind diese unitären Matrizen dabei bereits orthogonal.
 \end{lemma}
 
 
@@ -273,8 +238,8 @@ Es sei nun $f \colon V \to V$ ein Endomorphismus.
           \end{pmatrix}
       \end{equation}
       mit $\varphi_1, \dotsc, \varphi_s \in (0, \pi)$ ist.
-      Diese Form ist bis auf Permutation der Diagonalblöcke eindeutig.
-      (Inbesondere ist die Anzahl der Einsen und Minus-Einsen jeweils eindeutig.)
+      Diese Form ist eindeutig bis auf Permutation der Diagonalblöcke.
+      \textup(Insbesondere ist die Anzahl der Einsen und Minus-Einsen jeweils eindeutig bestimmt.\textup)
   \end{enumerate}
 \end{theorem}
 
@@ -284,8 +249,7 @@ Es sei nun $f \colon V \to V$ ein Endomorphismus.
     \item
       Die Matrix $A$ ist normal.
     \item
-      Es gibt eine orthonormale Matrix $U \in \Orthogonal{n}$, so dass $U^{-1} A U$ in der Form \eqref{equation: normal form for orthogonal endomorphisms} ist.
-      Diese Form ist eindeutig bis auf Permutation der Diagonalblöcke.
+      Es gibt eine orthonormale Matrix $U \in \Orthogonal{n}$, so dass $U^{-1} A U$ in der Form \eqref{equation: normal form for orthogonal endomorphisms} ist, und es gilt die gleiche Eindeutigkeit.
   \end{enumerate}
 \end{corollary}
 
@@ -299,10 +263,7 @@ Es sei nun $f \colon V \to V$ ein Endomorphismus.
 
 \begin{definition}
   Der Endomorphismus $f$ heißt \emph{selbstadjungiert}, falls $\adj{f} = f$ gilt.
-  Eine Matrix $A \in \matrices{n}{\Complex}$ heißt \emph{hermitesch}, falls $\madj{A} = A$ gilt.
 \end{definition}
-
-Inbesondere ist eine reelle Matrix genau dann hermitesch, wenn sie symmetrisch ist.
 
 \begin{lemma}
   Die folgenden Bedingungen sind äquivalent:
@@ -310,11 +271,15 @@ Inbesondere ist eine reelle Matrix genau dann hermitesch, wenn sie symmetrisch i
     \item
       Der Endomorphismus $f$ ist selbstadjungiert.
     \item
-      Es gibt eine Orthonormalbasis $\basis{B}$ von $V$, so dass $\repmatrixendo{f}{\basis{B}}$ hermitesch ist.
+      Es gibt eine Orthonormalbasis $\basis{B}$ von $V$, so dass die Matrix $\repmatrixendo{f}{\basis{B}}$ hermitesch ist.
     \item
-      Für jede Orthonormalbasis $\basis{B}$ von $V$ ist $\repmatrixendo{f}{\basis{B}}$ hermitesch.
+      Für jede Orthonormalbasis $\basis{B}$ von $V$ ist die Matrix $\repmatrixendo{f}{\basis{B}}$ hermitesch.
   \end{enumerate}
 \end{lemma}
+
+
+
+\subsection{Normalenform}
 
 \begin{theorem}
   Die folgenden Bedingungen sind äquivalent:
@@ -324,35 +289,195 @@ Inbesondere ist eine reelle Matrix genau dann hermitesch, wenn sie symmetrisch i
     \item
       Es gibt eine Orthonormalbasis von $V$ aus Eigenvektoren von $f$, und alle Eigenwerte von $f$ sind reell.
     \item
-      Der Endomorphismus $f$ ist diagonalisierbar, und die Eigenräume sind orthogonal zueinander.
+      Der Endomorphismus $f$ ist diagonalisierbar mit reellen Eigenwerten, und die Eigenräume sind orthogonal zueinander.
   \end{enumerate}
 \end{theorem}
 
 \begin{corollary}
   \label{corollary: hermitian matrices are diagonalizable}
-  Für eine Matrix $A \in \matrices{n}{\Korper}$ sind die folgenden Bedingungen äquivalent:
+  Für $A \in \matrices{n}{\Korper}$ sind die folgenden Bedingungen äquivalent:
   \begin{enumerate}
     \item
       Die Matrix $A$ ist hermitesch.
     \item
       Es gibt eine Orthonormalbasis von $\Korper^n$ aus Eigenvektoren von $A$, und alle Eigenwerte von $A$ sind reell.
     \item
-      Es gibt eine unitäre Matrix $U \in \Unitary{n}$, so dass $U^{-1} A U$ eine Diagonalmatrix mit reellen Diagonaleinträgen ist.
+      Die Matrix $A$ ist diagonalisierbar mit reellen Eigenwerten, und die Eigenräume sind orthogonal zueinander.
     \item
-      Die Matrix $A$ ist diagonalisierbar, und die Eigenräume sind orthogonal zueinander.
+      Es gibt eine unitäre, bzw.\ orthogonale Matrix $U$, so dass $U^{-1} A U$ eine Diagonalmatrix mit reellen Diagonaleinträgen ist.
   \end{enumerate}
-  Im Fall $\Korper = \Real$ lässt sich die Matrix $U$ reell wählen, und somit als $U \in \Orthogonal{n}$.
 \end{corollary}
 
-\begin{definition}
-  Ein selbstadjungierter Endomorphismus $f \colon V \to V$ \textup(bzw.\ eine hermitesche Matrix $A \in \matrices{n}{\Korper}$\textup) heißt \emph{positiv definit} falls die symmetrische Bilinearform $\beta \in \SymForm(V)$ \textup(bzw.\ $\beta \in \SymForm(\Real^n)$\textup) mit $\beta(v_1, v_2) \coloneqq \bil{f(v_1)}{v_2}$ positiv definit ist.
+\begin{example}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      Es sei
+      \[
+                  A
+        \coloneqq \begin{pmatrix}
+                    1 & 0 & 1 \\
+                    0 & 1 & 1 \\
+                    1 & 1 & 0
+                  \end{pmatrix}
+        \in       \matrices{3}{\Real}.
+      \]
+      Es gilt
+      \[
+          \charpol{A}(t)
+        = - t^3 + 2 t^2 + t - 2
+        = - (t-1)(t-2)(t+1),
+      \]
+      also sind $1$, $2$ und $-1$ die Eigenwerte von $A$.
+      Die zugehörigen Eigenräume sind
+      \begin{gather*}
+          \eigenspace{(\Real^3)}{A}{1}
+        = \ker  (A - \Id)
+        = \ker  \begin{pmatrix*}[r]
+                  0 & 0 &  1  \\
+                  0 & 0 &  1  \\
+                  1 & 1 & -1
+                \end{pmatrix*}
+        = \generated{ \rvect{1 \\ -1 \\ 0} },
+      \\
+          \eigenspace{(\Real^3)}{A}{2}
+        = \ker  (A - 2\Id)
+        = \ker  \begin{pmatrix*}[r]
+                  -1  &  0  &  1 \\
+                   0  & -1  &  1 \\
+                   1  &  1  & -2
+                \end{pmatrix*}
+        = \generated{ \vect{1 \\ 1 \\ 1} },
+      \\
+          \eigenspace{(\Real^3)}{A}{-1}
+        = \ker  (A + \Id)
+        = \ker  \begin{pmatrix*}[r]
+                  2 & 0 & 1 \\
+                  0 & 2 & 1 \\
+                  1 & 1 & 1
+                \end{pmatrix*}
+        = \generated{ \rvect{1 \\ 1 \\ -2} }.
+      \end{gather*}
+      Durch Normieren der obigen Eigenvektoren ergibt sich die Orthonormalbasis von $\Real^3$
+      \[
+          \basis{B}
+        = \left(
+            \frac{1}{\sqrt{2}} \rvect{1 \\ -1 \\ 0},
+            \frac{1}{\sqrt{3}} \vect{1 \\ 1 \\ 1},
+            \frac{1}{\sqrt{6}} \rvect{1 \\ 1 \\ -2}
+          \right)
+      \]
+      bestehend aus Eigenvektoren von $A$.
+      
+    \item
+      Es sei
+      \[
+                  A
+        \coloneqq \begin{pmatrix*}[r]
+                    -1  &  2  &  2 \\
+                     2  & -1  &  2 \\
+                     2  &  2  & -1
+                  \end{pmatrix*}
+        \in       \matrices{3}{\Real}
+      \]
+  \end{enumerate}
+  Es gilt
+  \[
+      A + 3 \Id
+    = \begin{pmatrix}
+        2 & 2 & 2 \\
+        2 & 2 & 2 \\
+        2 & 2 & 2
+      \end{pmatrix}
+  \]
+  und somit $\rank (A + 3 \Id) = 1$.
+  Somit ist $\dim \ker (A + 3 \Id) = 2$.
+  Also ist $-3$ ein Eigenwert von $A$ von Vielfachheit $2$.
+  Der entsprechende Eigenraum ist
+  \[
+      \ker (A + 3 \Id)
+    = \generated{ \rvect{1 \\ -1 \\ 0}, \rvect{0 \\ 1 \\ -1} }.
+  \]
   
-  Analog sind für $f$ \textup(bzw.\ $A$\textup) die Eigenschaften \emph{positiv semidefinit}, \emph{negativ definit}, \emph{negativ semidefinit} und \emph{indefinit} definiert.
+  Da $\tr A  =  -3$ gilt, ist $3$ der letzte übrige Eigenwert von $A$.
+  Der entsprechende Eigenraum ist
+  \[
+      \ker (A - 3 \Id)
+    = \ker \begin{pmatrix*}[r]
+            -4  &  2  &  2  \\
+             2  & -4  &  2  \\
+             2  &  2  & -4
+          \end{pmatrix*}
+    = \generated{ \vect{1 \\ 1 \\ 1} }.
+  \]
+  Somit ist
+  \[
+              \basis{B}'
+    \coloneqq \left(
+                \rvect{1 \\ -1 \\ 0},
+                \rvect{0 \\ 1 \\ -1},
+                \vect{1 \\ 1 \\ 1}
+              \right)
+  \]
+  eine Basis von $\Real^3$ aus Eigenvektoren von $A$.
+  Durch
+  \begin{itemize}
+    \item
+      Anwenden des Gram--Schmidt-Verfahrens auf die ersten beiden Basisvektoren, und
+    \item
+      Normieren des dritten Basisvektors
+  \end{itemize}
+  ergibt sich die Orthonormalbasis von $\Real^3$
+  \[
+    \basis{B}
+    \coloneqq \left(
+                \frac{1}{\sqrt{2}} \rvect{1 \\ -1 \\ 0},
+                \frac{1}{\sqrt{6}} \rvect{1 \\ 1 \\ -2},
+                \frac{1}{\sqrt{3}} \vect{1 \\ 1 \\ 1}
+              \right)
+  \]
+  aus Eigenvektoren von $A$.
+\end{example}
+
+
+
+\subsection{Positive Endomorphismen \& Co.}
+
+Selbstadjungierte Endomorphismen lassen sich als symmetrische Bilinearformen, bzw.\ hermitesche Sesquilinearform auffasen.
+
+\begin{definition}
+  \leavevmode
+  \begin{itemize}
+    \item
+      Ein selbstadjungierter Endomorphismus $f \colon V \to V$ heißt \emph{positiv definit} falls die hermitesche Sesquilinearform $\beta \in \HerForm(V)$, bzw.\ die symmetrische Bilinearform $\beta \in \SymForm(V)$ mit $\beta(v_1, v_2) \coloneqq \bil{f(v_1)}{v_2}$ positiv definit ist.
+    \item
+      Eine hermitesche Matrix $A \in \matrices{n}{\Korper}$ heißt \emph{positiv definit} falls die hermitesche Sesquilinearform $\beta \in \HerForm(\Complex^n)$ mit $\beta(v_1, v_2) \coloneqq \transpose{v_1} A \conjugate{v_2}$ positiv definit ist.
+  \end{itemize}
+  
+  Analog sind die Eigenschaften \emph{positiv semidefinit}, \emph{negativ definit}, \emph{negativ semidefinit} und \emph{indefinit} definiert.
+\end{definition}
+
+\begin{definition}
+  Für einen selbstadjungierten Endomorphismus $f \colon V \to V$ sind die folgenden Bedingungen äquivalent:
+  \begin{enumerate}
+    \item
+      Der Endomorphismus $f$ ist positiv definit.
+    \item
+      Es gibt eine Orthonormalbasis $\basis{B}$ von $V$, so dass die Matrix $\repmatrixendo{f}{\basis{B}}$ positiv definit ist.
+    \item
+      Für jede Orthonormalbasis $\basis{B}$ von $V$ ist die Matrix $\repmatrixendo{f}{\basis{B}}$ positiv definit.
+  \end{enumerate}
+  Für positiv semidefinit, negativ definit, negativ semidefinit und indefinit definiert gelten die analogen Aussagen.
 \end{definition}
 
 \begin{corollary}
-  Ein selbstadjungierter Endomorphismus $f \colon V \to V$, \textup(bzw.\ eine hermitesche Matrix $A \in \matrices{n}{\Korper}$\textup) ist genau dann positiv definit, wenn alle Eigenwerte von $f$ \textup(bzw.\ $A$\textup) positiv sind.
-  
+  \leavevmode
+  \begin{itemize}
+    \item
+      Ein selbstadjungierter Endomorphismus $f \colon V \to V$ ist genau dann positiv definit, wenn alle Eigenwerte von $f$ positiv sind.
+    \item
+      Eine hermitesche Matrix $A \in \matrices{n}{\Korper}$ ist genau dann positiv definit, wenn alle Eigenwerte von $A$ positiv sind.
+  \end{itemize}
   Für positiv semidefinit, negativ definit, negativ semidefinit und indefinit definiert gelten die analogen Aussagen.
 \end{corollary}
 
@@ -468,13 +593,16 @@ Die verschiedenen Normalenformen lassen sich wie folgt zusammenfassen:
 
 
 
-\section{Polarzerlegung und Iwasawa-Zerlegung}
+
+
+\section{Polarzerlegung}
 
 \begin{lemma}
   \label{lemma: existence of square roots}
+  \leavevmode
   \begin{itemize}
     \item
-      Für jeden positiv semidefiniten selbstadjungierten Endomorphismus $f \colon V \to V$ gibt es eine eindeutigen positiv semidefinitinen selbstadjungierten Endomorphismus $g \colon V \to V$ mit $f = g^2$.
+      Für jeden positiv semidefiniten selbstadjungierten Endomorphismus $f \colon V \to V$ gibt es einen eindeutigen positiv semidefinitinen selbstadjungierten Endomorphismus $g \colon V \to V$ mit $f = g^2$.
     \item
       Für jede positiv semidefinite hermitesche Matrix $A \in \matrices{n}{\Korper}$ gibt es eine eindeutige positiv semidefinite hermitesche Matrix $B \in \matrices{n}{\Korper}$ mit $A = B^2$.
   \end{itemize}
@@ -483,6 +611,7 @@ Die verschiedenen Normalenformen lassen sich wie folgt zusammenfassen:
 In der Situation von Lemma~\ref{lemma: existence of square roots} schreiben wir $g = \sqrt{f}$ (bzw.\ $B = \sqrt{A}$).
 
 \begin{theorem}[Polarzerlegung]
+  \leavevmode
   \begin{itemize}
     \item
       Für jeden Endomorphismus $f \colon V \to V$ gibt es einen selbstadjungierten Endomorphismus $s \colon V \to V$ und einen unitären, bzw.\ orthogonalen Endomorphismus $u \colon V \to V$ mit $f = s \circ u$.
@@ -495,34 +624,6 @@ In der Situation von Lemma~\ref{lemma: existence of square roots} schreiben wir 
       Ist $A$ invertierbar, so ist auch $U$ eindeutig.
   \end{itemize}
 \end{theorem}
-
-\begin{theorem}[Iwasawa-Zerlegung]
-  Es seien $K, A, N \subseteq \GL{n}{\Korper}$ die folgenden Untergruppen:
-  \begin{itemize}
-    \item
-      Es ist $K = \Unitary{n}$, bzw.\ $K = \Orthogonal{n}$.
-    \item
-      $A$ besteht aus den Diagonalmatrizen mit reellen, positiven Diagonaleinträgen.
-    \item
-      $N$ besteht aus den obenen Dreiecksmatrizen mit Einsen auf der Diagonalen.
-  \end{itemize}
-  Dann gibt es für jede Matrix $s \in \GL{n}{\Korper}$ eindeutige Matrizen $k \in K$, $a \in A$ und $n \in N$ mit $s = kan$, d.h.\ die Abbildung
-  \[
-            K \times A \times N
-    \to     \GL{n}{\Korper},
-    \quad   (k, a, n)
-    \mapsto kan
-  \]
-  ist eine Bijektion.
-\end{theorem}
-
-\begin{warning}
-  Diese Bijektion ist i.A.\ kein Gruppenhomomorphismus.
-  Sie ist aber ein Homöomorphismus (und sogar ein Diffeomorphismus).
-\end{warning}
-
-
-
 
 
 

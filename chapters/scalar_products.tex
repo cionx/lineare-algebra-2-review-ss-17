@@ -2,6 +2,21 @@
 
 Im Folgenden sei $\Korper \in \{ \Real, \Complex \}$.
 
+Wir erweitern Definition~\ref{definition: semilinear for complex vector spaces} auf $\Korper$-Vektorräume:
+
+\begin{definition}
+  Eine Abbildng $f \colon V \to W$ zwischen $\Korper$-Vektorräumen $V$ und $W$ heißt \emph{halblinear} falls
+  \[
+    f(v_1 + v_2) = f(v_1) + f(v_2)
+    \quad\text{und}\quad
+    f(\lambda v) = \conjugate{\lambda} f(v)
+  \]
+  für alle $v, v_1, v_2 \in V$ und $\lambda \in \Korper$ gilt.
+\end{definition}
+
+Für $\Korper = \Complex$ entspricht dies genau Definition~\ref{definition: semilinear for complex vector spaces}.
+Für $\Korper = \Real$ ist Halblinearität das Gleiche wie Linearität.
+
 
 
 
@@ -29,22 +44,61 @@ Daher ergibt die folgende Definition Sinn:
 \end{definition}
 
 \begin{definition}
+  \leavevmode
   \begin{itemize}
     \item
-      Ein \emph{Skalarprodukt} ist eine positiv definite symmetrische Bilinearform, bzw.\ hermitsche Sesquilinearform.
+      Ein \emph{Skalarprodukt} auf einem reellen Vektorraum $V$ ist eine positiv definite symmetrische Bilinearform auf $V$.
+      Ein \emph{euklidischer Vektorraum} ein reeller Vektorraum $V$ zusammen mit einem Skalarprodukt auf $V$.
     \item
-      Ein \emph{euklidischer Vektorraum} ein ein reeller Vektorraum $V$ zusammen mit einem Skalarprodukt auf $V$.
-    \item
+      Ein \emph{Skalarprodukt} auf einem komplexen Vektorraum $V$ ist eine positiv definite hermitesche Sesquilinearform auf $V$.
       Ein \emph{unitärer Vektorraum} ist ein komplexer Vektorraum $V$ zusammen mit einem Skalarprodukt auf $V$.
   \end{itemize}
+
   Wir bezeichnen euklidische Vektorräume und unitäre Vektorräume auch als \emph{Skalarprodukträume}.
-  Das Skalarprodukt schreiben wir häufig nur als $\bil{-}{-}$.
+  Das zugehörige Skalarprodukt schreiben wir als $\bil{-}{-}$.
 \end{definition}
 
-% TODO: Adding examples, in particular the standard inner product.
+
 
 \begin{definition}
-  Es sei $V$ ein Skalarproduktraum.
+  \leavevmode
+  \begin{enumerate}
+    \item
+      Das \emph{Standardskalarprodukt} auf $\Korper^n$ ist definiert als
+      \[
+                  \bil{x}{y}
+        \coloneqq \transpose{x} y
+        =         \sum_{i=1}^n x_i \conjugate{y_i}.
+      \]
+    \item
+      Auf $\matrices{n}{\Korper}$ wird durch
+      \[
+                  \bil{A}{B}
+        \coloneqq \tr (A \madj{B})
+        =         \sum_{i,j = 1}^n A_{ij} \conjugate{B_{ij}}
+      \]
+      ein Skalarprodukt definiert.
+      Identifiziert man $\matrices{n}{\Korper}$ mithilfe der Standardbasis $(E_{ij})_{i,j = 1}^n$ mit $\Korper^{n^2}$, so entspricht dies dem Standardskalarprodukt
+
+    \item
+      Auf dem $\Korper$-Vektorraum $C([0,1]) = \{f \colon [0,1] \to \Korper \suchthat \text{$f$ ist stetig} \}$ wird durch
+      \[
+                  \bil{f}{g}
+        \coloneqq \int_0^1 f(t) \conjugate{g(t)} \,\text{d}t
+      \]
+      ein Skalarprodukt definiert.
+    \item
+      Auf dem $\Complex$-Vektorraum $P = \{f \colon \Real \to \Complex \suchthat \text{$f$ ist stetig und $2\pi$-periodisch} \}$ wird durch
+      \[
+                  \bil{f}{g}
+        \coloneqq \frac{1}{2\pi} \int_0^{2\pi} f(t) \conjugate{g(t)} \,\text{d}t
+      \]
+      ein Skalarprodukt definiert.
+      Die Familie $(e^{inx})_{n \in \Integer}$ ist orthonormal bezüglich dieses Skalarprodukts.
+  \end{enumerate}
+\end{definition}
+
+\begin{definition}
   Die \emph{Norm} eines Vektors $v \in V$ ist definiert als $\norm{v} \coloneqq \sqrt{ \bil{v}{v} }$.
 \end{definition}
 
@@ -52,15 +106,44 @@ Daher ergibt die folgende Definition Sinn:
   Es handelt sich hierbei um eine Norm im Sinne der Analysis.
 \end{remark}
 
+\begin{example}
+  Die Norm des Standardskalarprodukts auf $\Korper^n$ ist
+  \[
+      \norm{x}
+    = \sqrt{ \sum_{i=1}^n \abs{x_i}^2 }
+    \qquad
+    \text{für alle $x \in \Korper^n$}.
+  \]
+\end{example}
 
-% TODO: The norm for the previous examples.
+% \begin{lemma}[Cauchy-Schwarz]
+%   Ist $V$ ein Skalarproduktraum, so gilt
+%   \[
+%           \abs{ \bil{v_1}{v_2} }
+%     \leq  \norm{v_1} \norm{v_2}
+%     \qquad
+%     \text{für alle $v_1, v_2 \in V$}.
+%   \]
+% \end{lemma}
 
 
 
 
-\section{Das Gram-Schmidt-Verfahren}
 
-Es sei $V$ ein Skalarproduktraum.
+\section{Orthonormalbasen \& Gram--Schmidt}
+
+Ist $V$ ein reeller, bzw.\ komplexer Vektorraum und $\beta \in \SymForm(V)$ eine symmetrische Bilinearform, bzw.\ $\beta \in \HerForm(V)$ eine hermitesche Bilinearform, so dass es eine Orthonormalbasis $\basis{B} = (v_1, \dotsc, v_n)$ von $V$ bezüglich $\beta$ gibt, so ist $\beta$ bereits ein Skalarprodukt:
+Für jeden Vektor $v \in V$ mit $v \neq 0$ gibt es in der Darstellung $v = \sum_{i=1}^n x_i v_i$ ein $i$ mit $x_i \neq 0$, weshalb
+\[
+    \beta(v,v)
+  = \beta\left( \sum_{i=1}^n x_i v_i, \sum_{j=1}^n x_j v_j \right)
+  = \sum_{i,j = 1}^n x_i \conjugate{x_j} \underbrace{ \beta(x_i, x_j)}_{= \delta_{ij}}
+  = \sum_{i=1}^n \abs{x_i}^2
+  > 0.
+\]
+Mithilfe des Gram--Schmidtschen Orthonormalisierungs-Verfahrens erhalten wir auch die Umkehrung:
+Jeder endlichdimensionale Skalarproduktraum $V$ besitzt eine Orthonormalbasis.
+
 Es seien $v_1, \dotsc, v_n \in V$ linear unabhängig.
 Induktiv konstruiere man Vektoren $w_1, \dotsc, w_n \in V$ wie folgt:
 \begin{itemize}
@@ -84,8 +167,7 @@ Die entstehende Familie $(w_1, \dotsc, w_n)$ ist orthonormal mit
   \qquad
   \text{für alle $i = 1, \dotsc, n$}.
 \]
-
-Hieraus folgen die Existenzaussagen über Orthonormalbasen:
+Sind dabei $v_1, \dotsc, v_i$ bereits orthonormal, so gilt $w_j = v_j$ für alle $j = 1, \dotsc, i$.
 
 \begin{theorem}
   Ist $U \subseteq V$ ein Untervektorraum, so lässt sich jede Orthonormalbasis von $U$ zu einer Orthonormalbasis von $V$ ergänzen.
@@ -93,13 +175,38 @@ Hieraus folgen die Existenzaussagen über Orthonormalbasen:
 \end{theorem}
 
 \begin{corollary}
-  Für jeden Untervektorraum $U \subseteq V$ gilt $V = U \oplus U^\perp$ und $(U^\perp)^\perp = U$.
+  Für jeden Untervektorraum $U \subseteq V$ gilt $V = U \oplus U^\perp$.
+  Deshalb gelten $\dim U^\perp = \dim V - \dim U$ und $(U^\perp)^\perp = U$.
 \end{corollary}
 
 \begin{remark}
-  Wendet man das Gram-Schmidt Verfahren auf linear abhängige Vektoren $v_1, \dotsc, v_n \in V$ an, so ergeben sich für das minimale $i$ mit $v_i \in \generated{v_1, \dotsc, v_{i-1}}$ zwar noch orthonormale Vektoren $w_1, \dotsc, w_{i-1}$, aber dann $\tilde{w}_i = 0$.
+  Wendet man das Gram--Schmidt Verfahren auf linear abhängige Vektoren $v_1, \dotsc, v_n \in V$ an, so ergeben sich für das minimale $i$ mit $v_i \in \generated{v_1, \dotsc, v_{i-1}}$ zwar noch orthonormale Vektoren $w_1, \dotsc, w_{i-1}$, dann aber $\tilde{w}_i = 0$.
 \end{remark}
 
+
+
+
+
+\section{Rieszscher Darstellungssatz}
+
+Es sei $V$ ein endlichdimensionaler Skalarproduktraum.
+Die Abbildung
+\[
+          \Phi
+  \colon  V
+  \to     \dual{V},
+  \quad   v
+  \mapsto \bil{-}{v}
+\]
+ist wohldefiniert, da $\bil{-}{-}$ linear im ersten Argument ist.
+Außerdem ist $\Phi$ halblinear, da $\bil{-}{-}$ halblinear im zweiten Argument ist.
+
+\begin{theorem}
+  \label{theorem: Riesz representation theorem}
+  Die Abbildung $\Phi$ ist ein halblinearer Isomorphismus von $\Korper$-Vektorräumen.
+\end{theorem}
+
+Der Rieszsche Darstellungssatz besagt also, dass sich jedes $\varphi \in \dual{V}$ eindeutig als $\varphi = \bil{-}{v}$ mit $v \in V$ darstellen lässt.
 
 
 
@@ -108,7 +215,7 @@ Hieraus folgen die Existenzaussagen über Orthonormalbasen:
 \section{Die Adjungierte Abbildung}
 \label{section: adjoint map for scalar products}
 
-Es sei $f \colon V \to W$ eine lineare Abbildung zwischen Skalarprodukträumen $V$ und $W$.
+Es sei $f \colon V \to W$ eine lineare Abbildung zwischen endlichdimensionalen Skalarprodukträumen $V$ und $W$.
 
 \begin{proposition}
   Es gibt eine eindeutige Abbildung $\adj{f} \colon W \to V$ mit
@@ -123,6 +230,7 @@ Es sei $f \colon V \to W$ eine lineare Abbildung zwischen Skalarprodukträumen $
 \end{proposition}
 
 \begin{lemma}
+  \leavevmode
   \begin{itemize}
     \item
       Es gilt $\adj{(\adj{f})} = f$.
@@ -131,15 +239,11 @@ Es sei $f \colon V \to W$ eine lineare Abbildung zwischen Skalarprodukträumen $
     \item
       Es gilt $\adj{(f \circ g)} = \adj{g} \circ \adj{f}$.
     \item
-      Die Abbildung $\Hom{V}{W} \to \Hom{W}{V}$, $f \mapsto \adj{f}$ ist antilinear.
+      Die Abbildung $\Hom{V}{W} \to \Hom{W}{V}$, $f \mapsto \adj{f}$ ist halblinear.
   \end{itemize}
 \end{lemma}
 
 In orthonormalen Koordinaten entspricht das Adjungieren einer linearen Abbildung dem Transponieren-Konjugieren.
-
-\begin{notation}
-  Für alle $\matrices{n}{\Korper}$ schreiben wir $\madj{A} \coloneqq \transpose{\conjugate{A}}$.
-\end{notation}
 
 \begin{lemma}
   Ist $\basis{B}$ eine Orthonormalbasis von $V$ und $\basis{C}$ eine Orthonormalbasis von $W$, so gilt
@@ -150,19 +254,20 @@ In orthonormalen Koordinaten entspricht das Adjungieren einer linearen Abbildung
 \end{lemma}
 
 Die adjungierte Abbildung $\adj{f} \colon W \to V$ hängt eng mit der dualen Abbildung $\dual{f} \colon \dual{W} \to \dual{V}$, $\varphi \mapsto \varphi \circ f$ zusammen:
-
-Das Skalarprodukt $\bil{-}{-}$ auf $V$ liefert eine Abbildung
+Die Skalarprodukte auf $V$ und $W$ entsprechen den halblinearen Isomorphismen
 \[
-          \Phi_{\basis{B}}
+          \Phi_V
   \colon  V
-  \to     V^*,
+  \to     \dual{V},
   \quad   v
-  \mapsto \bil{-}{v}.
+  \mapsto \bil{-}{v}
+  \quad\text{und}\quad
+  \Phi_W
+  \colon  W
+  \to     \dual{W},
+  \quad   w
+  \mapsto \bil{-}{w}
 \]
-Diese Abbildung ist wohldefiniert, da $\bil{-}{-}$ im ersten Argument linear ist, und halblinear, da $\Phi_{\basis{B}}$ linear im zweiten Argument ist.
-Die Abbildung $\Phi_{\basis{B}}$ ist bereits ein Isomorphismus, denn es gilt $\dim \dual{V} = \dim V$ und $\Phi_{\basis{B}}$ ist injektiv\footnote{Hier nutzen wir, dass die aus der Linearen~Algebra~I bekannten Aussagen über linearen Abbildungen auch für halblineare Abbildungen gelten.}, denn für $v \in \ker \Phi_{\basis{B}}$ gilt $\bil{-}{v} = \Phi_{\basis{B}}(v) = 0$, also $\|v\|^2 = \bil{v}{v} = 0$ und somit $v = 0$.
-Gleiches gilt für $\Phi_{\basis{C}} \colon W \to W^*$, $w \mapsto \bil{-}{w}$.
-
 Die Bedingung \eqref{equation: definition of the adjoint map by elements for scalar products} ist äquivalent dazu, dass das folgende Diagramm kommutiert:
 \[
   \begin{tikzcd}
@@ -171,34 +276,81 @@ Die Bedingung \eqref{equation: definition of the adjoint map by elements for sca
       \arrow[swap]{l}{\dual{f}}
     \\
       V
-      \arrow{u}{\Phi_{\basis{B}}}
+      \arrow{u}{\Phi_V}
     & W
-      \arrow[swap]{u}{\Phi_{\basis{C}}}
+      \arrow[swap]{u}{\Phi_W}
       \arrow{l}{\adj{f}}
   \end{tikzcd}
 \]
-Somit ist $\adj{f}$ eindeutig bestimmt als $\adj{f} = \Phi_{\basis{B}}^{-1} \circ \dual{f} \circ \Phi_{\basis{C}}$.
+Somit ist $\adj{f}$ eindeutig bestimmt als $\adj{f} = \Phi_V^{-1} \circ \dual{f} \circ \Phi_W$.
+
+
+
+\section{Unitäre \& orthogonale Matrizen}
+
+\begin{definition}
+  \leavevmode
+  \begin{itemize}
+    \item
+      Eine Matrix $A \in \matrices{n}{\Korper}$ heißt \emph{unitär} im Fall $\Korper = \Complex$, bzw.\ \emph{orthogonal} im Fall $\Korper = \Real$, falls sie die folgenden äquivalenten Bedingungen erfüllt:
+      \begin{enumerate}
+        \item
+          Die Matrix $A$ ist invertierbar mit $A^{-1} = \madj{A}$.
+        \item
+          Es gilt $A \madj{A} = \Id$.
+        \item
+          Es gilt $\madj{A} A = \Id$.
+        \item
+          Die Spalten von $A$ bilden eine Orthonormalbasis von $\Korper^n$.
+        \item
+          Die Zeilen von $A$ bilden eine Orthonormalbasis von $\Korper^n$ (betrachtet als Zeilenvektoren).
+      \end{enumerate}
+    \item
+      Es seien
+      \begin{align*}
+                    \Unitary{n}
+        &\coloneqq  \{ U \in \matrices{n}{\Complex} \suchthat \text{$U$ ist unitär} \}
+      \shortintertext{und}
+                    \Orthogonal{n}
+        &\coloneqq  \{ U \in \matrices{n}{\Real} \suchthat \text{$U$ ist orthogonal} \}.
+      \end{align*}
+  \end{itemize}
+\end{definition}
+
+\begin{lemma}
+  Es sind $\Unitary{n} \subseteq \GL{n}{\Complex}$ und $\Orthogonal{n} \subseteq \GL{n}{\Real}$ Untergruppen.
+\end{lemma}
 
 
 
 
 
+\section{Die Iwasawa-Zerlegung}
 
+\begin{theorem}[Iwasawa-Zerlegung]
+  Es seien $K, A, N \subseteq \GL{n}{\Korper}$ die folgenden Untergruppen:
+  \begin{itemize}
+    \item
+      Es ist $K = \Unitary{n}$, bzw.\ $K = \Orthogonal{n}$.
+    \item
+      $A$ besteht aus den Diagonalmatrizen mit reellen, positiven Diagonaleinträgen.
+    \item
+      $N$ besteht aus den obenen Dreiecksmatrizen mit Einsen auf der Diagonalen.
+  \end{itemize}
+  Dann gibt es für jede Matrix $s \in \GL{n}{\Korper}$ eindeutige Matrizen $k \in K$, $a \in A$ und $n \in N$ mit $s = kan$, d.h.\ die Abbildung
+  \[
+            K \times A \times N
+    \to     \GL{n}{\Korper},
+    \quad   (k, a, n)
+    \mapsto kan
+  \]
+  ist eine Bijektion.
+\end{theorem}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+\begin{warning}
+  Diese Bijektion ist i.A.\ kein Gruppenhomomorphismus.
+  Sie ist aber ein Homöomorphismus (und sogar ein Diffeomorphismus).
+\end{warning}
 
 
 

@@ -1,4 +1,4 @@
-\chapter{Symmetrische Bilinearformen}
+\chapter{Allgemeine Bilinearformen}
 
 Im Folgenden sei $K$ ein Körper und $V$ ein endlichdimensionaler $K$-Vektorraum.
 
@@ -92,7 +92,19 @@ Da der Rang einer Matrix invariant unter Kongruenz ist, ergibt die folgende Defi
 
 \section{Existenz von Orthogonalbasen}
 
-Es sei $\ringchar{K} \neq 2$ und $\beta \in \SymForm(V)$ eine symmetrische Bilinearform.
+Es sei $\ringchar{K} \neq 2$ und $\beta \in \BilForm(V)$ eine Bilinearform.
+
+Falls eine eine Orthogonalbasis $\basis{B} = (v_1, \dotsc, v_n)$ von $V$ bezüglich $\beta$ gibt, so ist $\beta$ bereits symmetrisch, denn die Matrix
+\[
+    \repmatrixbilone{\beta}{\basis{B}}
+  = \begin{pmatrix}
+      \beta(v_1, v_1) &         &                 \\
+                      & \ddots  &                 \\
+                      &         & \beta(v_n, v_n)
+    \end{pmatrix}
+\]
+ist symmetrisch.
+Es gilt auch die Umkehrung (da $\ringchar{K} \neq 2$):
 
 \begin{theorem}
   \label{theorem: exstience of an orthogonal basis}
@@ -107,17 +119,121 @@ Es sei $\ringchar{K} \neq 2$ und $\beta \in \SymForm(V)$ eine symmetrische Bilin
 Ist $A \in \matrices{n}{K}$ eine symmetrische Matrix, so lässt sich eine Diagonalform wie in Korollar~\ref{corollary: every symmetric matrix is congruent to a diagonal matrix} sowie eine zugehörige Basiswechselmatrix $S \in \GL{n}{K}$ mithilfe von \emph{simultanen Zeilen- und Spaltenumformungen} berechnen:
 \begin{itemize}
   \item
-    Man bringe die Matrix durch elementare Zeilenumformungen in Zeilenstufenform, und somit insbesondere in obere Dreiecksform.
+    Man wende elementare Zeilenumformungen auf die Matrix an.
   \item
     Nach jeder elementaren Zeilenumformung führt die man die analoge elementare Spaltenumformung durch.
     Hierdurch bleibt die Matrix symmetrisch.
 \end{itemize}
-Als Ergebnis erhält man somit eine Matrix symmetrische Matrix $B$, die in oberer Dreiecksform ist.
-Also ist $B$ eine Diagonalmatrix.
-Eine Matrix $S \in \GL{n}{K}$ mit $\transpose{C} A C = B$ erhält man, indem man die genutzen elementaren Spaltenumformungen in gleicher Reihenfolge auf die Einheitsmatrix $\Id$ anwendet.
+Wie beim Gauß-Vefahren bringt man die Matrix hierdurch in Zeilenstufenform.
+Als Ergebnis erhält man eine symmetrische Matrix $B$ in oberer Dreiecksform, also eine Diagonalmatrix.
+Eine Matrix $S \in \GL{n}{K}$ mit $\transpose{S} A S = B$ erhält man, indem man die genutzen elementaren Spaltenumformungen in gleicher Reihenfolge auf die Einheitsmatrix $\Id$ anwendet.
 (Nutzt man anstelle der Spaltenumformungen die Zeilenumformungen, so erhält man stattdessen $\transpose{C}$.)
 
-% TODO: Adding an example
+\begin{example}
+  \label{example: simultaneous row and column operations}
+  Es sei
+  \[
+              A
+    \coloneqq \begin{pmatrix*}[r]
+                2 &  1 & 3  \\
+                1 & -1 & 0  \\
+                3 &  0 & 2
+              \end{pmatrix*}.
+  \]
+  Durch simultane Zeilen- und Spaltenumfomungen erhalten wir Folgendes:
+  \begin{alignat*}{4}
+    \begin{pmatrix*}[r]
+      2 &  1 & 3  \\
+      1 & -1 & 0  \\
+      3 &  0 & 2
+    \end{pmatrix*}
+    &
+    \xlongrightarrow{\text{I $\leftrightarrow$ II}}
+    &&
+    \begin{pmatrix*}[r]
+      1 & -1 & 0  \\
+      2 &  1 & 3  \\
+      3 &  0 & 2
+    \end{pmatrix*}
+    &&
+    \to
+    &&
+    \begin{pmatrix*}[r]
+      -1 & 1 & 0  \\
+       1 & 2 & 3  \\
+       0 & 3 & 2
+    \end{pmatrix*}
+    \\
+    &
+    \xlongrightarrow{\text{II} + \text{I}}
+    &&
+    \begin{pmatrix*}[r]
+      -1 & 1 & 0  \\
+       0 & 3 & 3  \\
+       0 & 3 & 2
+    \end{pmatrix*}
+    &&
+    \to
+    &&
+    \begin{pmatrix*}[r]
+      -1 & 0 & 0  \\
+       0 & 3 & 3  \\
+       0 & 3 & 2
+    \end{pmatrix*}
+    \\
+    &
+    \xlongrightarrow{\text{III} - \text{II}}
+    &&
+    \begin{pmatrix*}[r]
+      -1 & 0 &  0 \\
+       0 & 3 &  3 \\
+       0 & 0 & -1
+    \end{pmatrix*}
+    &&
+    \to
+    &&
+    \begin{pmatrix*}[r]
+      -1 & 0 &  0 \\
+       0 & 3 &  0 \\
+       0 & 0 & -1
+    \end{pmatrix*}
+    \eqqcolon D.
+  \end{alignat*}
+  Indem wir die entsprechenden Spaltenumformungen auf die Einheitsmatrix anwenden, erhalten wir eine Basiswechselmatrix $S \in \GL{3}{K}$.
+  \[
+    \begin{pmatrix*}[r]
+      1 & 0 & 0 \\
+      0 & 1 & 0 \\
+      0 & 0 & 1
+    \end{pmatrix*}
+    \xlongrightarrow{\text{I $\leftrightarrow$ II}}
+    \begin{pmatrix*}[r]
+      0 & 1 & 0 \\
+      1 & 0 & 0 \\
+      0 & 0 & 1
+    \end{pmatrix*}
+    \xlongrightarrow{\text{II} + \text{I}}
+    \begin{pmatrix*}[r]
+      0 & 1 & 0 \\
+      1 & 1 & 0 \\
+      0 & 0 & 1
+    \end{pmatrix*}
+    \xlongrightarrow{\text{III} - \text{II}}
+    \begin{pmatrix*}[r]
+      0 & 1 & -1  \\
+      1 & 1 & -1  \\
+      0 & 0 &  1
+    \end{pmatrix*}
+    \eqqcolon
+    S.
+  \]
+  Für die Matrizen $D$ und $S$ gilt nun, dass
+  \[
+      \transpose{S} A S
+    = D.
+  \]
+
+\end{example}
 
 
 
@@ -196,30 +312,17 @@ Hiermit erhält man aus Satz~\ref{theorem: exstience of an orthogonal basis} den
 Man bemerke, dass sich die Zahlen $p$, $q$ und $r$ aus dem Sylvesterschen Trägheitssatz bereits aus der Form \eqref{equation: bilinear form in diagonal form} ablesen lassen:
 Die Zahl $p$ ist die Anzahl der positiven Diagonaleinträge, die Zahl $q$ ist die Anzahl der negativen Diagonaleinträge, und $r$ ist die Häufigkeit von $0$ als Diagonaleintrag.
 
-
-
-\subsection{Hauptachsentransformation}
-
-Ist $\beta \in \SymForm(\Real^n)$ eine symmetrische Bilinearform, so gilt für die symmetrische Matrix $A \in \matrices{n}{\Real}$ mit $A_{ij} = \beta(e_i, e_j)$, dass
+Ist $\basis{B} = (v_1, \dotsc, v_n)$ eine Basis von $V$, so ist die darstellende $A \coloneqq \repmatrixbilone{\beta}{\basis{B}}$ symmetrisch.
+Nach Korollar~\ref{corollary: hermitian matrices are diagonalizable} gibt es eine Orthonormalbasis $\basis{D} = (v_1, \dotsc, v_n)$ von $\Real^n$ bestehend aus Eigenvektoren von $A$.
+Es sei $\lambda_i$ der zu $v_i$ gehörige Eigenwert, und $S \coloneqq (v_1 \dotsc v_n)$.
+Die Matrix $S$ ist orthogonal, und für die Basis $\basis{C}$ von $V$ mit $\repmatrixhom{\id_V}{\basis{C}}{\basis{B}} = S$ gilt
 \[
-    \beta(x,y)
-  = \transpose{x} A y
-  \qquad
-  \text{für alle $x, y \in \Real^n$}.
-\]
-Nach Korollar~\ref{corollary: hermitian matrices are diagonalizable} gibt es eine Orthonormalbasis $\basis{B} = (v_1, \dotsc, v_n)$ von $\Real^n$ bestehend aus Eigenvektoren von $A$.
-Ist $\lambda_i$ der zu $v_i$ gehörige Eigenwert, so gilt
-\[
-    \beta(v_i, v_j)
-  = \transpose{v_i} A v_j
-  = \lambda_j \transpose{v_i} v_j
-  = \lambda_j \bil{v_i}{v_j}
-  = \lambda_j \delta_{ij}
-  = \lambda_i \delta_{ij}.
-\]
-Somit ist $\basis{B}$ eine Orthogonalbasis von $\Real^n$ bezüglich $\beta$ und
-\[
+    \repmatrixbilone{\beta}{\basis{C}}
+  = \transpose{ \repmatrixhom{\id_V}{\basis{C}}{\basis{B}} }
     \repmatrixbilone{\beta}{\basis{B}}
+    \repmatrixhom{\id_V}{\basis{C}}{\basis{B}}
+  = \transpose{S} A S
+  = S^{-1} A S
   = \begin{pmatrix}
       \lambda_1 &         &           \\
                 & \ddots  &           \\
@@ -231,8 +334,6 @@ Somit ist $\basis{B}$ eine Orthogonalbasis von $\Real^n$ bezüglich $\beta$ und
   Es seien $p$, $q$ und $r$ die Zahlen aus dem Sylvesterscher Trägheitssatz für $\beta$.
   Dann ist $p$ die Anzahl der positiven Eigenwerte von $A$, $q$ die Anzahl der negativen Eigenwerte, und $r$ die Vielfachheit des Eigenwerts $0$.
 \end{proposition}
-
-% TODO: Adding examples.
 
 \begin{lemma}[Hauptminorenkriterium]
   Eine symmetrische Matrix $A \in \matrices{n}{\Real}$ ist genau dann positiv, wenn alle führenden Hauptminoren positiv sind.
@@ -299,28 +400,130 @@ Insbesondere gelten die Äquivalenzen
 \end{align*}
 
 \begin{definition}
-  Eine Bilinearform $\beta \in \BilForm(V,W)$ heißt \emph{nicht-ausgeartet}, falls Sie eine (und damit alle) der folgenden äquivalenten Bedingungen erfüllt:
+  Eine Bilinearform $\beta \in \BilForm(V,W)$ heißt \emph{nicht-ausgeartet}, falls Sie eine \textup(und damit alle\textup) der folgenden äquivalenten Bedingungen erfüllt:
   \begin{enumerate}
     \item
       Die lineare Abbildung $\beta_1$ ist ein Isomorphismus.
     \item
       Die lineare Abbildung $\beta_2$ ist ein Isomorphismus.
     \item
-      Es gibt eine Basis $\basis{B}$ von $V$ und $\basis{C}$ von $W$, so dass die darstellende Matrix $\repmatrixbiltwo{\beta}{\basis{B}}{\basis{C}}$ invertierbar ist.
+      Es gibt eine Basis $\basis{B}$ von $V$ und Basis $\basis{C}$ von $W$, so dass die darstellende Matrix $\repmatrixbiltwo{\beta}{\basis{B}}{\basis{C}}$ invertierbar ist.
     \item
-      Für jede Basis $\basis{B}$ von $V$ und $\basis{C}$ von $W$ ist die darstellende Matrix $\repmatrixbiltwo{\beta}{\basis{B}}{\basis{C}}$ invertierbar.
+      Für jede Basis $\basis{B}$ von $V$ und Basis $\basis{C}$ von $W$ ist die darstellende Matrix $\repmatrixbiltwo{\beta}{\basis{B}}{\basis{C}}$ invertierbar.
     \item
-      Es gelten (mindestes) zwei (und damit bereits alle drei) der folgenden Bedingungen:
+      Es gelten \textup(mindestes\textup) zwei \textup(und damit bereits alle drei\textup) der folgenden Bedingungen:
       \begin{enumerate}
         \item
           Es gilt $\dim V = \dim W$.
         \item
-          Für jedes $v \in V$ mit $v \neq 0$ gibt es ein $w \in W$ mit $\beta(v,w) \neq 0$ (d.h.\ $\beta_2$ ist injektiv).
+          Für jedes $v \in V$ mit $v \neq 0$ gibt es ein $w \in W$ mit $\beta(v,w) \neq 0$ \textup(d.h.\ $\beta_2$ ist injektiv\textup).
         \item
-          Für jedes $w \in W$ mit $w \neq 0$ gibt es ein $v \in V$ mit $\beta(v,w) \neq 0$ (d.h.\ $\beta_1$ ist injektiv).
+          Für jedes $w \in W$ mit $w \neq 0$ gibt es ein $v \in V$ mit $\beta(v,w) \neq 0$ \textup(d.h.\ $\beta_1$ ist injektiv\textup).
       \end{enumerate}
   \end{enumerate}
 \end{definition}
+
+\begin{example}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      Es sei $\beta \in \BilForm(V, \dual{V})$ die Bilinearform mit $\beta(v, \varphi) = \varphi(v)$.
+      Die lineare Abbildung $\beta_1 \colon \dual{V} \to \dual{V}$ ist die Identität $\id_{\dual{V}}$, also ist $\beta$ nicht-ausgeartet.
+      Die lineare Abbildung $\beta_2 \colon V \to \ddual{V}$ ist der natürliche Isomorphismus aus Lineare~Algebra~I.
+    \item
+      Ist $V$ ein euklidscher Vektorraum, so ist $\bil{-}{-}$ eine nicht-ausgeartete, symmetrische Bilinearform auf $V$, da die Abbildung $V \to \dual{V}$, $v \mapsto \bil{-}{v}$ nach dem Rieszschen Darstellungssatz ein Isomorphismus ist.
+    \item
+      Die symmetrische Bilinearform $\beta \in \BilForm(\matrices{n}{K})$ mit $\beta(A, B) = \tr(AB)$ ist nicht-ausgeartet:
+      Es sei $(E_{ij})_{i,j=1}^n$ die Standardbasis von $\matrices{n}{K}$.
+      Für alle $i,j,k,l$ gilt
+      \[
+          \beta(E_{ij}, E_{kl})
+        = \tr(E_{ij} E_{kl})
+        = \tr( \delta_{jk} E_{il} )
+        = \delta_{jk} \tr E_{il}
+        = \delta_{il} \delta_{jk}
+        = \delta_{(i,l), (j,k)}.
+      \]
+      Für $A \in \matrices{n}{K}$ gilt deshalb
+      \begin{align*}
+          \beta(A, E_{ij})
+        = \beta\left( \sum_{k,l=1}^n A_{kl} E_{kl}, E_{ij} \right)
+        = \sum_{k,l=1}^n A_{kl} \underbrace{ \beta(E_{kl}, E_{ij}) }_{= \delta_{(i,l), (j,k)}}
+        =  A_{ji}.
+      \end{align*}
+      Für $A \in \matrices{n}{K}$ mit $A \neq 0$ gilt deshalb $\beta(A, E_{ji}) \neq 0$.
+  \end{enumerate}
+\end{example}
+
+
+
+% \subsection{Duale Basen}
+% 
+% Es sei $\beta \in \BilForm(V, W)$ eine nicht-ausgeartete Bilinearform.
+% 
+% \begin{proposition}
+%   Für jede Basis $\basis{B} = (v_1, \dotsc, v_n)$ von $V$ gibt es eine eindeutige Basis $\basis{C} = (w_1, \dotsc, w_n)$ von $W$ mit $\beta(v_i, w_j) = \delta_{ij}$ für alle $i, j$, also so dass $\repmatrixbiltwo{\beta}{\basis{B}}{\basis{C}} = \Id$.
+%   Dies ist die zu $\basis{B}$ bezüglich $\beta$ duale Basis.
+% \end{proposition}
+% 
+% \begin{example}
+%   Es sei $\beta \in \BilForm(V, \dual{V})$ die nicht-ausgeartete Bilinearform aus Beispiel~\ref{example: non-degenerate bilinear form}, also mit $\beta(v, \varphi) = \varphi(v)$.
+%   Ist $\basis{B} = (v_1, \dotsc, v_n)$ eine Basis von $V$, so ist $\dual{\basis{B}} = (\dual{v_1}, \dotsc, \dual{v_n})$ die bezüglich $\beta$ duale Basis zu $\basis{B}$.
+% \end{example}
+
+
+
+\subsection{Die Adjungierte Abbildung}
+
+Es seien $\beta_V \in \BilForm(V,V')$ und $\beta_W \in \BilForm(W,W')$ zwei nicht-ausgeartete Bilinearformen.
+Dann gibt es für jede lineare Abbildung $f \colon V \to W$ eine eindeutige lineare Abbildung $\adj{f} \colon W' \to V'$ mit
+\begin{equation}
+  \label{equation: definition of the adjoint map by elements for non degenarete bilinear forms}
+    \beta_W(f(v), w')
+  = \beta_V(v, \adj{f}(w'))
+  \qquad
+  \text{für alle $v \in V$, $w' \in W'$}
+\end{equation}
+gilt.
+Dies ergibt sich wie bereits in Abschnitt \ref{section: adjoint map for scalar products} dadurch, dass \eqref{equation: definition of the adjoint map by elements for non degenarete bilinear forms} äquivalent zur Kommutativität des Diagramms
+\[
+  \begin{tikzcd}
+      \dual{V}
+    & \dual{W}
+      \arrow[swap]{l}{\dual{f}}
+    \\
+      V'
+      \arrow{u}{(\beta_V)_1}
+    & W'
+      \arrow[swap]{u}{(\beta_W)_1}
+      \arrow{l}{\adj{f}}
+  \end{tikzcd}
+\]
+ist.
+Also ist $\adj{f}$ eindeutig als $\adj{f} = (\beta_V)_1^{-1} \circ \dual{f} \circ (\beta_W)_1$ bestimmt.
+
+\begin{example}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      Es seien $\beta_V \in \BilForm(V, \dual{V})$ und $\beta_W \in \BilForm(W, \dual{W})$ die nicht-ausgearteten Bilinearformen mit $\beta_V(v, \varphi) = \varphi(v)$ und $\beta_W(w, \psi) = \psi(w)$.
+      Dann ist $\dual{f} \colon \dual{W} \to \dual{V}$ die zu $f \colon V \to W$ bezüglich $\beta_V$ und $\beta_W$ duale Abbildung, denn
+      \[
+          \beta_W(f(v), \psi)
+        = \psi(f(v))
+        = \dual{f}(\psi)(v)
+        = \beta_V(v, \dual{f}(\psi)).
+      \]
+    \item
+      Es seien $V$ und $W$ euklidische Vektorräume.
+      Dann sind die zugehörigen Skalarprodukte $\bil{-}{-}_V$ und $\bil{-}{-}_W$ nicht-ausgeartete symmetrische Bilinearformen.
+      Dann ist die zu $f \colon V \to W$ bezüglich $\beta_V$ und $\beta_W$ adjungierte Abbildung die adjungierte Abbildung $\adj{f} \colon W \to V$ aus Abschnitt~\ref{section: adjoint map for scalar products}.
+  \end{enumerate}
+\end{example}
+
+
+
+\subsection{Nicht-ausgeartete symmetrische Bilinearformen}
 
 Wir betrachten nun den Fall, dass $\beta \in \SymForm(V)$ eine symmetrische Bilinearform auf $V$ ist.
 Für die beiden zugehörigen linearen Abbildungen $\beta_1, \beta_2 \colon V \to V^*$ gilt dann $\beta_1 = \beta_2$.
@@ -335,36 +538,24 @@ Für die beiden zugehörigen linearen Abbildungen $\beta_1, \beta_2 \colon V \to
 
 Es gilt $\rad{\beta} = \ker \beta_1 = \ker \beta_2$, weshalb $\beta$ genau dann nicht ausgeartet ist, wenn $\rad{\beta} = 0$ gilt.
 
+\begin{lemma}
+  Für jeden Untervektorraum $U \subseteq V$ gilt
+  \begin{enumerate}
+    \item
+      $\dim U^\perp = \dim V - \dim U$ und
+    \item
+      $(U^\perp)^\perp = U$,
+  \end{enumerate}
+\end{lemma}
+
+\begin{warning}
+  Es gilt im Allgemeinen nicht, dass $V = U \oplus U^\perp$.
+\end{warning}
 
 
-\subsection{Die Adjungierte Abbildung}
 
-Es seien $\beta \in \BilForm(V,V')$ und $\gamma \in \BilForm(W,W')$ zwei nicht-ausgeartete Bilinearformen.
-Dann gibt es für jede lineare Abbildung $f \colon V \to W$ eine eindeutige lineare Abbildung $\adj{f} \colon W' \to V'$ mit
-\begin{equation}
-  \label{equation: definition of the adjoint map by elements for non degenarete bilinear forms}
-    \gamma(f(v), w')
-  = \beta(v, \adj{f}(w'))
-  \qquad
-  \text{für alle $v \in V$, $w' \in W'$}
-\end{equation}
-gilt.
-Dies ergibt sich wie bereits in \ref{section: adjoint map for scalar products} dadurch, dass \eqref{equation: definition of the adjoint map by elements for non degenarete bilinear forms} äquivalent zur Kommutativität des Diagramms
-\[
-  \begin{tikzcd}
-      \dual{V}
-    & \dual{W}
-      \arrow[swap]{l}{\dual{f}}
-    \\
-      V'
-      \arrow{u}{\beta_1}
-    & W'
-      \arrow[swap]{u}{\gamma_1}
-      \arrow{l}{\adj{f}}
-  \end{tikzcd}
-\]
-ist.
-Also ist $\adj{f}$ eindeutig als $\adj{f} = \beta_1^{-1} \circ \dual{f} \circ \beta'_1$ bestimmt.
+
+
 
 
 
