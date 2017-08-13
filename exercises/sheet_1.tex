@@ -10,6 +10,48 @@
 \begin{document}
 
 
+
+
+
+\begin{question}[subtitle = Eigenwerte und Diagonalisierbarkeit]
+  \begin{enumerate}
+    \item
+      Es sei $A \in \GL{2}{\Complex}$ mit $\tr A = 0$.
+      Zeigen Sie, dass $A$ diagonalisierbar ist.
+    \item
+      Zeigen Sie, dass jede Matrix $A \in \matrices{3}{\Real}$ einen reellen Eigenwert hat.
+    \item
+      Folgern Sie, dass jede nicht-triagonalisierbare Matrix $A \in \matrices{3}{\Real}$ über $\Complex$ diagonalisierbar ist.
+    \item
+      Es sei $A \in \matrices{n}{\Complex}$ und $k \geq 0$ mit $f^k = \Id$.
+      Zeigen Sie, dass $A$ diagonalisierbar ist, und bestimmen Sie alle möglichen Eigenwerte für $A$.
+    \item
+      Es sei $A \in \matrices{2}{\Complex}$ mit $\tr A = 2$ und $\tr A^2 = 4$.
+      Zeigen Sie, dass $A$ diagonalisierbar ist, und bestimmen Sie die Eigenwerte von $A$.
+    \item
+      Es sei $A \in \matrices{2}{\Complex}$ mit $\tr A = 0$ und $\tr A^2 = -2$.
+      Bestimmen Sie $\det A$.
+    \item
+      Zeigen Sie für alle $A \in \matrices{3}{\Complex}$ die Gleichheit
+      \[
+          \det A
+        =   \frac{1}{6} (\tr A)^3
+          - \frac{1}{2} (\tr A^2)(\tr A)
+          + \frac{1}{3} (\tr A^3).
+      \]
+    \item
+      Es sei $A \in \matrices{n}{\Complex}$ mit $A^2 + A = 6 \Id$ und $\det A = 144$.
+      Bestimmen Sie $n$.
+    \item
+      Es sei $A \in \matrices{n}{\Complex}$ mit $A^3 = 3A - 2$ und $A^3 + A^2 = A + \Id$.
+      Zeigen Sie, dass $A = \Id$.
+  \end{enumerate}
+\end{question}
+
+
+
+
+
 \begin{question}[subtitle = Diagonalisieren]
   \begin{enumerate}
     \item
@@ -78,7 +120,7 @@
   \]
   \begin{enumerate}
     \item
-      Geben Sie eine Matrix $\tilde{A} \in \matrices{2}{\Complex}$ mit $A = \tilde{A}^2$ an.
+      Geben Sie eine Matrix $C \in \matrices{2}{\Complex}$ mit $A = C^2$ an.
     \item
       Berechnen Sie $B^{2017}$.
   \end{enumerate}
@@ -88,39 +130,27 @@
 
 
 
-
-\begin{question}[subtitle = Eigenwerte und Diagonalisierbarkeit]
+\begin{question}[subtitle = Symmetrische und schiefsymmetrische Matrizen]
+  Es sei $K$ ein Körper mit $\ringchar{K} \neq 2$.
+  Es sei
+  \[
+      \Sym{n}{K}
+    = \{ A \in \matrices{n}{K} \suchthat \transpose{A} = A \}
+  \]
+  der Raum der symmetrischen Matrizen und
+  \[
+      \Alt{n}{K}
+    = \{ A \in \matrices{n}{K} \suchthat \transpose{A} = -A\}
+  \]
+  der Raum der schiefsymmetrischen Matrizen.
   \begin{enumerate}
     \item
-      Es sei $A \in \GL{2}{\Complex}$ mit $\tr A = 0$.
-      Zeigen Sie, dass $A$ diagonalisierbar ist.
+      Zeigen Sie, dass $\Sym{n}{K}$ und $\Alt{n}{K}$ Untervektorräume von $\matrices{n}{K}$ sind, und dass $\matrices{n}{K} = \Sym{n}{K} \oplus \Alt{n}{K}$ gilt.
+      
+      (\emph{Hinweis}:
+       Für die Abbildung $f \colon V \to V$, $A \mapsto \transpose{A}$ gilt $f^2 = \id$.)
     \item
-      Zeigen Sie, dass jede Matrix $A \in \matrices{3}{\Real}$ einen reellen Eigenwert hat.
-    \item
-      Folgern Sie, dass jede nicht-triagonalisierbare Matrix $A \in \matrices{3}{\Real}$ über $\Complex$ diagonalisierbar ist.
-    \item
-      Es sei $A \in \matrices{n}{\Complex}$ und $k \geq 0$ mit $f^k = \Id$.
-      Zeigen Sie, dass $A$ diagonalisierbar ist, und bestimmen Sie alle möglichen Eigenwerte für $A$.
-    \item
-      Es sei $A \in \matrices{2}{\Complex}$ mit $\tr A = 2$ und $\tr A^2 = 4$.
-      Zeigen Sie, dass $A$ diagonalisierbar ist, und bestimmen Sie die Eigenwerte von $A$.
-    \item
-      Es sei $A \in \matrices{2}{\Complex}$ mit $\tr A = 0$ und $\tr A^2 = -2$.
-      Bestimmen Sie $\det A$.
-    \item
-      Zeigen Sie für alle $A \in \matrices{3}{\Complex}$ die Gleichheit
-      \[
-          \det A
-        =   \frac{1}{6} (\tr A)^3
-          - \frac{1}{2} (\tr A^2)(\tr A)
-          + \frac{1}{3} (\tr A^3).
-      \]
-    \item
-      Es sei $A \in \matrices{n}{\Complex}$ mit $A^2 + A = 6 \Id$ und $\det A = 144$.
-      Bestimmen Sie $n$.
-    \item
-      Es sei $A \in \matrices{n}{\Complex}$ mit $A^3 = 3A - 2$ und $A^3 + A^2 = A + \Id$.
-      Zeigen Sie, dass $A = \Id$.
+      Geben Sie Basen von $\Sym{n}{K}$ und $\Alt{n}{K}$ an.
   \end{enumerate}
 \end{question}
 
@@ -144,7 +174,7 @@
                     1 & 1 & 1 \\
                     0 & 0 & 1
                   \end{pmatrix}
-        \in \GL{n}{\Real}.
+        \in \GL{3}{\Real}.
       \]
   \end{enumerate}
 \end{question}
