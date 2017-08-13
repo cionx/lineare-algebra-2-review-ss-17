@@ -1,0 +1,80 @@
+\documentclass[a4paper, 10pt]{scrartcl}
+\usepackage{../styles/generalstyle}
+\usepackage{../styles/exercisestyle}
+
+\subject{Repetitorium Lineare Algebra II, SS 2017}
+\title{Tag 2}
+\author{}
+\date{}
+
+\begin{document}
+
+
+
+
+
+\begin{question}
+  Man gebe gebe jeweils die größte Zahl $n \geq 1$ an, so dass die Jordan-Normalform aller ($n \times n$)-Matrizen durch die folgenden Informationen bis auf Permutation der Jordanblöcke eindeutig bestimmt ist:
+  \begin{enumerate}
+    \item
+      Das charakteristische Polynom $\charpol{A}(t)$.
+    \item
+      Das Minimalpolynom $\charpol{A}(t)$.
+    \item
+      Die Dimension aller Eigenräume $\dim \eigenspace{(\Complex^n)}{A}{\lambda}$, $\lambda \in \Complex$.
+    \item
+      Das Minimalpolynom $\minpol{A}(t)$ und die Dimension aller Eigenräume $\dim \eigenspace{(\Complex^n)}{A}{\lambda}$.
+  \end{enumerate}
+\end{question}
+
+
+
+
+
+\begin{question}
+  Bestimmen Sie für eine Matrix $A \in \matrices{n}{\Complex}$ mit den angegebenen Eigenschaften jeweils alle möglichen Jordan-Normalformen bis auf Permutaiton der Jordanblöcke.
+  \begin{enumerate}
+    \item
+      $A\in \matrices{2}{\Complex}$ ist nicht diagonalisierbar mit $\tr A = 0$.
+    \item
+      Es gilt $A^3 = 0$ und alle nicht-trivialen Eigenräume von $A$ sind eindimensional.
+    \item
+      Es gilt $\charpol{A}(t) = (t-2)(t+2)^3$ und $(A - 2 \Id)(A + 2 \Id) = 0$.
+    \item
+      Es gilt $\charpol{A}(t) = t^3 - t$.
+    \item
+      Es gilt $\charpol{A}(t) = (t^2 - 5t + 6)^2$, und alle Eigenräume von $A$ sind entweder null- oder eindimensional.
+    \item
+      Es gilt $A^2 = A$ und alle nicht-trivialen Eigenräume von $A$ sind zweidimensional.
+    \item
+      Es gilt $\charpol{A}(t) = t^5$ und alle Eigenräume von $A$ sind entweder null- oder zweidimensional.
+    \item
+      Es gilt $\charpol{A}(t) = (t + 3)^3 t^2$ und $A$ hat keine zweidimensionalen Eigenräume.
+    \item
+      Es gilt $\charpol{A}(t) = t^5 -2 t^4$.
+    \item
+      Es gilt $\charpol{A}(t) = (t-3)^4 (t-5)^4$ und $(A - 3 \Id)^2 (A - 5 \Id)^2 = 0$.
+    \item
+      $A \in \matrices{3}{\Complex}$ mit $\tr A = \det A = 0$.
+    \item
+      $A \in \matrices{8}{\Complex}$ mit $(A - \Id)(A^5 - A^4) = 0$, $\tr A = 2$ und $\rank A = 6$.
+  \end{enumerate}
+\end{question}
+
+
+\begin{question}
+  \begin{enumerate}
+    \item
+      Es sei $A = D + N$ mit $D, N \in \matrices{n}{\Complex}$ die Jordan--Chevalley-Zerlegung einer Matrix $A \in \matrices{n}{\Real}$.
+      Zeigen Sie, dass bereits $D, N \in \matrices{n}{\Real}$ gilt.
+    \item
+      Über $\Real$ besitzt nicht jede Matrix eine Jordan-Normalform, und somit auch nicht jede Matrix eine Jordan--Chevalley-Zerlegung.
+      Wieso steht dies nicht im Widerspruch zu der obigen Aussage?
+  \end{enumerate}
+\end{question}
+
+
+
+
+
+\end{document}
