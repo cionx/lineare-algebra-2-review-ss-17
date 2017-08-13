@@ -9,6 +9,7 @@ Es sei $K$ ein Körper, $V$ ein endlichdimensionaler $K$-Vektorraum, und $f \col
 \section{Eigenwerte und Eigenvektoren}
 
 \begin{definition}
+  \leavevmode
   \begin{itemize}
     \item
       Sind $\lambda \in K$ und $v \in V$ mit $v \neq 0$ und $f(v) = \lambda v$, so ist $v$ ein \emph{Eigenvektor} von $f$ zum \emph{Eigenwert} $\lambda$.
@@ -35,6 +36,7 @@ Es sei $K$ ein Körper, $V$ ein endlichdimensionaler $K$-Vektorraum, und $f \col
 \end{definition}
 
 \begin{remark}
+  \leavevmode
   \begin{enumerate}
     \item
       Ist $A \in \matrices{n}{K}$ und $f \colon K^n \to K^n$, $x \mapsto Ax$ der zu $A$ (bezüglich der Standardbasis) gehörige Endomorphismus, so stimmen die Eigenvektoren, Eigenwerte und Eigenräume von $A$ mit denen von $f$ überein.
@@ -104,6 +106,7 @@ Aus unserer anfänglichen Beobachtung erhalten wir den folgenden Zusammenhang zw
 \end{proposition}
 
 \begin{example}
+  \leavevmode
   \begin{enumerate}
     \item
       Für die Matrix
@@ -225,6 +228,7 @@ Allgemein ist das charakteristische Polynom von $A \in \matrices{n}{K}$ von der 
 \end{lemma}
 
 \begin{example}
+  \leavevmode
   \begin{enumerate}
     \item
       Ist $f$ nilpotent mit $f^k = 0$, so gilt $q(f) = 0$ für das Polynom $q(t) \coloneqq t^k$.
@@ -238,6 +242,7 @@ Allgemein ist das charakteristische Polynom von $A \in \matrices{n}{K}$ von der 
 \end{example}
 
 \begin{definition}
+  \leavevmode
   \begin{itemize}
     \item
       Es sei
@@ -342,9 +347,10 @@ Die Vielfachheit im Minimalpolynom ist dabei nach dem Satz von Cayley--Hamilton 
 \end{definition}
 
 \begin{example}
+  \leavevmode
   \begin{enumerate}
     \item
-      Falls das charakteristische Polynom in paarweise verschieden Linearfaktoren $\charpol{f}(t) = (t - \lambda_1) \dotsm (t - \lambda_n)$ zerfällt, so ist $f$ diagonalisierbar:
+      Falls das charakteristische Polynom $\charpol{f}(t)$ in paarweise verschieden Linearfaktoren $\charpol{f}(t) = (t - \lambda_1) \dotsm (t - \lambda_n)$ zerfällt, so ist $f$ diagonalisierbar:
       
       Dann gibt es zu jedem Eigenwert $\lambda_i$ einen Eigenvektor $v_i \in \eigenspace{V}{f}{\lambda_i}$, und die Familie $\basis{B} = (v_1, \dotsc, v_n)$ ist nach Lemma~\ref{lemma: linear independence of eigenvectors} linear unabhängig.
       Da $n = \dim V$ gilt, ist $\basis{B}$ eine Basis von $V$.
@@ -446,6 +452,7 @@ Ob der Endomorphismus $f \colon V \to V$ diagonalisierbar ist, hängt nur vom Mi
 Die Nullstellen von $\minpol{f}$ sind dann, wie bereits oben gesehen, genau die Eigenwerte von $f$.
 
 \begin{example}
+  \leavevmode
   \begin{enumerate}
     \item
       Gilt $f^2 = f$, so gilt $q(f) = 0$ für das Polynom $q(t) \coloneqq t^2 - t = t(t-1)$.
@@ -598,10 +605,7 @@ Außerdem ist für jedes Polynom $q \in K[t]$ auch der Endomorphismus $q(f)$ tri
 \end{lemma}
 
 \begin{example}
-  \begin{enumerate}
-    \item
-      Sind $f, g \colon V \to V$ simultan diagonalisierbar, so sind auch $f + g$ und $f \circ g$ diagonalisierbar.
-  \end{enumerate}
+  Sind die Endomorphismen $f, g \colon V \to V$ simultan diagonalisierbar, so sind auch $f + g$ und $f \circ g$ diagonalisierbar.
 \end{example}
 
 \begin{proposition}
