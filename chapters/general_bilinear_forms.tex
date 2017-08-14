@@ -86,6 +86,18 @@ Da der Rang einer Matrix invariant unter Kongruenz ist, ergibt die folgende Defi
   Der \emph{Rang} einer Bilinearform $\beta \in \BilForm(V)$ ist $\rank \beta \coloneqq \rank \repmatrixbilone{\beta}{\basis{B}}$, wobei $\basis{B}$ eine Basis von $V$ ist.
 \end{definition}
 
+\begin{definition}
+  Zwei Bilinearformen $\beta_1, \beta_2 \in \BilForm(V)$ sind \emph{kongruent}, wenn sie die folgenden äquivalenten Bedingungen erfüllen:
+  \begin{enumerate}
+    \item
+      Es gibt eine Basis $\basis{B}$ von $V$, so dass $\repmatrixbilone{\beta_1}{\basis{B}}$ und $\repmatrixbilone{\beta_2}{\basis{B}}$ kongruent sind.
+    \item
+      Für jede Basis $\basis{B}$ von $V$ sind $\repmatrixbilone{\beta_1}{\basis{B}}$ und $\repmatrixbilone{\beta_2}{\basis{B}}$ kongruent.
+    \item
+      Es gibt $f \in \GL{}{V}$ mit $\beta_1( f(v_1), f(v_2) ) = \beta_2( v_1, v_2 )$ für alle $v_1, v_2 \in V$.
+  \end{enumerate}
+\end{definition}
+
 
 
 
@@ -312,6 +324,75 @@ Hiermit erhält man aus Satz~\ref{theorem: exstience of an orthogonal basis} den
 Man bemerke, dass sich die Zahlen $p$, $q$ und $r$ aus dem Sylvesterschen Trägheitssatz bereits aus der Form \eqref{equation: bilinear form in diagonal form} ablesen lassen:
 Die Zahl $p$ ist die Anzahl der positiven Diagonaleinträge, die Zahl $q$ ist die Anzahl der negativen Diagonaleinträge, und $r$ ist die Häufigkeit von $0$ als Diagonaleintrag.
 
+\begin{example}
+  Es gibt $10$ Kongruenzklassen von reellen symmetrischen $(3 \times 3)$-Matrizen.
+  Ein Repräsentantensystem ist durch die folgenden Matrizen gegeben:
+  \[
+    \begin{matrix}
+      \begin{pmatrix}
+        1 &   &   \\
+          & 1 &   \\
+          &   & 1
+      \end{pmatrix}
+    &
+      \begin{pmatrix}
+        1 &   &     \\
+          & 1 &     \\
+          &   & -1
+      \end{pmatrix}
+    &
+      \begin{pmatrix}
+        1 &     &     \\
+          & -1  &     \\
+          &     & -1
+      \end{pmatrix}
+    &
+      \begin{pmatrix}
+        -1  &     &     \\
+            & -1  &     \\
+            &     & -1
+      \end{pmatrix}
+    &
+      \begin{pmatrix}
+        1 &   &   \\
+          & 1 &   \\
+          &   & 0
+      \end{pmatrix}
+    \\[20pt]
+      \begin{pmatrix}
+        1 &    &   \\
+          & -1 &   \\
+          &    & 0
+      \end{pmatrix}
+    &
+      \begin{pmatrix}
+        -1  &    &   \\
+            & -1 &   \\
+            &    & 0
+      \end{pmatrix}
+    &
+      \begin{pmatrix}
+        1 &   &   \\
+          & 0 &   \\
+          &   & 0
+      \end{pmatrix}
+    &
+      \begin{pmatrix}
+        -1  &   &   \\
+            & 0 &   \\
+            &   & 0
+      \end{pmatrix}
+    &
+      \begin{pmatrix}
+        0 &   &   \\
+          & 0 &   \\
+          &   & 0
+      \end{pmatrix}
+    \end{matrix}
+  \]
+  Allgemeiner gibt es für alle $n \geq 0$ genau $\binom{n+2}{2}$ Kongruenzklassen reeller symmetrischer $(n \times n)$-Matrizen.
+\end{example}
+
 Ist $\basis{B} = (v_1, \dotsc, v_n)$ eine Basis von $V$, so ist die darstellende $A \coloneqq \repmatrixbilone{\beta}{\basis{B}}$ symmetrisch.
 Nach Korollar~\ref{corollary: hermitian matrices are diagonalizable} gibt es eine Orthonormalbasis $\basis{D} = (v_1, \dotsc, v_n)$ von $\Real^n$ bestehend aus Eigenvektoren von $A$.
 Es sei $\lambda_i$ der zu $v_i$ gehörige Eigenwert, und $S \coloneqq (v_1 \dotsc v_n)$.
@@ -537,6 +618,28 @@ Für die beiden zugehörigen linearen Abbildungen $\beta_1, \beta_2 \colon V \to
 \end{definition}
 
 Es gilt $\rad{\beta} = \ker \beta_1 = \ker \beta_2$, weshalb $\beta$ genau dann nicht ausgeartet ist, wenn $\rad{\beta} = 0$ gilt.
+
+\begin{example}
+  Es sei $\ringchar{K} \neq 2$.
+  Dann gibt es eine Orthogonalbasis $\basis{B} = (v_1, \dotsc, v_n)$ von $V$ bezüglich $\beta$, so dass die darstellende Matrix $\repmatrixbilone{\beta}{\basis{B}}$ von der Form
+  \[
+      \repmatrixbilone{\beta}{\basis{B}}
+    = \begin{pmatrix}
+        \lambda_1 &         &           &   &         &   \\
+                  & \ddots  &           &   &         &   \\
+                  &         & \lambda_r &   &         &   \\
+                  &         &           & 0 &         &   \\
+                  &         &           &   & \ddots  &   \\
+                  &         &           &   &         & 0
+      \end{pmatrix}
+  \]
+  ist, wobei $\lambda_1, \dotsc, \lambda_r \neq 0$ gilt.
+  Dann ist $\rank \beta = r$ und somit $\repmatrixbilone{\beta}{\basis{B}}$ genau dann invertierbar, wenn $r = n$ gilt.
+  
+  Zusammen mit dem Sylvesterschen Trägheitssatz ergibt sich damit, dass es auf einem $n$-dimensionalen reellen Vektorraum bis auf Kongruenz genau $n+1$ nicht-ausgeartete symmetrische Bilinearformen gibt.
+  
+  Außerdem gilt in der obigen Situation, dass $(v_{r+1}, \dotsc, v_n)$ eine Basis von $\rad \beta$0ist.
+\end{example}
 
 \begin{lemma}
   Für jeden Untervektorraum $U \subseteq V$ gilt
