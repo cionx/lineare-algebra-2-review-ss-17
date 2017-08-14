@@ -110,6 +110,32 @@ Ist $A \in \matrices{n}{\Complex}$ eine normale Matrix, so lässt sich zum Berec
   \end{enumerate}
 \end{theorem}
 
+\begin{remark}
+  Das charakteristische Polynom der Drehstreckmatrix $r D(\varphi)$ ist $(t - \lambda)(t - \conjugate{\lambda}) = t^2 - 2\Re(\lambda) + \abs{\lambda}$ mit $\lambda = r e^{i \varphi}$.
+  
+  In \eqref{equation: normal form for real normal endomorphisms} entsprechen die reellen Diagonaleinträge also den reellen Nullstellen des charakteristischen Polynoms $\charpol{A}(t)$, und die Drehstreckmatrizen $r_i D(\varphi_i)$ den Paaren $(\lambda, \conjugate{\lambda})$ von rein komplexen Nullstelen von $\charpol{A}(t)$.
+  
+  Insbesondere lässt sich die Normalenform \eqref{equation: normal form for real normal endomorphisms} aus dem charakteristischen Polynom $\charpol{f}(t)$ ablesen, was die Eindeutig zeigt.
+\end{remark}
+
+\begin{example}
+  Es sei $\Korper = \Real$ und $f$ normal mit charakteristischen Polynom
+  \[
+      \charpol{A}(t)
+    = (t - 1)(t + 1)(t^2 + 1)(t^2 - 2t + 2).
+  \]
+  Es gilt $t^2 + 1 = (t - i)(t + i)$ mit $i = e^{i \pi/2}$ und $t^2 - 2t + 2 = (t - \lambda)(t - \conjugate{\lambda})$ mit $\lambda = 1 + i = \sqrt{2} e^{i \pi/4}$.
+  Die zu $f$ gehörige Normalenform ist also
+  \[
+    \begin{pmatrix}
+      1 &     &           &                   \\
+        & -1  &           &                   \\
+        &     & D(\pi/2)  &                   \\
+        &     &           & \sqrt{2} D(\pi/4)
+    \end{pmatrix}.
+  \]
+\end{example}
+
 \begin{corollary}
   Für $A \in \matrices{n}{\Real}$ sind die folgenden Bedingungen äquivalent:
   \begin{enumerate}
@@ -160,7 +186,6 @@ Aus den Polarisationsformeln aus Abschnitt~\ref{section: quadratic forms and pol
 \begin{lemma}
   Eine lineare Abbildung $f \colon V \to W$ ist genau dann unitär, bzw.\ orthogonal, falls $f$ eine Isometrie ist, d.h.\ falls $\norm{ f(v) } = \norm{v}$ für alle $v \in V$ gilt.
 \end{lemma}
-
 
 Es sei nun $f \colon V \to V$ ein Endomorphismus.
 
