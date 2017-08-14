@@ -71,10 +71,10 @@
       \[
                   A
         \coloneqq \begin{pmatrix}
-                    2 & 1       &         &   \\
-                    1 & 2       & \ddots  &   \\
-                      & \ddots  & \ddots  & 1 \\
-                      &         & 1       & 2
+                    2       & 1       & \cdots  & 1       \phantom{\ddots}  \\
+                    1       & \ddots  & \ddots  & \vdots  \phantom{\ddots}  \\
+                    \vdots  & \ddots  & \ddots  & 1       \phantom{\ddots}  \\
+                    1       & \cdots  & 1       & 2       \phantom{\ddots}
                   \end{pmatrix}
         \in       \matrices{n}{\Real}.
       \]
@@ -254,6 +254,29 @@
 %       Bestimmen Sie die Eigenwerte von $L$, sowie die zugehörigen Eigenräume.
 %   \end{enumerate}
 % \end{question}
+
+
+
+
+
+\begin{question}
+  Es sei $V$ ein endlichdimensionaler $K$-Vektorraum und $f \colon V \to V$ ein Endomorphismus mit charakteristischen Polymom
+  \[
+      \charpol{f}(t)
+    = (t - \lambda_1)^{n_1} \dotsm (t - \lambda_s)^{n_s},
+  \]
+  wobei $\lambda_i \neq \lambda_j$ für $i \neq j$ gilt.
+  Welche der folgenden Bedingungen sind notwendig, und welche Bedingungen sind hinreichend dafür, dass $f$ diagonlisierbar ist?
+  \begin{enumerate}
+    \item
+      Es gilt $n_i = 1$ für alle $i$.
+    \item
+      Es gilt $\dim \eigenspace{V}{f}{\lambda_i} = n_i$ für alle $i$.
+    \item
+      Es gibt eine Basis $\basis{B}$ von $V$, so dass $\repmatrixendo{f}{\basis{B}}$ eine Diagonalmatrix ist.
+  \end{enumerate}
+\end{question}
+
 
 
 
