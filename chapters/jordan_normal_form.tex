@@ -275,6 +275,42 @@ Zur Berechnung einer Jordanbasis von $A$ geht man weiter wie folgt vor:
 \end{itemize}
 
 \begin{example}
+  Für die Matrix
+  \[
+              A
+    \coloneqq \begin{pmatrix*}[r]
+                 3  & 0 & 1 \\
+                 1  & 2 & 1 \\
+                -1  & 0 & 1
+              \end{pmatrix*}
+    \in \matrices{3}{\Complex}
+  \]
+  gilt $\charpol{A}(t) = -(t-2)^3$.
+  Also ist $2$ der einzige Eigenwert von $A$.
+  Es gilt
+  \[
+      \ker (A - 2\Id)
+    = \ker
+      \begin{pmatrix*}[r]
+         1  & 0 &  1  \\
+         1  & 0 &  1  \\
+        -1  & 0 & -1
+      \end{pmatrix*}
+    = \generated{ \rvect{1 \\ 0 \\ -1}, \vect{0 \\ 1 \\ 1} }.
+  \]
+  Somit gilt $\dim \ker (A - 2\Id) = 2$.
+  Also gibt es zwei Jordanblöcke.
+  Die Jordan-Normalform von $A$ ist somit
+  \[
+    \begin{pmatrix}
+      2 &   &   \\
+      1 & 2 &   \\
+        &   & 2
+    \end{pmatrix}.
+  \]
+\end{example}
+
+\begin{example}
   Es sei $V$ ein $K$-Vektorraum mit Basis $\basis{B} = (v_1, \dotsc, v_7)$ und $f \colon V \to V$ der eindeutige Endomorphismus mit $f(v_1) = f(v_2) = v_5$, $f(v_3) = f(v_4) = v_6$, $f(v_5) = f(v_6) = v_7$ und $f(v_7) = 0$.
   Es gilt $f^3 = 0$, also ist $f$ nilpotent;
   insbesondere besitzt $f$ eine Jordan-Normalform, wobei $0$ der einzige auftretende Eigenwert ist.
@@ -420,6 +456,9 @@ Also sind $f, g \colon V \to V$ genau dann ähnlich, wenn ihre charakteristische
 \begin{example}
   \leavevmode
   \begin{enumerate}
+    \item
+      Für nilpotente Matrizen existiert immer eine verallgemeinerte Eigenraumzerlegung.
+      Deshalb sind zwei nilpotente Matrizen $A, B \in \matrices{n}{K}$ genau dann ähnlich, wenn $\dim \ker A^k = \dim \ker B^k$ für alle $k \geq 0$ gilt.
     \item
       Es seien $A_1, A_2, A_3 \in \matrices{3}{\Complex}$ mit
       \[
