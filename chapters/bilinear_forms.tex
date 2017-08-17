@@ -1,4 +1,4 @@
-\chapter{Bilinearformen}
+\chapter{Grundlagen zu Bilinearformen}
 
 \begin{notation}
   Für alle $\matrices{n}{\Complex}$ schreiben wir $\madj{A} \coloneqq \transpose{\conjugate{A}}$.
@@ -159,40 +159,43 @@ Im Fall $K = \Complex$ ist $\beta$ genau dann sesquilinear, wenn die Abbildung $
   \leavevmode
   \begin{enumerate}
     \item
-      Für jede Matrix $A \in \matrices{n}{K}$ ist die Abbildung
+      Für jede Matrix $A \in \mnatrices{m}{n}{K}$ ist die Abbildung
       \[
                 \beta_A
-        \colon  K^n \times K^n
+        \colon  K^m \times K^n
         \to     K
         \quad\text{mit}\quad
           \beta_A(x,y)
         = \transpose{x} A y
       \]
-      eine Bilinearform;
-      $\beta_A$ ist genau dann symmetrisch, wenn $A$ symmetrisch ist.
+      eine Bilinearform.
+      Für $n = m$ ist $\beta_A$ genau dann symmetrisch, wenn $A$ symmetrisch ist.
       
-      Jede Bilinearform $\beta \in \BilForm(K^n)$ ist von dieser Form:
-      Ist $A \in \matrices{n}{K}$ die Matrix mit $A_{ij} = \beta(e_i, e_j)$ für alle $i, j$, so gilt
+      Jede Bilinearform $\beta \in \BilForm(K^m, K^n)$ ist von dieser Form:
+      Ist $A \in \mnatrices{m}{n}{K}$ die Matrix mit $A_{ij} = \beta(e_i, e_j)$ für alle $i, j$, so gilt
       \[
-        \beta_A(e_i, e_j) = A_{ij} = \beta(e_i, e_j)
+          \beta_A(e_i, e_j)
+        = \transpose{e_i} A e_j
+        = A_{ij}
+        = \beta(e_i, e_j)
         \qquad
         \text{für alle $i, j$}
       \]
       und somit $\beta = \beta_A$ wegen der Bilinearität von $\beta$ und $\beta_A$.
       
-      Damit ergibt sich ein Isomorphismus $\matrices{n}{K} \to \BilForm(K^n)$, $A \mapsto \beta_A$.
+      Damit ergibt sich ein Isomorphismus $\mnatrices{m}{n}{K} \to \BilForm(K^m, K^n)$, $A \mapsto \beta_A$.
       
     \item
-      Analog ergibt sich aus jeder Matrix $A \in \matrices{n}{\Complex}$ eine Sesquilinearform
+      Analog ergibt sich aus jeder Matrix $A \in \mnatrices{m}{n}{\Complex}$ eine Sesquilinearform
       \[
                 \beta_A
-        \colon  \Complex^n \times \Complex^n
+        \colon  \Complex^m \times \Complex^n
         \to     \Complex,
         \quad\text{mit}\quad
           \beta_A(x,y)
         = \transpose{x} A \conjugate{y},
       \]
-      und somit insgesamt ein Isomorphismus $\matrices{n}{\Complex} \to \SesForm(\Complex^n)$, $A \mapsto \beta_A$.
+      und somit insgesamt ein Isomorphismus $\mnatrices{m}{n}{\Complex} \to \SesForm(\Complex^m, \Complex^n)$, $A \mapsto \beta_A$.
       Die hermiteschen Sesquilinearformen entsprechen dabei genau den hermiteschen Matrizen.
   \end{enumerate}
 \end{example}
@@ -335,3 +338,7 @@ Es sei $\beta \in \SymForm(V)$ eine symmetrische Bilinearform, bzw.\ $K = \Compl
       Eine \emph{Orthonormalbasis} ist eine orthogonale, normierte Basis.
   \end{itemize}
 \end{definition}
+
+
+
+

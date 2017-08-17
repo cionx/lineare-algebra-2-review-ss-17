@@ -58,6 +58,7 @@
 \newcommand{\End}[1]{\operatorname{End}(#1)}
 % different kind of matrices
 \newcommand{\matrices}[2]{\operatorname{M}_{#1}(#2)}
+\newcommand{\mnatrices}[3]{\operatorname{M}(#1 \times #2, #3)}
 \newcommand{\Sym}[2]{\operatorname{Sym}_{#1}(#2)}
 \newcommand{\Alt}[2]{\operatorname{Alt}_{#1}(#2)}
 \newcommand{\GL}[2]{\operatorname{GL}_{#1}(#2)}
@@ -76,8 +77,8 @@
 \newcommand{\norm}[1]{\left\| #1 \right\|}
 \newcommand{\id}{\operatorname{id}}
 \DeclareMathOperator{\rank}{rg}
-\newcommand{\repmatrixbilone}[2]{\operatorname{M}(#1, #2)}
-\newcommand{\repmatrixbiltwo}[3]{\operatorname{M}(#1, #2, #3)}
+\newcommand{\repmatrixbilsame}[2]{\operatorname{M}(#1, #2)}
+\newcommand{\repmatrixbildiff}[3]{\operatorname{M}(#1, #2, #3)}
 \newcommand{\repmatrixendo}[2]{\repmatrixhom{#1}{#2}{#2}}
 \newcommand{\repmatrixhom}[3]{\operatorname{M}_{#1, #2, #3}}
 \DeclareMathOperator{\tr}{Spur}
@@ -96,6 +97,7 @@
 \newcommand{\adj}[1]{#1^{\operatorname{ad}}}
 \newcommand{\basis}[1]{\mathcal{#1}}
 \newcommand{\conjugate}[1]{\overline{#1}}
+\newcommand{\coord}[2]{[#1]_{#2}}
 \newcommand{\dual}[1]{#1^*}
 \newcommand{\ddual}[1]{#1^{**}}
 \newcommand{\halfdual}[1]{\overline{#1}^*}

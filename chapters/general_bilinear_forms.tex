@@ -1,6 +1,6 @@
-\chapter{Allgemeine Bilinearformen}
+\chapter{Mehr zu Bilinearformen}
 
-Im Folgenden sei $K$ ein Körper und $V$ ein endlichdimensionaler $K$-Vektorraum.
+Im Folgenden seien $V$ und $W$ zwei endlichdimensionale $K$-Vektorräume.
 
 
 
@@ -10,39 +10,55 @@ Im Folgenden sei $K$ ein Körper und $V$ ein endlichdimensionaler $K$-Vektorraum
 
 \begin{definition}
   \label{definition: representing matrix for a bilinear form}
-  Die \emph{darstellende Matrix} einer Bilinearform $\beta \in \BilForm(V)$ bezüglich einer Basis $\basis{B} = (v_1, \dotsc, v_n)$ von $V$ ist die Matrix
-  \[
-              \repmatrixbilone{\beta}{\basis{B}}
-    \coloneqq \begin{pmatrix}
-                \beta(v_1, v_1) & \beta(v_1, v_2) & \cdots  & \beta(v_1, v_n) \\
-                \beta(v_2, v_1) & \beta(v_2, v_2) & \cdots  & \beta(v_2, v_n) \\
-                \vdots          & \vdots          & \ddots  & \vdots          \\
-                \beta(v_n, v_1) & \beta(v_n, v_2) & \cdots  & \beta(v_n, v_n)
-              \end{pmatrix}.
-  \]
+  \leavevmode
+  \begin{itemize}
+    \item
+      Die \emph{darstellende Matrix} einer Bilinearform $\beta \in \BilForm(V,W)$ bezüglich einer Basis $\basis{B} = (v_1, \dotsc, v_m)$ von $V$ und einer Basis $\basis{C} = (w_1, \dotsc, w_n)$ von $W$ ist die Matrix
+      \[
+                  \repmatrixbildiff{\beta}{\basis{B}}{\basis{C}}
+        \coloneqq \begin{pmatrix}
+                    \beta(v_1, w_1) & \beta(v_1, w_2) & \cdots  & \beta(v_1, w_n) \\
+                    \beta(v_2, w_1) & \beta(v_2, w_2) & \cdots  & \beta(v_2, w_n) \\
+                    \vdots          & \vdots          & \ddots  & \vdots          \\
+                    \beta(v_m, w_1) & \beta(v_m, w_2) & \cdots  & \beta(v_m, w_n)
+                  \end{pmatrix}
+                  \in \mnatrices{m}{n}{K}.
+      \]
+    \item
+      Die \emph{darstellende Matrix} einer Bilinearform $\beta \in \BilForm(V)$ bezüglich einer Basis $\basis{B}$ von $V$ ist $\repmatrixbilsame{\beta}{\basis{B}} \coloneqq \repmatrixbildiff{\beta}{\basis{B}}{\basis{B}}$.
+  \end{itemize}
 \end{definition}
 
 \begin{proposition}
-  Es sei $\basis{B} = (v_1, \dotsc, v_n)$ eine Basis von $V$ und
-  \[
+  Es sei $\basis{B} = (v_1, \dotsc, v_m)$ eine Basis von $V$ und $\basis{C} = (w_1, \dotsc, w_n)$ eine Basis von $W$, und es seien
+  \begin{gather*}
               V
-    \to       K^n,
+    \to       K^m,
     \quad     v
-    =         \sum_{i=1}^n x_i v_i
-    \mapsto   \vect{x_1 \\ \vdots \\ x_n}
-    \eqqcolon [v]
-  \]
-  der zugehörige Isomorphismus $V \to K^n$.
+    =         \sum_{i=1}^m x_i v_i
+    \mapsto   \transpose{ (x_1, \dotsc, x_m) }
+    \eqqcolon \coord{v}{\basis{B}}
+  \shortintertext{und}
+              W
+    \to       K^n,
+    \quad     w
+    =         \sum_{i=1}^n y_i w_i
+    \mapsto   \transpose{ (y_1, \dotsc, y_n) }
+    \eqqcolon \coord{w}{\basis{C}}
+  \end{gather*}
+  die zugehörige Isomorphismen $V \to K^n$ und $W \to K^n$.
   \begin{enumerate}
     \item
-      Für alle $w_1, w_2 \in V$ gilt $\beta(w_1, w_2) = \transpose{[w_1]} A [w_2]$.
+      Für $\beta \in \BilForm(V,W)$ ist die darstellende Matrix $\repmatrixbildiff{\beta}{\basis{B}}{\basis{C}}$ eindeutig dadurch bestimmt, dass
+      $\beta(v, w) = \transpose{\coord{v}{\basis{B}}} \, \repmatrixbildiff{\beta}{\basis{B}}{\basis{C}} \, \coord{w}{\basis{C}}$
+      für alle $v \in V$, $w \in W$ gilt.
     \item
       Die Abbildung
       \[
-                \BilForm(V)
-        \to     \matrices{n}{K},
+                \BilForm(V,W)
+        \to     \mnatrices{m}{n}{K},
         \quad   \beta
-        \mapsto \repmatrixbilone{\beta}{\basis{B}}     
+        \mapsto \repmatrixbildiff{\beta}{\basis{B}}{\basis{C}}
       \]
       ist ein Isomorphismus von $K$-Vektorräumen.
   \end{enumerate}
@@ -54,48 +70,46 @@ Im Folgenden sei $K$ ein Körper und $V$ ein endlichdimensionaler $K$-Vektorraum
     \item
       Die Bilinearform $\beta$ ist symmetrisch.
     \item
-      Es gibt eine Basis $\basis{B}$ von $V$, so dass $\repmatrixbilone{\beta}{\basis{B}}$ symmetrisch ist.
+      Es gibt eine Basis $\basis{B}$ von $V$, so dass $\repmatrixbilsame{\beta}{\basis{B}}$ symmetrisch ist.
     \item
-      Für jede Basis $\basis{B}$ von $V$ ist $\repmatrixbilone{\beta}{\basis{B}}$ symmetrisch.
+      Für jede Basis $\basis{B}$ von $V$ ist $\repmatrixbilsame{\beta}{\basis{B}}$ symmetrisch.
   \end{enumerate}
 \end{lemma}
 
 \begin{lemma}
-  Sind $\basis{B}$ und $\basis{C}$ zwei Basen von $V$, und ist $\beta \in \BilForm(V)$ eine Bilinearform, so gilt
+  Sind $\basis{B}$, $\basis{B}'$ zwei Basen von $V$ und $\basis{C}$, $\basis{C}'$ zwei Basen von $W$, so gilt für jede Bilinearform $\beta \in \BilForm(V,W)$, dass
   \[
-      \repmatrixbilone{\beta}{\basis{B}}
-    = \repmatrixhom{\id_V}{\basis{B}}{\basis{C}}^T
-      \repmatrixbilone{\beta}{\basis{C}}
-      \repmatrixhom{\id_V}{\basis{B}}{\basis{C}}.
+      \repmatrixbildiff{\beta}{\basis{B}}{\basis{C}}
+    = \repmatrixhom{\id_V}{\basis{B}}{\basis{B}'}^T
+      \repmatrixbildiff{\beta}{\basis{B}'}{\basis{C}'}
+      \repmatrixhom{\id_W}{\basis{C}}{\basis{C}'}.
   \]
 \end{lemma}
 
 \begin{definition}
-  Zwei Matrizen $A, B \in \matrices{n}{K}$ heißen \emph{kongruent} zueinander, falls es $C \in \GL{n}{K}$ mit $A = \transpose{C} B C$ gibt.
+  Zwei Matrizen $A, B \in \matrices{n}{K}$ heißen \emph{kongruent} zueinander, falls es $S \in \GL{n}{K}$ mit $A = \transpose{S} B S$ gibt.
 \end{definition}
 
-Kongruente Matrizen stellen also die gleiche Bilinearform bezüglich verschiedener Basen dar, d.h.\ für $n = \dim V$ sind zwei Matrizen $A, B \in \matrices{n}{K}$ genau dann kongruent, falls es eine Bilinearform $\beta \in \BilForm(V)$ sowie Basen $\basis{A}$ und $\basis{B}$ von $V$ gibt, so dass $A = \repmatrixbilone{\beta}{\basis{A}}$ und $B = \repmatrixbilone{\beta}{\basis{B}}$ gelten.
+Kongruente Matrizen stellen die gleiche Bilinearform bezüglich verschiedener Basen dar, d.h.\ für $n = \dim V$ sind zwei Matrizen $A, B \in \matrices{n}{K}$ genau dann kongruent, falls es eine Bilinearform $\beta \in \BilForm(V)$ sowie Basen $\basis{A}$ und $\basis{B}$ von $V$ gibt, so dass $A = \repmatrixbilsame{\beta}{\basis{A}}$ und $B = \repmatrixbilsame{\beta}{\basis{B}}$ gelten.
 
 \begin{corollary}
   Konkruenz ist eine Äquivalenzrelation auf $\matrices{n}{K}$.
 \end{corollary}
 
-Da der Rang einer Matrix invariant unter Kongruenz ist, ergibt die folgende Definition Sinn:
-
-\begin{definition}
-  Der \emph{Rang} einer Bilinearform $\beta \in \BilForm(V)$ ist $\rank \beta \coloneqq \rank \repmatrixbilone{\beta}{\basis{B}}$, wobei $\basis{B}$ eine Basis von $V$ ist.
-\end{definition}
-
 \begin{definition}
   Zwei Bilinearformen $\beta_1, \beta_2 \in \BilForm(V)$ sind \emph{kongruent}, wenn sie die folgenden äquivalenten Bedingungen erfüllen:
   \begin{enumerate}
     \item
-      Es gibt eine Basis $\basis{B}$ von $V$, so dass $\repmatrixbilone{\beta_1}{\basis{B}}$ und $\repmatrixbilone{\beta_2}{\basis{B}}$ kongruent sind.
+      Es gibt eine Basis $\basis{B}$ von $V$, so dass $\repmatrixbilsame{\beta_1}{\basis{B}}$ und $\repmatrixbilsame{\beta_2}{\basis{B}}$ kongruent sind.
     \item
-      Für jede Basis $\basis{B}$ von $V$ sind $\repmatrixbilone{\beta_1}{\basis{B}}$ und $\repmatrixbilone{\beta_2}{\basis{B}}$ kongruent.
+      Für jede Basis $\basis{B}$ von $V$ sind $\repmatrixbilsame{\beta_1}{\basis{B}}$ und $\repmatrixbilsame{\beta_2}{\basis{B}}$ kongruent.
     \item
       Es gibt $f \in \GL{}{V}$ mit $\beta_1( f(v_1), f(v_2) ) = \beta_2( v_1, v_2 )$ für alle $v_1, v_2 \in V$.
   \end{enumerate}
+\end{definition}
+
+\begin{definition}
+  Der \emph{Rang} einer Bilinearform $\beta \in \BilForm(V)$ ist $\rank \beta \coloneqq \rank \repmatrixbilsame{\beta}{\basis{B}}$, wobei $\basis{B}$ eine Basis von $V$ ist.
 \end{definition}
 
 
@@ -108,7 +122,7 @@ Es sei $\ringchar{K} \neq 2$ und $\beta \in \BilForm(V)$ eine Bilinearform.
 
 Falls eine eine Orthogonalbasis $\basis{B} = (v_1, \dotsc, v_n)$ von $V$ bezüglich $\beta$ gibt, so ist $\beta$ bereits symmetrisch, denn die Matrix
 \[
-    \repmatrixbilone{\beta}{\basis{B}}
+    \repmatrixbilsame{\beta}{\basis{B}}
   = \begin{pmatrix}
       \beta(v_1, v_1) &         &                 \\
                       & \ddots  &                 \\
@@ -139,7 +153,7 @@ Ist $A \in \matrices{n}{K}$ eine symmetrische Matrix, so lässt sich eine Diagon
 Wie beim Gauß-Vefahren bringt man die Matrix hierdurch in Zeilenstufenform.
 Als Ergebnis erhält man eine symmetrische Matrix $B$ in oberer Dreiecksform, also eine Diagonalmatrix.
 Eine Matrix $S \in \GL{n}{K}$ mit $\transpose{S} A S = B$ erhält man, indem man die genutzen elementaren Spaltenumformungen in gleicher Reihenfolge auf die Einheitsmatrix $\Id$ anwendet.
-(Nutzt man anstelle der Spaltenumformungen die Zeilenumformungen, so erhält man stattdessen $\transpose{C}$.)
+(Nutzt man anstelle der Spaltenumformungen die Zeilenumformungen, so erhält man stattdessen $\transpose{S}$.)
 
 \begin{example}
   \label{example: simultaneous row and column operations}
@@ -261,10 +275,10 @@ Für diesen Unterabschnitt sei $K = \Real$
 
 Es sei $\beta \in \SymForm(V)$ eine symmetrischen Bilinearform.
 
-Ist $\basis{B} = (v_1, \dotsc, v_n)$ eine Orthogonalbasis von $V$ bezüglich $\beta$, so ist die darstellende Matrix $\repmatrixbilone{\beta}{\basis{B}}$ von der Form
+Ist $\basis{B} = (v_1, \dotsc, v_n)$ eine Orthogonalbasis von $V$ bezüglich $\beta$, so ist die darstellende Matrix $\repmatrixbilsame{\beta}{\basis{B}}$ von der Form
 \begin{equation}
   \label{equation: bilinear form in diagonal form}
-    \repmatrixbilone{\beta}{\basis{B}}
+    \repmatrixbilsame{\beta}{\basis{B}}
   = \begin{pmatrix}
       d_1 &         &     \\
           & \ddots  &     \\
@@ -274,7 +288,7 @@ Ist $\basis{B} = (v_1, \dotsc, v_n)$ eine Orthogonalbasis von $V$ bezüglich $\b
 wobei $d_i = \beta(v_i, v_i)$ gilt.
 Sind $\mu_1, \dotsc, \mu_n \in K$ mit $\mu_i \neq 0$, so ist auch $\basis{B}' = (w_1, \dotsc, w_n)$ mit $w_i = \mu_i v_i$ eine Basis von $V$, und es gilt
 \[
-  \repmatrixbilone{\beta}{\basis{B'}}
+  \repmatrixbilsame{\beta}{\basis{B'}}
   = \begin{pmatrix}
       \mu_1^2 d_1 &         &             \\
                   & \ddots  &             \\
@@ -289,7 +303,7 @@ Hiermit erhält man aus Satz~\ref{theorem: exstience of an orthogonal basis} den
   Es sei $K = \Real$.
   Dann existiert eine Basis $\basis{B}$ von $V$, so dass
   \[
-      \repmatrixbilone{\beta}{\basis{B}}
+      \repmatrixbilsame{\beta}{\basis{B}}
     = \begin{pmatrix}
         \Id_p &         &     \\
               & -\Id_q  &     \\
@@ -393,14 +407,14 @@ Die Zahl $p$ ist die Anzahl der positiven Diagonaleinträge, die Zahl $q$ ist di
   Allgemeiner gibt es für alle $n \geq 0$ genau $\binom{n+2}{2}$ Kongruenzklassen reeller symmetrischer $(n \times n)$-Matrizen.
 \end{example}
 
-Ist $\basis{B} = (v_1, \dotsc, v_n)$ eine Basis von $V$, so ist die darstellende $A \coloneqq \repmatrixbilone{\beta}{\basis{B}}$ symmetrisch.
+Ist $\basis{B} = (v_1, \dotsc, v_n)$ eine Basis von $V$, so ist die darstellende $A \coloneqq \repmatrixbilsame{\beta}{\basis{B}}$ symmetrisch.
 Nach Korollar~\ref{corollary: hermitian matrices are diagonalizable} gibt es eine Orthonormalbasis $\basis{D} = (v_1, \dotsc, v_n)$ von $\Real^n$ bestehend aus Eigenvektoren von $A$.
 Es sei $\lambda_i$ der zu $v_i$ gehörige Eigenwert, und $S \coloneqq (v_1 \dotsc v_n)$.
 Die Matrix $S$ ist orthogonal, und für die Basis $\basis{C}$ von $V$ mit $\repmatrixhom{\id_V}{\basis{C}}{\basis{B}} = S$ gilt
 \[
-    \repmatrixbilone{\beta}{\basis{C}}
+    \repmatrixbilsame{\beta}{\basis{C}}
   = \transpose{ \repmatrixhom{\id_V}{\basis{C}}{\basis{B}} }
-    \repmatrixbilone{\beta}{\basis{B}}
+    \repmatrixbilsame{\beta}{\basis{B}}
     \repmatrixhom{\id_V}{\basis{C}}{\basis{B}}
   = \transpose{S} A S
   = S^{-1} A S
@@ -451,32 +465,21 @@ sowie einer linearen Abbildung
           v
   \mapsto \beta(v,-).
 \]
-Ist $\basis{B} = (v_1, \dotsc, v_n)$ eine Basis von $V$ und $\basis{C} = (w_1, \dotsc, w_m)$ eine Basis von $W$, so können wir als Verallgemeinerung von Definition~\ref{definition: representing matrix for a bilinear form} die darstellende Matrix
-\[
-            \repmatrixbiltwo{\beta}{\basis{B}}{\basis{C}}
-  \coloneqq \begin{pmatrix}
-              \beta(v_1, w_1) & \beta(v_1, w_2) & \cdots  & \beta(v_1, w_m) \\
-              \beta(v_2, w_1) & \beta(v_2, w_2) & \cdots  & \beta(v_2, w_m) \\
-              \vdots          & \vdots          & \ddots  & \vdots          \\
-              \beta(v_n, w_1) & \beta(v_n, w_2) & \cdots  & \beta(v_n, w_m)
-            \end{pmatrix}.
-\]
-betrachten.
-Dann gilt bezüglich der dualen Basen $\dual{\basis{B}}$ von $\dual{V}$ und $\dual{\basis{C}}$ on $\dual{W}$, dass
+Ist $\basis{B} = (v_1, \dotsc, v_n)$ eine Basis von $V$ und $\basis{C} = (w_1, \dotsc, w_m)$ eine Basis von $W$, so gilt bezüglich der dualen Basen $\dual{\basis{B}}$ von $\dual{V}$ und $\dual{\basis{C}}$ on $\dual{W}$, dass
 \[
     \repmatrixhom{\beta_1}{\basis{C}}{\dual{\basis{B}}}
-  = \repmatrixbiltwo{\beta}{\basis{B}}{\basis{C}}
+  = \repmatrixbildiff{\beta}{\basis{B}}{\basis{C}}
   \quad\text{und}\quad
     \repmatrixhom{\beta_2}{\basis{B}}{\dual{\basis{C}}}
-  = \transpose{ \repmatrixbiltwo{\beta}{\basis{B}}{\basis{C}} }
+  = \transpose{ \repmatrixbildiff{\beta}{\basis{B}}{\basis{C}} }
 \]
 Insbesondere gelten die Äquivalenzen
 \begin{align*}
-      &\, \text{$\beta_1$ ist ein Isomorphismus}                                                \\
-  \iff&\, \text{$\repmatrixhom{\beta_1}{\basis{C}}{\dual{\basis{B}}}$ ist invertierbar}         \\
-  \iff&\, \text{$\repmatrixbiltwo{\beta}{\basis{B}}{\basis{C}}$ ist invertierbar}               \\
-  \iff&\, \text{$\transpose{ \repmatrixbiltwo{\beta}{\basis{B}}{\basis{C}} }$ ist invertierbar} \\
-  \iff&\, \text{$\repmatrixhom{\beta_2}{\basis{B}}{\dual{\basis{C}}}$ ist invertierbar}         \\
+      &\, \text{$\beta_1$ ist ein Isomorphismus}                                                  \\
+  \iff&\, \text{$\repmatrixhom{\beta_1}{\basis{C}}{\dual{\basis{B}}}$ ist invertierbar}           \\
+  \iff&\, \text{$\repmatrixbildiff{\beta}{\basis{B}}{\basis{C}}$ ist invertierbar}                \\
+  \iff&\, \text{$\transpose{ \repmatrixbildiff{\beta}{\basis{B}}{\basis{C}} }$ ist invertierbar}  \\
+  \iff&\, \text{$\repmatrixhom{\beta_2}{\basis{B}}{\dual{\basis{C}}}$ ist invertierbar}           \\
   \iff&\, \text{$\beta_2$ ist ein Isomorphismus}.
 \end{align*}
 
@@ -488,9 +491,9 @@ Insbesondere gelten die Äquivalenzen
     \item
       Die lineare Abbildung $\beta_2$ ist ein Isomorphismus.
     \item
-      Es gibt eine Basis $\basis{B}$ von $V$ und Basis $\basis{C}$ von $W$, so dass die darstellende Matrix $\repmatrixbiltwo{\beta}{\basis{B}}{\basis{C}}$ invertierbar ist.
+      Es gibt eine Basis $\basis{B}$ von $V$ und Basis $\basis{C}$ von $W$, so dass die darstellende Matrix $\repmatrixbildiff{\beta}{\basis{B}}{\basis{C}}$ invertierbar ist.
     \item
-      Für jede Basis $\basis{B}$ von $V$ und Basis $\basis{C}$ von $W$ ist die darstellende Matrix $\repmatrixbiltwo{\beta}{\basis{B}}{\basis{C}}$ invertierbar.
+      Für jede Basis $\basis{B}$ von $V$ und Basis $\basis{C}$ von $W$ ist die darstellende Matrix $\repmatrixbildiff{\beta}{\basis{B}}{\basis{C}}$ invertierbar.
     \item
       Es gelten \textup(mindestes\textup) zwei \textup(und damit bereits alle drei\textup) der folgenden Bedingungen:
       \begin{enumerate}
@@ -543,7 +546,7 @@ Insbesondere gelten die Äquivalenzen
 % Es sei $\beta \in \BilForm(V, W)$ eine nicht-ausgeartete Bilinearform.
 % 
 % \begin{proposition}
-%   Für jede Basis $\basis{B} = (v_1, \dotsc, v_n)$ von $V$ gibt es eine eindeutige Basis $\basis{C} = (w_1, \dotsc, w_n)$ von $W$ mit $\beta(v_i, w_j) = \delta_{ij}$ für alle $i, j$, also so dass $\repmatrixbiltwo{\beta}{\basis{B}}{\basis{C}} = \Id$.
+%   Für jede Basis $\basis{B} = (v_1, \dotsc, v_n)$ von $V$ gibt es eine eindeutige Basis $\basis{C} = (w_1, \dotsc, w_n)$ von $W$ mit $\beta(v_i, w_j) = \delta_{ij}$ für alle $i, j$, also so dass $\repmatrixbildiff{\beta}{\basis{B}}{\basis{C}} = \Id$.
 %   Dies ist die zu $\basis{B}$ bezüglich $\beta$ duale Basis.
 % \end{proposition}
 % 
@@ -621,9 +624,9 @@ Es gilt $\rad{\beta} = \ker \beta_1 = \ker \beta_2$, weshalb $\beta$ genau dann 
 
 \begin{example}
   Es sei $\ringchar{K} \neq 2$.
-  Dann gibt es eine Orthogonalbasis $\basis{B} = (v_1, \dotsc, v_n)$ von $V$ bezüglich $\beta$, so dass die darstellende Matrix $\repmatrixbilone{\beta}{\basis{B}}$ von der Form
+  Dann gibt es eine Orthogonalbasis $\basis{B} = (v_1, \dotsc, v_n)$ von $V$ bezüglich $\beta$, so dass die darstellende Matrix $\repmatrixbilsame{\beta}{\basis{B}}$ von der Form
   \[
-      \repmatrixbilone{\beta}{\basis{B}}
+      \repmatrixbilsame{\beta}{\basis{B}}
     = \begin{pmatrix}
         \lambda_1 &         &           &   &         &   \\
                   & \ddots  &           &   &         &   \\
@@ -634,7 +637,7 @@ Es gilt $\rad{\beta} = \ker \beta_1 = \ker \beta_2$, weshalb $\beta$ genau dann 
       \end{pmatrix}
   \]
   ist, wobei $\lambda_1, \dotsc, \lambda_r \neq 0$ gilt.
-  Dann ist $\rank \beta = r$ und somit $\repmatrixbilone{\beta}{\basis{B}}$ genau dann invertierbar, wenn $r = n$ gilt.
+  Dann ist $\rank \beta = r$ und somit $\repmatrixbilsame{\beta}{\basis{B}}$ genau dann invertierbar, wenn $r = n$ gilt.
   
   Zusammen mit dem Sylvesterschen Trägheitssatz ergibt sich damit, dass es auf einem $n$-dimensionalen reellen Vektorraum bis auf Kongruenz genau $n+1$ nicht-ausgeartete symmetrische Bilinearformen gibt.
   
@@ -654,20 +657,6 @@ Es gilt $\rad{\beta} = \ker \beta_1 = \ker \beta_2$, weshalb $\beta$ genau dann 
 \begin{warning}
   Es gilt im Allgemeinen nicht, dass $V = U \oplus U^\perp$.
 \end{warning}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
