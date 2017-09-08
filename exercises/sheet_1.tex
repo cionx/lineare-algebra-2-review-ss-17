@@ -22,23 +22,19 @@
       Zeigen Sie, dass jede Matrix $A \in \matrices{3}{\Real}$ einen reellen Eigenwert hat.
     \item
       Folgern Sie, dass jede nicht-triagonalisierbare Matrix $A \in \matrices{3}{\Real}$ über $\Complex$ diagonalisierbar ist.
+      \\
+      (\emph{Tipp}:
+       Zeigen Sie, dass für jeden Eigenwert $\lambda$ von $A$ auch $\conjugate{\lambda}$ ein Eigenwert ist.)
     \item
-      Es sei $A \in \matrices{n}{\Complex}$ und $k \geq 0$ mit $f^k = \Id$.
+      Es sei $A \in \matrices{n}{\Complex}$ und $k \geq 0$ mit $A^k = \Id$.
       Zeigen Sie, dass $A$ diagonalisierbar ist, und bestimmen Sie alle möglichen Eigenwerte für $A$.
-    \item
-      Es sei $A \in \matrices{2}{\Complex}$ mit $\tr A = 2$ und $\tr A^2 = 4$.
-      Zeigen Sie, dass $A$ diagonalisierbar ist, und bestimmen Sie die Eigenwerte von $A$.
     \item
       Es sei $A \in \matrices{2}{\Complex}$ mit $\tr A = 0$ und $\tr A^2 = -2$.
       Bestimmen Sie $\det A$.
+      Entscheiden Sie auch, ob $A$ diagonalisierbar ist.
     \item
-      Zeigen Sie für alle $A \in \matrices{3}{\Complex}$ die Gleichheit
-      \[
-          \det A
-        =   \frac{1}{6} (\tr A)^3
-          - \frac{1}{2} (\tr A^2)(\tr A)
-          + \frac{1}{3} (\tr A^3).
-      \]
+      Es sei $A \in \matrices{2}{\Complex}$ mit $\tr A = 2$ und $\tr A^2 = 4$.
+      Zeigen Sie, dass $A$ diagonalisierbar ist, und bestimmen Sie die Eigenwerte von $A$.
     \item
       Es sei $A \in \matrices{n}{\Complex}$ mit $A^2 + A = 6 \Id$ und $\det A = 144$.
       Bestimmen Sie $n$.
@@ -52,20 +48,22 @@
 
 
 
+\begin{question}[subtitle = Determinante und Potenzen der Spur]
+  Zeigen Sie für alle $A \in \matrices{3}{\Complex}$ die Gleichheit
+  \[
+      \det A
+    =   \frac{1}{6} (\tr A)^3
+      - \frac{1}{2} (\tr A^2)(\tr A)
+      + \frac{1}{3} (\tr A^3).
+  \]
+\end{question}
+
+
+
+
+
 \begin{question}[subtitle = Diagonalisieren]
   \begin{enumerate}
-    \item
-      Es sei
-      \[
-                  A
-        \coloneqq \begin{pmatrix}
-                    3 & 4 & 1 \\
-                    0 & 1 & 2 \\
-                    1 & 2 & 2
-                  \end{pmatrix}
-        \in       \matrices{3}{\Field_5}.
-      \]
-      Bestimmen Sie eine Matrix $S \in \GL{3}{\Field_5}$, so dass $S^{-1} A S$ in Diagonalform ist.
     \item
       Es sei
       \[
@@ -78,7 +76,7 @@
                   \end{pmatrix}
         \in       \matrices{n}{\Real}.
       \]
-      Bestimmen Sie eine Matrix $S \in \GL{n}{\Real}$, so dass $S^{-1} A S$ in Diagonalform ist.
+      Bestimmen Sie die Eigenwerte von $A$ und zeigen Sie, dass $A$ diagonalisierbar ist.
     \item
       Es sei
       \[
@@ -123,6 +121,34 @@
       Geben Sie eine Matrix $C \in \matrices{2}{\Complex}$ mit $A = C^2$ an.
     \item
       Berechnen Sie $B^{2017}$.
+      \\
+      (\emph{Tipp}:
+       Ignorieren Sie ggf.\ zunächst den Vorfaktor $1/\sqrt{2}$.)
+  \end{enumerate}
+\end{question}
+
+
+
+
+
+\begin{question}[subtitle = Cayley-Hamilton]
+  Es sei $K$ ein Körper.
+  \begin{enumerate}
+    \item
+      Zeigen Sie für $A \in \matrices{n}{K}$, dass die Potenzen $\Id, A, A^2, \dotsc, A^n$ linear abhängig sind.
+    \item
+      Es sei $A \in \GL{n}{K}$.
+      Zeigen Sie, dass es ein Polynom $p \in K[t]$ mit $p(A) = A^{-1}$ gibt.
+      Bestimmen Sie ein solches Polynom für die Matrix
+      \[
+                  A
+        \coloneqq \begin{pmatrix}
+                    1 & 0 & 1 \\
+                    1 & 1 & 1 \\
+                    0 & 0 & 1
+                  \end{pmatrix}
+        \in \GL{3}{\Real}.
+      \]
   \end{enumerate}
 \end{question}
 
@@ -158,31 +184,6 @@
 
 
 
-\begin{question}[subtitle = Cayley-Hamilton]
-  Es sei $K$ ein Körper.
-  \begin{enumerate}
-    \item
-      Zeigen Sie für $A \in \matrices{n}{K}$, dass die Potenzen $\Id, A, A^2, \dotsc, A^n$ linear abhängig sind.
-    \item
-      Es sei $A \in \GL{n}{K}$.
-      Zeigen Sie, dass es ein Polynom $p \in K[t]$ mit $p(A) = A^{-1}$ gibt.
-      Bestimmen Sie ein solches Polynom für die Matrix
-      \[
-                  A
-        \coloneqq \begin{pmatrix}
-                    1 & 0 & 1 \\
-                    1 & 1 & 1 \\
-                    0 & 0 & 1
-                  \end{pmatrix}
-        \in \GL{3}{\Real}.
-      \]
-  \end{enumerate}
-\end{question}
-
-
-
-
-
 \begin{question}[subtitle = Simultane Diagonalisierbarkeit]
   \begin{enumerate}
     \item
@@ -203,24 +204,24 @@
       \]
       simultan diagonalisierbar sind.
       
-    \item
-      Es seien $A, B \in \matrices{3}{\Real}$ mit
-      \[
-                  A
-        \coloneqq \begin{pmatrix}
-                    1  & 0  & 1 \\
-                    0  & 1  & 1 \\
-                    0  & 0  & 2
-                  \end{pmatrix}
-        \quad \text{und} \quad
-                  B
-        \coloneqq \begin{pmatrix*}[r]
-                    3 &  0  & -4  \\
-                    4 & -1  & -4  \\
-                    0 &  0  & -1
-                  \end{pmatrix*}.
-      \]
-      Bestimmen Sie $S \in \GL{3}{\Real}$, so dass $C^{-1} A C$ und $C^{-1} B C$ in Diagonalgestalt sind.
+%     \item
+%       Es seien $A, B \in \matrices{3}{\Real}$ mit
+%       \[
+%                   A
+%         \coloneqq \begin{pmatrix}
+%                     1  & 0  & 1 \\
+%                     0  & 1  & 1 \\
+%                     0  & 0  & 2
+%                   \end{pmatrix}
+%         \quad \text{und} \quad
+%                   B
+%         \coloneqq \begin{pmatrix*}[r]
+%                     3 &  0  & -4  \\
+%                     4 & -1  & -4  \\
+%                     0 &  0  & -1
+%                   \end{pmatrix*}.
+%       \]
+%       Bestimmen Sie $S \in \GL{3}{\Real}$, so dass $C^{-1} A C$ und $C^{-1} B C$ in Diagonalgestalt sind.
   \end{enumerate}
 \end{question}
 
@@ -259,23 +260,23 @@
 
 
 
-\begin{question}
-  Es sei $V$ ein endlichdimensionaler $K$-Vektorraum und $f \colon V \to V$ ein Endomorphismus mit charakteristischen Polymom
-  \[
-      \charpol{f}(t)
-    = (t - \lambda_1)^{n_1} \dotsm (t - \lambda_s)^{n_s},
-  \]
-  wobei $\lambda_i \neq \lambda_j$ für $i \neq j$ gilt.
-  Welche der folgenden Bedingungen sind notwendig, und welche Bedingungen sind hinreichend dafür, dass $f$ diagonlisierbar ist?
-  \begin{enumerate}
-    \item
-      Es gilt $n_i = 1$ für alle $i$.
-    \item
-      Es gilt $\dim \eigenspace{V}{f}{\lambda_i} = n_i$ für alle $i$.
-    \item
-      Es gibt eine Basis $\basis{B}$ von $V$, so dass $\repmatrixendo{f}{\basis{B}}$ eine Diagonalmatrix ist.
-  \end{enumerate}
-\end{question}
+% \begin{question}
+%   Es sei $V$ ein endlichdimensionaler $K$-Vektorraum und $f \colon V \to V$ ein Endomorphismus mit charakteristischen Polymom
+%   \[
+%       \charpol{f}(t)
+%     = (t - \lambda_1)^{n_1} \dotsm (t - \lambda_s)^{n_s},
+%   \]
+%   wobei $\lambda_i \neq \lambda_j$ für $i \neq j$ gilt.
+%   Welche der folgenden Bedingungen sind notwendig, und welche Bedingungen sind hinreichend dafür, dass $f$ diagonlisierbar ist?
+%   \begin{enumerate}
+%     \item
+%       Es gilt $n_i = 1$ für alle $i$.
+%     \item
+%       Es gilt $\dim \eigenspace{V}{f}{\lambda_i} = n_i$ für alle $i$.
+%     \item
+%       Es gibt eine Basis $\basis{B}$ von $V$, so dass $\repmatrixendo{f}{\basis{B}}$ eine Diagonalmatrix ist.
+%   \end{enumerate}
+% \end{question}
 
 
 
@@ -290,7 +291,29 @@
     \item
       Es sei $K$ algebraisch abgeschlossen und $p \in K[t]$.
       Zeigen Sie, dass es für jeden Eigenwert $\mu$ von $p(f)$ einen Eigenwert $\lambda$ von $f$ mit $\mu = p(\lambda)$ gibt.
+      \\
+      (\emph{Tipp}:
+       Zeigen Sie zunächst, dass der Endomorphismus $(p - \lambda)(f)$ nicht injektiv ist.
+       Zerlegen Sie anschließend $p - \lambda$ in Linearfaktoren.
   \end{enumerate}
+\end{question}
+
+
+
+
+
+\begin{question}[subtitle = Diagonalisieren über $\Field_5$]
+  Es sei
+  \[
+              A
+    \coloneqq \begin{pmatrix}
+                3 & 4 & 1 \\
+                0 & 1 & 2 \\
+                1 & 2 & 2
+              \end{pmatrix}
+    \in       \matrices{3}{\Field_5}.
+  \]
+  Bestimmen Sie eine Matrix $S \in \GL{3}{\Field_5}$, so dass $S^{-1} A S$ in Diagonalform ist.
 \end{question}
 
 
