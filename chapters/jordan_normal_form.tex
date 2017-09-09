@@ -24,7 +24,7 @@ Es sei $K$ ein Körper, $V$ ein endlichdimensionaler $K$-Vektorraum und $f \colo
 \end{definition}
 
 \begin{definition}
-  Eine Matrix $J$ der Form
+  Eine Matrix $J \in \matrices{n}{K}$ der Form
   \[
       J
     = \begin{pmatrix}
@@ -37,9 +37,13 @@ Es sei $K$ ein Körper, $V$ ein endlichdimensionaler $K$-Vektorraum und $f \colo
 \end{definition}
 
 \begin{definition}
-  Eine \emph{Jordan-Normalform} einer Matrix $A \in \matrices{n}{K}$ ist eine zu $A$ ähnliche Matrix $J \in \matrices{n}{K}$, so dass $J$ in Jordan-Normalform ist.
-  
-  Eine Jordan-Normalform von $f$ ist eine Jordan-Normalform der darstellenden Matrix $\repmatrixendo{f}{\basis{B}}$ bezüglich einer Basis $\basis{B}$ von $V$.
+  \leavevmode
+  \begin{enumerate}
+    \item
+      Eine \emph{Jordan-Normalform} einer Matrix $A \in \matrices{n}{K}$ ist eine zu $A$ ähnliche Matrix $J \in \matrices{n}{K}$, so dass $J$ in Jordan-Normalform ist.
+    \item
+      Eine Jordan-Normalform von $f$ ist eine Jordan-Normalform der darstellenden Matrix $\repmatrixendo{f}{\basis{B}}$ bezüglich einer Basis $\basis{B}$ von $V$.
+  \end{enumerate}
 \end{definition}
 
 Der Endomorphismus $f$ besitzt genau dann eine Jordan-Normalform $J \in \matrices{n}{K}$, falls es eine Basis $\basis{B}$ von $V$ gibt, so dass $\repmatrixendo{f}{\basis{B}} = J$ gilt.
@@ -54,7 +58,7 @@ Dies ist äquivalent dazu, dass für die Matrix $S = (v_1 \dotsc v_n) \in \GL{n}
 
 \section{Eindeutigkeit}
 
-Es sei $J$ eine Matrix in Jordan-Normalform, also
+Es sei $J \in \matrices{n}{K}$ eine Matrix in Jordan-Normalform, also
 \[
     J
   = \begin{pmatrix}
@@ -66,30 +70,30 @@ Es sei $J$ eine Matrix in Jordan-Normalform, also
 Für alle $\lambda \in K$ gilt dann
 \[
     \dim \ker (J - \lambda \Id)^k
-  = \sum_{k'=1}^k \text{Anzahl der Jordanblöcke zu $\lambda$ von Größe $\geq k'$}.
+  = \sum_{k'=1}^k \text{Anzahl der Jordanblöcke zu $\lambda$ von Größe mindestens $k'$}.
 \]
 Für die Zahlen $d_k(\lambda) \coloneqq \dim \ker (J - \lambda \Id)^k$ gilt deshalb
 \begin{gather*}
     d_k(\lambda) - d_{k-1}(\lambda)
-  = \text{Anzahl der Jordanblöcke zu $\lambda$ von Größe $\geq k$}
+  = \text{Anzahl der Jordanblöcke zu $\lambda$ von Größe mindestens $k$}
 \shortintertext{und somit}
   \begin{aligned}
      &\,    \text{Anzahl der Jordanblöcke zu $\lambda$ von Größe $k$}           \\
-    =&\,    \text{Anzahl der Jordanblöcke zu $\lambda$ von Größe $\geq k$}      \\
-     &\,  - \text{Anzahl der Jordanblöcke zu $\lambda$ von Größe $\geq (k+1)$}  \\
+    =&\,    \text{Anzahl der Jordanblöcke zu $\lambda$ von Größe mindestens $k$}      \\
+     &\,  - \text{Anzahl der Jordanblöcke zu $\lambda$ von Größe mindestens $(k+1)$}  \\
     =&\,    ( d_k(\lambda) - d_{k-1}(\lambda) )
           - ( d_{k+1}(\lambda) - d_k(\lambda) )                                 \\
     =&\,  2 d_k(\lambda) - d_{k-1}(\lambda) - d_{k+1}(\lambda).
   \end{aligned}
 \end{gather*}
 
-Ist $A \in \matrices{n}{K}$ und $\lambda \in K$ eine Jordan-Normalform von $A$, so sind $A$ und $J$ ähnlich, weshalb für alle $\lambda \in K$ und $k \geq 0$ auch $(A - \lambda \Id)^k$ und $(J - \lambda \Id)^k$ ähnlich sind.
+Ist $J$ Jordan-Normalform von $A \in \matrices{n}{K}$, so sind $A$ und $J$ ähnlich, weshalb für alle $\lambda \in K$ und $k \geq 0$ auch $(A - \lambda \Id)^k$ und $(J - \lambda \Id)^k$ ähnlich sind.
 Für alle $\lambda \in K$ und $k \geq 0$ gilt deshalb $\dim \ker (A - \lambda)^k = \dim \ker (J - \lambda)^k$.
 Aus der obigen Berechnung ergibt sich deshalb für die Zahlen $d_k(\lambda) \coloneqq \ker (A - \lambda \Id)^k$, dass
-\[
-    \text{Anzahl der Jordanblöcke zu $\lambda$ von Größe $k$ in $J$}
-  = 2 d_k(\lambda) - d_{k-1}(\lambda) - d_{k+1}(\lambda).
-\]
+\begin{align*}
+   &\, \text{Anzahl der Jordanblöcke zu $\lambda$ von Größe $k$ in einer JNF von $A$} \\
+  =&\, 2 d_k(\lambda) - d_{k-1}(\lambda) - d_{k+1}(\lambda).
+\end{align*}
 Damit ergibt sich inbesondere die folgende Eindeutigkeit der Jordan-Normalform:
 
 \begin{proposition}
@@ -99,10 +103,16 @@ Damit ergibt sich inbesondere die folgende Eindeutigkeit der Jordan-Normalform:
 Es ergibt daher Sinn, von \emph{der} Jordan-Normalform einer Matrix, bzw.\ eines Endomorphismus zu sprechen.
 
 
+% manual pagebreak
+\pagebreak
 
 
 
 \section{Existenz \& Kochrezept}
+
+
+
+\subsection*{Existenzkriterien}
 
 \begin{definition}
   \leavevmode
@@ -148,6 +158,7 @@ Es ergibt daher Sinn, von \emph{der} Jordan-Normalform einer Matrix, bzw.\ eines
 
 \begin{example}
   Der Endomorphismus $f$ ist genau dann nilpotent, wenn $\geigenspace{V}{f}{0} = V$.
+  (Hier nutzen wir, dass $V$ endlichdimensional ist.)
 \end{example}
 
 \begin{lemma}
@@ -175,11 +186,24 @@ Mithilfe der verallgemeinerten Eigenräume ergibt sich eine Charakterisierung de
   \end{enumerate}
 \end{theorem}
 
-Ist $A \in \matrices{n}{K}$, so dass das charakteristische Polynom $\charpol{A}(t)$ in Linearfaktoren zerfällt, so lässt sich die Jordan-Normalform von $A$ sowie eine zugehörige Jordanbasis nach dem folgenden \emph{Kochrezept} berechnen:
+Dabei beizeichnet man die Zerlegung $V = \bigoplus_{\lambda \in K} \geigenspace{V}{f}{\lambda}$ als die \emph{verallgemeinerte Eigenraumzerlegung} bezüglich $f$.
+
+\begin{example}
+  Ist $f$ nilpotent, so gilt $V = \geigenspace{V}{f}{0}$, also $V = \sum_{\lambda \in K} \geigenspace{V}{f}{\lambda}$ und somit $V = \bigoplus_{\lambda \in K} \geigenspace{V}{f}{\lambda}$.
+  Also existiert die verallgemeinerte Eigenraumzerlegung bezüglich $f$, und somit auch die Jordan-Normalform von $f$.
+  
+  Nilpotente Endomorphismen besitzen also immer eine Jordan-Normalform.
+\end{example}
+
+
+
+\subsection*{Kochrezept}
+
+Ist $A \in \matrices{n}{K}$, so dass das charakteristische Polynom $\charpol{A}(t)$ in Linearfaktoren zerfällt, so lässt sich die Jordan-Normalform von $A$ sowie anschließend auch eine zugehörige Jordanbasis nach dem folgenden \emph{Kochrezept} berechnen:
 
 \begin{itemize}
   \item
-    Man bestimme die Eigenwerte von $A$, etwa indem man $\charpol{A}(t)$ berechnet und anschließend die Nullstellen herausfindet.
+    Man bestimme die Eigenwerte von $A$, etwa indem man das charakteristische Polynom $\charpol{A}(t)$ berechnet, und anschließend die Nullstellen von $p_A(t)$ herausfindet.
     
   \item
     Für jeden Eigenwert $\lambda$ von $A$ führe man die folgenden Schritte durch:
@@ -188,7 +212,7 @@ Ist $A \in \matrices{n}{K}$, so dass das charakteristische Polynom $\charpol{A}(
         Man berechne die iterierten Kerne $\ker (A - \lambda \Id), \ker (A - \lambda \Id)^2, \dotsc, \ker (A - \lambda \Id)^m$ bis zu dem Punkt, an dem eine der folgenden äquivalenten Bedingungen erfüllt sind:
         \begin{itemize}
           \item
-            Die Dimension $\dim \ker (A - \lambda \Id)^m$ ist die algebraische Vielfachheit von $\lambda$ in $\charpol{A}(t)$.
+            Die Dimension von $\ker (A - \lambda \Id)^m$ ist gleich der algebraische Vielfachheit von $\lambda$ in $\charpol{A}(t)$.
           \item
             Es gilt $\ker (A - \lambda \Id)^m = \ker (A - \lambda \Id)^{m+1}$.
         \end{itemize}
@@ -201,77 +225,76 @@ Ist $A \in \matrices{n}{K}$, so dass das charakteristische Polynom $\charpol{A}(
 \end{itemize}
 
 Aus den Eigenwerten $\lambda_1, \lambda_2, \dotsc$ von $A$ und den Zahlen $b_k(\lambda_i)$ erhalten wir bereits, wieviele Blöcke es zu welchen Eigenwert von welcher Größe gibt, d.h.\ wie die Jordan-Normalform von $A$ (bis auf Permutation der Blöcke) aussehen wird.
-Inbesondere ist $d_1(\lambda)$ die Gesamtzahl der Jordanblöcke zu $\lambda$ und die entsprechende Potenz $m$ die maximal auftretende Blöckgröße zu $\lambda$.
+Inbesondere ist $d_1(\lambda) = \dim \ker (A - \lambda \Id)$ die Gesamtzahl der Jordanblöcke zu $\lambda$ und die entsprechende Potenz $m$ die maximale auftretende Blöckgröße zu $\lambda$.
 
-Zur Berechnung einer Jordanbasis von $A$ geht man weiter wie folgt vor:
+Zur Berechnung einer Jordanbasis von $A$ kann man weiterhin wie folgt vorgehen:
 
 \begin{itemize}[resume]
   \item
-    Für jeden Eigenwert $\lambda$ von $A$ gehe man weiterhin wie folgt vor:
+    Für jeden Eigenwert $\lambda$ von $A$ berechnet man eine Basis $\basis{B}_\lambda$ von $\geigenspace{(K^n)}{A}{\lambda}$ wie folgt:
     \begin{itemize}
       \item
-        Man wähle Vektoren $v_1, \dotsc, v_{b_m} \in \ker A^m$ mit
+        Man wähle Vektoren $v_1, \dotsc, v_{b_m} \in \ker (A - \lambda \Id)^m$ mit
         \[
-                    \ker A^m
-          =         \ker A^{m-1}
+                    \ker (A - \lambda \Id)^m
+          =         \ker (A - \lambda \Id)^{m-1}
             \oplus  \generated{v_1, \dotsc, v_{b_m}}.
         \]
-        (Zur konkreten Berechnung ergänze man eine Basis $\ker A^{m-1}$ zu einer Basis von $\ker A^m$; dann kann man $v_1, \dotsc, v_{b_m}$ als die neu hinzugekommenen Basisvektoren wählen.)
+        (Zur konkreten Berechnung ergänze man eine Basis $\ker (A - \lambda \Id)^{m-1}$ zu einer Basis von $\ker (A - \lambda \Id)^m$; dann kann man $v_1, \dotsc, v_{b_m}$ als die neu hinzugekommenen Basisvektoren wählen.)
       \item
-        Hierdurch ergeben sich für $\basis{B}$ die ersten paar Basisvektoren
+        Hierdurch ergeben sich für $\basis{B}_\lambda$ die ersten paar Basisvektoren
         \begin{align*}
-          v_1,     A v_1,     &\dotsc, A^{m-1} v_1,     \\
-          v_2,     A v_2,     &\dotsc, A^{m-1} v_2,     \\
+          v_1,     (A - \lambda \Id) v_1,     &\dotsc, (A - \lambda \Id)^{m-1} v_1,     \\
+          v_2,     (A - \lambda \Id) v_2,     &\dotsc, (A - \lambda \Id)^{m-1} v_2,     \\
                               &\dotsc,                  \\
-          v_{b_m}, A v_{b_m}, &\dotsc, A^{m-1} v_{b_m}.
+          v_{b_m}, (A - \lambda \Id) v_{b_m}, &\dotsc, (A - \lambda \Id)^{m-1} v_{b_m}.
         \end{align*}
       \item
-        Man wählt nun Vektoren $v'_1, \dotsc, v'_{b_{m-1}} \in \ker A^{m-1}$, so dass
+        Man wählt nun Vektoren $v'_1, \dotsc, v'_{b_{m-1}} \in \ker (A - \lambda \Id)^{m-1}$, so dass
         \[
-                    \ker A^{m-1}
-          =         \ker A^{m-2}
+                    \ker (A - \lambda \Id)^{m-1}
+          =         \ker (A - \lambda \Id)^{m-2}
             \oplus  \generated{ A v_1, \dotsc, A v_{b_m} }
             \oplus  \generated{ v'_1, \dotsc, v'_{b_{m-1}} }
         \]
         gilt.
       \item
-        Hierdurch erhält man für $\basis{B}$ die weiteren Basisvektoren
+        Hierdurch erhält man für $\basis{B}_\lambda$ die weitere Basisvektoren
         \begin{align*}
-          v'_1,         A v'_1,         &\dotsc, A^{m-2} v'_1,          \\
-          v'_2,         A v'_2,         &\dotsc, A^{m-2} v'_2,          \\
+          v'_1,         (A - \lambda \Id) v'_1,         &\dotsc, (A - \lambda \Id)^{m-2} v'_1,          \\
+          v'_2,         (A - \lambda \Id) v'_2,         &\dotsc, (A - \lambda \Id)^{m-2} v'_2,          \\
                                         &\dotsc,                        \\
-          v'_{b_{m-1}}, A v'_{b_{m-1}}, &\dotsc, A^{m-2} v'_{b_{m-1}}.
+          v'_{b_{m-1}}, (A - \lambda \Id) v'_{b_{m-1}}, &\dotsc, (A - \lambda \Id)^{m-2} v'_{b_{m-1}}.
         \end{align*}
       \item
-        Man wähle nun $v''_1, \dotsc, v''_{b_{m-2}} \in \ker A^{m-2}$, so dass
+        Man wähle nun $v''_1, \dotsc, v''_{b_{m-2}} \in \ker (A - \lambda \Id)^{m-2}$, so dass
         \begin{align*}
-           &\,      \ker A^{m-1}  \\
-          =&\,      \ker A^{m-2}
+           &\,      \ker (A - \lambda \Id)^{m-1}  \\
+          =&\,      \ker (A - \lambda \Id)^{m-2}
             \oplus  \generated{ A^2 v_1, \dotsc, A^2 v_{b_m} }
             \oplus  \generated{ A v'_1, \dotsc, A v'_{b_{m-1}} }
             \oplus  \generated{ v''_1, \dotsc, v''_{b_{m-2}} }
         \end{align*}
         gilt.
       \item
-        Hiermit ergeben sich für $\basis{B}$ die Basisvektoren
+        Hiermit ergeben sich für $\basis{B}_\lambda$ die Basisvektoren
         \begin{align*}
-          v''_1,         A v''_1,         &\dotsc, A^{m-2} v''_1,         \\
-          v''_2,         A v''_2,         &\dotsc, A^{m-2} v''_2,         \\
+          v''_1,         (A - \lambda \Id) v''_1,         &\dotsc, (A - \lambda \Id)^{m-2} v''_1,         \\
+          v''_2,         (A - \lambda \Id) v''_2,         &\dotsc, (A - \lambda \Id)^{m-2} v''_2,         \\
                                           &\dotsc,                        \\
-          v''_{b_{m-2}}, A v''_{b_{m-2}}, &\dotsc, A^{m-2} v''_{b_{m-2}}.
+          v''_{b_{m-2}}, (A - \lambda \Id) v''_{b_{m-2}}, &\dotsc, (A - \lambda \Id)^{m-2} v''_{b_{m-2}}.
         \end{align*}
     \end{itemize}
     Durch Weiterführen der obigen Schritte erhält man schließlich eine Basis $\basis{B}_\lambda$ von $\geigenspace{(K^n)}{A}{\lambda}$.
     
   \item
-    Sind $\lambda_1, \dotsc, \lambda_n$ die paarweise verschiedenen Eigenwerte von $K^n$, so ergibt sich Zusammenfügen der Basen $\basis{B}_{\lambda_1}, \dotsc, \basis{B}_{\lambda_t}$ eine Basis $\basis{B}$ von $K^n$.
+    Sind $\lambda_1, \dotsc, \lambda_n$ die paarweise verschiedenen Eigenwerte von $A$, so ergibt sich durch Hintereinanderlegen der Basen $\basis{B}_{\lambda_1}, \dotsc, \basis{B}_{\lambda_t}$ eine Basis $\basis{B}$ von $K^n$.
     (Hier nutzen wir, dass $K^n = \bigoplus_{\lambda \in K} \geigenspace{(K^n)}{A}{\lambda}$ gilt.)
  
   \item
     Die Basis $\basis{B}$ ist eine Jordanbasis von $A$.
-    Indem man die Basisvektoren als Spalten in eine Matrix $C$ einträgt, erhält man schließlich $S \in \GL{n}{K}$, so dass $S^{-1} A S$ in Jordan-Normalform ist.
-    Dabei sind die Blöcke zunächst nach den Eigenwerten in der zuvor gewählten Reihenfolge sortiert;
-    die Blöcke zum gleichen Eigenwert sind nach absteigender Größe sortiert.
+    Indem man die Basisvektoren von $\basis{B}$ als Spalten in eine Matrix $S$ einträgt, erhält man schließlich $S \in \GL{n}{K}$, so dass $S^{-1} A S$ in Jordan-Normalform ist.
+    Dabei sind die Blöcke zunächst nach den Eigenwerten in der zuvor gewählten Reihenfolge sortiert, und die Blöcke zum gleichen Eigenwert sind jeweils nach absteigender Größe sortiert.
 \end{itemize}
 
 \begin{example}
@@ -296,7 +319,7 @@ Zur Berechnung einer Jordanbasis von $A$ geht man weiter wie folgt vor:
          1  & 0 &  1  \\
         -1  & 0 & -1
       \end{pmatrix*}
-    = \generated{ \rvect{1 \\ 0 \\ -1}, \vect{0 \\ 1 \\ 1} }.
+    = \generated{ \rvect{1 \\ 0 \\ -1}, \vect{0 \\ 1 \\ 0} }.
   \]
   Somit gilt $\dim \ker (A - 2\Id) = 2$.
   Also gibt es zwei Jordanblöcke.
@@ -308,23 +331,85 @@ Zur Berechnung einer Jordanbasis von $A$ geht man weiter wie folgt vor:
         &   & 2
     \end{pmatrix}.
   \]
+  
+  
+  Zur Berechnung einer Jordanbasis von $A$ gehen wir wie folgt vor:
+  \begin{itemize}
+    \item
+      Wir benötigen einen Vektor $v_1 \in \ker (A - 2 \Id)^2$ mit $\ker (A - 2 \Id)^2 = \ker (A - 2 \Id) \oplus \generated{v_1}$, also einen Vektor $v_1 \in \Complex^3$ mit $v_1 \notin \ker (A - 2 \Id)$.
+      Hierfür bietet sich etwa der Vektor
+      \[
+                  v_1
+        \coloneqq \vect{1 \\ 0 \\ 0}
+      \]
+      an.
+      Damit erhalten wir auch den weiteren Basisvektor
+      \[
+          (A - 2 \Id) v_1
+        = \rvect{1 \\ 1 \\ -1}.
+      \]
+    \item
+      Nun benötigen wir noch einen Vektor $v_2 \in \ker (A - 2 \Id)$ mit
+      \[
+          \ker (A - 2 \Id)
+        = \generated{(A - 2 \Id) v_1} \oplus v_2
+        = \generated{ \rvect{1 \\ 1 \\ -1} } \oplus v_2.
+      \]
+      Hierfür lässt sich etwa
+      \[
+                  v_2
+        \coloneqq \vect{0 \\ 1 \\ 0}
+      \]
+      wählen.
+  \end{itemize}
+  Insgesamt haben wir somit für $A$ die Jordanbasis
+  \[
+              \basis{B}
+    \coloneqq \left(
+                \vect{1 \\ 0 \\ 0},
+                \rvect{1 \\ 1 \\ -1},
+                \vect{0 \\ 1 \\ 0}
+              \right)
+  \]
+  von $\Complex^3$.
+  Für die entsprechende Matrix
+  \[
+              S
+    \coloneqq \begin{pmatrix*}[r]
+                1 &  1  & 0 \\
+                0 &  1  & 1 \\
+                0 & -1  & 0
+              \end{pmatrix*}
+    \in \GL{3}{\Complex}
+  \]
+  gilt dann, dass
+  \[
+      S^{-1} A S
+    = \begin{pmatrix}
+        2 &   &   \\
+        1 & 2 &   \\
+          &   & 2
+      \end{pmatrix}.
+  \]
 \end{example}
 
 \begin{example}
   Es sei $V$ ein $K$-Vektorraum mit Basis $\basis{B} = (v_1, \dotsc, v_7)$ und $f \colon V \to V$ der eindeutige Endomorphismus mit $f(v_1) = f(v_2) = v_5$, $f(v_3) = f(v_4) = v_6$, $f(v_5) = f(v_6) = v_7$ und $f(v_7) = 0$.
-  Es gilt $f^3 = 0$, also ist $f$ nilpotent;
-  insbesondere besitzt $f$ eine Jordan-Normalform, wobei $0$ der einzige auftretende Eigenwert ist.
+  Es gilt $f^3(v_i) = 0$ für alle $i$, und deshalb $f^3 = 0$.
+  Also ist $f$ nilpotent, und besitzt somit eine Jordan-Normalform;
+  dabei ist $0$ der einzige auftretende Eigenwert.
+  
   Für die darstellende Matrix
   \begin{gather*}
               A
     \coloneqq \repmatrixendo{f}{\basis{B}}
     =         \begin{pmatrix}
                 0 &   &   &   &   &   &   \\
-                  & 0 &   &   &   &   &   \\
-                  &   & 0 &   &   &   &   \\
-                  &   &   & 0 &   &   &   \\
-                1 & 1 &   &   & 0 &   &   \\
-                0 & 0 & 1 & 1 &   & 0 &   \\
+                0 & 0 &   &   &   &   &   \\
+                0 & 0 & 0 &   &   &   &   \\
+                0 & 0 & 0 & 0 &   &   &   \\
+                1 & 1 & 0 & 0 & 0 &   &   \\
+                0 & 0 & 1 & 1 & 0 & 0 &   \\
                 0 & 0 & 0 & 0 & 1 & 1 & 0
               \end{pmatrix}
   \shortintertext{gilt}
@@ -355,9 +440,21 @@ Zur Berechnung einer Jordanbasis von $A$ geht man weiter wie folgt vor:
   \end{align*}
   Mit $d_1 = \dim \ker A = 4$, $d_2 = \dim \ker A^2 = 6$ und $d_k = \ker \ker A^k = 7$ für $k \geq 3$ erhalten wir, dass $b_1 = 2 d_1 - d_2 = 2$, $b_2 = 2 d_2 - d_3 - d_1 = 1$, $b_3 = 2 d_3 - d_4 - d_2 = 1$ und $b_k = 0$ für $k \geq 4$.
   
-  Die Jordan-Normalform von $A$ (und damit von $f$) besteht also aus zwei Blöcken der Größe $1$, einem Block der Größe $2$ und einem Block der Größe $3$ (jeweils zum Eigenwert $0$).
-  Wir Bestimmen nun eine Jordanbasis:
-  
+  Die Jordan-Normalform von $A$ (und damit von $f$) besteht also aus zwei Blöcken der Größe $1$, einem Block der Größe $2$ und einem Block der Größe $3$ (jeweils zum Eigenwert $0$);
+  sie ist also
+  \[
+    \begin{pmatrix}
+      0 &   &   &   &   &   &   \\
+      1 & 0 &   &   &   &   &   \\
+        & 1 & 0 &   &   &   &   \\
+        &   &   & 0 &   &   &   \\
+        &   &   & 1 & 0 &   &   \\
+        &   &   &   &   & 0 &   \\
+        &   &   &   &   &   & 0
+    \end{pmatrix}.
+  \]
+
+  Wir bestimmen nun eine entsprechende Jordanbasis:
   \begin{itemize}
     \item
       Wir benötigen zunächst $w_1 \in \ker A^3 = K^7$ mit $K^7 = \ker A^2 \oplus \generated{w_1}$.
@@ -381,7 +478,7 @@ Zur Berechnung einer Jordanbasis von $A$ geht man weiter wie folgt vor:
           \generated{ e_1 - e_2, e_3 - e_4, e_5, e_5 - e_6, e_7 } \\
         = \generated{ e_1 - e_2, e_3 - e_4, e_5, e_6, e_7 }
       \]
-      können wir $w_2 \coloneqq e_2 - e_3$ wählen.
+      gilt, können wir $w_2 \coloneqq e_2 - e_3$ wählen.
       Damit erhalten wir außerdem den Basisvektoren $A w_2 = e_5 - e_6$.
     \item
       Schließlich brauchen wir noch $w_3, w_4 \in \ker A$ mit
@@ -391,7 +488,7 @@ Zur Berechnung einer Jordanbasis von $A$ geht man weiter wie folgt vor:
           \oplus  \generated{A w_2}
           \oplus  \generated{w_3, w_4}
         =         \generated{e_7}
-          \oplus  \generated{e5 - e_6}
+          \oplus  \generated{e_5 - e_6}
           \oplus  \generated{w_3, w_4}.
       \]
       Wir müssen also die Familie $(e_5 - e_6, e_7)$ zu einer Basis von $\ker A$ ergänzen.
@@ -436,7 +533,7 @@ Zur Berechnung einer Jordanbasis von $A$ geht man weiter wie folgt vor:
 Es seien $f, g \colon V \to V$ zwei Endorphismen, die jeweils eine Jordan-Normalform besitzen.
 
 \begin{theorem}
-  Die Endomorphismen $f$ und $g$ sind genau dann ähnlich, wenn sie (bis auf Permutation der Blöcke) die gleiche Jordan-Normalform besitzen.
+  Die Endomorphismen $f$ und $g$ sind genau dann ähnlich, wenn sie \textup(bis auf Permutation der Blöcke\textup) die gleiche Jordan-Normalform besitzen.
 \end{theorem}
 
 Also sind $f, g \colon V \to V$ genau dann ähnlich, wenn ihre charakteristischen Polynome
@@ -484,7 +581,7 @@ Also sind $f, g \colon V \to V$ genau dann ähnlich, wenn ihre charakteristische
           \end{pmatrix}.
       \]
       Dann gilt $\charpol{A_1}(t) = \charpol{A_2}(t) = \charpol{A_3}(t) = - (t-1)^2 (t-2)$.
-      Da $2$ ein jeweils algebraische Vielfachheit $1$ hat, gilt
+      Da $2$ jeweils eine algebraische Vielfachheit $1$ hat, gilt
       \[
           \dim \ker (A_1 - 2 \Id)
         = \dim \ker (A_2 - 2 \Id)
@@ -517,9 +614,10 @@ Also sind $f, g \colon V \to V$ genau dann ähnlich, wenn ihre charakteristische
       Also ist auch $A_3$ diagonalisierbar.
       
       Hierdurch sieht man bereits, dass $A_3$ nicht ähnlich zu $A_1$ oder $A_2$ ist.
-      Dass $A_1$ und $A_2$ ähnlich sind, erkennt man dann aus der folgenden Aussage:
       
     \item
+      Dass $A_1$ und $A_2$ ähnlich sind, erkennt man auch wie folgt:
+      
       Besitzt $A \in \matrices{n}{K}$ eine Jordan-Normalform, so sind $A$ und $\transpose{A}$ ähnlich.
       Inbesondere sind jede Matrix in unterer Jordan-Normalform ähnlich zu der entsprechenden oberen Jordan-Normalform.
   \end{enumerate}
@@ -531,10 +629,10 @@ Also sind $f, g \colon V \to V$ genau dann ähnlich, wenn ihre charakteristische
 
 \section{Die Jordan--Chevalley-Zerlegung}
 
-Es sei $f \colon V \to V$ ein Endomorphismus, der die Bedingungen aus Satz~\ref{theorem: existence of generalized eigespace decomposition and jordan normal form} erfüllt.
+Es sei $f \colon V \to V$ ein Endomorphismus, der die Bedingungen aus Satz~\ref{theorem: existence of generalized eigespace decomposition and jordan normal form} erfüllt (d.h.\ $f$ besitzt eine Jordan-Normalform.)
 
 \begin{proposition}[Jordan--Chevalley-Zerlegung]
-  Es gibt eine eindeutige Zerlegung $f = d + n$ in einen diagonalisierbaren Endomorphismus $d$ und einen nilpotenten Endomorphismus $n$ nilpotent ist, dass $d$ und $n$ kommutieren.
+  Es gibt eine eindeutige Zerlegung $f = d + n$ in einen diagonalisierbaren Endomorphismus $d$ und einen nilpotenten Endomorphismus $n$, so dass $d$ und $n$ kommutieren.
 \end{proposition}
 
 Die Jordan--Chevalley-Zerlegung ist eine „koordinatenfreie“ Version der Jordan-Normalform;
@@ -560,26 +658,31 @@ die Existenz dieser Zerlegung ist äquivalent zur Existenz der Jordan-Normalform
   \]
   gilt
   \[
-      A
-    = S
-      \begin{pmatrix}
+      S^{-1} A S
+    = \begin{pmatrix}
         2 &   \\
         1 & 2
       \end{pmatrix}
-      S^{-1}
+    = \begin{pmatrix}
+        2 &   \\
+          & 2
+      \end{pmatrix}
+      +
+      \begin{pmatrix}
+        0 &   \\
+        1 & 0
+      \end{pmatrix}.
   \]
   Die Jordan--Chevalley-Zerlegung $A = D + N$ ist somit gegeben durch
   \begin{gather*}
       D
     = S
+      \underset{= 2 \Id}{
       \begin{pmatrix}
         2 &   \\
           & 2
-      \end{pmatrix}
+      \end{pmatrix}}
       S^{-1}
-    = S (2 \Id) S^{-1}
-    = 2 \Id S S^{-1}
-    = 2 \Id
     = \begin{pmatrix}
         2 &   \\
           & 2
@@ -611,7 +714,7 @@ Es sei $J \in \matrices{n}{K}$ eine Jordan-Normalform von $f$.
     Für das charakteristische Polynom $\charpol{f}(t) = \charpol{J}(t) = (t - \lambda_1)^{n_1} \dotsm (t - \lambda_s)^{n_s}$ mit $\lambda_i \neq \lambda_j$ für $i \neq j$ gilt
     \[
         n_i
-      = \dim \geigenspace{V}{f}{\lambda}
+      = \dim \geigenspace{V}{f}{\lambda_i}
       = \text{wie oft $\lambda_i$ auf der Diagonalen von $J$ steht}
     \]
   \item
@@ -623,13 +726,13 @@ Es sei $J \in \matrices{n}{K}$ eine Jordan-Normalform von $f$.
     \]
     Inbesondere ist $n - \rank f$ die Anzahl der Jordanblöcke zu $0$.
   \item
-    Für das Minimalpolynom $\minpol{f}(t) = \minpol{J}(t) = (t - \lambda_1)^{m_1} \dotsm (t - \lambda_s)^{n_s}$ mit $\lambda_i \neq \lambda_j$ für $i \neq j$ gilt
+    Für das Minimalpolynom $\minpol{f}(t) = \minpol{J}(t) = (t - \lambda_1)^{m_1} \dotsm (t - \lambda_s)^{m_s}$ mit $\lambda_i \neq \lambda_j$ für $i \neq j$ gilt
     \[
         m_i
-      = \text{maximale auftrettende Größe eines Jordanblockes zu $\lambda_i$ in $J$}
+      = \text{maximale auftretende Größe eines Jordanblockes zu $\lambda_i$ in $J$}
     \]
   \item
-    Ist allgemeiner $q(t) \in K[t]$ ein Polymom mit $q(t) = (t - \lambda_1)^{m'_1} \dotsm (t - \lambda_s)^{m'_s}$, wobei $\lambda_i \neq \lambda_j$ für $i \neq j$, und $q(f) = 0$, so ergeben sich die folgenden beiden Restriktionen an $J$:
+    Ist allgemeiner $q(t) \in K[t]$ ein Polymom mit $q(t) = (t - \lambda_1)^{m'_1} \dotsm (t - \lambda_s)^{m'_s}$, wobei $\lambda_i \neq \lambda_j$ für $i \neq j$ gilt, und $q(f) = 0$, so ergeben sich die folgenden beiden Restriktionen an $J$:
     \begin{enumerate}
       \item
         Jeder Eigenwert von $f$ kommt in $\lambda_1, \dotsc, \lambda_s$ vor (siehe Lemma~\ref{lemma: polynomial equations give restriction for the eigenvalues}),
