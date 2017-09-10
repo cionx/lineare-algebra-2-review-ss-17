@@ -60,14 +60,14 @@ Daher ergibt die folgende Definition Sinn:
 
 
 
-\begin{definition}
+\begin{example}
   \leavevmode
   \begin{enumerate}
     \item
       Das \emph{Standardskalarprodukt} auf $\Korper^n$ ist definiert als
       \[
                   \bil{x}{y}
-        \coloneqq \transpose{x} y
+        \coloneqq \transpose{x} \conjugate{y}
         =         \sum_{i=1}^n x_i \conjugate{y_i}.
       \]
     \item
@@ -96,7 +96,7 @@ Daher ergibt die folgende Definition Sinn:
       ein Skalarprodukt definiert.
       Die Familie $(e^{inx})_{n \in \Integer}$ ist orthonormal bezüglich dieses Skalarprodukts.
   \end{enumerate}
-\end{definition}
+\end{example}
 
 \begin{definition}
   Die \emph{Norm} eines Vektors $v \in V$ ist definiert als $\norm{v} \coloneqq \sqrt{ \bil{v}{v} }$.
@@ -133,7 +133,7 @@ Daher ergibt die folgende Definition Sinn:
 \section{Orthonormalbasen \& Gram--Schmidt}
 
 Ist $V$ ein reeller, bzw.\ komplexer Vektorraum und $\beta \in \SymForm(V)$ eine symmetrische Bilinearform, bzw.\ $\beta \in \HerForm(V)$ eine hermitesche Bilinearform, so dass es eine Orthonormalbasis $\basis{B} = (v_1, \dotsc, v_n)$ von $V$ bezüglich $\beta$ gibt, so ist $\beta$ bereits ein Skalarprodukt:
-Für jeden Vektor $v \in V$ mit $v \neq 0$ gibt es in der Darstellung $v = \sum_{i=1}^n x_i v_i$ ein $i$ mit $x_i \neq 0$, weshalb
+Für jeden Vektor $v \in V$ mit $v \neq 0$ gibt es in der Darstellung $v = \sum_{i=1}^n x_i v_i$ einen Index $i$ mit $x_i \neq 0$, weshalb
 \[
     \beta(v,v)
   = \beta\left( \sum_{i=1}^n x_i v_i, \sum_{j=1}^n x_j v_j \right)
@@ -176,7 +176,7 @@ Sind dabei $v_1, \dotsc, v_i$ bereits orthonormal, so gilt $w_j = v_j$ für alle
 
 \begin{corollary}
   Für jeden Untervektorraum $U \subseteq V$ gilt $V = U \oplus U^\perp$.
-  Deshalb gelten $\dim U^\perp = \dim V - \dim U$ und $(U^\perp)^\perp = U$.
+  Deshalb gelten auch $\dim U^\perp = \dim V - \dim U$ und $(U^\perp)^\perp = U$.
 \end{corollary}
 
 \begin{remark}
@@ -241,7 +241,15 @@ Es sei $f \colon V \to W$ eine lineare Abbildung zwischen endlichdimensionalen S
     \item
       Ist $f$ ein Isomorphismus, so gilt $\adj{(f^{-1})} = (\adj{f})^{-1}$.
     \item
-      Die Abbildung $\Hom{V}{W} \to \Hom{W}{V}$, $f \mapsto \adj{f}$ ist halblinear.
+      Die Abbildung $\Hom{V}{W} \to \Hom{W}{V}$, $f \mapsto \adj{f}$ ist halblinear;
+      es gelten also
+      \[
+          \adj{(f + g)}
+        = \adj{f} + \adj{g}
+        \quad\text{und}\quad
+          \adj{(\lambda f)}
+        = \conjugate{\lambda} \adj{f}.
+      \]
   \end{itemize}
 \end{lemma}
 
@@ -268,7 +276,7 @@ Die Skalarprodukte auf $V$ und $W$ entsprechen den halblinearen Isomorphismen
   \colon  W
   \to     \dual{W},
   \quad   w
-  \mapsto \bil{-}{w}
+  \mapsto \bil{-}{w}.
 \]
 Die Bedingung \eqref{equation: definition of the adjoint map by elements for scalar products} ist äquivalent dazu, dass das folgende Diagramm kommutiert:
 \[
@@ -305,7 +313,7 @@ Somit ist $\adj{f}$ eindeutig bestimmt als $\adj{f} = \Phi_V^{-1} \circ \dual{f}
         \item
           Die Spalten von $A$ bilden eine Orthonormalbasis von $\Korper^n$.
         \item
-          Die Zeilen von $A$ bilden eine Orthonormalbasis von $\Korper^n$ (betrachtet als Zeilenvektoren).
+          Die Zeilen von $A$ bilden eine Orthonormalbasis von $\Korper^n$ \textup(betrachtet als Zeilenvektoren\textup).
       \end{enumerate}
     \item
       Es seien
@@ -320,7 +328,7 @@ Somit ist $\adj{f}$ eindeutig bestimmt als $\adj{f} = \Phi_V^{-1} \circ \dual{f}
 \end{definition}
 
 \begin{lemma}
-  Es sind $\Unitary{n} \subseteq \GL{n}{\Complex}$ und $\Orthogonal{n} \subseteq \GL{n}{\Real}$ Untergruppen.
+  Unitäre, bzw.\ orthogonale Matrizen sind invertierbar, und die Teilmengen $\Unitary{n} \subseteq \GL{n}{\Complex}$ und $\Orthogonal{n} \subseteq \GL{n}{\Real}$ sind Untergruppen.
 \end{lemma}
 
 
@@ -337,7 +345,7 @@ Somit ist $\adj{f}$ eindeutig bestimmt als $\adj{f} = \Phi_V^{-1} \circ \dual{f}
     \item
       $A$ besteht aus den Diagonalmatrizen mit reellen, positiven Diagonaleinträgen.
     \item
-      $N$ besteht aus den obenen Dreiecksmatrizen mit Einsen auf der Diagonalen.
+      $N$ besteht aus den oberen Dreiecksmatrizen mit Einsen auf der Diagonalen.
   \end{itemize}
   Dann gibt es für jede Matrix $s \in \GL{n}{\Korper}$ eindeutige Matrizen $k \in K$, $a \in A$ und $n \in N$ mit $s = kan$, d.h.\ die Abbildung
   \[

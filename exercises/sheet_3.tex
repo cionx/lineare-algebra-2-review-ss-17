@@ -9,55 +9,83 @@
 
 \begin{document}
 
-
-
-
-
-\begin{question}
-  Es sei $\basis{B}$ eine Basis von $V$.
-  Zeigen Sie, dass es ein eindeutiges Skalarprodukt auf $V$ gibt, so dass $\basis{B}$ orthonormal ist.
-\end{question}
-
-
+Im Folgenden seien alle Vektorräume endlich-dimensional.
 
 
 
 \begin{question}
-  Es sei $V$ ein endlichdimensionaler $\Korper$-Vektorraum und $\bil{-}{-}_1$ und $\bil{-}{-}_2$ seien zwei Skalarprodukte auf $V$ mit
-  \[
-          \bil{v_1}{v_2}_1 = 0
-    \iff  \bil{v_1}{v_2}_2 = 0
-    \qquad
-    \text{für alle $v_1, v_2 \in V$}.
-  \]
-  Zeigen Sie, dass es eine Konstante $c > 0$ gibt, so dass $\bil{-}{-}_2 = c \bil{-}{-}_1$ gilt.
-\end{question}
-
-
-
-
-
-\begin{question}
-  Es seien $v_1, v_2 \in \Real^3$ mit
-  \[
-              v_1
-    \coloneqq \vect{1 \\ 1 \\ 0}
-    \quad\text{und}\quad
-              v_2
-    \coloneqq \vect{0 \\ 1 \\ 1}.
-  \]
+  Es seien $V$ ein Skalarproduktraum.
   \begin{enumerate}
     \item
-      Zeigen Sie, dass es ein Skalarprodukt auf $\Real^3$ gibt, bezüglich dessen die Familie $(v_1, v_2)$ orthonormal ist.
-    \item
-      Geben Sie eine Matrix $B \in \matrices{3}{\Real}$ an, so dass die Bilinearform $\bil{-}{-}_B \in \BilForm(\Real^3)$ mit
+      Es sei $\basis{B} = (v_1, \dotsc, v_n)$ eine Orthonormalbasis von $V$.
+      Zeigen Sie für alle $v, w \in V$ mit $v = \sum_{i=1}^n x_i v_i$ und $w = \sum_{i=1}^n y_i v_i$ die Gleichungen
       \[
-                  \bil{x}{y}_B
-        \coloneqq \transpose{x} B y
-        \qquad
-        \text{für alle $x, y \in \Real^3$}
+          \bil{v}{w}
+        = \sum_{i=1}^n x_i \overline{y_i}
+        \quad\text{und}\quad
+          \norm{v}
+        = \sqrt{ \sum_{i=1}^n \abs{x_i}^2 }.
       \]
-      ein solches Skalarprodukt ist.
+    \item
+      Zeigen Sie die Parallelogrammgleichung:
+      \[
+          \norm{v + w}^2 + \norm{v - w}^2
+        = 2( \norm{v}^2 + \norm{w}^2 )
+        \qquad
+        \text{für alle $v, w \in V$}.
+      \]
+  \end{enumerate}
+\end{question}
+
+
+
+\begin{question}[subtitle = Existenz von Skalarprodukten]
+  Es sei $\basis{B}$ eine Basis eines $\Korper$-Vektorraums $V$.
+  Zeigen Sie, dass es ein eindeutiges Skalarprodukt auf $V$ gibt, bezüglich dessen $\basis{B}$ orthonormal ist.
+\end{question}
+
+
+
+
+
+% \begin{question}
+%   Es sei $V$ ein endlichdimensionaler $\Korper$-Vektorraum und $\bil{-}{-}_1$ und $\bil{-}{-}_2$ seien zwei Skalarprodukte auf $V$ mit
+%   \[
+%           \bil{v_1}{v_2}_1 = 0
+%     \iff  \bil{v_1}{v_2}_2 = 0
+%     \qquad
+%     \text{für alle $v_1, v_2 \in V$}.
+%   \]
+%   Zeigen Sie, dass es eine Konstante $c > 0$ gibt, so dass $\bil{-}{-}_2 = c \bil{-}{-}_1$ gilt.
+% \end{question}
+
+
+
+
+
+\begin{question}
+  Es seien $V$ und $W$ Skalarprodukträume und es sei $f \colon V \to W$ linear.
+  Zeigen Sie, dass $\ker f = (\im \adj{f})^\perp$ und $\im f = (\ker \adj{f})^\perp$ gelten.
+\end{question}
+
+
+
+
+
+\begin{question}[subtitle = Endomorphismen mit {$\bil{f(v)}{v} = 0$}]
+  \begin{enumerate}
+    \item
+      Es sei $V$ ein Skalarproduktraum und $f \colon V \to V$ ein diagonalisierbarer Endomorphismus mit $\bil{f(v)}{v} = 0$ für alle $v \in V$.
+      Zeigen Sie, dass bereits $f = 0$ gilt.
+      \\
+      (\emph{Tipp}:
+      Betrachten Sie die Eigenwerte von $f$.)
+    \item
+      Es sei nun $V$ ein unitärer Vektorraum und $f \colon V \to V$ ein Endomorphismus mit $\bil{f(v)}{v} = 0$ für alle $v \in V$.
+      Zeigen Sie, dass bereits $f = 0$ gilt.
+      \\
+      (\emph{Tipp}:
+       Betrachten Sie die Sesquilinearform $\beta \in \SesForm(V)$ mit $\beta(v_1, v_2) = \bil{f(v_1)}{v_2}$.)
   \end{enumerate}
 \end{question}
 
@@ -66,8 +94,14 @@
 
 
 \begin{question}
-  Es seien $V$ und $W$ endlichdimensionale Skalarprodukträume und es sei $f \colon V \to W$ linear.
-  Zeigen Sie, dass $\ker f = (\im \adj{f})^\perp$ und $\im f = (\ker \adj{f})^\perp$ gelten.
+  Es seien $V$ und $W$ Skalarprodukträume und es sei $f \colon V \to W$ linear.
+  Zeigen Sie, dass die folgenden Bedingungen äquivalent sind:
+  \begin{enumerate}
+    \item
+      Für alle $v_1, v_2 \in V$ gilt $\bil{f(v_1)}{f(v_2)} = \bil{v_1}{v_2}$.
+    \item
+      Für alle $v \in V$ gilt $\norm{f(v)} = \norm{v}$.
+  \end{enumerate}
 \end{question}
 
 
@@ -75,7 +109,7 @@
 
 
 \begin{question}
-  Es sei $V$ ein endlichdimensionaler unitärer Vektorraum.
+  Es sei $V$ ein unitärer Vektorraum.
   \begin{enumerate}
     \item
       Zeigen Sie, dass es für jede Flagge
@@ -99,19 +133,37 @@
 
 
 \begin{question}
-  Es sei $A \in \matrices{n}{\Korper}$
-  \begin{enumerate}
-    \item
-      orthogonal,
-    \item
-      unitär,
-    \item
-      hermitesch.
-  \end{enumerate}
+  Es sei $A \in \matrices{n}{\Korper}$ orthogonal, unitär, bzw.\ hermitesch.
   Bestimmen Sie jeweils alle möglichen Werte von $\det A$.
 \end{question}
 
 
+
+
+
+% \begin{question}
+%   Es seien $v_1, v_2 \in \Real^3$ mit
+%   \[
+%               v_1
+%     \coloneqq \vect{1 \\ 1 \\ 0}
+%     \quad\text{und}\quad
+%               v_2
+%     \coloneqq \vect{0 \\ 1 \\ 1}.
+%   \]
+%   \begin{enumerate}
+%     \item
+%       Zeigen Sie, dass es ein Skalarprodukt auf $\Real^3$ gibt, bezüglich dessen die Familie $(v_1, v_2)$ orthonormal ist.
+%     \item
+%       Geben Sie eine Matrix $B \in \matrices{3}{\Real}$ an, so dass die Bilinearform $\bil{-}{-}_B \in \BilForm(\Real^3)$ mit
+%       \[
+%                   \bil{x}{y}_B
+%         \coloneqq \transpose{x} B y
+%         \qquad
+%         \text{für alle $x, y \in \Real^3$}
+%       \]
+%       ein solches Skalarprodukt ist.
+%   \end{enumerate}
+% \end{question}
 
 
 
