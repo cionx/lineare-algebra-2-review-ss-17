@@ -49,9 +49,14 @@ Im Folgenden seien $V$ und $W$ zwei endlichdimensionale $K$-Vektorräume.
   die zugehörige Isomorphismen $V \to K^n$ und $W \to K^n$.
   \begin{enumerate}
     \item
-      Für $\beta \in \BilForm(V,W)$ ist die darstellende Matrix $\repmatrixbildiff{\beta}{\basis{B}}{\basis{C}}$ eindeutig dadurch bestimmt, dass
-      $\beta(v, w) = \transpose{\coord{v}{\basis{B}}} \, \repmatrixbildiff{\beta}{\basis{B}}{\basis{C}} \, \coord{w}{\basis{C}}$
-      für alle $v \in V$, $w \in W$ gilt.
+      Für $\beta \in \BilForm(V,W)$ ist die darstellende Matrix $\repmatrixbildiff{\beta}{\basis{B}}{\basis{C}}$ durch die Gleichheit
+      \[
+          \beta(v, w)
+        = \transpose{\coord{v}{\basis{B}}} \cdot \repmatrixbildiff{\beta}{\basis{B}}{\basis{C}} \cdot \coord{w}{\basis{C}}
+        \qquad
+        \text{für alle $v \in V$, $w \in W$}
+      \]
+       eindeutig bestimmt.
     \item
       Die Abbildung
       \[
@@ -103,8 +108,6 @@ Kongruente Matrizen stellen die gleiche Bilinearform bezüglich verschiedener Ba
       Es gibt eine Basis $\basis{B}$ von $V$, so dass $\repmatrixbilsame{\beta_1}{\basis{B}}$ und $\repmatrixbilsame{\beta_2}{\basis{B}}$ kongruent sind.
     \item
       Für jede Basis $\basis{B}$ von $V$ sind $\repmatrixbilsame{\beta_1}{\basis{B}}$ und $\repmatrixbilsame{\beta_2}{\basis{B}}$ kongruent.
-    \item
-      Es gibt $f \in \GL{}{V}$ mit $\beta_1( f(v_1), f(v_2) ) = \beta_2( v_1, v_2 )$ für alle $v_1, v_2 \in V$.
   \end{enumerate}
 \end{definition}
 
@@ -134,7 +137,7 @@ Es gilt auch die Umkehrung (da $\ringchar{K} \neq 2$):
 
 \begin{theorem}
   \label{theorem: exstience of an orthogonal basis}
-  Es gibt eine Orthogonalbasis von $V$ bezüglich $\beta$.
+  Ist $\beta$ symmetrisch, so gibt es eine Orthogonalbasis von $V$ bezüglich $\beta$.
 \end{theorem}
 
 \begin{corollary}
@@ -267,13 +270,11 @@ Eine Matrix $S \in \GL{n}{K}$ mit $\transpose{S} A S = B$ erhält man, indem man
 
 \section{Reelle symmetrische Bilinearformen}
 
-Für diesen Unterabschnitt sei $K = \Real$
+Für diesen Unterabschnitt sei $K = \Real$ und $\beta \in \SymForm(V)$ eine symmetrischen Bilinearform.
 
 
 
-\subsection{Sylvesterscher Trägheitssatz}
-
-Es sei $\beta \in \SymForm(V)$ eine symmetrischen Bilinearform.
+\subsection*{Sylvesterscher Trägheitssatz}
 
 Ist $\basis{B} = (v_1, \dotsc, v_n)$ eine Orthogonalbasis von $V$ bezüglich $\beta$, so ist die darstellende Matrix $\repmatrixbilsame{\beta}{\basis{B}}$ von der Form
 \begin{equation}
@@ -407,6 +408,10 @@ Die Zahl $p$ ist die Anzahl der positiven Diagonaleinträge, die Zahl $q$ ist di
   Allgemeiner gibt es für alle $n \geq 0$ genau $\binom{n+2}{2}$ Kongruenzklassen reeller symmetrischer $(n \times n)$-Matrizen.
 \end{example}
 
+
+
+\subsection*{Signatur durch Eigenwerte}
+
 Ist $\basis{B} = (v_1, \dotsc, v_n)$ eine Basis von $V$, so ist die darstellende $A \coloneqq \repmatrixbilsame{\beta}{\basis{B}}$ symmetrisch.
 Nach Korollar~\ref{corollary: hermitian matrices are diagonalizable} gibt es eine Orthonormalbasis $\basis{D} = (v_1, \dotsc, v_n)$ von $\Real^n$ bestehend aus Eigenvektoren von $A$.
 Es sei $\lambda_i$ der zu $v_i$ gehörige Eigenwert, und $S \coloneqq (v_1 \dotsc v_n)$.
@@ -439,8 +444,6 @@ Die Matrix $S$ ist orthogonal, und für die Basis $\basis{C}$ von $V$ mit $\repm
 
 
 \section{Dualität}
-
-Es sei $W$ ein weiterer endlichdimensionaler $K$-Vektorraum
 
 
 
@@ -495,7 +498,8 @@ Insbesondere gelten die Äquivalenzen
     \item
       Für jede Basis $\basis{B}$ von $V$ und Basis $\basis{C}$ von $W$ ist die darstellende Matrix $\repmatrixbildiff{\beta}{\basis{B}}{\basis{C}}$ invertierbar.
     \item
-      Es gelten \textup(mindestes\textup) zwei \textup(und damit bereits alle drei\textup) der folgenden Bedingungen:
+      \label{enum: two out of three}
+      Es gelten mindestes zwei der folgenden Bedingungen:
       \begin{enumerate}
         \item
           Es gilt $\dim V = \dim W$.
@@ -504,6 +508,8 @@ Insbesondere gelten die Äquivalenzen
         \item
           Für jedes $w \in W$ mit $w \neq 0$ gibt es ein $v \in V$ mit $\beta(v,w) \neq 0$ \textup(d.h.\ $\beta_1$ ist injektiv\textup).
       \end{enumerate}
+    \item
+      Es gelten alle drei Bedingungen aus \ref{enum: two out of three}.
   \end{enumerate}
 \end{definition}
 
@@ -616,7 +622,11 @@ Für die beiden zugehörigen linearen Abbildungen $\beta_1, \beta_2 \colon V \to
   Das \emph{Radikal} von $\beta$ ist der Untervektorraum
   \[
               \rad{\beta}
-    \coloneqq \{v \in V \suchthat \text{$\beta(v,v') = 0$ für alle $v' \in V$}.
+    \coloneqq \{
+                v \in V
+              \suchthat
+                \text{$\beta(v,v') = 0$ für alle $v' \in V$}
+              \}.
   \]
 \end{definition}
 
@@ -645,17 +655,11 @@ Es gilt $\rad{\beta} = \ker \beta_1 = \ker \beta_2$, weshalb $\beta$ genau dann 
 \end{example}
 
 \begin{lemma}
-  Für jeden Untervektorraum $U \subseteq V$ gilt
-  \begin{enumerate}
-    \item
-      $\dim U^\perp = \dim V - \dim U$ und
-    \item
-      $(U^\perp)^\perp = U$,
-  \end{enumerate}
+  Ist $\beta$ nicht-ausgeartet, so gelten für jeden Untervektorraum $U \subseteq V$, dass $\dim U^\perp = \dim V - \dim U$ und $(U^\perp)^\perp = U$.
 \end{lemma}
 
 \begin{warning}
-  Es gilt im Allgemeinen nicht, dass $V = U \oplus U^\perp$.
+  Es gilt im Allgemeinen nicht, dass $V = U \oplus U^\perp$, selbst wenn $\beta$ nicht-ausgeartet ist.
 \end{warning}
 
 

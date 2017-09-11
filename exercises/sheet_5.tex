@@ -9,29 +9,29 @@
 
 \begin{document}
 
+Im Folgenden seien alle Vektorräume endlichdimensional.
 
 
 
 
-\begin{question}
-  Es sei $\ringchar{K} \neq 2$ und $\beta \in \SymForm(V)$ eine symmetrische Bilinearform.
-  \begin{enumerate}
-    \item
-      Zeigen Sie, dass es im Fall $\beta \neq 0$ ein $v \in V$ mit $\beta(v,v) \neq 0$ gibt.\\
-      (\emph{Hinweis}:
-       Betrachten Sie die Polarisationsformeln.)
-       
-      
-    \item
-      Zeigen Sie, dass das orthogonale Komplement $\dim \generated{v}^\perp = \dim V - 1$ gilt.\\
-      (\emph{Hinweis}:
-       Betrachten Sie die lineare Abbildung $\beta(-, v) \colon V \to K$.) 
-    \item
-      Folgern Sie, dass $V = \generated{v} \oplus \generated{v}^\perp$ gilt.
-    \item
-      Zeigen Sie induktiv, dass es eine Orthogonalbasis von $V$ bezüglich $\beta$ gibt.
-  \end{enumerate}
-\end{question}
+
+% \begin{question}[subtitle = Konstruktion von Orthogonalbasen]
+%   Es sei $\ringchar{K} \neq 2$ und $\beta \in \SymForm(V)$ eine symmetrische Bilinearform.
+%   \begin{enumerate}
+%     \item
+%       Zeigen Sie, dass es im Fall $\beta \neq 0$ ein $v \in V$ mit $\beta(v,v) \neq 0$ gibt.\\
+%       (\emph{Hinweis}:
+%        Nutzen Sie Polarisation.)
+%     \item
+%       Zeigen Sie, dass $\dim \generated{v}^\perp = \dim V - 1$ gilt.\\
+%       (\emph{Hinweis}:
+%        Betrachten Sie die lineare Abbildung $\beta(-, v) \colon V \to K$.) 
+%     \item
+%       Folgern Sie, dass $V = \generated{v} \oplus \generated{v}^\perp$ gilt.
+%     \item
+%       Zeigen Sie induktiv, dass es eine Orthogonalbasis von $V$ bezüglich $\beta$ gibt.
+%   \end{enumerate}
+% \end{question}
 
 
 
@@ -58,35 +58,35 @@
 
 
 
-\begin{question}
-  Es sei $\beta \in \SymForm(\matrices{n}{\Real})$ die nicht-ausgeartete Bilinearform mit $\beta(A,B) = \tr(AB)$.
-  \begin{enumerate}
-    \item
-      Zeigen Sie, dass die Untervektorräume $\Sym{n}{\Real}$ und $\Alt{n}{\Real}$ von $\matrices{n}{\Real}$ bezüglich $\beta$ orthogonal zueinander sind.
-    \item
-      Zeigen Sie, dass die Einschränkung $\beta|_{\Sym{n}{\Real} \times \Sym{n}{\Real}}$ positiv definit ist, und die Einschränkung $\beta|_{\Alt{n}{\Real} \times \Alt{n}{\Real}}$ negativ definit.
-    \item
-      Bestimmen Sie die Signatur von $\beta$.
-    \item
-      Bestimmen Sie eine Orthogonalbasis von $\matrices{2}{\Real}$ bezüglich $\beta$.
-  \end{enumerate}
-\end{question}
+% \begin{question}
+%   Es sei $\beta \in \SymForm(\matrices{n}{\Real})$ die nicht-ausgeartete Bilinearform mit $\beta(A,B) = \tr(AB)$.
+%   \begin{enumerate}
+%     \item
+%       Zeigen Sie, dass die Untervektorräume $\Sym{n}{\Real}$ und $\Alt{n}{\Real}$ von $\matrices{n}{\Real}$ bezüglich $\beta$ orthogonal zueinander sind.
+%     \item
+%       Zeigen Sie, dass die Einschränkung $\beta|_{\Sym{n}{\Real} \times \Sym{n}{\Real}}$ positiv definit ist, und die Einschränkung $\beta|_{\Alt{n}{\Real} \times \Alt{n}{\Real}}$ negativ definit.
+%     \item
+%       Bestimmen Sie die Signatur von $\beta$.
+%     \item
+%       Bestimmen Sie eine Orthogonalbasis von $\matrices{2}{\Real}$ bezüglich $\beta$.
+%   \end{enumerate}
+% \end{question}
 
 
 
 
 
-\begin{question}
-  Es seien $V$, $W$ zwei $K$-Vektorräume und $\beta_V \in \BilForm(V)$, $\beta_W \in \BilForm(W)$ nicht-ausgeartete Bilinearformen.
-  Es sei $f \colon V \to W$ ein Funktion mit
-  \[
-      \beta_W( f(v_1), f(v_2) )
-    = \beta_V( v_1, v_2 )
-    \qquad
-    \text{für alle $v_1, v_2 \in V$}.
-  \]
-  Zeigen Sie, dass $f$ ein Isomorphismus ist.
-\end{question}
+% \begin{question}
+%   Es seien $V$, $W$ zwei $K$-Vektorräume und $\beta_V \in \BilForm(V)$, $\beta_W \in \BilForm(W)$ nicht-ausgeartete Bilinearformen.
+%   Es sei $f \colon V \to W$ ein Funktion mit
+%   \[
+%       \beta_W( f(v_1), f(v_2) )
+%     = \beta_V( v_1, v_2 )
+%     \qquad
+%     \text{für alle $v_1, v_2 \in V$}.
+%   \]
+%   Zeigen Sie, dass $f$ ein Isomorphismus ist.
+% \end{question}
 
 
 
@@ -96,7 +96,8 @@
   Es sei $\ringchar{K} \neq 2$, $V$ ein endlichdimensionaler $K$-Vektorraum und $\beta \in \SymForm(V)$ eine nicht-ausgeartete symmetrische Bilinearform.
   Es sei $U \subseteq V$ ein total isotroper Untervektorraum, d.h.\ es gelte $\beta(u,u) = 0$ für alle $u \in U$.
   Zeigen Sie, dass $\dim U \leq \frac{1}{2} \dim V$ gilt.
-  (\emph{Hinweis}:
+  \\
+  (\emph{Tipp}:
    Zeigen Sie zunächst, dass $U \subseteq U^\perp$ gilt.)
 \end{question}
 
@@ -104,23 +105,23 @@
 
 
 
-\begin{question}
-  Bestimmen Sie für die gegebenen quadratischen Formen auf $\Real^n$ jeweils die Signatur der zugehörigen symmetrischen Bilinearform.
-  \begin{enumerate}
-    \item
-      $q(x_1, x_2) = 2 x_1^2 - 3 x_2^2 + 2 x_1 x_2$.
-    \item
-      $q(x_1, x_2) = -x_1^2 + x_2^2 + a x_1 x_2$ mit $a \in \Real$.
-    \item
-      $q(x_1, x_2) = x_1^2 + 15 x_2^2 + 6 x_1 x_2$.
-    \item
-      $q(x_1, x_2) = 2 x_1 x_2$.
-    \item
-      $q(x_1, x_2, x_3) = x_1^2 + 2 x_1 x_2 - 2 x_1 x_3 + x_2^2 - 2 x_2 x_3 - x_3^2$.
-    \item
-      $q(x_1, x_2, x_3, x_4) = x_1^2 - 7 x_2^2 - x_3^2 - x_4^2 + 2 x_1 x_2 - 6 x_2 x_3 + 6 x_2 x_4 + 2 x_3 x_4$.
-  \end{enumerate}
-\end{question}
+% \begin{question}
+%   Bestimmen Sie für die gegebenen quadratischen Formen auf $\Real^n$ jeweils die Signatur der zugehörigen symmetrischen Bilinearform.
+%   \begin{enumerate}
+%     \item
+%       $q(x_1, x_2) = 2 x_1^2 - 3 x_2^2 + 2 x_1 x_2$.
+%     \item
+%       $q(x_1, x_2) = -x_1^2 + x_2^2 + a x_1 x_2$ mit $a \in \Real$.
+%     \item
+%       $q(x_1, x_2) = x_1^2 + 15 x_2^2 + 6 x_1 x_2$.
+%     \item
+%       $q(x_1, x_2) = 2 x_1 x_2$.
+%     \item
+%       $q(x_1, x_2, x_3) = x_1^2 + 2 x_1 x_2 - 2 x_1 x_3 + x_2^2 - 2 x_2 x_3 - x_3^2$.
+%     \item
+%       $q(x_1, x_2, x_3, x_4) = x_1^2 - 7 x_2^2 - x_3^2 - x_4^2 + 2 x_1 x_2 - 6 x_2 x_3 + 6 x_2 x_4 + 2 x_3 x_4$.
+%   \end{enumerate}
+% \end{question}
 
 
 
@@ -151,77 +152,97 @@
 
 
 \begin{question}
-  Für alle $n \geq 1$ seien
+  Es sei
   \[
-              A_n
+              A
     \coloneqq \begin{pmatrix}
-                2 & 1 &         &         &   \phantom{\ddots}  \\
-                1 & 2 & 1       &         &   \phantom{\ddots}  \\
-                  & 1 & \ddots  & \ddots  &   \phantom{\ddots}  \\
-                  &   & \ddots  & \ddots  & 1 \phantom{\ddots}  \\
-                  &   &         &      1  & 2 \phantom{\ddots}
+                0     & \Id_n \\
+                \Id_n & 0
               \end{pmatrix}
+    \in       \matrices{2n}{\Real}.
   \]
-  und $a_n \coloneqq \det A_n$.
-  \begin{enumerate}
-    \item
-      Zeigen Sie induktiv für alle $n \geq 3$, dass $a_n = 2 a_{n-1} - a_{n-2}$ gilt.
-    \item
-      Zeigen Sie für alle $n \geq 2$, dass $a_{n+1} - a_n \geq a_n - a_{n-1}$ gilt.
-    \item
-      Folgern Sie, dass $a_n > 0$ für alle $n \geq 1$ gilt.
-    \item
-      Folgern Sie, dass die Matrix $A_n$ für alle $n \geq 1$ positiv definit ist.
-  \end{enumerate}
+  Bestimmen Sie Rang und Signatur von $\beta \in \SymForm(\Real^{2n})$ mit
+  \[
+              \beta(x,y)
+    \coloneqq \transpose{x} A y
+    \qquad
+    \text{für alle $x, y \in \Real^n$}.
+  \]
 \end{question}
 
 
 
 
 
-\begin{question}
-  Es seien
-  \begin{gather*}
-              A_1
-    \coloneqq \begin{pmatrix}
-                4 & 3 \\
-                3 & 4
-              \end{pmatrix},
-    \quad    
-              A_2
-    \coloneqq \begin{pmatrix*}[r]
-                3 &   4 \\
-                4 &  -3
-              \end{pmatrix*},
-    \quad     A_3
-    \coloneqq \begin{pmatrix*}[r]
-                 3  & -2  &  0  \\
-                -2  &  2  & -2  \\
-                 0  & -2  &  1
-              \end{pmatrix*},
-    \\
-              A_4
-    \coloneqq \begin{pmatrix*}[r]
-                 2  & -1  & 1 \\
-                -1  &  2  & 1 \\
-                 1  &  1  & 2
-              \end{pmatrix*},
-    \quad
-              A_5
-    \coloneqq \begin{pmatrix*}[r]
-                3 & 8 &  5  \\
-                8 & 3 &  0  \\
-                5 & 0 & -1
-              \end{pmatrix*}.
-  \end{gather*}
-  Bestimmen Sie jeweils den Rang und die Signatur von $A_i$, sowie eine orthogonale Matrix $U_i \in \Orthogonal{n_i}$, so dass die Matrix $\transpose{U_i} A_i U_i$ in Diagonalform ist.
-\end{question}
+% \begin{question}
+%   Für alle $n \geq 1$ seien
+%   \[
+%               A_n
+%     \coloneqq \begin{pmatrix}
+%                 2 & 1 &         &         &   \phantom{\ddots}  \\
+%                 1 & 2 & 1       &         &   \phantom{\ddots}  \\
+%                   & 1 & \ddots  & \ddots  &   \phantom{\ddots}  \\
+%                   &   & \ddots  & \ddots  & 1 \phantom{\ddots}  \\
+%                   &   &         &      1  & 2 \phantom{\ddots}
+%               \end{pmatrix}
+%   \]
+%   und $a_n \coloneqq \det A_n$.
+%   \begin{enumerate}
+%     \item
+%       Zeigen Sie induktiv für alle $n \geq 3$, dass $a_n = 2 a_{n-1} - a_{n-2}$ gilt.
+%     \item
+%       Zeigen Sie für alle $n \geq 2$, dass $a_{n+1} - a_n \geq a_n - a_{n-1}$ gilt.
+%     \item
+%       Folgern Sie, dass $a_n > 0$ für alle $n \geq 1$ gilt.
+%     \item
+%       Folgern Sie, dass die Matrix $A_n$ für alle $n \geq 1$ positiv definit ist.
+%   \end{enumerate}
+% \end{question}
 
 
-\begin{question}
-  Es sei $A \in \matrices{2}{\Real}$ symmetrisch mit $\det A < 0$.
-  Bestimmen Sie den Rang und die Signatur von $A$.
-\end{question}
+
+
+
+% \begin{question}
+%   Es seien
+%   \begin{gather*}
+%               A_1
+%     \coloneqq \begin{pmatrix}
+%                 4 & 3 \\
+%                 3 & 4
+%               \end{pmatrix},
+%     \quad    
+%               A_2
+%     \coloneqq \begin{pmatrix*}[r]
+%                 3 &   4 \\
+%                 4 &  -3
+%               \end{pmatrix*},
+%     \quad     A_3
+%     \coloneqq \begin{pmatrix*}[r]
+%                  3  & -2  &  0  \\
+%                 -2  &  2  & -2  \\
+%                  0  & -2  &  1
+%               \end{pmatrix*},
+%     \\
+%               A_4
+%     \coloneqq \begin{pmatrix*}[r]
+%                  2  & -1  & 1 \\
+%                 -1  &  2  & 1 \\
+%                  1  &  1  & 2
+%               \end{pmatrix*},
+%     \quad
+%               A_5
+%     \coloneqq \begin{pmatrix*}[r]
+%                 3 & 8 &  5  \\
+%                 8 & 3 &  0  \\
+%                 5 & 0 & -1
+%               \end{pmatrix*}.
+%   \end{gather*}
+%   Bestimmen Sie jeweils den Rang und die Signatur von $A_i$, sowie eine orthogonale Matrix $U_i \in \Orthogonal{n_i}$, so dass die Matrix $\transpose{U_i} A_i U_i$ in Diagonalform ist.
+% \end{question}
+
+
+
 
 
 \begin{question}
@@ -236,6 +257,15 @@
     \item
       symmetrischer, nicht-ausgearteter Bilinearformen auf einem $n$-dimensionalen $\Complex$-Vektorraum.
   \end{enumerate}
+\end{question}
+
+
+
+
+
+\begin{question}
+  Es sei $A \in \matrices{2}{\Real}$ symmetrisch mit $\det A < 0$.
+  Bestimmen Sie den Rang und die Signatur von $A$.
 \end{question}
 
 
