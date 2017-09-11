@@ -1,7 +1,7 @@
 \chapter{Normalenformen für normale Endomorphismen}
 
 Es seien $V$ und $W$ endlichdimensionale Skalarprodukträume.
-Für alle $\varphi \in \real$ sei
+Für jedes $\varphi \in \Real$ sei
 \[
             D(\varphi)
   \coloneqq \begin{pmatrix*}[r]
@@ -18,7 +18,7 @@ die Drehmatrix um den Winkel $\varphi$.
 
 \section{Normale Endomorphismen}
 
-Es sei $V$ ein endlichdimensionaler Skalarproduktraum und $f \colon V \to V$ ein Endomorphismus.
+Es sei $f \colon V \to V$ ein Endomorphismus.
 
 \begin{definition}
   \leavevmode
@@ -54,7 +54,7 @@ Es sei $V$ ein endlichdimensionaler Skalarproduktraum und $f \colon V \to V$ ein
     \item
       Es gibt eine Orthonormalbasis von $V$ aus Eigenvektoren von $f$.
     \item
-      Der Endomorphismus von $f$ ist diagonalisierbar und die Eigenräume sind orthogonal zueinander.
+      Der Endomorphismus von $f$ ist diagonalisierbar mit orthogonalen Eigenräumen.
   \end{enumerate}
 \end{theorem}
 
@@ -66,7 +66,7 @@ Es sei $V$ ein endlichdimensionaler Skalarproduktraum und $f \colon V \to V$ ein
     \item
       Es gibt eine Orthonormalbasis von $\Korper^n$ aus Eigenvektoren von $A$.
     \item
-      Die Matrix $A$ ist diagonalisierbar und die Eigenräume sind orthogonal zueinander.
+      Die Matrix $A$ ist diagonalisierbar mit orthogonalen Eigenräumen.
     \item
       Es gibt eine unitäre Matrix $U \in \Unitary{n}$, so dass $U^{-1} A U$ eine Diagonalmatrix ist.
   \end{enumerate}
@@ -78,7 +78,7 @@ Ist $A \in \matrices{n}{\Complex}$ eine normale Matrix, so lässt sich zum Berec
   \item
     Man berechne eine Basis $\basis{B}$ von $\Complex^n$ aus Eigenvektoren von $A$.
   \item
-    Man wende für jeden Eigenwert von $A$ das Gram--Schidtsch-Verfahren auf die zugehörigen Basisvektoren aus $\basis{B}$ an.
+    Man wende für jeden Eigenwert von $A$ das Gram--Schidtsch-Verfahren auf die zugehörigen Basisvektoren von $\basis{B}$ an.
 \end{itemize}
 
 
@@ -86,6 +86,7 @@ Ist $A \in \matrices{n}{\Complex}$ eine normale Matrix, so lässt sich zum Berec
 \subsection{Der reelle Fall}
 
 \begin{theorem}
+  \label{theorem: normal form for real normal endomorphisms}
   Für $\Korper = \Real$ sind die folgenden Bedingungen sind äquivalent:
   \begin{enumerate}
     \item
@@ -110,7 +111,7 @@ Ist $A \in \matrices{n}{\Complex}$ eine normale Matrix, so lässt sich zum Berec
 \end{theorem}
 
 \begin{remark}
-  Das charakteristische Polynom der Drehstreckmatrix $r D(\varphi)$ ist $(t - \lambda)(t - \conjugate{\lambda}) = t^2 - 2\Re(\lambda) + \abs{\lambda}$ mit $\lambda = r e^{i \varphi}$.
+  Das charakteristische Polynom der Drehstreckmatrix $r D(\varphi)$ ist $(t - \lambda)(t - \conjugate{\lambda}) = t^2 - 2\Re(\lambda) + \abs{\lambda}^2$ mit $\lambda = r e^{i \varphi}$.
   
   In \eqref{equation: normal form for real normal endomorphisms} entsprechen die reellen Diagonaleinträge also den reellen Nullstellen des charakteristischen Polynoms $\charpol{A}(t)$, und die Drehstreckmatrizen $r_i D(\varphi_i)$ den Paaren $(\lambda, \conjugate{\lambda})$ von rein komplexen Nullstelen von $\charpol{A}(t)$.
   
@@ -120,7 +121,7 @@ Ist $A \in \matrices{n}{\Complex}$ eine normale Matrix, so lässt sich zum Berec
 \begin{example}
   Es sei $\Korper = \Real$ und $f$ normal mit charakteristischen Polynom
   \[
-      \charpol{A}(t)
+      \charpol{f}(t)
     = (t - 1)(t + 1)(t^2 + 1)(t^2 - 2t + 2).
   \]
   Es gilt $t^2 + 1 = (t - i)(t + i)$ mit $i = e^{i \pi/2}$ und $t^2 - 2t + 2 = (t - \lambda)(t - \conjugate{\lambda})$ mit $\lambda = 1 + i = \sqrt{2} e^{i \pi/4}$.
@@ -141,7 +142,7 @@ Ist $A \in \matrices{n}{\Complex}$ eine normale Matrix, so lässt sich zum Berec
     \item
       Die Matrix $A$ ist normal.
     \item
-      Es gibt eine orthonormale Matrix $U \in \Orthogonal{n}$, so dass $U^{-1} A U$ in der Form \eqref{equation: normal form for real normal endomorphisms} ist, und es gilt die gleiche Eindeutigkeit.
+      Es gibt eine orthogonale Matrix $U \in \Orthogonal{n}$, so dass $U^{-1} A U$ in der Form \eqref{equation: normal form for real normal endomorphisms} ist, und es gilt die gleiche Eindeutigkeit.
   \end{enumerate}
 \end{corollary}
 
@@ -157,7 +158,7 @@ Ist $A \in \matrices{n}{\Complex}$ eine normale Matrix, so lässt sich zum Berec
       \bil{f(v_1)}{f(v_2)}
     = \bil{v_1}{v_2}
     \qquad
-    \text {für alle $v_1, v_2 \in V$}.
+    \text {für alle $v_1, v_2 \in V$}
   \]
   gilt.
   Im Fall $\Korper = \Complex$ sei
@@ -176,7 +177,7 @@ Ist $A \in \matrices{n}{\Complex}$ eine normale Matrix, so lässt sich zum Berec
     \item
       Unitäre und orthogonale Abbildungen sind injektiv.
     \item
-      Es ist $\Unitary{V} \subseteq \GL{}{V}$, bzw.\ $\Orthogonal{V} \subseteq \GL{}{V}$ eine Untergruppe.
+      Unitäre und orthogonale Endomorphismen sind bereits Isomorphismen, und die Teilmenge $\Unitary{V} \subseteq \GL{}{V}$, bzw.\ $\Orthogonal{V} \subseteq \GL{}{V}$ ist eine Untergruppe.
   \end{itemize}
 \end{lemma}
 
@@ -218,6 +219,69 @@ Es sei nun $f \colon V \to V$ ein Endomorphismus.
 
 \subsection{Der komplexe Fall}
 
+Ist $f$ unitär, so ist $f$ auch normal, da $f \circ \adj{f} = \id_V = \adj{f} \circ f$.
+Ist andererseits $f$ normal, so gibt es eine Orthonormalbasis $\basis{B}$ von $V$, so dass $\repmatrixendo{f}{\basis{B}}$ eine Diagonalmatrix
+\[
+    \repmatrixendo{f}{\basis{B}}
+  = \begin{pmatrix}
+      \lambda_1 &         &           \\
+                & \ddots  &           \\
+                &         & \lambda_n
+    \end{pmatrix}
+\]
+ist.
+Dann gilt
+\begin{align*}
+   &\,  \repmatrixendo{f \circ \adj{f}}{\basis{B}}
+  =     \repmatrixendo{f}{\basis{B}} \repmatrixendo{\adj{f}}{\basis{B}}
+  =     \repmatrixendo{f}{\basis{B}} \madj{\repmatrixendo{f}{\basis{B}}}
+  \\
+  =&\,  \begin{pmatrix}
+          \lambda_1 &         &           \\
+                    & \ddots  &           \\
+                    &         & \lambda_n
+        \end{pmatrix}
+        \madj{
+        \begin{pmatrix}
+          \lambda_1 &         &           \\
+                    & \ddots  &           \\
+                    &         & \lambda_n
+        \end{pmatrix}}
+  =     \begin{pmatrix}
+          \lambda_1 &         &           \\
+                    & \ddots  &           \\
+                    &         & \lambda_n
+        \end{pmatrix}
+        \begin{pmatrix}
+          \conjugate{\lambda_1} &         &                       \\
+                                & \ddots  &                       \\
+                                &         & \conjugate{\lambda_n}
+        \end{pmatrix}
+  \\
+  =&\,  \begin{pmatrix}
+          \lambda_1 \conjugate{\lambda_1} &         &                                 \\
+                                          & \ddots  &                                 \\
+                                          &         & \lambda_n \conjugate{\lambda_n}
+        \end{pmatrix}
+  =     \begin{pmatrix}
+          \abs{\lambda_1}^2 &         &                   \\
+                            & \ddots  &                   \\
+                            &         & \abs{\lambda_n}^2
+        \end{pmatrix}
+\end{align*}
+Damit ergibt sich, dass
+\begin{align*}
+      &\, \text{$f$ ist unitär}
+  \\
+  \iff&\, f \circ \adj{f} = \id_V
+  \\
+  \iff&\, \repmatrixendo{f \circ \adj{f}}{\basis{B}} = \Id
+  \\
+  \iff&\, \text{$\abs{\lambda_i}^2 = 1$ für alle $i$}
+  \\
+  \iff&\, \text{$\abs{\lambda_i} = 1$ für alle $i$}.
+\end{align*}
+
 \begin{theorem}
   Für $\Korper = \Complex$ sind die folgenden Bedingungen sind äquivalent:
   \begin{enumerate}
@@ -241,6 +305,8 @@ Es sei nun $f \colon V \to V$ ein Endomorphismus.
 
 
 \subsection{Der reelle Fall}
+
+Ähnlich zu der obigen Argumentation ergibt sich aus Satz~\ref{theorem: normal form for real normal endomorphisms} die folgende Charakterisierung orthogonaler Endomorphismen:
 
 \begin{theorem}
   Für $\Korper = \Real$ sind die folgenden Bedingungen sind äquivalent:
@@ -283,7 +349,7 @@ Es sei nun $f \colon V \to V$ ein Endomorphismus.
 
 \section{Selbstadjungierte Endomorphismen}
 
-Es sei nun $f \colon V \to V$ ein Endomorphismus.
+Es sei $f \colon V \to V$ ein Endomorphismus.
 
 \begin{definition}
   Der Endomorphismus $f$ heißt \emph{selbstadjungiert}, falls $\adj{f} = f$ gilt.
@@ -305,6 +371,9 @@ Es sei nun $f \colon V \to V$ ein Endomorphismus.
 
 \subsection{Normalenform}
 
+Für den komplexen und den reellen Fall ergeben sich analog zu den vorherigen Argumentationen Normalenformen für selbstadjungierte Endomorphismen.
+Dabei stellt sich heraus, dass sich in beiden Fällen die gleiche Normalenform ergibt.
+
 \begin{theorem}
   Die folgenden Bedingungen sind äquivalent:
   \begin{enumerate}
@@ -313,7 +382,7 @@ Es sei nun $f \colon V \to V$ ein Endomorphismus.
     \item
       Es gibt eine Orthonormalbasis von $V$ aus Eigenvektoren von $f$, und alle Eigenwerte von $f$ sind reell.
     \item
-      Der Endomorphismus $f$ ist diagonalisierbar mit reellen Eigenwerten, und die Eigenräume sind orthogonal zueinander.
+      Der Endomorphismus $f$ ist diagonalisierbar mit reellen Eigenwerten und orthogonalen Eigenräumen.
   \end{enumerate}
 \end{theorem}
 
@@ -326,7 +395,7 @@ Es sei nun $f \colon V \to V$ ein Endomorphismus.
     \item
       Es gibt eine Orthonormalbasis von $\Korper^n$ aus Eigenvektoren von $A$, und alle Eigenwerte von $A$ sind reell.
     \item
-      Die Matrix $A$ ist diagonalisierbar mit reellen Eigenwerten, und die Eigenräume sind orthogonal zueinander.
+      Die Matrix $A$ ist diagonalisierbar mit reellen Eigenwerten und die orthogonalen Eigenräumen zueinander.
     \item
       Es gibt eine unitäre, bzw.\ orthogonale Matrix $U$, so dass $U^{-1} A U$ eine Diagonalmatrix mit reellen Diagonaleinträgen ist.
   \end{enumerate}
@@ -382,7 +451,7 @@ Es sei nun $f \colon V \to V$ ein Endomorphismus.
                 \end{pmatrix*}
         = \generated{ \rvect{1 \\ 1 \\ -2} }.
       \end{gather*}
-      Durch Normieren der obigen Eigenvektoren ergibt sich die Orthonormalbasis von $\Real^3$
+      Durch Normieren der obigen Eigenvektoren ergibt sich die Orthonormalbasis
       \[
           \basis{B}
         = \left(
@@ -465,51 +534,48 @@ Es sei nun $f \colon V \to V$ ein Endomorphismus.
 
 
 
-\subsection{Positive Endomorphismen \& Co.}
-
-Selbstadjungierte Endomorphismen lassen sich als symmetrische Bilinearformen, bzw.\ hermitesche Sesquilinearform auffasen.
-
-\begin{definition}
-  \leavevmode
-  \begin{itemize}
-    \item
-      Ein selbstadjungierter Endomorphismus $f \colon V \to V$ heißt \emph{positiv definit} falls die hermitesche Sesquilinearform $\beta \in \HerForm(V)$, bzw.\ die symmetrische Bilinearform $\beta \in \SymForm(V)$ mit $\beta(v_1, v_2) \coloneqq \bil{f(v_1)}{v_2}$ positiv definit ist.
-    \item
-      Eine hermitesche Matrix $A \in \matrices{n}{\Korper}$ heißt \emph{positiv definit} falls die hermitesche Sesquilinearform $\beta \in \HerForm(\Complex^n)$ mit $\beta(v_1, v_2) \coloneqq \transpose{v_1} A \conjugate{v_2}$ positiv definit ist.
-  \end{itemize}
-  
-  Analog sind die Eigenschaften \emph{positiv semidefinit}, \emph{negativ definit}, \emph{negativ semidefinit} und \emph{indefinit} definiert.
-\end{definition}
-
-\begin{definition}
-  Für einen selbstadjungierten Endomorphismus $f \colon V \to V$ sind die folgenden Bedingungen äquivalent:
-  \begin{enumerate}
-    \item
-      Der Endomorphismus $f$ ist positiv definit.
-    \item
-      Es gibt eine Orthonormalbasis $\basis{B}$ von $V$, so dass die Matrix $\repmatrixendo{f}{\basis{B}}$ positiv definit ist.
-    \item
-      Für jede Orthonormalbasis $\basis{B}$ von $V$ ist die Matrix $\repmatrixendo{f}{\basis{B}}$ positiv definit.
-  \end{enumerate}
-  Für positiv semidefinit, negativ definit, negativ semidefinit und indefinit definiert gelten die analogen Aussagen.
-\end{definition}
-
-\begin{corollary}
-  \leavevmode
-  \begin{itemize}
-    \item
-      Ein selbstadjungierter Endomorphismus $f \colon V \to V$ ist genau dann positiv definit, wenn alle Eigenwerte von $f$ positiv sind.
-    \item
-      Eine hermitesche Matrix $A \in \matrices{n}{\Korper}$ ist genau dann positiv definit, wenn alle Eigenwerte von $A$ positiv sind.
-  \end{itemize}
-  Für positiv semidefinit, negativ definit, negativ semidefinit und indefinit definiert gelten die analogen Aussagen.
-\end{corollary}
 
 
+\section{Übersichten}
 
+Im komplexen Fall gibt es für normale, unitäre und selbstadjungierte Endomorphismen $f$ jeweils eine Orthonormalbasis auf Eigenvektoren.
+Dabei müssen die Eigenwerte von $f$ jeweils "die gleiche" Gleichung erfüllen wie $f$ selbst:
 
-
-\section{Übersicht}
+\begin{center}
+  \renewcommand*{\arraystretch}{1.5}
+  \begin{tabular}[4]{lccc}
+      Endomorphismus $f$
+    & Gleichung für $f$
+    & \begin{tabular}[1]{c}
+        Gleichung für \\
+        die Eigenwerte $\lambda$
+      \end{tabular}
+    & Bedeutung
+    \\
+    \hline
+    \hline
+      normal
+    & $f \adj{f} = \adj{f} f$
+    & $\lambda \conjugate{\lambda} = \conjugate{\lambda} \lambda$
+    & \begin{tabular}[1]{c}
+        keine Ein- \\
+        schränkung \\
+        an $\lambda$
+      \end{tabular}
+    \\
+    \hline
+      unitär
+    & $f \adj{f} = \id$
+    & $\lambda \conjugate{\lambda} = 1$
+    & $\abs{\lambda} = 1$
+    \\
+    \hline
+      selbstadjungiert
+    & $f = \adj{f}$
+    & $\lambda = \conjugate{\lambda}$
+    & $\lambda \in \Real$
+  \end{tabular}
+\end{center}
 
 Die verschiedenen Normalenformen lassen sich wie folgt zusammenfassen:
 
@@ -532,7 +598,6 @@ Die verschiedenen Normalenformen lassen sich wie folgt zusammenfassen:
     & \begingroup
         \renewcommand*{\arraystretch}{1.5}
         \begin{tabular}[1]{@{}c}
-        
         $ \begin{psmallmatrix}
             \lambda_1 &         &           \\
                       & \ddots  &           \\
@@ -621,6 +686,55 @@ Die verschiedenen Normalenformen lassen sich wie folgt zusammenfassen:
 
 \section{Polarzerlegung}
 
+
+
+\subsection*{Positive Endomorphismen \& Co.}
+
+Selbstadjungierte Endomorphismen lassen sich als symmetrische Bilinearformen, bzw.\ hermitesche Sesquilinearform auffassen.
+
+% manual pagebreak
+\pagebreak
+
+\begin{definition}
+  \leavevmode
+  \begin{itemize}
+    \item
+      Ein selbstadjungierter Endomorphismus $f \colon V \to V$ heißt \emph{positiv definit} falls die hermitesche Sesquilinearform $\beta \in \HerForm(V)$, bzw.\ die symmetrische Bilinearform $\beta \in \SymForm(V)$ mit $\beta(v_1, v_2) \coloneqq \bil{f(v_1)}{v_2}$ positiv definit ist.
+    \item
+      Eine hermitesche Matrix $A \in \matrices{n}{\Korper}$ heißt \emph{positiv definit} falls die hermitesche Sesquilinearform $\beta \in \HerForm(\Complex^n)$ mit $\beta(v_1, v_2) \coloneqq \transpose{v_1} A \conjugate{v_2}$ positiv definit ist.
+  \end{itemize}
+  
+  Analog sind die Eigenschaften \emph{positiv semidefinit}, \emph{negativ definit}, \emph{negativ semidefinit} und \emph{indefinit} definiert.
+\end{definition}
+
+\begin{definition}
+  Für einen selbstadjungierten Endomorphismus $f \colon V \to V$ sind die folgenden Bedingungen äquivalent:
+  \begin{enumerate}
+    \item
+      Der Endomorphismus $f$ ist positiv definit.
+    \item
+      Es gibt eine Orthonormalbasis $\basis{B}$ von $V$, so dass $\repmatrixendo{f}{\basis{B}}$ positiv definit ist.
+    \item
+      Für jede Orthonormalbasis $\basis{B}$ von $V$ ist $\repmatrixendo{f}{\basis{B}}$ positiv definit.
+  \end{enumerate}
+  Für positiv semidefinit, negativ definit, negativ semidefinit und indefinit definiert gelten die analogen Aussagen.
+\end{definition}
+
+\begin{corollary}
+  \leavevmode
+  \begin{itemize}
+    \item
+      Ein selbstadjungierter Endomorphismus $f \colon V \to V$ ist genau dann positiv definit, wenn alle Eigenwerte von $f$ positiv sind.
+    \item
+      Eine hermitesche Matrix $A \in \matrices{n}{\Korper}$ ist genau dann positiv definit, wenn alle Eigenwerte von $A$ positiv sind.
+  \end{itemize}
+  Für positiv semidefinit, negativ definit, negativ semidefinit und indefinit definiert gelten die analogen Aussagen.
+\end{corollary}
+
+Aus jeder reellen Zahl $x \geq 0$ lässt sich eine reelle Wurzel $y$ ziehen;
+indem man zusätzlich fordert, dass $y \geq 0$ gilt, ist diese Wurzel eindeutig, und wird mit $y = \sqrt{x}$ bezeichnet.
+Diese Aussage verallgemeinert sich auf positiv semidefinite, selbstadjungierte Endomorphismen.
+
 \begin{lemma}
   \label{lemma: existence of square roots}
   \leavevmode
@@ -633,6 +747,16 @@ Die verschiedenen Normalenformen lassen sich wie folgt zusammenfassen:
 \end{lemma}
 
 In der Situation von Lemma~\ref{lemma: existence of square roots} schreiben wir $g = \sqrt{f}$ (bzw.\ $B = \sqrt{A}$).
+
+
+
+\subsection*{Die Polarzerlegung}
+
+Jede komplexe Zahl $z \in \Complex$ lässt sich als $z = r u$ schreiben, wobei $r \in \Real$ mit $r \geq 0$ und $u \in \Complex$ mit $\abs{u} = 1$.
+Die Zahl $r$ ist eindeutig bestimmt also $r = \abs{z} = \sqrt{z \conjugate{z}}$.
+Gilt $z \neq 0$, so ist auch $u$ eindeutig bestimmt.
+
+Diese Zerlegung verallgemeinert sich auf komplexe Endomorphismen, bzw.\ Matrizen.
 
 \begin{theorem}[Polarzerlegung]
   \leavevmode

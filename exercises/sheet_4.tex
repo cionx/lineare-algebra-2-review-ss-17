@@ -9,97 +9,13 @@
 
 \begin{document}
 
-
-
-
-
-\begin{question}
-  \begin{enumerate}
-    \item
-      Es sei $V$ ein endlichdimensionaler reeller Vektorraum.
-      Zeigen Sie, dass es für jeden diagonalisierbaren Endomorphismus $f \colon V \to V$ ein Skalarprodukt auf $V$ gibt, bezüglich dessen $f$ selbstadjungiert ist.
-    \item
-      Wieso gilt die analoge Aussage für komplexe Vektorräume nicht?
-  \end{enumerate}
-\end{question}
+Im Folgenden seien alle Vektorräume endlichdimensional.
 
 
 
 
 
-\begin{question}
-  \begin{enumerate}
-    \item
-      Es sei $V$ ein endlichdimensionalerunitärer Vektorraum und $f \colon V \to V$ ein selbstadjungierter Endomorphismus mit $\bil{f(v)}{v} = 0$ für alle $v \in V$.
-      Zeigen Sie, dass bereits $f = 0$ gilt.\\
-      (\emph{Hinweis}:
-      Betrachten Sie die Eigenwerte von $f$.)
-    \item
-      Zeigen Sie, dass die analoge Aussage im reellen im Allgemeinen nicht gilt.
-  \end{enumerate}
-\end{question}
-
-
-
-
-
-\begin{question}
-  Es sei $f \colon V \to V$ ein normaler Endomorphismus.
-  \begin{enumerate}
-    \item
-      Zeigen Sie, dass $\norm{f(v)} = \norm{\adj{f}(v)}$ für alle $v \in V$ gilt.
-    \item
-      Folgern Sie, dass $\ker f = \ker \adj{f}$ gilt.
-    \item
-      Zeigen Sie, dass für alle $\lambda \in \Korper$ auch $f - \lambda \id_V$ normal ist.
-    \item
-      Folgern Sie, dass für alle $\lambda \in \Korper$ die Gleichheit $\eigenspace{V}{f}{\lambda} = \eigenspace{V}{\adj{f}}{\conjugate{\lambda}}$ gilt.
-    \item
-      Folgern Sie, dass $\eigenspace{V}{f}{\lambda} \perp \eigenspace{V}{f}{\mu}$ für alle $\lambda \neq \mu$ gilt.
-  \end{enumerate}
-\end{question}
-
-
-
-
-
-\begin{question}
-  Es sei $V$ ein endlichdimensionaler unitärer Vektorraum und $f \colon V \to V$ ein Endomorphismus.
-  \begin{enumerate}
-    \item
-      Zeigen Sie, dass die folgenden Bedingungen äquivalent sind:
-      \begin{enumerate}
-        \item
-          Der Endomorphismus $f$ ist \emph{antiselbstadjungiert}, d.h.\ es gilt $\adj{f} = -f$.
-        \item
-          Der Endomorphismus $f$ ist normal, und alle Eigenwerte von $f$ sind rein imaginär (d.h.\ aus $i \Real$).
-      \end{enumerate}
-    \item
-      Zeigen Sie, dass $f - \id_V$ und $f + \id_V$ Isomorphismen sind.
-    \item
-      Zeigen Sie, dass $(f - \id_V)^{-1} \circ (f + \id_V)$ eine Isometrie ist.
-  \end{enumerate}
-\end{question}
-
-
-
-
-
-\begin{question}
-  Es sei $A \in \matrices{n}{\Real}$, so dass $\charpol{A}(t)$ in Linearfaktoren zerfällt.
-  \begin{enumerate}
-    \item
-      Zeigen Sie, dass $A$ diagonalisierbar ist, falls $A$ normal ist.
-    \item
-      Zeigen Sie, dass $A^2 = \Id$ gilt, falls $A$ orthogonal ist.
-  \end{enumerate}
-\end{question}
-
-
-
-
-
-\begin{question}
+\begin{question}[subtitle = Symmetrisch und Orthogonal]
   Es sei $A \in \Orthogonal{n}$ symmetrisch und positiv definit.
   Zeigen Sie, dass bereits $A = \Id$ gilt.
 \end{question}
@@ -108,8 +24,8 @@
 
 
 
-\begin{question}
-  Es sei $V$ ein endlichdimensionaler Skalarproduktraum und $f, g \colon V \to V$ ein selbstadjungierte Endomorphismen.
+\begin{question}[subtitle = Selbstadjungierte Endomorphismen]
+  Es sei $V$ ein Skalarproduktraum und $f, g \colon V \to V$ seien selbstadjungierte Endomorphismen.
   \begin{enumerate}
     \item
       Zeigen Sie, dass $f = 0$ gilt, falls $f$ nilpotent ist
@@ -120,13 +36,17 @@
   \end{enumerate}
 \end{question}
 
-\begin{question}
-  Es sei $A \in \Unitary{n}$.
+
+
+
+
+\begin{question}[subtitle = Diagonalisierbarkeit und Selbstadjungiertheit]
   \begin{enumerate}
     \item
-      Zeigen Sie, dass $|\tr A| \leq n$ gilt.
+      Es sei $V$ ein reeller Vektorraum.
+      Zeigen Sie, dass es für jeden diagonalisierbaren Endomorphismus $f \colon V \to V$ ein Skalarprodukt auf $V$ gibt, bezüglich dessen $f$ selbstadjungiert ist.
     \item
-      Zeigen Sie, dass genau dann Gleichheit gilt, wenn $A$ ein Vielfaches von $\Id$ ist.
+      Wieso gilt die analoge Aussage für komplexe Vektorräume nicht?
   \end{enumerate}
 \end{question}
 
@@ -134,19 +54,83 @@
 
 
 
-\begin{question}
+% \begin{question}
+%   Es sei $f \colon V \to V$ ein normaler Endomorphismus.
+%   \begin{enumerate}
+%     \item
+%       Zeigen Sie, dass $\norm{f(v)} = \norm{\adj{f}(v)}$ für alle $v \in V$ gilt.
+%     \item
+%       Folgern Sie, dass $\ker f = \ker \adj{f}$ gilt.
+%     \item
+%       Zeigen Sie, dass für alle $\lambda \in \Korper$ auch $f - \lambda \id_V$ normal ist.
+%     \item
+%       Folgern Sie, dass für alle $\lambda \in \Korper$ die Gleichheit $\eigenspace{V}{f}{\lambda} = \eigenspace{V}{\adj{f}}{\conjugate{\lambda}}$ gilt.
+%     \item
+%       Folgern Sie, dass $\eigenspace{V}{f}{\lambda} \perp \eigenspace{V}{f}{\mu}$ für alle $\lambda \neq \mu$ gilt.
+%   \end{enumerate}
+% \end{question}
+
+
+
+
+
+\begin{question}[subtitle = Charakterisierung antiselbstadjungierter Endomorphismen]
+  Es sei $V$ ein unitärer Vektorraum und $f \colon V \to V$ ein Endomorphismus.
+  Zeigen Sie, dass die folgenden Bedingungen äquivalent sind:
+  \begin{enumerate}
+    \item
+      Der Endomorphismus $f$ ist \emph{antiselbstadjungiert}, d.h.\ es gilt $\adj{f} = -f$.
+    \item
+      Der Endomorphismus $f$ ist normal, und alle Eigenwerte von $f$ sind rein imaginär (d.h.\ aus $i \Real$).
+  \end{enumerate}
+\end{question}
+
+
+
+
+
+% \begin{question}
+%   Es sei $A \in \matrices{n}{\Real}$, so dass $\charpol{A}(t)$ in Linearfaktoren zerfällt.
+%   \begin{enumerate}
+%     \item
+%       Zeigen Sie, dass $A$ diagonalisierbar ist, falls $A$ normal ist.
+%     \item
+%       Zeigen Sie, dass $A^2 = \Id$ gilt, falls $A$ orthogonal ist.
+%   \end{enumerate}
+% \end{question}
+
+
+
+
+
+% \begin{question}
+%   Es sei $A \in \Unitary{n}$.
+%   \begin{enumerate}
+%     \item
+%       Zeigen Sie, dass $|\tr A| \leq n$ gilt.
+%     \item
+%       Zeigen Sie, dass genau dann Gleichheit gilt, wenn $A$ ein Vielfaches von $\Id$ ist.
+%   \end{enumerate}
+% \end{question}
+
+
+
+
+
+\begin{question}[subtitle = Zerlegung von Matrizen]
   Es sei $A \in \matrices{n}{\Complex}$.
+  Zeigen Sie:
   \begin{enumerate}
     \item
-      Zeigen Sie, dass es eindeutige hermitesche Matrizen $B, C \in \matrices{n}{\Complex}$ mit $A = B + i C$ gibt.
+      Es gibt eindeutige hermitesche Matrizen $B, C \in \matrices{n}{\Complex}$ mit $A = B + i C$.
     \item
-      Zeigen Sie, dass $A$ genau dann normal ist, wenn $B$ und $C$ kommutieren.
+      $A$ ist genau dann normal, wenn $B$ und $C$ kommutieren.
     \item
-      Zeigen Sie, dass es eine eindeutige hermitesche Matrix $D \in \matrices{n}{\Complex}$ und schiefhermitesche Matrix $E \in \matrices{n}{\Complex}$ (d.h.\ $\madj{E} = -E$) mit $A = D + E$ gibt.
+      Es gibt eine eindeutige hermitesche Matrix $D \in \matrices{n}{\Complex}$ und schiefhermitesche Matrix $E \in \matrices{n}{\Complex}$ (d.h.\ $\madj{E} = -E$) mit $A = D + E$.
     \item
-      Zeigen Sie, dass $A$ genau dann normal ist, wenn $D$ und $E$ kommutieren.
+      $A$ genau dann normal ist, wenn $D$ und $E$ kommutieren.
     \item
-      Wie hängen die bedien Zerlegungen $A = B + iC$ ud $A = D + E$ zusammen?
+      Wie hängen die beiden Zerlegungen $A = B + iC$ ud $A = D + E$ zusammen?
   \end{enumerate}
 \end{question}
 
@@ -154,64 +138,68 @@
 
 
 
-\begin{question}[subtitle = Spiegelungen]
-  Es sei $V$ ein euklidischer Vektorraum.
-  Für jedes $\alpha \in V$ mit $\alpha \neq 0$ sei
-  \[
-            s_\alpha
-    \colon  V
-    \to     V,
-    \quad\text{mit}\quad
-              s_\alpha(x)
-    \coloneqq x - 2 \frac{\bil{x}{\alpha}}{\|\alpha\|^2} \alpha.
-  \]
-  Ferner seien $L_\alpha \coloneqq \Real \alpha$ und $H_\alpha \coloneqq L_\alpha^\perp$.
-  \begin{enumerate}
-    \item
-      Zeigen Sie, dass $L_\alpha = \eigenspace{V}{s_\alpha}{-1}$ und $H_\alpha = \eigenspace{V}{s_\alpha}{1}$.
-  \end{enumerate}
-  Also ist $s_\alpha$ die orthogonale Spiegelung an der Hyperebene $H_\alpha$.
-  \begin{enumerate}[resume]
-    \item
-      Zeigen Sie, dass $s_\alpha$ orthogonal ist.
-    \item
-      Zeigen Sie, dass $t s_\alpha t^{-1} = s_{t(\alpha)}$ für alle $t \in \Orthogonal{V}$ gilt.
-  \end{enumerate}
-\end{question}
+% \begin{question}[subtitle = Spiegelungen]
+%   Es sei $V$ ein euklidischer Vektorraum.
+%   Für jedes $\alpha \in V$ mit $\alpha \neq 0$ sei
+%   \[
+%             s_\alpha
+%     \colon  V
+%     \to     V,
+%     \quad\text{mit}\quad
+%               s_\alpha(x)
+%     \coloneqq x - 2 \frac{\bil{x}{\alpha}}{\|\alpha\|^2} \alpha.
+%   \]
+%   Ferner seien $L_\alpha \coloneqq \Real \alpha$ und $H_\alpha \coloneqq L_\alpha^\perp$.
+%   \begin{enumerate}
+%     \item
+%       Zeigen Sie, dass $L_\alpha = \eigenspace{V}{s_\alpha}{-1}$ und $H_\alpha = \eigenspace{V}{s_\alpha}{1}$.
+%   \end{enumerate}
+%   Also ist $s_\alpha$ die orthogonale Spiegelung an der Hyperebene $H_\alpha$.
+%   \begin{enumerate}[resume]
+%     \item
+%       Zeigen Sie, dass $s_\alpha$ orthogonal ist.
+%     \item
+%       Zeigen Sie, dass $t s_\alpha t^{-1} = s_{t(\alpha)}$ für alle $t \in \Orthogonal{V}$ gilt.
+%   \end{enumerate}
+% \end{question}
 
 
 
 
 
-\begin{question}
-  Es sei $V$ ein endlichdimensionaler euklidischer Vektorraum und $f \colon V \to V$ ein Endomorphismus.
-  Entscheiden Sie, weche Implikationen zwischen den folgenden Aussagen gelten:
-  \begin{enumerate}
-    \item
-      Der Endomorphismus $f$ ist selbstadjungiert mit positiven Eigenwerten.
-    \item
-      Der Endomorphismus $f$ ist orthogonal mit positiven Eigenwerten.
-    \item
-      Der Endomorphismus $f$ ist normal mit $\det f > 0$.
-    \item
-      Der Endomorphismus $f$ ist selbstadjungiert und orthogonal.
-  \end{enumerate}
-\end{question}
+% \begin{question}
+%   Es sei $V$ ein euklidischer Vektorraum und $f \colon V \to V$ ein Endomorphismus.
+%   Entscheiden Sie, weche Implikationen zwischen den folgenden Aussagen gelten:
+%   \begin{enumerate}
+%     \item
+%       Der Endomorphismus $f$ ist selbstadjungiert mit positiven Eigenwerten.
+%     \item
+%       Der Endomorphismus $f$ ist orthogonal mit positiven Eigenwerten.
+%     \item
+%       Der Endomorphismus $f$ ist normal mit $\det f > 0$.
+%     \item
+%       Der Endomorphismus $f$ ist selbstadjungiert und orthogonal.
+%   \end{enumerate}
+% \end{question}
 
 
 
 
 
-\begin{question}
-  Bestimmen Sie alle Matrizen $A \in \Orthogonal{n}{\Real}$, die obere Dreiecksmatrizen sind.
-\end{question}
+% \begin{question}
+%   Bestimmen Sie alle Matrizen $A \in \Orthogonal{n}{\Real}$, die obere Dreiecksmatrizen sind.
+% \end{question}
 
 
-\begin{question}
+
+
+
+\begin{question}[subtitle = Wurzeln aus negativ semidefiniten Matrizen]
   Es sei $A \in \matrices{n}{\Complex}$ hermitesch und negativ semidefinit.
   \begin{enumerate}
     \item
       Zeigen Sie, dass es eine schiefhermitesche Matrix $B \in \matrices{n}{\Complex}$ mit $B^2 = A$ gibt.
+      (Eine Matrix $B$ heißt schiefhermitesch, wenn $\madj{B} = -B$ gilt.)
     \item
       Entscheiden Sie, ob $B$ eindeutig ist.
   \end{enumerate}
