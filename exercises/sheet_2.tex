@@ -31,10 +31,10 @@
 
 
 
-\begin{question}
-  Es seien $A, B \in \matrices{n}{\Complex}$ mit $\dim \geigenspace{(\Complex^n)}{A}{\lambda} \leq 3$ für alle $\lambda \in \Complex$.
-  Zeigen Sie, dass $A$ und $B$ genau dann ähnlich sind, wenn $\charpol{A} = \charpol{B}$ und $\minpol{A} = \minpol{B}$ gelten.
-\end{question}
+% \begin{question}
+%   Es seien $A, B \in \matrices{n}{\Complex}$ mit $\dim \geigenspace{(\Complex^n)}{A}{\lambda} \leq 3$ für alle $\lambda \in \Complex$.
+%   Zeigen Sie, dass $A$ und $B$ genau dann ähnlich sind, wenn $\charpol{A} = \charpol{B}$ und $\minpol{A} = \minpol{B}$ gelten.
+% \end{question}
 
 
 
@@ -42,22 +42,6 @@
 
 \begin{question}
   Bestimmen Sie die Anzahl der Ähnlichkeitsklassen nilpotenter Matrizen in $\matrices{6}{K}$.
-\end{question}
-
-
-
-
-
-\begin{question}
-  Bestimmen Sie für jedes $a \in \Real$ die Jordan-Normalform und das Minimalpolynom der Matrix
-  \[
-              A_a
-    \coloneqq \begin{pmatrix}
-                2 & a+1 &  0  \\
-                0 &  2  & a-2 \\
-                0 &  0  &  2
-              \end{pmatrix}.
-  \]
 \end{question}
 
 
@@ -86,6 +70,8 @@
   Bestimmen Sie für eine Matrix $A \in \matrices{n}{\Complex}$, $n \geq 1$ mit den angegebenen Eigenschaften jeweils alle möglichen Jordan-Normalformen bis auf Permutation der Jordanblöcke.
   \begin{enumerate}
     \item
+      Es gelten $\charpol{A}(t) = (t-4)^3 (t+3)^2$ und $\minpol{A}(t) = (t-4) (t+3)^2$.
+    \item
       $A\in \matrices{2}{\Complex}$ ist nicht diagonalisierbar mit $\tr A = 0$.
     \item
       Es gilt $A^3 = 0$ und alle nicht-trivialen Eigenräume von $A$ sind eindimensional.
@@ -97,33 +83,44 @@
       Es gilt $\charpol{A}(t) = (t^2 - 5t + 6)^2$ und alle Eigenräume von $A$ sind entweder null- oder eindimensional.
     \item
       Es gilt $A^2 = A$ und alle nicht-trivialen Eigenräume von $A$ sind zweidimensional.
-    \item
-      Es gilt $\charpol{A}(t) = t^5$, alle Eigenräume von $A$ sind entweder null- oder zweidimensional.
+%     \item
+%       Es gilt $\charpol{A}(t) = t^5$, alle Eigenräume von $A$ sind entweder null- oder zweidimensional.
     \item
       Es gilt $\charpol{A}(t) = (t + 3)^3 t^2$ und $A$ hat keine zweidimensionalen Eigenräume.
     \item
       Es gilt $\charpol{A}(t) = t^5 -2 t^4$ und alle nicht-trivialen Eigenräume von $A$ haben die gleiche Dimension.
-    \item
-      Es gilt $\charpol{A}(t) = (t-3)^4 (t-5)^4$ und $(A - 3 \Id)^2 (A - 5 \Id)^2 = 0$.
+%     \item
+%       Es gilt $\charpol{A}(t) = (t-3)^4 (t-5)^4$ und $(A - 3 \Id)^2 (A - 5 \Id)^2 = 0$.
     \item
       $A \in \matrices{3}{\Complex}$ mit $\tr A = \det A = 0$.
     \item
       $A \in \matrices{8}{\Complex}$ mit $(A - \Id)(A^5 - A^4) = 0$, $\tr A = 2$ und $\rank A = 6$.
-    \item
-      $A \in \matrices{7}{\Complex}$ mit $A^5 = A^4$, $\tr A = 2$ und $\rank A = \rank A^2 + 1 = 4$.
-    \item
-      $A \in \matrices{6}{\Complex}$ mit $\minpol{A}(t) = (t-1)^2 (t-2)^3$ und $\dim \eigenspace{V}{A}{2} = 1$.
-    \item
-      Es gelten $\charpol{A} = (t-1)^2 (t-2) (t-7)^2$, $\tr A = 6$, $\det A = 4$, $\rank (A - \Id) = 3$.
-    \item
-      Es gelten $\charpol{A}(t) = (t-4)^3 (t+3)^2$ und $\minpol{A}(t) = (t-4) (t+3)^2$
-    \item
-      $A \in \matrices{5}{\Complex}$ mit $A^3 = 0$ und $\rank A = 3$.
-    \item
-      $A \in \matrices{7}{\Complex}$ mit $A^7 - 2 A^5 + A^3 = 0$, $\rank A = \rank(A + \Id) = 6$, $\tr A = 0$.
-    \item
-      Es gelten $\charpol{A}(t) = (t+2)^4 (t-1)^2$, $\rank (A + 2 \Id) > \rank (A + 2 \Id)^2 = 2$ und $\rank (A - \Id) = 5$.
+%     \item
+%       $A \in \matrices{7}{\Complex}$ mit $A^5 = A^4$, $\tr A = 2$ und $\rank A = \rank A^2 + 1 = 4$.
+%     \item
+%       $A \in \matrices{6}{\Complex}$ mit $\minpol{A}(t) = (t-1)^2 (t-2)^3$ und $\dim {\eigenspace{(\Complex^6)}{A}{2}} = 1$.
+%     \item
+%       Es gelten $\charpol{A} = (t-1)^2 (t-2) (t-7)^2$, $\tr A = 6$, $\det A = 4$, $\rank (A - \Id) = 3$.
+%     \item
+%       $A \in \matrices{5}{\Complex}$ mit $A^3 = 0$ und $\rank A = 3$.
+%     \item
+%       $A \in \matrices{7}{\Complex}$ mit $A^7 - 2 A^5 + A^3 = 0$, $\rank A = \rank(A + \Id) = 6$, $\tr A = 0$.
+%     \item
+%       Es gelten $\charpol{A}(t) = (t+2)^4 (t-1)^2$, $\rank (A + 2 \Id) > \rank (A + 2 \Id)^2 = 2$ und $\rank (A - \Id) = 5$.
   \end{enumerate}
+\end{question}
+
+
+\begin{question}
+  Bestimmen Sie für jedes $a \in \Real$ die Jordan-Normalform und das Minimalpolynom der Matrix
+  \[
+              A_a
+    \coloneqq \begin{pmatrix}
+                2 & a+1 &  0  \\
+                0 &  2  & a-2 \\
+                0 &  0  &  2
+              \end{pmatrix}.
+  \]
 \end{question}
 
 
