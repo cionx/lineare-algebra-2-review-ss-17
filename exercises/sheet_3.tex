@@ -9,35 +9,15 @@
 
 \begin{document}
 
-Im Folgenden seien alle Vektorräume endlich-dimensional.
+% disable page numbering for this exercise sheet
+% since it only consists of a single page
+\pagenumbering{gobble}
 
 
 
-\begin{question}
-  Es seien $V$ ein Skalarproduktraum.
-  \begin{enumerate}
-    \item
-      Es sei $\basis{B} = (v_1, \dotsc, v_n)$ eine Orthonormalbasis von $V$.
-      Zeigen Sie für alle $v, w \in V$ mit $v = \sum_{i=1}^n x_i v_i$ und $w = \sum_{i=1}^n y_i v_i$ die Gleichungen
-      \[
-          \bil{v}{w}
-        = \sum_{i=1}^n x_i \overline{y_i}
-        \quad\text{und}\quad
-          \norm{v}
-        = \sqrt{ \sum_{i=1}^n \abs{x_i}^2 }.
-      \]
-    \item
-      Zeigen Sie die Parallelogrammgleichung:
-      \[
-          \norm{v + w}^2 + \norm{v - w}^2
-        = 2( \norm{v}^2 + \norm{w}^2 )
-        \qquad
-        \text{für alle $v, w \in V$}.
-      \]
-  \end{enumerate}
-\end{question}
 
 
+Im Folgenden seien alle Vektorräume endlichdimensional.
 
 \begin{question}[subtitle = Existenz von Skalarprodukten]
   Es sei $\basis{B}$ eine Basis eines $\Korper$-Vektorraums $V$.
@@ -63,9 +43,9 @@ Im Folgenden seien alle Vektorräume endlich-dimensional.
 
 
 
-\begin{question}
+\begin{question}[subtitle = Kern und Bild der adjungierten Abbildung]
   Es seien $V$ und $W$ Skalarprodukträume und es sei $f \colon V \to W$ linear.
-  Zeigen Sie, dass $\ker f = (\im \adj{f})^\perp$ und $\im f = (\ker \adj{f})^\perp$ gelten.
+  Zeigen Sie, dass $\ker \adj{f} = (\im f)^\perp$ und $\im \adj{f} = (\ker f)^\perp$ gelten.
 \end{question}
 
 
@@ -85,7 +65,7 @@ Im Folgenden seien alle Vektorräume endlich-dimensional.
       Zeigen Sie, dass bereits $f = 0$ gilt.
       \\
       (\emph{Tipp}:
-       Betrachten Sie die Sesquilinearform $\beta \in \SesForm(V)$ mit $\beta(v_1, v_2) = \bil{f(v_1)}{v_2}$.)
+       Betrachten Sie die Sesquilinearform $\beta \in \SesForm(V)$ mit $\beta(v_1, v_2) = \bil{f(v_1)}{v_2}$, und nutzen Sie Polarisation.)
   \end{enumerate}
 \end{question}
 
