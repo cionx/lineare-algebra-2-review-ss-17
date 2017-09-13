@@ -15,9 +15,14 @@ Im Folgenden seien alle Vektorräume endlichdimensional.
 
 
 
-\begin{question}[subtitle = Symmetrisch und Orthogonal]
-  Es sei $A \in \Orthogonal{n}$ symmetrisch und positiv definit.
-  Zeigen Sie, dass bereits $A = \Id$ gilt.
+\begin{question}[subtitle = Diagonalisierbarkeit und Selbstadjungiertheit]
+  \begin{enumerate}
+    \item
+      Es sei $V$ ein reeller Vektorraum.
+      Zeigen Sie, dass es für jeden diagonalisierbaren Endomorphismus $f \colon V \to V$ ein Skalarprodukt auf $V$ gibt, bezüglich dessen $f$ selbstadjungiert ist.
+    \item
+      Wieso gilt die analoge Aussage für komplexe Vektorräume nicht?
+  \end{enumerate}
 \end{question}
 
 
@@ -33,20 +38,6 @@ Im Folgenden seien alle Vektorräume endlichdimensional.
       Zeigen Sie, dass $f^2 = \id_V$ gilt, falls $f$ orthogonal ist.
     \item
       Zeigen Sie, dass $f = g$ gilt, falls es ein $n \geq 0$ mit $(f-g)^n = 0$ gibt.
-  \end{enumerate}
-\end{question}
-
-
-
-
-
-\begin{question}[subtitle = Diagonalisierbarkeit und Selbstadjungiertheit]
-  \begin{enumerate}
-    \item
-      Es sei $V$ ein reeller Vektorraum.
-      Zeigen Sie, dass es für jeden diagonalisierbaren Endomorphismus $f \colon V \to V$ ein Skalarprodukt auf $V$ gibt, bezüglich dessen $f$ selbstadjungiert ist.
-    \item
-      Wieso gilt die analoge Aussage für komplexe Vektorräume nicht?
   \end{enumerate}
 \end{question}
 
@@ -194,14 +185,13 @@ Im Folgenden seien alle Vektorräume endlichdimensional.
 
 
 
-\begin{question}[subtitle = Wurzeln aus negativ semidefiniten Matrizen]
-  Es sei $A \in \matrices{n}{\Complex}$ hermitesch und negativ semidefinit.
+\begin{question}[subtitle = Wurzeln aus negativ semidefiniten Endomorphismen]
+  Es sei $V$ ein unitärer Vektorraum und $f \colon V \to V$ ein selbstadjungierter, negativ semidefiniter Endomorphismus.
   \begin{enumerate}
     \item
-      Zeigen Sie, dass es eine schiefhermitesche Matrix $B \in \matrices{n}{\Complex}$ mit $B^2 = A$ gibt.
-      (Eine Matrix $B$ heißt schiefhermitesch, wenn $\madj{B} = -B$ gilt.)
+      Zeigen Sie, dass es einen antiselbstadjungierten Endomorphismus $g \colon V \to V$ mit $g^2 = f$ gibt.
     \item
-      Entscheiden Sie, ob $B$ eindeutig ist.
+      Entscheiden Sie, ob $g$ eindeutig ist.
   \end{enumerate}
 \end{question}
 
