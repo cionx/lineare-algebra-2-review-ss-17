@@ -73,19 +73,19 @@ Für alle $\lambda \in K$ gilt dann
   = \sum_{k'=1}^k \text{Anzahl der Jordanblöcke zu $\lambda$ von Größe mindestens $k'$}.
 \]
 Für die Zahlen $d_k(\lambda) \coloneqq \dim \ker (J - \lambda \Id)^k$ gilt deshalb
-\begin{gather*}
+\[
     d_k(\lambda) - d_{k-1}(\lambda)
   = \text{Anzahl der Jordanblöcke zu $\lambda$ von Größe mindestens $k$}
-\shortintertext{und somit}
-  \begin{aligned}
-     &\,    \text{Anzahl der Jordanblöcke zu $\lambda$ von Größe $k$}           \\
+\]
+und somit
+\begin{align*}
+     &\,    \text{Anzahl der Jordanblöcke zu $\lambda$ von Größe $k$}                 \\
     =&\,    \text{Anzahl der Jordanblöcke zu $\lambda$ von Größe mindestens $k$}      \\
      &\,  - \text{Anzahl der Jordanblöcke zu $\lambda$ von Größe mindestens $(k+1)$}  \\
     =&\,    ( d_k(\lambda) - d_{k-1}(\lambda) )
-          - ( d_{k+1}(\lambda) - d_k(\lambda) )                                 \\
+          - ( d_{k+1}(\lambda) - d_k(\lambda) )                                       \\
     =&\,  2 d_k(\lambda) - d_{k-1}(\lambda) - d_{k+1}(\lambda).
-  \end{aligned}
-\end{gather*}
+\end{align*}
 
 Ist $J$ Jordan-Normalform von $A \in \matrices{n}{K}$, so sind $A$ und $J$ ähnlich, weshalb für alle $\lambda \in K$ und $k \geq 0$ auch $(A - \lambda \Id)^k$ und $(J - \lambda \Id)^k$ ähnlich sind.
 Für alle $\lambda \in K$ und $k \geq 0$ gilt deshalb $\dim \ker (A - \lambda)^k = \dim \ker (J - \lambda)^k$.
@@ -157,7 +157,7 @@ Es ergibt daher Sinn, von \emph{der} Jordan-Normalform einer Matrix, bzw.\ eines
 \end{definition}
 
 \begin{example}
-  Der Endomorphismus $f$ ist genau dann nilpotent, wenn $\geigenspace{V}{f}{0} = V$.
+  Der Endomorphismus $f$ ist genau dann nilpotent, wenn $\geigenspace{V}{f}{0} = V$ gilt.
   (Hier nutzen wir, dass $V$ endlichdimensional ist.)
 \end{example}
 
@@ -526,6 +526,8 @@ Zur Berechnung einer Jordanbasis von $A$ kann man weiterhin wie folgt vorgehen:
 
 
 
+% manual pagebreak
+\pagebreak
 
 
 \section{Lösung des Ähnlichkeitsproblems}
@@ -618,8 +620,28 @@ Also sind $f, g \colon V \to V$ genau dann ähnlich, wenn ihre charakteristische
     \item
       Dass $A_1$ und $A_2$ ähnlich sind, erkennt man auch wie folgt:
       
-      Besitzt $A \in \matrices{n}{K}$ eine Jordan-Normalform, so sind $A$ und $\transpose{A}$ ähnlich.
-      Inbesondere sind jede Matrix in unterer Jordan-Normalform ähnlich zu der entsprechenden oberen Jordan-Normalform.
+      Besitzt $A \in \matrices{n}{K}$ eine Jordan-Normalform, so sind $A$ und $\transpose{A}$ ähnlich:
+      Wir haben bereits gesehen, dass $\charpol{A}(t) = \charpol{\transpose{A}}(t)$ gilt.
+      Außerdem gilt
+      \[
+          \dim \ker A
+        = n - \rank A
+        = n - \dim \transpose{A}
+        = \dim \transpose{A},
+      \]
+      wobei die mittlere Gleichheit genau die Gleichheit von Zeilenrang und Spaltenrang ist.
+      Für alle $\lambda \in K$ und $k \geq 0$ gilt damit auch
+      \begin{align*}
+            \dim \ker (A - \lambda \Id)^k
+        &=  \dim \ker \transpose{ ( (A - \lambda \Id)^k ) }
+         =  \dim \ker ( \transpose{ (A - \lambda \Id) } )^k
+        \\
+        &=  \dim \ker ( \transpose{A} - \lambda \transpose{\Id} )^k
+         =  \dim \ker (\transpose{A} - \lambda \Id)^k.
+      \end{align*}
+      Zusammen zeigt dies, dass $A$ und $\transpose{A}$ ähnlich sind.
+      
+      Inbesondere ist damit jede Matrix in unterer Jordan-Normalform ähnlich zu der entsprechenden oberen Jordan-Normalform.
   \end{enumerate}
 \end{example}
 
@@ -715,24 +737,24 @@ Es sei $J \in \matrices{n}{K}$ eine Jordan-Normalform von $f$.
     \[
         n_i
       = \dim \geigenspace{V}{f}{\lambda_i}
-      = \text{wie oft $\lambda_i$ auf der Diagonalen von $J$ steht}
+      = \text{wie oft $\lambda_i$ auf der Diagonalen von $J$ steht}.
     \]
   \item
     Es gilt
     \[
         \text{Anzahl der Jordanblöcke zu $\lambda$ in $J$}
-      = \dim \ker (f - \id_V)
-      = n - \rank (f - \id_V).
+      = \dim \ker (f - \lambda \id_V)
+      = n - \rank (f - \lambda \id_V).
     \]
     Inbesondere ist $n - \rank f$ die Anzahl der Jordanblöcke zu $0$.
   \item
     Für das Minimalpolynom $\minpol{f}(t) = \minpol{J}(t) = (t - \lambda_1)^{m_1} \dotsm (t - \lambda_s)^{m_s}$ mit $\lambda_i \neq \lambda_j$ für $i \neq j$ gilt
     \[
         m_i
-      = \text{maximale auftretende Größe eines Jordanblockes zu $\lambda_i$ in $J$}
+      = \text{maximale auftretende Größe eines Jordanblockes zu $\lambda_i$ in $J$}.
     \]
   \item
-    Ist allgemeiner $q(t) \in K[t]$ ein Polymom mit $q(t) = (t - \lambda_1)^{m'_1} \dotsm (t - \lambda_s)^{m'_s}$, wobei $\lambda_i \neq \lambda_j$ für $i \neq j$ gilt, und $q(f) = 0$, so ergeben sich die folgenden beiden Restriktionen an $J$:
+    Ist allgemeiner $q(t) \in K[t]$ ein Polymom mit $q(t) = (t - \lambda_1)^{m'_1} \dotsm (t - \lambda_s)^{m'_s}$, wobei $\lambda_i \neq \lambda_j$ für $i \neq j$ gilFt, und $q(f) = 0$, so ergeben sich die folgenden beiden Restriktionen an $J$:
     \begin{enumerate}
       \item
         Jeder Eigenwert von $f$ kommt in $\lambda_1, \dotsc, \lambda_s$ vor (siehe Lemma~\ref{lemma: polynomial equations give restriction for the eigenvalues}),

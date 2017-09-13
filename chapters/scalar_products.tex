@@ -88,7 +88,16 @@ Daher ergibt die folgende Definition Sinn:
       \]
       ein Skalarprodukt definiert.
     \item
-      Auf dem $\Complex$-Vektorraum $P = \{f \colon \Real \to \Complex \suchthat \text{$f$ ist stetig und $2\pi$-periodisch} \}$ wird durch
+      Auf dem $\Complex$-Vektorraum
+      \[
+                  P
+        \coloneqq \{
+                    f \colon \Real \to \Complex
+                  \suchthat
+                    \text{$f$ ist stetig und $2\pi$-periodisch}
+                  \}
+      \]
+      wird durch
       \[
                   \bil{f}{g}
         \coloneqq \frac{1}{2\pi} \int_0^{2\pi} f(t) \conjugate{g(t)} \,\text{d}t
@@ -137,7 +146,7 @@ Für jeden Vektor $v \in V$ mit $v \neq 0$ gibt es in der Darstellung $v = \sum_
 \[
     \beta(v,v)
   = \beta\left( \sum_{i=1}^n x_i v_i, \sum_{j=1}^n x_j v_j \right)
-  = \sum_{i,j = 1}^n x_i \conjugate{x_j} \underbrace{ \beta(x_i, x_j)}_{= \delta_{ij}}
+  = \sum_{i,j = 1}^n x_i \conjugate{x_j} \underbrace{ \beta(v_i, v_j)}_{= \delta_{ij}}
   = \sum_{i=1}^n \abs{x_i}^2
   > 0.
 \]
@@ -185,6 +194,9 @@ Sind dabei $v_1, \dotsc, v_i$ bereits orthonormal, so gilt $w_j = v_j$ für alle
 
 
 
+% manual pagebreak
+\pagebreak
+
 
 
 \section{Rieszscher Darstellungssatz}
@@ -212,7 +224,7 @@ Der Rieszsche Darstellungssatz besagt also, dass sich jedes $\varphi \in \dual{V
 
 
 
-\section{Die Adjungierte Abbildung}
+\section{Die adjungierte Abbildung}
 \label{section: adjoint map for scalar products}
 
 Es sei $f \colon V \to W$ eine lineare Abbildung zwischen endlichdimensionalen Skalarprodukträumen $V$ und $W$.
@@ -239,7 +251,7 @@ Es sei $f \colon V \to W$ eine lineare Abbildung zwischen endlichdimensionalen S
     \item
       Es gilt $\adj{(f \circ g)} = \adj{g} \circ \adj{f}$.
     \item
-      Ist $f$ ein Isomorphismus, so gilt $\adj{(f^{-1})} = (\adj{f})^{-1}$.
+      Ist $f$ ein Isomorphismus, so auch $\adj{f}$, und es gilt $(\adj{f})^{-1} = \adj{(f^{-1})}$.
     \item
       Die Abbildung $\Hom{V}{W} \to \Hom{W}{V}$, $f \mapsto \adj{f}$ ist halblinear;
       es gelten also
