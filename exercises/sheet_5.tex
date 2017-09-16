@@ -252,6 +252,7 @@ Im Folgenden seien alle Vektorräume endlichdimensional.
 
 
 \begin{question}[subtitle = Symmetrische Bilinearformen über $\Complex$]
+  \label{question: normal form for complex symmetric bilinear forms}
   Es sei $V$ ein $\Complex$-Vektorraum und $\beta \in \SymForm(V)$ eine symmetrische Bilinearform.
   Zeigen Sie, dass es mit $r \coloneqq \rank \beta$ eine Basis $\basis{B}$ von $V$ gibt, so dass
   \[
@@ -280,6 +281,89 @@ Im Folgenden seien alle Vektorräume endlichdimensional.
       symmetrischer, nicht-ausgearteter Bilinearformen auf $V$ für $K = \Complex$.
   \end{enumerate}
 \end{question}
+
+
+
+
+
+\begin{solution}
+  \begin{enumerate}
+    \item
+      Die Kongruenzklassen von symmetrischen Bilinearformen auf $V$ entsprechen genau den Kongruenzklassen von reellen, symmetrischen $(n \times n)$-Matrizen.
+      Ein Repräsentantensystem dieser Kongruenzklassen ist nach dem Sylvesterschen Trägheitssatz durch die Matrizen der Form
+      \begin{equation}
+        \label{equation: Sylvester}
+        \begin{pmatrix}
+          \Id_p &         &     \\
+                & -\Id_q  &     \\
+                &         & 0_r
+        \end{pmatrix}
+        \in
+        \matrices{n}{\Real}
+      \end{equation}
+      gegeben.
+      
+      Für die Anzahl der Nullen, $r$, gibt es dabei $n + 1$ viele Möglichkeiten.
+      Für die restlichen $n - r$ vielen Diagonaleinträge gibt es dann $n - r + 1$ viele Möglichkeiten, diese auf die Werte $1$ und $-1$ aufzuteilen.
+      Damit ergeben sich insgesamt
+      \[
+        \sum_{r=0}^n (n - r + 1)
+        = \sum_{r' = 1}^{n+1} r'
+        = \frac{(n+1)(n+2)}{2}
+        = \binom{n+2}{2}
+      \]
+      viele Kongruenzklasse.
+    \item
+      Wir gehen wie im vorherigen Aufgabenteil vor.
+      Die Kongruenzklassen nicht-aus\-ge\-arte\-ter symmetrischen Bilinearformen auf $V$ entsprechen dabei genau denn Matrizen der Form~\eqref{equation: Sylvester}, die Rang $n$ haben;
+      also genau den Matrizen der Form
+      \[
+        \begin{pmatrix}
+          \Id_p &         \\
+                & -\Id_q
+        \end{pmatrix}
+        \in \matrices{n}{\Real}.
+      \]
+      Für die Anzahl der Einsen, $p$, gibt es dabei $n + 1$ viele Möglichkeiten;
+      die Anzahl der Minus-Einsen, $q$, ist dann dann durch $q = n - p$ bereits eindeutig bestimmt.
+      Es ergeben sich also $n + 1$ viele Kongruenzklassen.
+    \item
+      Nach Aufgabe~\ref{question: normal form for complex symmetric bilinear forms} entsprechen die Kongruenzklassen symmetrischer Bilinearformen auf $V$ genau den Matrizen der Form
+      \begin{equation}
+        \label{equation: complex Sylvester}
+        \begin{pmatrix}
+          \Id_r &   \\
+                & 0
+        \end{pmatrix}
+        \in \matrices{n}{\Complex}.
+      \end{equation}
+      Für die Anzahl der Einsen, $r$, gibt es $n + 1$ viele Möglichkeiten, und die Matrix ist durch die Zahl $r$ bereits eindeutig bestimmt.
+      Es gibt also $n + 1$ viele Kongruenzklassen.
+    \item
+      Die Kongruenzklassen nicht-ausgearteter, symmetrischer Bilinearformen auf $V$ entsprechen genau Matrizen der Form \eqref{equation: complex Sylvester} von Rang $n$;
+      also genau Matrizen der Form
+      \[
+        \begin{pmatrix}
+          \Id_n
+        \end{pmatrix}
+        \in \matrices{n}{\Complex}.
+      \]
+      Es gibt nur eine solche Matrix, nämlich $\Id_n$.
+      Also gibt es genau eine Kongruenzklasse.
+  \end{enumerate}
+\end{solution}
+
+
+
+
+
+\pagebreak
+\section*{Lösungen}
+
+
+
+\printsolutions
+
 
 
 
