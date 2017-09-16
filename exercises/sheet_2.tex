@@ -122,9 +122,77 @@
                 2 & a+1 &  0  \\
                 0 &  2  & a-2 \\
                 0 &  0  &  2
-              \end{pmatrix}.
+              \end{pmatrix}
+    \in       \matrices{3}{\Real}.
   \]
 \end{question}
+
+
+
+
+
+\begin{solution}
+  Da $A_a$ eine obere Dreiecksmatrix ist, ergibt sich durch direktes Ablesen das charakteristische Polynom
+  \[
+      \charpol{A_a}(t)
+    = -(t-2)^2
+    \qquad
+    \text{für alle $a \in \Real$}.
+  \]
+  Da das charakteristische Polynom von $A_a$ in Linearfaktoren zerfällt, gibt es eine Jordan-Normalform für $A_a$ über $\Real$.
+  Aus dem charakteristischen Polynom $\charpol{A_a}(t)$ erhalten wir, dass $2$ der einzige Eigenwert von $A$ ist;
+  es kommen also nur Jordanblöcke zum Eigenwert $2$ vor.
+  Dabei ist die Jordan-Normalform von $A_a$ bereits eindeutig dadurch bestimmt, wie viele Jordanblöcke vorkommen, da $A_a$ eine $(3 \times 3)$-Matrix ist.
+  Diese Anzahl an Jordanblöcken ist dabei genau $\dim \ker (A_a - 2 \Id)$.
+  
+  Es gilt
+  \begin{gather*}
+      A_a - 2 \Id
+    = \begin{pmatrix}
+        0 & a+1 &  0  \\
+        0 &  0  & a-2 \\
+        0 &  0  &  0
+      \end{pmatrix}.
+  \shortintertext{und somit}
+      \ker (A_a - 2 \Id)
+    = \begin{cases}
+        \generated{ e_1 }       & \text{falls $a \neq -1, 2$},  \\
+        \generated{ e_1, e_2 }  & \text{falls $a = -1$},        \\
+        \generated{ e_1, e_3 }  & \text{falls $a = 2$},
+      \end{cases}
+  \shortintertext{also}
+      \dim \ker (A_a - 2 \Id)
+    = \begin{cases}
+        2 & \text{falls $a = -1$ oder $a = 2$}, \\
+        1 & \text{sonst}.
+      \end{cases}
+  \end{gather*}
+  
+  In den Fällen $a = -1$ und $a = 2$ gibt es also zwei Jordanblöcke, einen von Größe $2$ und einen von Größe $1$.
+  Die Jordan-Normalform ist in diesen Fällen durch
+  \[
+    \begin{pmatrix}
+      2 &   &   \\
+      1 & 2 &   \\
+        &   & 2
+    \end{pmatrix}
+  \]
+  gegeben.
+  Das zugehörige Minimalpolynom ist $m_{A_{-1}}(t) = m_{A_2}(t) = (t-2)^2$ (denn die Vielfachheit des Linearfaktors $t-2$ im Minimalpolynom $m_{A_a}(t)$ entspricht der maximalen auftretenden Blockgröße zum Eigenwert $2$).
+  
+  In allen anderen Fällen gibt es genau einen Jordanblock, notwendigerweise von Größe~$3$.
+  Die Jordan-Normalform ist in diesen Fällen durch
+  \[
+    \begin{pmatrix}
+      2 &   &   \\
+      1 & 2 &   \\
+        & 1 & 2
+    \end{pmatrix}
+  \]
+  gegeben.
+  Das zugehörige Minimalpolynom ist $m_{A_a}(t) = (t-2)^3$ (für $a \neq -1, 2$).
+\end{solution}
+
 
 
 
@@ -191,6 +259,18 @@
 %   Es sei $V$ ein $K$-Vektorraum, und $f, g \colon V \to V$ seien zwei kommutierende Endomorphismen.
 %   Zeigen Sie, dass $\eigenspace{V}{f}{\lambda}$ und $\geigenspace{V}{f}{\lambda}$ invariant unter $g$ sind.
 % \end{question}
+
+
+
+
+
+\pagebreak
+\section*{Lösungen}
+
+
+
+\printsolutions
+
 
 
 
