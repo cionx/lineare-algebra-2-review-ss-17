@@ -1,6 +1,6 @@
 # _Lineare Algebra II_ Review, SS 17
 
-These are materials for a review course of the lecture _Lineare Algebra II_, which was held at the University of Bonn during the summer semester of 2017.
+These are materials for a review course for the lecture _Lineare Algebra II_, which was held at the University of Bonn during the summer semester of 2017.
 This review course was held at the end of the semester as a preparation for the upcoming second exam, and was provided by the [Fachschaft Mathematik][1].
 The course took place over five days, for a total of 20 hours.
 
