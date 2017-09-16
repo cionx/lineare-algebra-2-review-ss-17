@@ -131,7 +131,7 @@
 
 
 
-\begin{question}[subtitle = Cayley-Hamilton]
+\begin{question}[subtitle = Cayley--Hamilton]
   Es sei $K$ ein Körper.
   \begin{enumerate}
     \item
@@ -156,13 +156,65 @@
 
 
 
+\begin{solution}
+  \begin{enumerate}
+    \item
+      Für das charakteristische Polynom $\charpol{A}(t) = (-1)^n t^n + a_{n-1} t^{n-1} + \dotsb + a_1 t + a_0$ gilt nach dem Satz von Cayley--Hamilton, dass
+      \[
+          0
+        = \charpol{A}(t)
+        = (-1)^n A^n + a_{n-1} A^{n-1} + \dotsb + a_1 A + a_0 \Id.
+      \]
+      Wir haben somit eine nicht-trivale Linearkombination von $0$ durch die Matrizen $A^n, A^{n-1}, \dotsc, \Id$.
+    \item
+      Für das charakterische Polynom $\charpol{A}(t) = (-1)^n t^n + a_{n-1} t^{n-1} + \dotsb + a_1 t + a_0$ gilt $a_0 = \det A$.
+      Nach dem Satz von Cayley--Hamilton gilt somit, dass
+      \[
+          0
+        = \charpol{A}(t)
+        = (-1)^n A^n + a_{n-1} A^{n-1} + \dotsb + a_1 A + (\det A) \Id.
+      \]
+      Durch Umstellen dieser Gleichung ergibt sich, dass
+      \begin{align*}
+            \Id
+        &=  - \frac{(-1)^n A^n + a_{n-1} A^{n-1} + \dotsb + a_1 A}{\det A} \\
+        &=  A \cdot \left( - \frac{(-1)^n A^{n-1} + a_{n-1} A^{n-2} + \dotsb + a_1}{\det A} \right).
+      \end{align*}
+      Das Inverse $A^{-1}$ ist also durch
+      \[
+          A^{-1}
+        = - \frac{(-1)^n A^{n-1} + a_{n-1} A^{n-2} + \dotsb + a_1}{\det A}
+        = p(A)
+      \]
+      für das Polynom
+      \[
+                  p(t)
+        \coloneqq - \frac{(-1)^n t^{n-1} + a_{n-1} t^{n-2} + \dotsb + a_1}{\det A}
+        =         - \frac{ \charpol{A}(t) - \det A}{(\det A) t}
+        =         \frac{\det A - \charpol{A}(t)}{(\det A) t}
+      \]
+      gegeben.
+      
+      Für die gegebene Matrix $A \in \GL{3}{\Real}$ gilt
+      \[
+          \charpol{A}(t)
+        = -t^3 + 3 t^2 - 3 t + 1.
+      \]
+      Hieraus ergibt sich das Polynom $p(t) \coloneqq t^2 - 3 t + 3$ mit $A^{-1} = p(A)$.
+  \end{enumerate}
+\end{solution}
+
+
+
+
+
 \begin{question}[subtitle = Simultane Diagonalisierbarkeit]
   \begin{enumerate}
     \item
       Es sei $V$ ein endlichdimensionaler $K$-Vektorraum, und es seien $f, g \colon V \to V$ zwei diagonalisierbare Endomorphismen mit $f \circ g = g \circ f$.
       Zeigen Sie, dass auch $f \circ g$ diagonalisierbar ist.
     \item
-      Bestimmen Sie alle $a, b \in \Real$, so dass die beiden Matrizen
+      Bestimmen Sie alle $a, b \in \Real$, so dass die beiden reellen Matrizen
       \[
         \begin{pmatrix}
           a & 1 \\
@@ -171,7 +223,7 @@
         \quad\text{und}\quad
         \begin{pmatrix*}[r]
           -1  & 2 \\
-          0  & b
+           0  & b
         \end{pmatrix*}
       \]
       simultan diagonalisierbar sind.
@@ -196,6 +248,132 @@
 %       Bestimmen Sie $S \in \GL{3}{\Real}$, so dass $C^{-1} A C$ und $C^{-1} B C$ in Diagonalgestalt sind.
   \end{enumerate}
 \end{question}
+
+
+
+
+
+\begin{solution}
+  \begin{enumerate}
+    \item
+      Die Endomorphismen $f$ und $g$ sind simultan diagonalisierbar, da sie jeweils einzeln diagonalisierbar sind, und kommutieren.
+      Es gibt also eine Basis $\basis{B}$ von $V$, bezüglich der die Endomorphismen $f$ und $g$ durch die Matrizen
+      \[
+          \repmatrixendo{f}{\basis{B}}
+        = \begin{pmatrix}
+            \lambda_1 &         &           \\
+                      & \ddots  &           \\
+                      &         & \lambda_n
+          \end{pmatrix}
+        \quad\text{und}\quad
+          \repmatrixendo{g}{\basis{B}}
+        = \begin{pmatrix}
+            \mu_1 &         &       \\
+                  & \ddots  &       \\
+                  &         & \mu_n
+          \end{pmatrix}
+      \]
+      dargestellt werden.
+      Bezüglich $\basis{B}$ wird $f \circ g$ durch die Matrix
+      \begin{align*}
+            \repmatrixendo{f \circ g}{\basis{B}}
+         =  \repmatrixendo{f}{\basis{B}} \repmatrixendo{g}{\basis{B}}
+        &=  \begin{pmatrix}
+              \lambda_1 &         &           \\
+                        & \ddots  &           \\
+                        &         & \lambda_n
+            \end{pmatrix}
+            \begin{pmatrix}
+              \mu_1 &         &       \\
+                    & \ddots  &       \\
+                    &         & \mu_n
+            \end{pmatrix}
+        \\
+        &=  \begin{pmatrix}
+              \lambda_1 \mu_1 &         &                 \\
+                              & \ddots  &                 \\
+                              &         & \lambda_n \mu_n
+            \end{pmatrix}
+      \end{align*}
+      dargestellt.
+      Also ist $\basis{B}$ eine Basis von $V$ aus Eigenvektoren von $f \circ g$, und $f \circ g$ somit diagonalisierbar.
+      
+    \item
+      Wir bezeichnen die beiden Matrizen mit
+      \[
+          A_a
+        = \begin{pmatrix}
+            a & 1 \\
+            0 & 3
+          \end{pmatrix}
+        \quad\text{und}\quad
+          B_b
+        = \begin{pmatrix*}[r]
+            -1  & 2 \\
+             0  & b
+          \end{pmatrix*}.
+      \]
+      Die Matrizen $A_a$ und $B_b$ sind genau dann simultan diagonalisierbar, wenn sie jeweils einzeln diagonalisierbar sind, und sie kommutieren.
+      \begin{itemize}
+        \item
+          Die Matrix $A_a$ ist eine obere Dreiecksmatrix, ihr charakteristisches Polynom ist also
+          \[
+              \charpol{A_a}(t)
+            = (t-a)(t-3).
+          \]
+          Ist $a \neq 3$, so zerfällt $A_a$ in paarweise verschiedene Linearfaktoren, weshalb $A_a$ in diesen Fällen diagonalisierbar ist.
+          Für $a = 3$ ist $3$ der einzige Eigenwert von $A_a = A_3$;
+          die Matrix $A_3$ ist nicht diagonalisierbar, da der Eigenraum
+          \[
+              \eigenspace{(\Real^2)}{A_3}{3}
+            = \ker (A_3 - 3 \Id)
+            = \ker \begin{pmatrix}
+                     0 & 1  \\
+                     0 & 0
+                   \end{pmatrix}
+            = \generated{ \vect{1 \\ 0} }
+          \]
+          nur eindimensional ist.
+          
+          Also ist $A_a$ genau dann diagonalisierbar, wenn $a \neq 3$ gilt.
+        \item
+          Analog ergibt sich, dass die Matrix $B_b$ genau dann diagonalisierbar ist, wenn $b \neq -1$ gilt.
+        \item
+          Es gelten
+          \begin{gather*}
+              A_a B_b
+            = \begin{pmatrix}
+                a & 1 \\
+                0 & 3
+              \end{pmatrix}
+              \begin{pmatrix*}[r]
+                -1  & 2 \\
+                 0  & b
+              \end{pmatrix*}
+            = \begin{pmatrix}
+                          - a & 2a + b  \\
+                 \phantom{-}0 & 3b
+              \end{pmatrix}
+          \shortintertext{und}
+              B_b A_a
+            = \begin{pmatrix*}[r]
+                -1  & 2 \\
+                 0  & b
+              \end{pmatrix*}
+              \begin{pmatrix}
+                a & 1 \\
+                0 & 3
+              \end{pmatrix}
+            = \begin{pmatrix}
+                          - a & 5   \\
+                 \phantom{-}0 & 3b
+              \end{pmatrix}
+          \end{gather*}
+          Die Matrizen $A_a$ und $B_b$ kommutieren also genau dann, wenn $2 a + b = 5$ gilt, wenn also $b = 5 - 2 a$ gilt.
+      \end{itemize}
+    Wir erhalten also ingesamt, dass die Matrizen $A_a$ und $B_b$ genau dann simultan diagonalisierbar sind, wenn $b = 5 - 2 a$ und $b \neq -1$ gelten (der Fall $a = 3$ entspricht dem Fall $b = -1$).
+  \end{enumerate}
+\end{solution}
 
 
 
@@ -229,7 +407,64 @@
 
 
 
-
+\begin{solution}
+  \begin{enumerate}
+    \item
+      Es gilt $\transpose{(\transpose{A})} = A$ für alle $A \in \matrices{n}{K}$, und somit $f^2 = \id_{\matrices{n}{K}}$ für die Abbildung $f \colon \matrices{n}{K} \to \matrices{n}{K}$, $A \mapsto A^T$.
+      Also gilt $q(f) = 0$ für das Polynom $q(t) \coloneqq t^2 - 1 \in K[t]$.
+      
+      Das Polynom $q$ zerfällt in Linearfaktoren $q(t) = (t - 1)(t + 1)$, und da $\ringchar K \neq 2$ gilt, sind die beiden Linearfaktoren verschieden.
+      Da $\minpol{f} \divides q$ gilt, folgt damit, dass $\minpol{f}$ in die beiden möglichen Linearfaktoren $t-1$ und $t+1$ zerfällt.
+      Somit ist $f$ diagonalisierbar mit möglichen Eigenwerten $1$ und $-1$.
+      
+      Es gilt also
+      \[
+          \matrices{n}{K}
+        = \eigenspace{\matrices{n}{K}}{f}{1} \oplus \eigenspace{\matrices{n}{K}}{f}{-1}.
+      \]
+      Dabei gelten
+      \begin{gather*}
+          \eigenspace{\matrices{n}{K}}{f}{1}
+        = \{ A \in \matrices{n}{K} \suchthat \transpose{A} = A \}
+        = \Sym{n}{K}
+      \shortintertext{sowie}
+          \eigenspace{\matrices{n}{K}}{f}{1}
+        = \{ A \in \matrices{n}{K} \suchthat \transpose{A} = -A \}
+        = \Alt{n}{K}.
+      \end{gather*}
+      
+    \item
+      Für die Standardbasis $(E_{ij})_{i,j = 1, \dotsc, n}$ von $\matrices{n}{K}$ gilt $f(E_{ij}) = \transpose{E_{ij}} = E_{ji}$.
+      \begin{itemize}
+        \item
+          Die Basisvektoren $E_{ii}$ sind also bereits Eigenvektoren von $f$ zum Eigenwert $1$.
+        \item
+          Für $i \neq j$ werden die Basisvektoren $E_{ij}$ und $E_{ji}$ von $f$ miteinander vertauscht.
+          Man kann deshalb $E_{ij}$ und $E_{ji}$ durch die beiden Vektoren
+          \[
+            E_{ij} + E_{ji}
+            \quad\text{und}\quad
+            E_{ij} - E_{ji}
+          \]
+          ersetzen, wobei $E_{ij} + E_{ji}$ ein Eigenvektor von $f$ zum Eigenwert $1$ ist, und $E_{ij} - E_{ji}$ ein Eigenvektor zum Eigenwert $-1$.
+      \end{itemize}
+      Somit erhält man insgesamt die folgende Basis von $\matrices{n}{K}$, bestehend aus Eigenvektoren von $f$:
+      \[
+              \{ E_{ii} \suchthat i = 1, \dotsc, n \}
+        \cup  \{ E_{ij} + E_{ji} \suchthat 1 \leq i < j \leq n \}
+        \cup  \{ E_{ij} - E_{ji} \suchthat 1 \leq i < j \leq n \}.
+      \]
+      Für $\Sym{n}{K} = \eigenspace{\matrices{n}{K}}{f}{1}$ ergibt sich somit die Basis
+      \[
+              \{ E_{ii} \suchthat i = 1, \dotsc, n \}
+        \cup  \{ E_{ij} + E_{ji} \suchthat 1 \leq i < j \leq n \},
+      \]
+      und für $\Alt{n}{K} = \eigenspace{\matrices{n}{K}}{f}{-1}$ die Basis
+      \[
+        \{ E_{ij} - E_{ji} \suchthat 1 \leq i < j \leq n \}.
+      \]
+  \end{enumerate}
+\end{solution}
 
 
 
@@ -308,6 +543,51 @@
 
 
 
+\begin{solution}
+  \begin{enumerate}
+    \item
+      Nach Annahme gilt $f(v) = \lambda v$.
+      Induktiv ergibt sich damit für alle $k \geq 0$, dass $f^k(v) = \lambda^k v$ gilt.
+      Für ein beliebiges Polynom
+      \[
+          p(t)
+        = a_n t^n + a_{n-1} t^{n-1} + \dotsb + a_1 t + a_0 \in K[t]
+      \]
+      ergibt sich damit, dass
+      \begin{align*}
+            p(f)(v)
+        &=  (a_n f^n + a_{n-1} f^{n-1} + \dotsb + a_1 f + a_0 \id_V)(v)                 \\
+        &=  a_n f^n(v) + a_{n-1} f^{n-1}(v) + \dotsb + a_1 f(v) + a_0 \id_V(v)          \\
+        &=  a_n \lambda^n v + a_{n-1} \lambda^{n-1} v + \dotsb + a_1 \lambda v + a_0 v  \\
+        &=  (a_n \lambda^n + a_{n-1} \lambda^{n-1} + \dotsb + a_1 \lambda + a_0) v      \\
+        &=  p(\lambda) v.
+      \end{align*}
+      Da nach Annahme auch $v \neq 0$ gilt, ist $v$ somit ein Eigenvektor von $p(f)$ zum Eigenwert $p(\lambda)$.
+      
+    \item
+      Die Abbildung $p(f) - \mu \id_V$ ist nicht injektiv, da $\mu$ ein Eigenwert von $p(f)$ ist.
+      Für das Polynom $q(t) \coloneqq p(t) - \mu$ ist also die Abbildung $q(f)$ nicht injektiv.
+      
+      Da $K$ algebraisch abgeschlossen ist, zerfällt $q(t)$ in Linearfaktoren
+      \[
+        q(t) = (t - \lambda_1) \dotsm (t - \lambda_n).
+      \]
+      Da die Komposition
+      \[
+          q(f)
+        = (f - \lambda_1 \id_V) \circ \dotsb \circ (f - \lambda_n \id_V)
+      \]
+      nicht injektiv ist, muss bereits eine der Abbildungen $f - \lambda_i \id_V$ nicht injektiv sein (denn die Komposition injektiver Abbildungen ist ebenfalls wieder injektiv).
+      Für ein entsprechendes $i$ ist dann $\lambda \coloneqq \lambda_i$ ein Eigenwert von $f$, da $f - \lambda \id_V$ nicht injektiv ist.
+      
+      Da $\lambda$ eine Nullstelle von $q(t) = p(t) - \mu$ ist, gilt dabei $0 = q(\lambda) = p(\lambda) - \mu$, und somit $\mu = p(\lambda)$.
+  \end{enumerate}
+\end{solution}
+
+
+
+
+
 \begin{question}[subtitle = Diagonalisieren über $\Field_5$]
   Es sei
   \[
@@ -322,6 +602,103 @@
   Bestimmen Sie eine Matrix $S \in \GL{3}{\Field_5}$, so dass $S^{-1} A S$ in Diagonalform ist.
 \end{question}
 
+
+
+
+
+\begin{solution}
+  Es gilt
+  \[
+      \charpol{A}(t)
+    = - t^3 + t^2 + 4 t + 1
+  \]
+  Durch Ausprobieren ergibt sich für $\charpol{A}(t)$ die Nullstelle $\lambda_1 = 1$.
+  Durch Abspalten eines entsprechendes Linearfaktors ergibt sich, dass
+  \begin{align*}
+        - t^3 + t^2 + 4 t + 1
+    &=  - (t^3 - t^2 + t - 1)
+     =  - (t - 1)(t^2 + 1)
+     =  - (t - 1)(t^2 - 4)
+    \\
+    &=  - (t - 1)(t - 2)(t + 2)
+     =  - (t - 1)(t - 2)(t - 3).
+  \end{align*}
+  Die Eigenwerte von $A$ sind also $1$, $2$ und $3$.
+  (Da $\charpol{A}(t)$ in paarweise verschiedene Linearfaktoren zerfällt, erkennt man bereits, dass $A$ diagonalisierbar ist.)
+  Die jeweils zugehörigen Eigenräume sind
+  \begin{gather*}
+      \eigenspace{(\Field_5)}{A}{1}
+    = \ker  (A - \Id)
+    = \ker  \begin{pmatrix}
+              2 & 4 & 1 \\
+              0 & 0 & 2 \\
+              1 & 2 & 1
+            \end{pmatrix}
+    = \generated{ \rvect{2 \\ -1 \\ 0} }
+    = \generated{ \vect{2 \\ 4 \\ 0} }
+    = \generated{ \vect{1 \\ 2 \\ 0} },
+  \\
+      \eigenspace{(\Field_5)}{A}{2}
+    = \ker  (A - 2 \Id)
+    = \ker  \begin{pmatrix}
+              1 & 4 & 1 \\
+              0 & 4 & 2 \\
+              1 & 2 & 0
+            \end{pmatrix}
+    = \generated{ \rvect{-2 \\ 1 \\ -2} }
+    = \generated{ \vect{3 \\ 1 \\ 3} }
+    = \generated{ \vect{1 \\ 2 \\ 1} },
+  \shortintertext{und}
+    \begin{aligned}
+          \eigenspace{(\Field_5)}{A}{3}
+       =  \ker  (A - 3 \Id)
+       =  \ker  \begin{pmatrix}
+                  0 & 4 & 1 \\
+                  0 & 3 & 2 \\
+                  1 & 2 & 4
+                \end{pmatrix}
+      &=  \ker  \begin{pmatrix*}[r]
+                  0 & -1  & 1 \\
+                  0 & -2  & 2 \\
+                  1 &  2  & 4
+                \end{pmatrix*}
+      \\
+      &=  \generated{ \rvect{-3 \\ 1 \\ -1} }
+       =  \generated{ \vect{2 \\ 1 \\ 4} }
+       =  \generated{ \vect{1 \\ 3 \\ 2} }.
+    \end{aligned}
+  \end{gather*}
+  Für die Matrix
+  \[
+              S
+    \coloneqq \begin{pmatrix}
+                1 & 1 & 1 \\
+                2 & 2 & 3 \\
+                0 & 1 & 2 \\
+              \end{pmatrix}
+    \in \GL{3}{\Field_5}
+  \]
+  gilt also
+  \[
+      S^{-1} A S
+    = \begin{pmatrix}
+        1 &   &   \\
+          & 2 &   \\
+          &   & 3
+      \end{pmatrix}.
+  \]
+\end{solution}
+
+
+
+
+
+\pagebreak
+\section*{Lösungen}
+
+
+
+\printsolutions
 
 
 
