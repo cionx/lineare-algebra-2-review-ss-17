@@ -251,12 +251,13 @@ Zur Berechnung einer Jordanbasis von $A$ kann man weiterhin wie folgt vorgehen:
         \end{align*}
       \item
         Man wählt nun Vektoren $v'_1, \dotsc, v'_{b_{m-1}} \in \ker (A - \lambda \Id)^{m-1}$, so dass
-        \[
-                    \ker (A - \lambda \Id)^{m-1}
-          =         \ker (A - \lambda \Id)^{m-2}
-            \oplus  \generated{ A v_1, \dotsc, A v_{b_m} }
+        \begin{align*}
+           &\,      \ker (A - \lambda \Id)^{m-1}
+          \\
+          =&\,      \ker (A - \lambda \Id)^{m-2}
+            \oplus  \generated{ (A - \lambda \Id) v_1, \dotsc, (A - \lambda \Id) v_{b_m} }
             \oplus  \generated{ v'_1, \dotsc, v'_{b_{m-1}} }
-        \]
+        \end{align*}
         gilt.
       \item
         Hierdurch erhält man für $\basis{B}_\lambda$ die weitere Basisvektoren
@@ -269,11 +270,12 @@ Zur Berechnung einer Jordanbasis von $A$ kann man weiterhin wie folgt vorgehen:
       \item
         Man wähle nun $v''_1, \dotsc, v''_{b_{m-2}} \in \ker (A - \lambda \Id)^{m-2}$, so dass
         \begin{align*}
-           &\,      \ker (A - \lambda \Id)^{m-1}  \\
-          =&\,      \ker (A - \lambda \Id)^{m-2}
-            \oplus  \generated{ A^2 v_1, \dotsc, A^2 v_{b_m} }
-            \oplus  \generated{ A v'_1, \dotsc, A v'_{b_{m-1}} }
-            \oplus  \generated{ v''_1, \dotsc, v''_{b_{m-2}} }
+           &\,          \ker (A - \lambda \Id)^{m-1}  \\
+          =&\,          \ker (A - \lambda \Id)^{m-2}
+                \oplus  \generated{ (A - \lambda \Id)^2 v_1, \dotsc, (A - \lambda \Id)^2 v_{b_m} } \\
+           &\,          \phantom{\ker (A - \lambda \Id)^{m-2}\,}
+                \oplus  \generated{ (A - \lambda \Id) v'_1, \dotsc, (A - \lambda \Id) v'_{b_{m-1}} }
+                \oplus  \generated{ v''_1, \dotsc, v''_{b_{m-2}} }
         \end{align*}
         gilt.
       \item
